@@ -1,5 +1,9 @@
 import {mixinWrapperAndMethodsTypes} from '../types/wrapper.type';
 
-export interface WrappersInterface {
-    Not: mixinWrapperAndMethodsTypes,
+export interface BeforeWrappersInterface {
+  All: mixinWrapperAndMethodsTypes & AfterWrappersInterface;
+}
+
+export interface AfterWrappersInterface {
+  Not: mixinWrapperAndMethodsTypes;
 }

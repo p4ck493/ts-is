@@ -3,7 +3,7 @@ import {proxyGenerator} from './tools/proxy-generator.tool';
 import {IsType} from './types/is.type';
 
 function IsFunction(argument: any) {
-  console.log('comment');
+  console.error('Dont use the function, is declare for future!');
   return argument;
 }
 

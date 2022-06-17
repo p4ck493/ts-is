@@ -1,4 +1,5 @@
 import {MethodsInterface} from '../interfaces/methods.interface';
 
-export type wrapperType = (targetApply: any, argumentsList: any) => any;
-export type mixinWrapperAndMethodsTypes = wrapperType & MethodsInterface;
+export type beforeWrapperType = (targetApply: any, argumentsList: any) => boolean;
+export type afterWrapperType = (result: boolean) => boolean;
+export type mixinWrapperAndMethodsTypes = beforeWrapperType & afterWrapperType & MethodsInterface;

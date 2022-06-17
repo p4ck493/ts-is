@@ -21,22 +21,22 @@ import {UniversalEmptyCheckerMethod} from '../methods/universal-empty-checker.me
  * Declare names and types of methods
  */
 export interface MethodsInterface {
-    Array: typeof ArrayMethod;
-    BigInt: typeof BigintMethod;
-    Boolean: typeof BooleanMethod;
-    Compare: typeof CompareMethod;
-    EmptyObject: typeof EmptyObjectMethod;
-    EmptyString: typeof EmptyStringMethod;
-    False: typeof FalseMethod;
-    Function: typeof FunctionMethod;
-    Null: typeof NullMethod;
-    NullOrUndefined: typeof NullOrUndefinedMethod;
-    NullOrUndefinedOrEmpty: typeof NullOrUndefinedOrEmptyMethod;
-    Number: typeof NumberMethod;
-    Object: typeof ObjectMethod;
-    String: typeof StringMethod;
-    Symbol: typeof SymbolMethod;
-    True: typeof TrueMethod;
-    Undefined: typeof UndefinedMethod;
-    UniversalEmptyChecker: typeof UniversalEmptyCheckerMethod;
+  Array: typeof ArrayMethod;
+  BigInt: typeof BigintMethod;
+  Boolean: typeof BooleanMethod;
+  Compare: typeof CompareMethod;
+  EmptyObject: typeof EmptyObjectMethod;
+  EmptyString: typeof EmptyStringMethod;
+  False: typeof FalseMethod;
+  Function: typeof FunctionMethod;
+  Null: typeof NullMethod;
+  NullOrUndefined: typeof NullOrUndefinedMethod;
+  NullOrUndefinedOrEmpty: typeof NullOrUndefinedOrEmptyMethod;
+  Number: typeof NumberMethod;
+  Object: typeof ObjectMethod;
+  String: typeof StringMethod;
+  Symbol: typeof SymbolMethod;
+  True: typeof TrueMethod;
+  Undefined: typeof UndefinedMethod;
+  UniversalEmptyChecker: typeof UniversalEmptyCheckerMethod;
 }

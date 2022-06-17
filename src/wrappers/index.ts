@@ -1,7 +1,10 @@
-import {NotWrapper} from './not.wrapper';
-import {WrappersInterface} from '../interfaces/wrappers.interface';
-import {mixinWrapperAndMethodsTypes} from '../types/wrapper.type';
+import {NotWrapper} from './after/not.wrapper';
+import {AllWrapper} from './before/all.wrapper';
 
-export const wrappers: WrappersInterface = {
-    Not: (NotWrapper as mixinWrapperAndMethodsTypes)
-}
+export const afterWrappers = {
+  Not: NotWrapper,
+};
+
+export const beforeWrappers = {
+  All: AllWrapper,
+};

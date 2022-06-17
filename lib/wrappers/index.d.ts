@@ -1,2 +1,6 @@
-import { WrappersInterface } from '../interfaces/wrappers.interface';
-export declare const wrappers: WrappersInterface;
+export declare const afterWrappers: {
+    Not: import("../types/wrapper.type").afterWrapperType;
+};
+export declare const beforeWrappers: {
+    All: import("../types/wrapper.type").beforeWrapperType;
+};

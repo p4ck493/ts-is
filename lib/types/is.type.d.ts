@@ -1,3 +1,4 @@
-import { WrappersInterface } from '../interfaces/wrappers.interface';
-import { MethodsInterface } from '../interfaces/methods.interface';
-export declare type IsType = Function & MethodsInterface & WrappersInterface;
+import {MethodsInterface} from '../interfaces/methods.interface';
+import {AfterWrappersInterface, BeforeWrappersInterface} from '../interfaces/wrappers.interface';
+
+export declare type IsType = (() => void) & MethodsInterface & AfterWrappersInterface & BeforeWrappersInterface;

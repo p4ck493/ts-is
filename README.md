@@ -1,7 +1,7 @@
-# ts-is
-![NPM Latest Version](https://img.shields.io/npm/v/ts-is)
-![Downloads Count](https://img.shields.io/npm/dm/ts-is.svg)
-![Bundle Size](https://packagephobia.now.sh/badge?p=ts-is)
+# @p4ck493/ts-is
+![NPM Latest Version](https://img.shields.io/npm/v/p4ck493/ts-is)
+![Downloads Count](https://img.shields.io/npm/dm/p4ck493/ts-is.svg)
+![Bundle Size](https://packagephobia.now.sh/badge?p=p4ck493/ts-is)
 ![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
@@ -9,12 +9,12 @@
 ## Installation
 
 ```bash
-$ npm install ts-is
+$ npm install @p4ck493/ts-is
 ```
 
 ## Import
 ```typescript
-import {Is} from "ts-is";
+import {Is} from "@p4ck493/ts-is";
 ```
 
 
@@ -126,10 +126,6 @@ import {Is} from "ts-is";
         
     }
 
-```
-
-## Now you can check array
-```typescript
 
   Is.All.Boolean([true, false, [true, [false]], 0]) // Result is false beacouse in array exist 0
   Is.All.Not.Boolean([true, false, [true, [false]], 0]) // Result is true beacouse in array exist 0

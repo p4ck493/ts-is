@@ -1,6 +1,6 @@
 /**
  * @param argument is any type
  */
-export function FunctionMethod(argument: any): argument is '[object Function]' {
+export function FunctionMethod<T extends () => void>(argument: unknown): argument is T {
   return {}.toString.call(argument) === '[object Function]';
 }

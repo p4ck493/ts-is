@@ -2,6 +2,6 @@
  *
  * @param argument is boolean type
  */
-export function TrueMethod(argument: boolean): argument is true {
+export function TrueMethod(argument: unknown): argument is true {
   return argument === true;
 }

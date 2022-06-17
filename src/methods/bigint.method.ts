@@ -2,6 +2,6 @@
  *
  * @param argument is any type
  */
-export function BigintMethod(argument: any): argument is BigInteger {
+export function BigintMethod(argument: unknown): argument is BigInteger {
   return typeof argument === 'bigint';
 }

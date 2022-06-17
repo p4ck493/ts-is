@@ -1,0 +1,67 @@
+{
+  "name": "ts-is",
+  "version": "0.0.0",
+  "description": "The package for check some data in typescript.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p4ck493/ts-is.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "bugs": {
+    "url": "https://github.com/p4ck493/ts-is/issues"
+  },
+  "homepage": "https://github.com/p4ck493/ts-is#readme",
+  "keywords": [
+    "Check Data",
+    "TypeScript",
+    "TS",
+    "Proxy",
+    "Checkers",
+    "Testing"
+  ],
+  "author": "p4ck493",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "ts-jest": "^27.1.4",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.6.3",
+    "codelyzer": "^6.0.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "<rootDir>/.git/",
+      "<rootDir>/.DS_Store/",
+      "<rootDir>/.vs/",
+      "<rootDir>/.vscode/",
+      "<rootDir>/lib/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "<rootDir>/tsconfig.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    }
+  }
+}

@@ -13,7 +13,8 @@
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",

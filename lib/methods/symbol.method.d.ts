@@ -2,4 +2,4 @@
  *
  * @param argument is any type
  */
-export declare function SymbolMethod(argument: any): argument is symbol;
+export declare function SymbolMethod(argument: unknown): argument is symbol;

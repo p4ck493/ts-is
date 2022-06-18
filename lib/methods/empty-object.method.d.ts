@@ -2,4 +2,4 @@
  *
  * @param argument is object type
  */
-export declare function EmptyObjectMethod(argument: object): boolean;
+export declare function EmptyObjectMethod(argument: unknown): boolean;

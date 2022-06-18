@@ -2,4 +2,4 @@
  *
  * @param argument is boolean type
  */
-export declare function TrueMethod(argument: boolean): argument is true;
+export declare function TrueMethod(argument: unknown): argument is true;

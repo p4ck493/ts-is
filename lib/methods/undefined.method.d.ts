@@ -2,4 +2,4 @@
  *
  * @param argument is any type
  */
-export declare function UndefinedMethod(argument: any): argument is undefined;
+export declare function UndefinedMethod(argument: unknown): argument is undefined;

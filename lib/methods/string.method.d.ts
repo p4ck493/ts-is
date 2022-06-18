@@ -2,4 +2,4 @@
  *
  * @param argument is any type
  */
-export declare function StringMethod(argument: any): argument is string;
+export declare function StringMethod(argument: unknown): argument is string;

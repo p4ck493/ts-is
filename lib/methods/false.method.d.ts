@@ -2,4 +2,4 @@
  *
  * @param argument is boolean type
  */
-export declare function FalseMethod(argument: boolean): argument is false;
+export declare function FalseMethod(argument: unknown): argument is false;

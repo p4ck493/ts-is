@@ -2,4 +2,4 @@
  *
  * @param argument is any type
  */
-export declare function BigintMethod(argument: any): argument is BigInteger;
+export declare function BigintMethod(argument: unknown): argument is BigInteger;

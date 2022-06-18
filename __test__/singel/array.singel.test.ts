@@ -1,5 +1,10 @@
 import {Is} from '../../lib';
 
+class TestArray {
+    public testMethod(argument: unknown): boolean {
+        return true;
+    }
+}
 
 describe('Array singel', () => {
 
@@ -81,5 +86,13 @@ describe('Array singel', () => {
     it.each(dataForBadTesting)('Is.Not.Array: Should true for $value', ({value}) => {
         expect(Is.Not.Array(value)).toBe(true);
     });
+
+    // it('Is.Array<number>: Should true for [1,2,3]', () => {
+    //     expect(Is.Array<number>([1,2,3])).toBe(true);
+    // });
+    //
+    // it('Is.Array<string>: Should false for [1,2,3]', () => {
+    //     expect(Is.Array<string>([1,2,3])).toBe(false);
+    // });
 
 });

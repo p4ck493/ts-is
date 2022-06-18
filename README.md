@@ -1,4 +1,5 @@
 # @p4ck493/ts-is
+
 ![NPM Latest Version](https://img.shields.io/npm/v/p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=p4ck493/ts-is)
@@ -13,13 +14,13 @@ $ npm install @p4ck493/ts-is
 ```
 
 ## Import
+
 ```typescript
 import {Is} from "@p4ck493/ts-is";
 ```
 
-
-
 ## API
+
 | #   | Name of method                    | Argument        | Return type |
 |-----|-----------------------------------|-----------------|-------------|
 |     | **Is**                            |                 |             |
@@ -100,6 +101,7 @@ import {Is} from "@p4ck493/ts-is";
 | 72  | Is.All.Not.UniversalEmptyChecker  | argument: any[] | Boolean     |
 
 ## Some examples:
+
 ```typescript
 
     Is.Null("unknown") // Return false
@@ -114,20 +116,30 @@ import {Is} from "@p4ck493/ts-is";
     // Why do you need to use the package?
     // because you don't want to write like this:
     if (
-            typeof variable === 'object' &&
-            variable !== null &&
-            !Array.isArray(variable)
+        typeof variable === 'object' &&
+        variable !== null &&
+        !Array.isArray(variable)
     ) {
-        
+    
     }
     
     // but you want to write like this:
     if (Is.Object(variable)) {
-        
+    
     }
+     
+    Is.Function(variable)
+    Is.Function<typeof variable>(variable)
+    Is.Function<FunctionName>(variable)
+    
+    Is.Array(variable)
 
-
-  Is.All.Boolean([true, false, [true, [false]], 0]) // Result is false beacouse in array exist 0
-  Is.All.Not.Boolean([true, false, [true, [false]], 0]) // Result is true beacouse in array exist 0
+    Is.All.Boolean([true, false, [true, [false]], 0]) // Result is false beacouse in array exist 0
+    Is.All.Not.Boolean([true, false, [true, [false]], 0]) // Result is true beacouse in array exist 0
+    
+    // Not yet
+    Is.Array<number>(variable)
+    Is.Array<ClassName>(variable)
+    Is.All.Array<ClassName>(variable)
 
 ```

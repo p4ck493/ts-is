@@ -8,3 +8,7 @@ export const afterWrappers = {
 export const beforeWrappers = {
   All: AllWrapper,
 };
+
+export const typeWrappers = {
+
+};

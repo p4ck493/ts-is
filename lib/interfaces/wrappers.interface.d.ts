@@ -1,8 +1,11 @@
-import {mixinWrapperAndMethodsTypes} from '../types/wrapper.type';
+import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
+import {MethodsInterface} from './methods.interface';
 
 export interface BeforeWrappersInterface {
-    All: mixinWrapperAndMethodsTypes & AfterWrappersInterface;
+    All: beforeWrapperType & MethodsInterface & AfterWrappersInterface;
 }
 export interface AfterWrappersInterface {
-    Not: mixinWrapperAndMethodsTypes;
+    Not: afterWrapperType & MethodsInterface & {
+        [key: string]: beforeWrapperType & MethodsInterface;
+    };
 }

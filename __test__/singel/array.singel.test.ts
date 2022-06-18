@@ -1,10 +1,14 @@
 import {Is} from '../../lib';
+import {UseForIs} from '../../lib/decorators';
 
-class TestArray {
+@UseForIs
+// @ts-ignore
+class Person {
     public testMethod(argument: unknown): boolean {
         return true;
     }
 }
+
 
 describe('Array singel', () => {
 
@@ -87,12 +91,12 @@ describe('Array singel', () => {
         expect(Is.Not.Array(value)).toBe(true);
     });
 
-    // it('Is.Array<number>: Should true for [1,2,3]', () => {
-    //     expect(Is.Array<number>([1,2,3])).toBe(true);
-    // });
-    //
-    // it('Is.Array<string>: Should false for [1,2,3]', () => {
-    //     expect(Is.Array<string>([1,2,3])).toBe(false);
-    // });
+    it('Is.TestArray.Array: Should true for [new TestArray()]', () => {
+        expect(Is.Person.Array([new Person()])).toBe(true);
+    });
+
+    it('Is.TestArray.Array: Should false for [1,2,3]', () => {
+        expect(Is.Not.Person.Array([1,2,3])).toBe(true);
+    });
 
 });

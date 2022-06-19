@@ -124,9 +124,9 @@ describe('Array singel', () => {
         expect(Is.Person.Array(arr)).toBe(false);
     });
 
-    // it('Is.Person.Array: Should false for Person[]', () => {
-    //     const person = new Address();
-    //     expect((Is.Person as any)(person)).toBe(true);
-    // });
+    it('Is.Person.Array: Should false for Person[]', () => {
+        const person = new Address();
+        expect(Is.Person(person)).toBe(true);
+    });
 
 });

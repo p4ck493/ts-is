@@ -1,3 +1,5 @@
+import {FunctionMethod} from './function.method';
+
 /**
  *
  * Example:
@@ -28,16 +30,15 @@
  * @param argument is any type
  * @param classRef is a function (construction)
  */
-import {Is} from '../index';
-
 export function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
 
     if (argument instanceof Array) {
 
-        if (Is.Function(classRef)) {
+        if (FunctionMethod(classRef)) {
 
             if (argument.length) {
 
+                // TODO use sorting and just check first item
                 return argument.every((item: T) => item instanceof classRef);
 
             } else {

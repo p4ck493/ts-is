@@ -1,6 +1,6 @@
 import {beforeWrapperType} from '../../types/wrapper.type';
 import {executeType} from '../../types/execute.type';
-import {Is} from '../../index';
+import {ArrayMethod} from '../../methods/array.method';
 
 /**
  *
@@ -15,7 +15,7 @@ export const AllWrapper: beforeWrapperType = (
 ): boolean => {
   const execute: executeType = (...args: unknown[]): boolean => {
     return args.every((argument: unknown): boolean => {
-      if (Is.Array(argument) && argument.length) {
+      if (ArrayMethod(argument) && argument.length) {
         return execute(...argument);
       }
       return targetApply(argument);

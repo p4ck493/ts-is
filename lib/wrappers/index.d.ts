@@ -4,4 +4,21 @@ export declare const afterWrappers: {
 export declare const beforeWrappers: {
     All: import("../types/wrapper.type").beforeWrapperType;
 };
+/**
+ * Use this const for register classes.
+ * Example:
+ * class PersonModel {
+ *     public name: string;
+ * }
+ *
+ * Object.assign(typeWrappers, {PersonModel})
+ *
+ * Or you can use decorator:
+ *
+ * @RegisterInIsDecorator
+ * class PersonModel {
+ *     public name: string;
+ * }
+ *
+ */
 export declare const typeWrappers: {};

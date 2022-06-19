@@ -1,12 +1,17 @@
 import {Is} from '../../lib';
-import {UseForIs} from '../../lib/decorators';
+import {RegisterInIs} from '../../lib/decorators';
 
-@UseForIs
+@RegisterInIs()
 // @ts-ignore
 class Person {
     public testMethod(argument: unknown): boolean {
         return true;
     }
+}
+
+@RegisterInIs()
+// @ts-ignore
+class Address {
 }
 
 
@@ -91,12 +96,37 @@ describe('Array singel', () => {
         expect(Is.Not.Array(value)).toBe(true);
     });
 
-    it('Is.TestArray.Array: Should true for [new TestArray()]', () => {
+    it('Is.Person.Array: Should true for [new TestArray()]', () => {
         expect(Is.Person.Array([new Person()])).toBe(true);
     });
 
-    it('Is.TestArray.Array: Should false for [1,2,3]', () => {
+    it('Is.Person.Array: Should false for [1,2,3]', () => {
         expect(Is.Not.Person.Array([1,2,3])).toBe(true);
     });
+
+    it('Is.Not.Person.Array: Should true for number[]', () => {
+        const arr: number[] = [];
+        expect(Is.Not.Person.Array(arr)).toBe(true);
+    });
+
+    it('Is.Person.Array: Should false for number[]', () => {
+        const arr: number[] = [];
+        expect(Is.Person.Array(arr)).toBe(false);
+    });
+
+    it('Is.Not.Person.Array: Should false for Person[]', () => {
+        const arr: Person[] = [];
+        expect(Is.Not.Person.Array(arr)).toBe(true);
+    });
+
+    it('Is.Person.Array: Should false for Person[]', () => {
+        const arr: Person[] = [];
+        expect(Is.Person.Array(arr)).toBe(false);
+    });
+
+    // it('Is.Person.Array: Should false for Person[]', () => {
+    //     const person = new Address();
+    //     expect((Is.Person as any)(person)).toBe(true);
+    // });
 
 });

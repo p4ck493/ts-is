@@ -1,7 +1,5 @@
-// import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
 import {afterWrappers, beforeWrappers, typeWrappers} from '../wrappers';
 import {afterWrapperType, beforeWrapperType, typeWrapperType} from '../types/wrapper.type';
-// import {AfterWrappersInterface, BeforeWrappersInterface} from '../interfaces/wrappers.interface';
 
 /**
  *
@@ -14,6 +12,35 @@ import {afterWrapperType, beforeWrapperType, typeWrapperType} from '../types/wra
  * Examples: Is.All.Not.Boolean([true, false, [0]])
  * Explain: AfterWrappers[BeforeWrappers[[true, false, [0]]]]
  *
+ * If need check array of some class, just register the class in typeWrappers, examples:
+ *
+ * Example #1
+ * class Person {
+ *     public fullName: string = 'Ivan Karbashevskyi';
+ * }
+ *
+ * Object.assign(typeWrappers, {Person});
+ *
+ * // Later
+ * Is.Person.Array([new Person(), true, 0]) // Return false
+ * Is.Not.Person.Array([new Person(), true, 0]) // Return true
+ * Is.Person.Array([new Person(), new Person()]) // Return true
+ * Is.Person.Array([]) // Return true
+ *
+ * Example #2
+ *
+ * @RegisterInIs({ className: 'PersonModel' }) // Or @RegisterInIs() and then call later, as shown in example #1 above
+ * class Person {
+ *     public fullName: string = 'Ivan Karbashevskyi';
+ * }
+ *
+ * // Later
+ * Is.PersonModel.Array([new Person(), true, 0]) // Return false
+ * Is.Not.PersonModel.Array([new Person(), true, 0]) // Return true
+ * Is.PersonModel.Array([new Person(), new Person()]) // Return true
+ * Is.PersonModel.Array([]) // Return true
+ *
+ *
  * @param target must by an object
  * @param name must be a string
  * @param methodList must be array of methods
@@ -21,85 +48,89 @@ import {afterWrapperType, beforeWrapperType, typeWrapperType} from '../types/wra
  * @param typeWrapperList must be array of type wrappers
  * @param afterWrapperList must be array of after wrappers
  */
-const proxyRecursive = (
-  // TODO interface
-  target: any,
+function proxyRecursive(
+  target: object,
   name: string,
-  methodList: any,
+  methodList: object,
   beforeWrapperList: beforeWrapperType[],
   typeWrapperList: typeWrapperType[],
   afterWrapperList: afterWrapperType[],
-): any => {
+): object {
 
   let newTarget: object = methodList;
 
   const hasMethod: boolean = methodList.hasOwnProperty(name);
 
   if (hasMethod) {
-    newTarget = methodList[name] ?? target;
+    newTarget = methodList[(name as keyof (typeof methodList))] ?? target;
   } else {
 
-    const hasBeforeWrapper: boolean = beforeWrappers.hasOwnProperty(name);
     const hasTypeWrapper: boolean = typeWrappers.hasOwnProperty(name);
+    const hasBeforeWrapper: boolean = beforeWrappers.hasOwnProperty(name);
     const hasAfterWrapper: boolean = afterWrappers.hasOwnProperty(name);
-    const registerOfWrappers: boolean[] = [hasBeforeWrapper, hasTypeWrapper, hasAfterWrapper];
-
-    if (hasBeforeWrapper) {
-      beforeWrapperList.push(beforeWrappers[name as keyof (typeof beforeWrappers)]);
-    }
+    const notFoundWrapperInAnyWrappers: boolean[] = [hasTypeWrapper, hasBeforeWrapper, hasAfterWrapper];
 
     if (hasTypeWrapper) {
       typeWrapperList.push(typeWrappers[name as keyof (typeof typeWrappers)]);
+    }
+
+    if (hasBeforeWrapper) {
+      beforeWrapperList.push(beforeWrappers[name as keyof (typeof beforeWrappers)]);
     }
 
     if (hasAfterWrapper) {
       afterWrapperList.push(afterWrappers[name as keyof (typeof afterWrappers)]);
     }
 
-    if (registerOfWrappers.every(item => !item)) {
+    if (notFoundWrapperInAnyWrappers.every((item: boolean) => !item)) {
       throw new Error(`Not found propery with name: ${name}`);
+    } else {
+
     }
   }
 
   return new Proxy(newTarget, {
-    get: (targetGet: any, nameGet: string) => {
-      // TODO interface
+    get: (targetGet: any, nameGet: string): ReturnType<typeof proxyRecursive> => {
       return proxyRecursive(targetGet[nameGet], nameGet, targetGet, beforeWrapperList, typeWrapperList, afterWrapperList);
     },
-    apply: (targetApply: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]): boolean => {
+    apply: (targetApply: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]): ReturnType<typeof targetApply> => {
 
       argumentList.push(...(typeWrapperList ?? []));
       let result;
 
       if (beforeWrapperList?.length) {
-        // TODO reduce
-        result = beforeWrapperList[0](targetApply, argumentList);
+        result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(targetApply, argumentList, previousValue)
+        }, result);
       } else {
         result = targetApply(...argumentList);
       }
 
       if (afterWrapperList?.length) {
-        // TODO reduce
-        result = afterWrapperList[0](result);
+        result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue)
+        }, result);
       }
+
+
 
       return result;
     },
   });
-};
+}
 
 /**
  *
  * @param defaultFunction must be method
  * @param methodList must be array of methods
  */
-export const proxyGenerator: any = (defaultFunction: object, methodList: unknown): any => {
+export function proxyGenerator(defaultFunction: object, methodList: object): any {
   return new Proxy(defaultFunction, {
-    get: (target: object, name: string) => {
+    get: (target: object, name: string): ReturnType<typeof proxyRecursive> => {
       return proxyRecursive(target, name, methodList, [], [], []);
     },
-    apply: (target: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]) => {
+    apply: (target: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]): ReturnType<typeof target> => {
       return target(...argumentList);
     },
   });
-};
+}

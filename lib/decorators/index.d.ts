@@ -1,1 +1,3 @@
-export { UseForIsDecorator as UseForIs } from './use-for-is.decorator';
+import {registerInIsDecorator} from './register-in-is.decorator';
+
+export declare const RegisterInIs: typeof registerInIsDecorator;

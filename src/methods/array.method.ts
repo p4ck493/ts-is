@@ -1,11 +1,32 @@
 /**
  *
- * Is.Person.Array([new Person()]) // Return true
- * Is.Person.Array([new Address()]) // Return false
+ * Example:
  *
- * Collection is an Array
+ * @RegisterInIs
+ * class Person {
+ *
+ * }
+ *
+ * Is.Person.Array([new Person()]) // Returns true
+ * Is.Person.Array([new Address()]) // Returns false
+ * Is.Array([new Address()]) // Returns true
+ * Is.Array([]) // Returns true
+ * Is.Not.Array([]) // Returns false
+ * Is.Not.Array(0) // Returns true
+ * Is.Not.Array(true) // Returns true
+ * Is.Not.Array('Hello world') // Returns true
+ *
+ * // Special cases:
+ *
+ * // Case #1
+ * const arr: Person[] = [];
+ * Is.Person.Array(arr) // Returns false because it is an empty array, but for: Is.Array(arr) returns true!
+ *
+ * // Case #2
+ * Is.Not.Person.Array(arr) // Returns true
+ *
  * @param argument is any type
- * @param classRef
+ * @param classRef is a function (construction)
  */
 import {Is} from '../index';
 
@@ -13,13 +34,23 @@ export function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argum
 
     if (argument instanceof Array) {
 
-        if (argument.length && Is.Function(classRef)) {
+        if (Is.Function(classRef)) {
 
-            return argument.every((item: T) => item instanceof classRef);
+            if (argument.length) {
+
+                return argument.every((item: T) => item instanceof classRef);
+
+            } else {
+
+                return false;
+
+            }
+
+        } else {
+
+            return true;
 
         }
-
-        return true;
 
     }
 

@@ -1,6 +1,3 @@
-import {typeWrappers} from '../wrappers';
+import {registerInIsDecorator} from './register-in-is.decorator';
 
-export const UseForIs= (constructor: any) => { // TODO interface
-    const object: any = new constructor(); // TODO interface
-    Object.assign(typeWrappers, {[object.constructor.name]: constructor})
-};
+export const RegisterInIs: typeof registerInIsDecorator = registerInIsDecorator;

@@ -1,7 +1,7 @@
 export type registerInIsArgumentDecoratorType = {
-    constructor: {
-        name: string;
-    }
+  constructor: {
+    name: string;
+  };
 };
 
 export type registerInIsConstructorDecoratorType = new () => registerInIsArgumentDecoratorType;

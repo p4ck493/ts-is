@@ -31,30 +31,18 @@ import {FunctionMethod} from './function.method';
  * @param classRef is a function (construction)
  */
 export function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
-
-    if (argument instanceof Array) {
-
-        if (FunctionMethod(classRef)) {
-
-            if (argument.length) {
-
-                // TODO use sorting and just check first item
-                return argument.every((item: T) => item instanceof classRef);
-
-            } else {
-
-                return false;
-
-            }
-
-        } else {
-
-            return true;
-
-        }
-
+  if (argument instanceof Array) {
+    if (FunctionMethod(classRef)) {
+      if (argument.length) {
+        // TODO use sorting and just check first item
+        return argument.every((item: T) => item instanceof classRef);
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
+  }
 
-    return false;
-
+  return false;
 }

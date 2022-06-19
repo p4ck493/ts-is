@@ -11,7 +11,7 @@ export declare const beforeWrappers: {
  *     public name: string;
  * }
  *
- * Object.assign(typeWrappers, {PersonModel})
+ * Object.assign(modelWrappers, {PersonModel})
  *
  * Or you can use decorator:
  *
@@ -21,4 +21,4 @@ export declare const beforeWrappers: {
  * }
  *
  */
-export declare const typeWrappers: {};
+export declare const modelWrappers: {};

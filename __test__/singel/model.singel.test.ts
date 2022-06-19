@@ -1,10 +1,25 @@
+import {RegisterInIs} from '../../lib/decorators';
 import {Is} from '../../lib';
 
-describe('Array singel', () => {
+@RegisterInIs()
+// @ts-ignore
+class Person {
+    public testMethod(argument: unknown): boolean {
+        return true;
+    }
+}
+
+@RegisterInIs()
+// @ts-ignore
+class Address {
+}
+
+
+describe('Model singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
-            value: []
+            value: new Person()
         },
     ];
 
@@ -14,6 +29,9 @@ describe('Array singel', () => {
         },
         {
             value: 'null'
+        },
+        {
+            value: []
         },
         {
             value: Symbol()
@@ -65,20 +83,20 @@ describe('Array singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Array: Should true for $value', ({value}) => {
-        expect(Is.Array(value)).toBe(true);
+    it.each(dataForGoodTesting)('Is.Person: Should true for $value', ({value}) => {
+        expect(Is.Person(value)).toBe(true);
     });
 
     it.each(dataForBadTesting)('Is.Array: Should false for $value', ({value}) => {
-        expect(Is.Array(value)).toBe(false);
+        expect(Is.Person(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Array: Should false for $value', ({value}) => {
-        expect(Is.Not.Array(value)).toBe(false);
+    it.each(dataForGoodTesting)('Is.Not.Person: Should false for $value', ({value}) => {
+        expect(Is.Not.Person(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Array: Should true for $value', ({value}) => {
-        expect(Is.Not.Array(value)).toBe(true);
+    it.each(dataForBadTesting)('Is.Not.Person: Should true for $value', ({value}) => {
+        expect(Is.Not.Person(value)).toBe(true);
     });
 
 });

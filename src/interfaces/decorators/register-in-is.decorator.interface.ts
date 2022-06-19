@@ -1,3 +1,3 @@
 export interface RegisterInIsDecoratorInterface {
-    className: string;
+  className: string;
 }

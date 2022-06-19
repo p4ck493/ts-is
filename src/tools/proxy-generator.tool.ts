@@ -4,37 +4,43 @@ import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
 // GET
 type proxyGeneratorGetType = (target: object, name: string) => ReturnType<typeof proxyRecursive>;
 
-function proxyGeneratorGet(methodList: object): proxyGeneratorGetType {
+function proxyGeneratorGet(): proxyGeneratorGetType {
   return (target, name) => {
     const flags: FlagsToolInterface = {
       AfterWrapper: false,
       BeforeWrapper: false,
       Method: false,
-      TypeWrapper: false
+      ModelWrapper: false,
     };
-    return proxyRecursive(target, name, methodList, flags, [], [], []);
+    return proxyRecursive(target, name, flags, [], []);
   };
 }
 
 // APPLY
 
-type proxyGeneratorApplyType = (target: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]) => ReturnType<typeof target>;
+type proxyGeneratorApplyType = (
+  target: (...arg: unknown[]) => boolean,
+  thisArg: unknown,
+  argumentList: unknown[],
+) => ReturnType<typeof target>;
 
 function proxyGeneratorApply(): proxyGeneratorApplyType {
-  return (target: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]): ReturnType<typeof target> => {
+  return (
+    target: (...arg: unknown[]) => boolean,
+    thisArg: unknown,
+    argumentList: unknown[],
+  ): ReturnType<typeof target> => {
     return target(...argumentList);
   };
 }
 
-
 /**
  *
  * @param defaultFunction must be method
- * @param methodList must be array of methods
  */
-export function proxyGenerator(defaultFunction: object, methodList: object): any {
+export function proxyGenerator(defaultFunction: object): any {
   return new Proxy(defaultFunction, {
-    get: proxyGeneratorGet(methodList),
+    get: proxyGeneratorGet(),
     apply: proxyGeneratorApply(),
   });
 }

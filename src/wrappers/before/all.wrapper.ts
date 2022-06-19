@@ -6,19 +6,21 @@ import {ArrayMethod} from '../../methods/array.method';
  *
  * @param targetApply must be method
  * @param argumentsList must be
- * @param previousValue
+ * @param secondArgument TODO text
+ * @param previousValue TODO text
  */
 export const AllWrapper: beforeWrapperType = (
-    targetApply: (arg: unknown) => boolean,
-    argumentsList: unknown,
-    previousValue?: boolean
+  targetApply: (...arg: unknown[]) => boolean,
+  argumentsList: unknown,
+  secondArgument?: unknown,
+  previousValue?: boolean,
 ): boolean => {
   const execute: executeType = (...args: unknown[]): boolean => {
     return args.every((argument: unknown): boolean => {
       if (ArrayMethod(argument) && argument.length) {
         return execute(...argument);
       }
-      return targetApply(argument);
+      return targetApply.call(this, argument, secondArgument);
     });
   };
 

@@ -12,6 +12,10 @@ describe('Object singel', () => {
                 a: 1
             }
         },
+        {
+            first: {},
+            second: {}
+        },
     ];
 
     const dataForBadTesting: {first: any, second: any}[] = [
@@ -25,20 +29,20 @@ describe('Object singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Object: Should true for $first === $second', ({first, second}) => {
+    it.each(dataForGoodTesting)('Is.Compare: Should true for $first === $second', ({first, second}) => {
         expect(Is.Compare(first, second)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Object: Should false for $first === $second', ({first, second}) => {
+    it.each(dataForBadTesting)('Is.Compare: Should false for $first === $second', ({first, second}) => {
         expect(Is.Compare(first, second)).toBe(false);
     });
 
-    // it.each(dataForGoodTesting)('Is.Not.Object: Should false for $value', ({value}) => {
-    //     expect(Is.Not.Object(value)).toBe(false);
-    // });
-    //
-    // it.each(dataForBadTesting)('Is.Not.Object: Should true for $value', ({value}) => {
-    //     expect(Is.Not.Object(value)).toBe(true);
-    // });
+    it.each(dataForGoodTesting)('Is.Not.Compare: Should false for $first === $second', ({first, second}) => {
+        expect(Is.Not.Compare(first, second)).toBe(false);
+    });
+
+    it.each(dataForBadTesting)('Is.Not.Compare: Should true for $first === $second', ({first, second}) => {
+        expect(Is.Not.Compare(first, second)).toBe(true);
+    });
 
 });

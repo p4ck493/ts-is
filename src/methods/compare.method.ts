@@ -1,5 +1,5 @@
-import { NullOrUndefinedMethod } from './null-or-undefined.method';
-import { Is } from '../index';
+import {NullOrUndefinedMethod} from './null-or-undefined.method';
+import {ArrayMethod} from './array.method';
 
 export enum TypeOfValueEnum {
   object = 'object',
@@ -18,7 +18,7 @@ export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
   const keysOfObjectOne: string[] = Object.keys(objectOne) ?? [];
   const keysOfObjectTwo: string[] = Object.keys(objectTwo) ?? [];
 
-  if (!keysOfObjectOne?.length || !keysOfObjectTwo?.length) {
+  if (!ArrayMethod(keysOfObjectOne) || !ArrayMethod(keysOfObjectTwo)) {
     return false;
   }
 
@@ -26,10 +26,14 @@ export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
     return false;
   }
 
+  if (!keysOfObjectOne.length && !keysOfObjectTwo.length) {
+    return true;
+  }
+
   for (const keyOfObjectOne of keysOfObjectTwo) {
     switch (typeof (objectOne as any)[keyOfObjectOne]) {
       case TypeOfValueEnum.object:
-        if (Is.Not.Compare((objectOne as any)[keyOfObjectOne], (objectTwo as any)[keyOfObjectOne])) {
+        if (!CompareMethod((objectOne as any)[keyOfObjectOne], (objectTwo as any)[keyOfObjectOne])) {
           return false;
         }
         break;

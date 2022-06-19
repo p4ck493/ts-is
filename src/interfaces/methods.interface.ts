@@ -16,6 +16,7 @@ import {SymbolMethod} from '../methods/symbol.method';
 import {TrueMethod} from '../methods/true.method';
 import {UndefinedMethod} from '../methods/undefined.method';
 import {UniversalEmptyCheckerMethod} from '../methods/universal-empty-checker.method';
+import {InstanceofMethod} from '../methods/instanceof.method';
 
 /**
  * Declare names and types of methods
@@ -29,6 +30,7 @@ export interface MethodsInterface {
   EmptyString: typeof EmptyStringMethod;
   False: typeof FalseMethod;
   Function: typeof FunctionMethod;
+  Instanceof: typeof InstanceofMethod;
   Null: typeof NullMethod;
   NullOrUndefined: typeof NullOrUndefinedMethod;
   NullOrUndefinedOrEmpty: typeof NullOrUndefinedOrEmptyMethod;

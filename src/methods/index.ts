@@ -17,6 +17,7 @@ import {SymbolMethod} from './symbol.method';
 import {BigintMethod} from './bigint.method';
 import {FunctionMethod} from './function.method';
 import {MethodsInterface} from '../interfaces/methods.interface';
+import {InstanceofMethod} from './instanceof.method';
 
 /**
  * Export all accesses methods in library
@@ -30,6 +31,7 @@ export const Methods: MethodsInterface = {
   EmptyString: EmptyStringMethod,
   False: FalseMethod,
   Function: FunctionMethod,
+  Instanceof: InstanceofMethod,
   Null: NullMethod,
   NullOrUndefined: NullOrUndefinedMethod,
   NullOrUndefinedOrEmpty: NullOrUndefinedOrEmptyMethod,

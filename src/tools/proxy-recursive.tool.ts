@@ -1,66 +1,43 @@
-import {afterWrapperType, beforeWrapperType, typeWrapperType} from '../types/wrapper.type';
-import {afterWrappers, beforeWrappers, typeWrappers} from '../wrappers';
+import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
+import {afterWrappers, beforeWrappers, modelWrappers} from '../wrappers';
 import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
 import {CaseToolConst} from '../consts/tools/case.tool.const';
 import {CaseToolEnum} from '../enums/tools/case.tool.enum';
 import {CompareMethod} from '../methods/compare.method';
-
-function initWrappers(
-    name: string,
-    flags: FlagsToolInterface,
-    typeWrapperList: typeWrapperType[],
-    beforeWrapperList: beforeWrapperType[],
-    afterWrapperList: afterWrapperType[]
-) {
-
-    flags.TypeWrapper = typeWrappers.hasOwnProperty(name);
-    flags.BeforeWrapper = beforeWrappers.hasOwnProperty(name);
-    flags.AfterWrapper = afterWrappers.hasOwnProperty(name);
-
-    const notFoundWrapperInAnyWrappers: boolean[] = [
-        flags.TypeWrapper,
-        flags.BeforeWrapper,
-        flags.AfterWrapper
-    ];
-
-    if (flags.TypeWrapper) {
-        typeWrapperList.push(typeWrappers[name as keyof (typeof typeWrappers)]);
-    }
-
-    if (flags.BeforeWrapper) {
-        beforeWrapperList.push(beforeWrappers[name as keyof (typeof beforeWrappers)]);
-    }
-
-    if (flags.AfterWrapper) {
-        afterWrapperList.push(afterWrappers[name as keyof (typeof afterWrappers)]);
-    }
-
-    if (notFoundWrapperInAnyWrappers.every((item: boolean) => !item)) {
-        throw new Error(`Not found propery with name: ${name}`);
-    }
-
-}
-
-
+import {InstanceofMethod} from '../methods/instanceof.method';
+import {Methods} from '../methods';
 
 // GET
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 
 function proxyRecursiveGet(
-    flags: FlagsToolInterface,
-    typeWrapperList: typeWrapperType[],
-    beforeWrapperList: beforeWrapperType[],
-    afterWrapperList: afterWrapperType[],
+  flags: FlagsToolInterface,
+  beforeWrapperList: beforeWrapperType[],
+  afterWrapperList: afterWrapperType[],
 ): proxyRecursiveGetType {
-    return (targetGet, nameGet) => {
-        return proxyRecursive(targetGet[nameGet], nameGet, targetGet, flags, beforeWrapperList, typeWrapperList, afterWrapperList);
-    };
+  return (targetGet, nameGet: string) => {
+    return proxyRecursive(targetGet[nameGet], nameGet, flags, beforeWrapperList, afterWrapperList);
+  };
 }
 
 // APPLY
 
-type proxyRecursiveApplyType = (targetApply: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]) => ReturnType<typeof targetApply>;
+type proxyRecursiveApplyType = (
+  targetApply: any,
+  thisArg: unknown,
+  argumentList: unknown[],
+) => ReturnType<typeof targetApply>;
+
+// TODO guard on arguments
+function findKey<T>(object: { [key: string]: T }, value: T): string | null {
+  for (const key of Object.keys(object)) {
+    if (CompareMethod<T>(object[key], value)) {
+      return key;
+    }
+  }
+  return null;
+}
 
 /**
  * Case #1 Model
@@ -94,73 +71,93 @@ type proxyRecursiveApplyType = (targetApply: (...arg: unknown[]) => boolean, thi
  * Is.All.Not.Person.Array([[new Person],[0], [new Person]]) // Returns true
  */
 function proxyRecursiveApply(
-    flags: FlagsToolInterface,
-    typeWrapperList: typeWrapperType[],
-    beforeWrapperList: beforeWrapperType[],
-    afterWrapperList: afterWrapperType[],
+  flags: FlagsToolInterface,
+  beforeWrapperList: beforeWrapperType[],
+  afterWrapperList: afterWrapperType[],
 ): proxyRecursiveApplyType {
-    return (targetApply, thisArg, argumentList) => {
+  return (targetApply, thisArg, argumentList) => {
+    let result;
 
-        // TODO build switch for cases
+    // TODO build switch for cases
 
-        const index = Object.values(CaseToolConst).findIndex((item) => CompareMethod<FlagsToolInterface>(item, flags));
-        const key = CaseToolEnum[Object.keys(CaseToolConst)[index] as keyof (typeof CaseToolEnum)];
+    const key: CaseToolEnum = CaseToolEnum[findKey(CaseToolConst, flags) as keyof typeof CaseToolEnum];
 
-        switch (key) {
-            case CaseToolEnum.AfterWrapperAndModelAndMethod:
-                // TODO
-                break;
-            case CaseToolEnum.BeforeWrapperAndMethod:
-                // TODO
-                break;
-            case CaseToolEnum.ModelAndMethod:
-                // TODO
-                break;
-            case CaseToolEnum.BeforeAndAfterWrapperAndMethod:
-                // TODO
-                break;
-            case CaseToolEnum.BeforeWrapperAndModel:
-                // TODO
-                break;
-            case CaseToolEnum.Model:
-                // TODO
-                break;
-            case CaseToolEnum.AfterWrapperAndModel:
-                // TODO
-                break;
-            case CaseToolEnum.Method:
-                // TODO
-                break;
-            case CaseToolEnum.AfterWrapperAndMethod:
-                // TODO
-                break;
-            case CaseToolEnum.BeforeAndAfterWrapperAndModelAndMethod:
-                // TODO
-                break;
-        }
+    switch (key) {
+      case CaseToolEnum.Method:
+        result = targetApply(...argumentList);
 
-        // OLD
+        break;
+      case CaseToolEnum.AfterWrapperAndMethod:
+        result = targetApply(...argumentList);
+        result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-        argumentList.push(...(typeWrapperList ?? []));
-        let result;
+        break;
+      case CaseToolEnum.BeforeWrapperAndMethod:
+        result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(targetApply, argumentList, previousValue);
+        }, result);
 
-        if (beforeWrapperList?.length) {
-            result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
-                return currentValue(targetApply, argumentList, previousValue)
-            }, result);
-        } else {
-            result = targetApply(...argumentList);
-        }
+        break;
+      case CaseToolEnum.Model:
+        result = InstanceofMethod(argumentList[0], targetApply);
 
-        if (afterWrapperList?.length) {
-            result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
-                return currentValue(previousValue)
-            }, result);
-        }
+        break;
+      case CaseToolEnum.BeforeWrapperAndModel:
+        // Before
+        result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
+        }, result);
 
+        break;
+      case CaseToolEnum.AfterWrapperAndModel:
+        result = InstanceofMethod(argumentList[0], targetApply);
 
-        return result;
+        // After
+        result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
+
+        break;
+      case CaseToolEnum.BeforeAndAfterWrapperAndMethod:
+        // Before
+        result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(targetApply, argumentList, previousValue);
+        }, result);
+
+        // After
+        result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
+
+        break;
+      case CaseToolEnum.BeforeAndAfterWrapperAndModel:
+        // Before
+        result = beforeWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
+        }, result);
+
+        // After
+        result = afterWrapperList.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
+
+        break;
+
+      // TODO default is error
     }
+
+    return result;
+  };
+}
+
+function checkFlags(flags: FlagsToolInterface, name: string): void {
+  const notFoundAnyMethods: boolean[] = Object.values(flags).map((property) => property);
+
+  if (notFoundAnyMethods.every((item: boolean) => !item)) {
+    throw new Error(`Not found propery with name: ${name}`);
+  }
 }
 
 /**
@@ -174,14 +171,14 @@ function proxyRecursiveApply(
  * Examples: Is.All.Not.Boolean([true, false, [0]])
  * Explain: AfterWrappers[BeforeWrappers[[true, false, [0]]]]
  *
- * If need check array of some class, just register the class in typeWrappers, examples:
+ * If need check array of some class, just register the class in modelWrappers, examples:
  *
  * Example #1
  * class Person {
  *     public fullName: string = 'Ivan Karbashevskyi';
  * }
  *
- * Object.assign(typeWrappers, {Person});
+ * Object.assign(modelWrappers, {Person});
  *
  * // Later
  * Is.Person.Array([new Person(), true, 0]) // Returns false
@@ -207,36 +204,43 @@ function proxyRecursiveApply(
  *
  * @param target must by an object
  * @param name must be a string
- * @param methodList must be array of methods
- * @param flags
+ * @param flags TODO text
  * @param beforeWrapperList must be array of before wrappers
- * @param typeWrapperList must be array of type wrappers
  * @param afterWrapperList must be array of after wrappers
  */
 export function proxyRecursive(
-    target: object,
-    name: string,
-    methodList: object,
-    flags: FlagsToolInterface,
-    beforeWrapperList: beforeWrapperType[],
-    typeWrapperList: typeWrapperType[],
-    afterWrapperList: afterWrapperType[],
+  target: object,
+  name: string,
+  flags: FlagsToolInterface,
+  beforeWrapperList: beforeWrapperType[],
+  afterWrapperList: afterWrapperType[],
 ): object {
+  let newTarget: object = Methods;
 
-    // TODO serve case of Is.PersonModel(new Address());
+  if (Methods.hasOwnProperty(name)) {
+    flags.Method = true;
+    newTarget = Methods[name as keyof typeof Methods] ?? target;
+  }
 
-    let newTarget: object = methodList;
+  if (modelWrappers.hasOwnProperty(name)) {
+    flags.ModelWrapper = true;
+    newTarget = modelWrappers[name as keyof typeof modelWrappers];
+  }
 
-    flags.Method = methodList.hasOwnProperty(name);
+  if (beforeWrappers.hasOwnProperty(name)) {
+    flags.BeforeWrapper = true;
+    beforeWrapperList.push(beforeWrappers[name as keyof typeof beforeWrappers]);
+  }
 
-    if (flags.Method) {
-        newTarget = methodList[(name as keyof (typeof methodList))] ?? target;
-    } else {
-        initWrappers(name, flags, typeWrapperList, beforeWrapperList, afterWrapperList);
-    }
+  if (afterWrappers.hasOwnProperty(name)) {
+    flags.AfterWrapper = true;
+    afterWrapperList.push(afterWrappers[name as keyof typeof afterWrappers]);
+  }
 
-    return new Proxy(newTarget, {
-        get: proxyRecursiveGet(flags, typeWrapperList, beforeWrapperList, afterWrapperList),
-        apply: proxyRecursiveApply(flags, typeWrapperList, beforeWrapperList, afterWrapperList),
-    });
+  checkFlags(flags, name);
+
+  return new Proxy(newTarget, {
+    get: proxyRecursiveGet(flags, beforeWrapperList, afterWrapperList),
+    apply: proxyRecursiveApply(flags, beforeWrapperList, afterWrapperList),
+  });
 }

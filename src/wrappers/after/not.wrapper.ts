@@ -1,4 +1,4 @@
-import {afterWrapperType} from '../../types/wrapper.type';
+import { afterWrapperType } from '../../types/wrapper.type';
 
 /**
  *

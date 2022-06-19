@@ -1,4 +1,4 @@
-import {FunctionMethod} from './function.method';
+import { FunctionMethod } from './function.method';
 
 /**
  *

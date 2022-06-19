@@ -1,11 +1,11 @@
-import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
-import {afterWrappers, beforeWrappers, modelWrappers} from '../wrappers';
-import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
-import {CaseToolConst} from '../consts/tools/case.tool.const';
-import {CaseToolEnum} from '../enums/tools/case.tool.enum';
-import {CompareMethod} from '../methods/compare.method';
-import {InstanceofMethod} from '../methods/instanceof.method';
-import {Methods} from '../methods';
+import { afterWrapperType, beforeWrapperType } from '../types/wrapper.type';
+import { afterWrappers, beforeWrappers, modelWrappers } from '../wrappers';
+import { FlagsToolInterface } from '../interfaces/tools/flags.tool.interface';
+import { CaseToolConst } from '../consts/tools/case.tool.const';
+import { CaseToolEnum } from '../enums/tools/case.tool.enum';
+import { CompareMethod } from '../methods/compare.method';
+import { InstanceofMethod } from '../methods/instanceof.method';
+import { Methods } from '../methods';
 
 // GET
 

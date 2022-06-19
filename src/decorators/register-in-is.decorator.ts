@@ -1,11 +1,11 @@
-import {modelWrappers} from '../wrappers';
+import { modelWrappers } from '../wrappers';
 import {
-    registerInIsArgumentDecoratorType,
-    registerInIsConstructorDecoratorType,
-    registerInIsDecoratorType,
+  registerInIsArgumentDecoratorType,
+  registerInIsConstructorDecoratorType,
+  registerInIsDecoratorType,
 } from '../types/decorators/register-in-is.decorator.type';
-import {RegisterInIsDecoratorInterface} from '../interfaces/decorators/register-in-is.decorator.interface';
-import {ObjectMethod} from '../methods/object.method';
+import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/register-in-is.decorator.interface';
+import { ObjectMethod } from '../methods/object.method';
 
 export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): registerInIsDecoratorType {
   return (constructor: registerInIsConstructorDecoratorType): void => {

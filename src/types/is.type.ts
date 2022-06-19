@@ -1,5 +1,5 @@
-import {MethodsInterface} from '../interfaces/methods.interface';
-import {AfterWrappersInterface, BeforeWrappersInterface} from '../interfaces/wrappers.interface';
+import { MethodsInterface } from '../interfaces/methods.interface';
+import { AfterWrappersInterface, BeforeWrappersInterface } from '../interfaces/wrappers.interface';
 
 export type IsType = (() => void) &
   MethodsInterface &

@@ -1,4 +1,4 @@
-import {UniversalEmptyCheckerMethod} from './universal-empty-checker.method';
+import { UniversalEmptyCheckerMethod } from './universal-empty-checker.method';
 
 /**
  *

@@ -1,6 +1,6 @@
-import {beforeWrapperType} from '../../types/wrapper.type';
-import {executeType} from '../../types/execute.type';
-import {ArrayMethod} from '../../methods/array.method';
+import { beforeWrapperType } from '../../types/wrapper.type';
+import { executeType } from '../../types/execute.type';
+import { ArrayMethod } from '../../methods/array.method';
 
 /**
  *

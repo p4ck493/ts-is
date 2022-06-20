@@ -2,8 +2,8 @@
 1108 Tests
 
 ![NPM Latest Version](https://img.shields.io/npm/v/p4ck493/ts-is)
-![Downloads Count](https://img.shields.io/npm/dm/p4ck493/ts-is.svg)
-![Bundle Size](https://packagephobia.now.sh/badge?p=p4ck493/ts-is)
+![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
+![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
 ![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
@@ -75,7 +75,7 @@ import {Is} from "@p4ck493/ts-is";
     
     }
     
-    Is.Person(new PersonModel()) // Returns true
+    Is.PersonModel(new PersonModel()) // Returns true
     Is.PersonModel(new Address()) // Returns false
     
     Is.Not.PersonModel(new PersonModel()) // Returns false

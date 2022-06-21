@@ -7,7 +7,6 @@ import {InstanceofMethod} from '../methods/instanceof.method';
 import {Methods} from '../methods';
 import {findKey} from '../tools/find-key.tool';
 
-
 // GET
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
@@ -128,7 +127,6 @@ function proxyRecursiveApply(
 
       default:
         throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
-
     }
 
     return result;

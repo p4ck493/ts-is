@@ -1,5 +1,5 @@
 # @p4ck493/ts-is
-1108 Tests
+1188 Tests
 
 ![NPM Latest Version](https://img.shields.io/npm/v/p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
@@ -108,94 +108,94 @@ import {Is} from "@p4ck493/ts-is";
 
 
 ## API
-
-| #        | Name of method                    | Argument        | Return type | Old name              |
-|----------|-----------------------------------|-----------------|-------------|-----------------------|
-|          | **Is**                            |                 |             |                       |
-| 1        | Is.Array                          | argument: any   | Boolean     |                       |
-| 2        | Is.BigInt                         | argument: any   | Boolean     |                       |
-| 3        | Is.Boolean                        | argument: any   | Boolean     |                       |
-| 4        | Is.Compare                        | argument: any   | Boolean     |                       |
-| 5        | Is.EmptyObject                    | argument: any   | Boolean     |                       |
-| 6        | Is.EmptyString                    | argument: any   | Boolean     |                       |
-| 7        | Is.False                          | argument: any   | Boolean     |                       |
-| 8 (new)  | Is.Falsy                          | argument: any   | Boolean     |                       |
-| 9        | Is.Function                       | argument: any   | Boolean     |                       |
-| 10       | Is.Null                           | argument: any   | Boolean     |                       |
-| 11       | Is.NullOrUndefined                | argument: any   | Boolean     |                       |
-| 12       | Is.NullOrUndefinedOrEmpty         | argument: any   | Boolean     |                       |
-| 13       | Is.Number                         | argument: any   | Boolean     |                       |
-| 14       | Is.String                         | argument: any   | Boolean     |                       |
-| 15       | Is.Object                         | argument: any   | Boolean     |                       |
-| 16       | Is.True                           | argument: any   | Boolean     |                       |
-| 17 (new) | Is.Truth                          | argument: any   | Boolean     |                       |
-| 18       | Is.Symbol                         | argument: any   | Boolean     |                       |
-| 19       | Is.Undefined                      | argument: any   | Boolean     |                       |
-| 20 (upd) | Is.Empty                          | argument: any   | Boolean     | UniversalEmptyChecker |
-| 21 (new) | Is.[ModelName/ClassName]          | argument: any   | Boolean     |                       |
-|          | **Is.Not**                        |                 |             |                       |
-| 20       | Is.Not.Array                      | argument: any   | Boolean     |                       |
-| 21       | Is.Not.BigInt                     | argument: any   | Boolean     |                       |
-| 22       | Is.Not.Boolean                    | argument: any   | Boolean     |                       |
-| 23       | Is.Not.Compare                    | argument: any   | Boolean     |                       |
-| 24       | Is.Not.EmptyObject                | argument: any   | Boolean     |                       |
-| 25       | Is.Not.EmptyString                | argument: any   | Boolean     |                       |
-| 26       | Is.Not.False                      | argument: any   | Boolean     |                       |
-| 27 (new) | Is.Not.False                      | argument: any   | Boolean     |                       |
-| 28       | Is.Not.Function                   | argument: any   | Boolean     |                       |
-| 29       | Is.Not.Null                       | argument: any   | Boolean     |                       |
-| 30       | Is.Not.NullOrUndefined            | argument: any   | Boolean     |                       |
-| 31       | Is.Not.NullOrUndefinedOrEmpty     | argument: any   | Boolean     |                       |
-| 32       | Is.Not.Number                     | argument: any   | Boolean     |                       |
-| 33       | Is.Not.String                     | argument: any   | Boolean     |                       |
-| 34       | Is.Not.Object                     | argument: any   | Boolean     |                       |
-| 35       | Is.Not.True                       | argument: any   | Boolean     |                       |
-| 36 (new) | Is.Not.Truth                      | argument: any   | Boolean     |                       |
-| 37       | Is.Not.Symbol                     | argument: any   | Boolean     |                       |
-| 38       | Is.Not.Undefined                  | argument: any   | Boolean     |                       |
-| 39 (upd) | Is.Not.Empty                      | argument: any   | Boolean     | UniversalEmptyChecker |
-| 40 (new) | Is.Not.[ModelName/ClassName]      | argument: any   | Boolean     |                       |
-|          | **Is.All**                        |                 |             |                       |
-| 41       | Is.All.Array                      | argument: any[] | Boolean     |                       |
-| 42       | Is.All.BigInt                     | argument: any[] | Boolean     |                       |
-| 43       | Is.All.Boolean                    | argument: any[] | Boolean     |                       |
-| 44       | Is.All.Compare                    | argument: any[] | Boolean     |                       |
-| 45       | Is.All.EmptyObject                | argument: any[] | Boolean     |                       |
-| 46       | Is.All.EmptyString                | argument: any[] | Boolean     |                       |
-| 47       | Is.All.False                      | argument: any[] | Boolean     |                       |
-| 48 (new) | Is.All.Falsy                      | argument: any[] | Boolean     |                       |
-| 49       | Is.All.Function                   | argument: any[] | Boolean     |                       |
-| 50       | Is.All.Null                       | argument: any[] | Boolean     |                       |
-| 51       | Is.All.NullOrUndefined            | argument: any[] | Boolean     |                       |
-| 52       | Is.All.NullOrUndefinedOrEmpty     | argument: any[] | Boolean     |                       |
-| 53       | Is.All.Number                     | argument: any[] | Boolean     |                       |
-| 54       | Is.All.String                     | argument: any[] | Boolean     |                       |
-| 55       | Is.All.Object                     | argument: any[] | Boolean     |                       |
-| 56       | Is.All.True                       | argument: any[] | Boolean     |                       |
-| 57 (new) | Is.All.Truth                      | argument: any[] | Boolean     |                       |
-| 58       | Is.All.Symbol                     | argument: any[] | Boolean     |                       |
-| 59       | Is.All.Undefined                  | argument: any[] | Boolean     |                       |
-| 60 (upd) | Is.All.Empty                      | argument: any[] | Boolean     | UniversalEmptyChecker |
-| 61 (new) | Is.All.[ModelName/ClassName]      | argument: any[] | Boolean     |                       |
-|          | **Is.All.Not**                    |                 |             |                       |
-| 62       | Is.All.Not.Array                  | argument: any[] | Boolean     |                       |
-| 63       | Is.All.Not.BigInt                 | argument: any[] | Boolean     |                       |
-| 64       | Is.All.Not.Boolean                | argument: any[] | Boolean     |                       |
-| 65       | Is.All.Not.Compare                | argument: any[] | Boolean     |                       |
-| 66       | Is.All.Not.EmptyObject            | argument: any[] | Boolean     |                       |
-| 67       | Is.All.Not.EmptyString            | argument: any[] | Boolean     |                       |
-| 68       | Is.All.Not.False                  | argument: any[] | Boolean     |                       |
-| 69 (new) | Is.All.Not.Falsy                  | argument: any[] | Boolean     |                       |
-| 70       | Is.All.Not.Function               | argument: any[] | Boolean     |                       |
-| 71       | Is.All.Not.Null                   | argument: any[] | Boolean     |                       |
-| 72       | Is.All.Not.NullOrUndefined        | argument: any[] | Boolean     |                       |
-| 73       | Is.All.Not.NullOrUndefinedOrEmpty | argument: any[] | Boolean     |                       |
-| 74       | Is.All.Not.Number                 | argument: any[] | Boolean     |                       |
-| 75       | Is.All.Not.String                 | argument: any[] | Boolean     |                       |
-| 76       | Is.All.Not.Object                 | argument: any[] | Boolean     |                       |
-| 77       | Is.All.Not.True                   | argument: any[] | Boolean     |                       |
-| 78 (new) | Is.All.Not.Truth                  | argument: any[] | Boolean     |                       |
-| 79       | Is.All.Not.Symbol                 | argument: any[] | Boolean     |                       |
-| 80       | Is.All.Not.Undefined              | argument: any[] | Boolean     |                       |
-| 81 (upd) | Is.All.Not.Empty                  | argument: any[] | Boolean     | UniversalEmptyChecker |
-| 82 (new) | Is.All.Not.[ModelName/ClassName]  | argument: any[] | Boolean     |                       |
+### All methods return boolean
+| #        | Name of method                    | Argument        | Test | Old name              |
+|----------|-----------------------------------|-----------------|------|-----------------------|
+|          | **Is**                            |                 |      |                       |
+| 1        | Is.Array                          | argument: any   | ✔    |                       |
+| 2        | Is.BigInt                         | argument: any   | ✔    |                       |
+| 3        | Is.Boolean                        | argument: any   | ✔    |                       |
+| 4        | Is.Compare                        | argument: any   | ✔    |                       |
+| 5        | Is.EmptyObject                    | argument: any   | x    |                       |
+| 6        | Is.EmptyString                    | argument: any   | x    |                       |
+| 7        | Is.False                          | argument: any   | ✔    |                       |
+| 8 (new)  | Is.Falsy                          | argument: any   | ✔    |                       |
+| 9        | Is.Function                       | argument: any   | ✔    |                       |
+| 10       | Is.Null                           | argument: any   | ✔    |                       |
+| 11       | Is.NullOrUndefined                | argument: any   | ✔    |                       |
+| 12       | Is.NullOrUndefinedOrEmpty         | argument: any   | ✔    |                       |
+| 13       | Is.Number                         | argument: any   | ✔    |                       |
+| 14       | Is.String                         | argument: any   | ✔    |                       |
+| 15       | Is.Object                         | argument: any   | ✔    |                       |
+| 16       | Is.True                           | argument: any   | ✔    |                       |
+| 17 (new) | Is.Truth                          | argument: any   | ✔    |                       |
+| 18       | Is.Symbol                         | argument: any   | ✔    |                       |
+| 19       | Is.Undefined                      | argument: any   | ✔    |                       |
+| 20 (upd) | Is.Empty                          | argument: any   | x    | UniversalEmptyChecker |
+| 21 (new) | Is.[ModelName/ClassName]          | argument: any   | ✔    |                       |
+|          | **Is.Not**                        |                 |      |                       |
+| 20       | Is.Not.Array                      | argument: any   | ✔    |                       |
+| 21       | Is.Not.BigInt                     | argument: any   | ✔    |                       |
+| 22       | Is.Not.Boolean                    | argument: any   | ✔    |                       |
+| 23       | Is.Not.Compare                    | argument: any   | ✔    |                       |
+| 24       | Is.Not.EmptyObject                | argument: any   | x    |                       |
+| 25       | Is.Not.EmptyString                | argument: any   | x    |                       |
+| 26       | Is.Not.False                      | argument: any   | ✔    |                       |
+| 27 (new) | Is.Not.False                      | argument: any   | ✔    |                       |
+| 28       | Is.Not.Function                   | argument: any   | ✔    |                       |
+| 29       | Is.Not.Null                       | argument: any   | ✔    |                       |
+| 30       | Is.Not.NullOrUndefined            | argument: any   | ✔    |                       |
+| 31       | Is.Not.NullOrUndefinedOrEmpty     | argument: any   | ✔    |                       |
+| 32       | Is.Not.Number                     | argument: any   | ✔    |                       |
+| 33       | Is.Not.String                     | argument: any   | ✔    |                       |
+| 34       | Is.Not.Object                     | argument: any   | ✔    |                       |
+| 35       | Is.Not.True                       | argument: any   | ✔    |                       |
+| 36 (new) | Is.Not.Truth                      | argument: any   | ✔    |                       |
+| 37       | Is.Not.Symbol                     | argument: any   | ✔    |                       |
+| 38       | Is.Not.Undefined                  | argument: any   | ✔    |                       |
+| 39 (upd) | Is.Not.Empty                      | argument: any   | x    | UniversalEmptyChecker |
+| 40 (new) | Is.Not.[ModelName/ClassName]      | argument: any   | ✔    |                       |
+|          | **Is.All**                        |                 |      |                       |
+| 41       | Is.All.Array                      | argument: any[] | ✔    |                       |
+| 42       | Is.All.BigInt                     | argument: any[] | ✔    |                       |
+| 43       | Is.All.Boolean                    | argument: any[] | ✔    |                       |
+| 44       | Is.All.Compare                    | argument: any[] | x    |                       |
+| 45       | Is.All.EmptyObject                | argument: any[] | x    |                       |
+| 46       | Is.All.EmptyString                | argument: any[] | x    |                       |
+| 47       | Is.All.False                      | argument: any[] | ✔    |                       |
+| 48 (new) | Is.All.Falsy                      | argument: any[] | x    |                       |
+| 49       | Is.All.Function                   | argument: any[] | ✔    |                       |
+| 50       | Is.All.Null                       | argument: any[] | ✔    |                       |
+| 51       | Is.All.NullOrUndefined            | argument: any[] | x    |                       |
+| 52       | Is.All.NullOrUndefinedOrEmpty     | argument: any[] | x    |                       |
+| 53       | Is.All.Number                     | argument: any[] | ✔    |                       |
+| 54       | Is.All.String                     | argument: any[] | ✔    |                       |
+| 55       | Is.All.Object                     | argument: any[] | ✔    |                       |
+| 56       | Is.All.True                       | argument: any[] | ✔    |                       |
+| 57 (new) | Is.All.Truth                      | argument: any[] | x    |                       |
+| 58       | Is.All.Symbol                     | argument: any[] | ✔    |                       |
+| 59       | Is.All.Undefined                  | argument: any[] | ✔    |                       |
+| 60 (upd) | Is.All.Empty                      | argument: any[] | x    | UniversalEmptyChecker |
+| 61 (new) | Is.All.[ModelName/ClassName]      | argument: any[] | ✔    |                       |
+|          | **Is.All.Not**                    |                 |      |                       |
+| 62       | Is.All.Not.Array                  | argument: any[] | ✔    |                       |
+| 63       | Is.All.Not.BigInt                 | argument: any[] | ✔    |                       |
+| 64       | Is.All.Not.Boolean                | argument: any[] | ✔    |                       |
+| 65       | Is.All.Not.Compare                | argument: any[] | x    |                       |
+| 66       | Is.All.Not.EmptyObject            | argument: any[] | x    |                       |
+| 67       | Is.All.Not.EmptyString            | argument: any[] | x    |                       |
+| 68       | Is.All.Not.False                  | argument: any[] | ✔    |                       |
+| 69 (new) | Is.All.Not.Falsy                  | argument: any[] | x    |                       |
+| 70       | Is.All.Not.Function               | argument: any[] | ✔    |                       |
+| 71       | Is.All.Not.Null                   | argument: any[] | ✔    |                       |
+| 72       | Is.All.Not.NullOrUndefined        | argument: any[] | x    |                       |
+| 73       | Is.All.Not.NullOrUndefinedOrEmpty | argument: any[] | x    |                       |
+| 74       | Is.All.Not.Number                 | argument: any[] | ✔    |                       |
+| 75       | Is.All.Not.String                 | argument: any[] | ✔    |                       |
+| 76       | Is.All.Not.Object                 | argument: any[] | ✔    |                       |
+| 77       | Is.All.Not.True                   | argument: any[] | ✔    |                       |
+| 78 (new) | Is.All.Not.Truth                  | argument: any[] | x    |                       |
+| 79       | Is.All.Not.Symbol                 | argument: any[] | ✔    |                       |
+| 80       | Is.All.Not.Undefined              | argument: any[] | ✔    |                       |
+| 81 (upd) | Is.All.Not.Empty                  | argument: any[] | x    | UniversalEmptyChecker |
+| 82 (new) | Is.All.Not.[ModelName/ClassName]  | argument: any[] | ✔    |                       |

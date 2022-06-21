@@ -109,6 +109,7 @@ import {Is} from "@p4ck493/ts-is";
 
 ## API
 ### All methods return boolean
+
 | #        | Name of method                    | Argument        | Test | Old name              |
 |----------|-----------------------------------|-----------------|------|-----------------------|
 |          | **Is**                            |                 |      |                       |
@@ -116,8 +117,8 @@ import {Is} from "@p4ck493/ts-is";
 | 2        | Is.BigInt                         | argument: any   | ✔    |                       |
 | 3        | Is.Boolean                        | argument: any   | ✔    |                       |
 | 4        | Is.Compare                        | argument: any   | ✔    |                       |
-| 5        | Is.EmptyObject                    | argument: any   | x    |                       |
-| 6        | Is.EmptyString                    | argument: any   | x    |                       |
+| 5        | Is.EmptyObject                    | argument: any   | ✔    |                       |
+| 6        | Is.EmptyString                    | argument: any   | ✔    |                       |
 | 7        | Is.False                          | argument: any   | ✔    |                       |
 | 8 (new)  | Is.Falsy                          | argument: any   | ✔    |                       |
 | 9        | Is.Function                       | argument: any   | ✔    |                       |
@@ -138,8 +139,8 @@ import {Is} from "@p4ck493/ts-is";
 | 21       | Is.Not.BigInt                     | argument: any   | ✔    |                       |
 | 22       | Is.Not.Boolean                    | argument: any   | ✔    |                       |
 | 23       | Is.Not.Compare                    | argument: any   | ✔    |                       |
-| 24       | Is.Not.EmptyObject                | argument: any   | x    |                       |
-| 25       | Is.Not.EmptyString                | argument: any   | x    |                       |
+| 24       | Is.Not.EmptyObject                | argument: any   | ✔    |                       |
+| 25       | Is.Not.EmptyString                | argument: any   | ✔    |                       |
 | 26       | Is.Not.False                      | argument: any   | ✔    |                       |
 | 27 (new) | Is.Not.False                      | argument: any   | ✔    |                       |
 | 28       | Is.Not.Function                   | argument: any   | ✔    |                       |
@@ -160,8 +161,8 @@ import {Is} from "@p4ck493/ts-is";
 | 42       | Is.All.BigInt                     | argument: any[] | ✔    |                       |
 | 43       | Is.All.Boolean                    | argument: any[] | ✔    |                       |
 | 44       | Is.All.Compare                    | argument: any[] | x    |                       |
-| 45       | Is.All.EmptyObject                | argument: any[] | x    |                       |
-| 46       | Is.All.EmptyString                | argument: any[] | x    |                       |
+| 45       | Is.All.EmptyObject                | argument: any[] | ✔    |                       |
+| 46       | Is.All.EmptyString                | argument: any[] | ✔    |                       |
 | 47       | Is.All.False                      | argument: any[] | ✔    |                       |
 | 48 (new) | Is.All.Falsy                      | argument: any[] | x    |                       |
 | 49       | Is.All.Function                   | argument: any[] | ✔    |                       |
@@ -182,8 +183,8 @@ import {Is} from "@p4ck493/ts-is";
 | 63       | Is.All.Not.BigInt                 | argument: any[] | ✔    |                       |
 | 64       | Is.All.Not.Boolean                | argument: any[] | ✔    |                       |
 | 65       | Is.All.Not.Compare                | argument: any[] | x    |                       |
-| 66       | Is.All.Not.EmptyObject            | argument: any[] | x    |                       |
-| 67       | Is.All.Not.EmptyString            | argument: any[] | x    |                       |
+| 66       | Is.All.Not.EmptyObject            | argument: any[] | ✔    |                       |
+| 67       | Is.All.Not.EmptyString            | argument: any[] | ✔    |                       |
 | 68       | Is.All.Not.False                  | argument: any[] | ✔    |                       |
 | 69 (new) | Is.All.Not.Falsy                  | argument: any[] | x    |                       |
 | 70       | Is.All.Not.Function               | argument: any[] | ✔    |                       |
@@ -199,3 +200,10 @@ import {Is} from "@p4ck493/ts-is";
 | 80       | Is.All.Not.Undefined              | argument: any[] | ✔    |                       |
 | 81 (upd) | Is.All.Not.Empty                  | argument: any[] | x    | UniversalEmptyChecker |
 | 82 (new) | Is.All.Not.[ModelName/ClassName]  | argument: any[] | ✔    |                       |
+
+
+## API Tools
+
+| #   | Name of method | Argument                                 | Test | Return        |
+|-----|----------------|------------------------------------------|------|---------------|
+| 1   | findKey        | argument: {[key: string]: {}}, value: {} | ✔    | string / null |

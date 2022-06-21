@@ -16,6 +16,18 @@ describe('Object singel', () => {
             first: {},
             second: {}
         },
+        {
+            first: {
+                property: {
+                    string: 'string'
+                }
+            },
+            second: {
+                property: {
+                    string: 'string'
+                }
+            }
+        },
     ];
 
     const dataForBadTesting: {first: any, second: any}[] = [

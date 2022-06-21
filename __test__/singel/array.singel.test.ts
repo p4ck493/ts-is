@@ -1,10 +1,32 @@
 import {Is} from '../../lib';
 
+class Person {
+
+}
+
 describe('Array singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
-            value: []
+            value: [],
+        },
+        {
+            value: [0,1,3],
+        },
+        {
+            value: ['0','1','3'],
+        },
+        {
+            value: [true, false],
+        },
+        {
+            value: [NaN],
+        },
+        {
+            value: [{}],
+        },
+        {
+            value: [true, false, 0, 'string', {}, NaN],
         },
     ];
 
@@ -79,6 +101,21 @@ describe('Array singel', () => {
 
     it.each(dataForBadTesting)('Is.Not.Array: Should true for $value', ({value}) => {
         expect(Is.Not.Array(value)).toBe(true);
+    });
+
+    const dataForGoodAdvancedTesting: {value: any, classRef: new () => unknown}[] = [
+        {
+            value: [new Person()],
+            classRef: Person
+        },
+    ];
+
+    it.each(dataForGoodAdvancedTesting)('Is.Array: Should true for $value & $classRef', ({value, classRef}) => {
+        expect(Is.Array(value, classRef)).toBe(true);
+    });
+
+    it.each(dataForGoodAdvancedTesting)('Is.Not.Array: Should false for $value & $classRef', ({value, classRef}) => {
+        expect(Is.Not.Array(value, classRef)).toBe(false);
     });
 
 });

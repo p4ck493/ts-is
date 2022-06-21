@@ -3,9 +3,15 @@ import {RegisterInIs} from '../../../lib/decorators';
 @RegisterInIs()
 // @ts-ignore
 class Person {
-    public testMethod(argument: unknown): boolean {
-        return true;
-    }
+
+}
+
+@RegisterInIs({
+    className: 'Man'
+})
+// @ts-ignore
+class ManModel extends Person {
+
 }
 
 @RegisterInIs()
@@ -19,6 +25,9 @@ export const dataForGoodTesting: {value: any[]}[] = [
     },
     {
         value: [new Person(), [new Person()]]
+    },
+    {
+        value: [new Person(), [new Person()], new ManModel()]
     },
 ];
 

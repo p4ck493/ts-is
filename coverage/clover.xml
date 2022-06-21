@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1655843642699" clover="3.2.0">
+  <project timestamp="1655843642699" name="All files">
+    <metrics statements="366" coveredstatements="359" conditionals="94" coveredconditionals="83" methods="83" coveredmethods="68" elements="543" coveredelements="510" complexity="0" loc="366" ncloc="366" packages="25" files="48" classes="48"/>
+    <package name="__test__.all.array">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/array/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.bigint">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/bigint/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.boolean">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/boolean/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="34" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.empty-object">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/empty-object/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="76" count="42" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.empty-string">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/empty-string/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="36" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.false">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/false/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.function">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/function/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="34" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.model">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/model/state.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="100" count="2" type="stmt"/>
+        <line num="101" count="42" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.null">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/null/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.number">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/number/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.object">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/object/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.string">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/string/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="32" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.symbol">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/symbol/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.true">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/true/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="__test__.all.undefined">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="state.ts" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/__test__/all/undefined/state.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/index.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="14" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.consts.tools">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="case.tool.const.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/consts/tools/case.tool.const.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.decorators">
+      <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="index.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/decorators/index.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+      </file>
+      <file name="register-in-is.decorator.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/decorators/register-in-is.decorator.js">
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.engine">
+      <metrics statements="72" coveredstatements="70" conditionals="23" coveredconditionals="20" methods="21" coveredmethods="21"/>
+      <file name="proxy-generator.engine.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/engine/proxy-generator.engine.js">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="7" count="1369" type="stmt"/>
+        <line num="13" count="1369" type="stmt"/>
+        <line num="17" count="51" type="stmt"/>
+        <line num="18" count="19" type="stmt"/>
+        <line num="26" count="51" type="stmt"/>
+        <line num="31" count="51" type="stmt"/>
+      </file>
+      <file name="proxy-recursive.engine.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/engine/proxy-recursive.engine.js">
+        <metrics statements="62" coveredstatements="60" conditionals="23" coveredconditionals="20" methods="16" coveredmethods="16"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="7" count="51" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="9" count="51" type="stmt"/>
+        <line num="11" count="2938" type="stmt"/>
+        <line num="12" count="1569" type="stmt"/>
+        <line num="39" count="2938" type="stmt"/>
+        <line num="41" count="1369" type="stmt"/>
+        <line num="42" count="1369" type="cond" truecount="8" falsecount="1"/>
+        <line num="44" count="360" type="stmt"/>
+        <line num="45" count="360" type="stmt"/>
+        <line num="47" count="360" type="stmt"/>
+        <line num="48" count="360" type="stmt"/>
+        <line num="49" count="360" type="stmt"/>
+        <line num="51" count="360" type="stmt"/>
+        <line num="53" count="26" type="stmt"/>
+        <line num="54" count="26" type="stmt"/>
+        <line num="56" count="26" type="stmt"/>
+        <line num="58" count="20" type="stmt"/>
+        <line num="59" count="20" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="65" count="3" type="stmt"/>
+        <line num="67" count="20" type="stmt"/>
+        <line num="69" count="20" type="stmt"/>
+        <line num="70" count="20" type="stmt"/>
+        <line num="72" count="20" type="stmt"/>
+        <line num="75" count="538" type="stmt"/>
+        <line num="76" count="538" type="stmt"/>
+        <line num="79" count="538" type="stmt"/>
+        <line num="80" count="538" type="stmt"/>
+        <line num="82" count="538" type="stmt"/>
+        <line num="85" count="42" type="stmt"/>
+        <line num="86" count="42" type="stmt"/>
+        <line num="89" count="42" type="stmt"/>
+        <line num="90" count="42" type="stmt"/>
+        <line num="92" count="42" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="96" count="1369" type="stmt"/>
+        <line num="100" count="11752" type="stmt"/>
+        <line num="101" count="4356" type="cond" truecount="1" falsecount="1"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="121" count="2938" type="stmt"/>
+        <line num="122" count="2938" type="cond" truecount="2" falsecount="0"/>
+        <line num="123" count="1284" type="stmt"/>
+        <line num="124" count="1284" type="cond" truecount="3" falsecount="1"/>
+        <line num="126" count="2938" type="cond" truecount="2" falsecount="0"/>
+        <line num="127" count="85" type="stmt"/>
+        <line num="128" count="85" type="stmt"/>
+        <line num="130" count="2938" type="cond" truecount="2" falsecount="0"/>
+        <line num="131" count="609" type="stmt"/>
+        <line num="132" count="609" type="stmt"/>
+        <line num="134" count="2938" type="cond" truecount="2" falsecount="0"/>
+        <line num="135" count="960" type="stmt"/>
+        <line num="136" count="960" type="stmt"/>
+        <line num="138" count="2938" type="stmt"/>
+        <line num="139" count="2938" type="stmt"/>
+        <line num="144" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.enums.tools">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="case.tool.enum.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/enums/tools/case.tool.enum.js">
+        <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="7" count="51" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="9" count="51" type="stmt"/>
+        <line num="10" count="51" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+        <line num="13" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.methods">
+      <metrics statements="166" coveredstatements="161" conditionals="61" coveredconditionals="53" methods="23" coveredmethods="23"/>
+      <file name="array.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/array.method.js">
+        <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="4" count="52" type="stmt"/>
+        <line num="36" count="12031" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="10972" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="47" count="10970" type="stmt"/>
+        <line num="50" count="1059" type="stmt"/>
+        <line num="52" count="52" type="stmt"/>
+      </file>
+      <file name="bigint.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/bigint.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="194" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="boolean.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/boolean.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="213" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="compare.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/compare.method.js">
+        <metrics statements="26" coveredstatements="22" conditionals="30" coveredconditionals="24" methods="2" coveredmethods="2"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="4" count="52" type="stmt"/>
+        <line num="5" count="52" type="stmt"/>
+        <line num="7" count="52" type="stmt"/>
+        <line num="8" count="52" type="stmt"/>
+        <line num="17" count="5124" type="cond" truecount="3" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="5124" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="5124" type="cond" truecount="3" falsecount="1"/>
+        <line num="22" count="5124" type="cond" truecount="3" falsecount="1"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="5124" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="5124" type="cond" truecount="4" falsecount="0"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="5122" type="stmt"/>
+        <line num="32" count="10779" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="39" count="10777" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="3746" type="stmt"/>
+        <line num="42" count="7031" type="stmt"/>
+        <line num="45" count="1376" type="stmt"/>
+        <line num="47" count="52" type="stmt"/>
+      </file>
+      <file name="empty-object.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/empty-object.method.js">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="11" count="106" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="28" type="stmt"/>
+        <line num="14" count="78" type="stmt"/>
+        <line num="16" count="51" type="stmt"/>
+      </file>
+      <file name="empty-string.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/empty-string.method.js">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="11" count="97" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="35" type="stmt"/>
+        <line num="14" count="62" type="stmt"/>
+        <line num="16" count="51" type="stmt"/>
+      </file>
+      <file name="empty.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/empty.method.js">
+        <metrics statements="19" coveredstatements="19" conditionals="14" coveredconditionals="13" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="7" count="51" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="16" count="105" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="101" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="24" count="97" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="28" count="95" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="32" count="93" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="8" type="stmt"/>
+        <line num="35" count="85" type="cond" truecount="3" falsecount="1"/>
+        <line num="37" count="51" type="stmt"/>
+      </file>
+      <file name="false.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/false.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="101" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="falsy.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/falsy.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="80" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="function.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/function.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="8" count="11160" type="stmt"/>
+        <line num="10" count="52" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/index.js">
+        <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="7" count="51" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="9" count="51" type="stmt"/>
+        <line num="10" count="51" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+        <line num="13" count="51" type="stmt"/>
+        <line num="14" count="51" type="stmt"/>
+        <line num="15" count="51" type="stmt"/>
+        <line num="16" count="51" type="stmt"/>
+        <line num="17" count="51" type="stmt"/>
+        <line num="18" count="51" type="stmt"/>
+        <line num="19" count="51" type="stmt"/>
+        <line num="20" count="51" type="stmt"/>
+        <line num="21" count="51" type="stmt"/>
+        <line num="22" count="51" type="stmt"/>
+        <line num="23" count="51" type="stmt"/>
+        <line num="24" count="51" type="stmt"/>
+        <line num="28" count="51" type="stmt"/>
+      </file>
+      <file name="instanceof.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/instanceof.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="10" count="151" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+      </file>
+      <file name="null-or-undefined-or-empty.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/null-or-undefined-or-empty.method.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="10" count="42" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+      </file>
+      <file name="null-or-undefined.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/null-or-undefined.method.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="8" count="52" type="stmt"/>
+        <line num="9" count="52" type="stmt"/>
+        <line num="11" count="10391" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="52" type="stmt"/>
+      </file>
+      <file name="null.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/null.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="9" count="10553" type="stmt"/>
+        <line num="11" count="52" type="stmt"/>
+      </file>
+      <file name="number.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/number.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="196" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="object.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/object.method.js">
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="11" count="213" type="cond" truecount="3" falsecount="0"/>
+        <line num="13" count="51" type="stmt"/>
+      </file>
+      <file name="string.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/string.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="188" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="symbol.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/symbol.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="99" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="true.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/true.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="9" count="101" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+      <file name="truth.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/truth.method.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="10" count="40" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+      </file>
+      <file name="undefined.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/undefined.method.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="9" count="10484" type="stmt"/>
+        <line num="11" count="52" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.tools">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="find-key.tool.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/tools/find-key.tool.js">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="52" type="stmt"/>
+        <line num="3" count="52" type="stmt"/>
+        <line num="4" count="52" type="stmt"/>
+        <line num="7" count="1371" type="stmt"/>
+        <line num="8" count="5114" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="1370" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="52" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.wrappers">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/wrappers/index.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="5" count="51" type="stmt"/>
+        <line num="6" count="51" type="stmt"/>
+        <line num="9" count="51" type="stmt"/>
+        <line num="29" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.wrappers.after">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="not.wrapper.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/wrappers/after/not.wrapper.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="8" count="51" type="stmt"/>
+        <line num="9" count="960" type="stmt"/>
+        <line num="11" count="51" type="stmt"/>
+      </file>
+    </package>
+    <package name="lib.wrappers.before">
+      <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="all.wrapper.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/wrappers/before/all.wrapper.js">
+        <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="2" count="51" type="stmt"/>
+        <line num="3" count="51" type="stmt"/>
+        <line num="4" count="51" type="stmt"/>
+        <line num="12" count="51" type="stmt"/>
+        <line num="13" count="609" type="stmt"/>
+        <line num="14" count="1241" type="stmt"/>
+        <line num="15" count="1599" type="cond" truecount="4" falsecount="0"/>
+        <line num="16" count="632" type="stmt"/>
+        <line num="18" count="967" type="stmt"/>
+        <line num="21" count="609" type="stmt"/>
+        <line num="23" count="51" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

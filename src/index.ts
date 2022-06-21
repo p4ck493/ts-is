@@ -2,7 +2,7 @@ import {proxyGenerator} from './engine/proxy-generator.engine';
 import {IsType} from './types/is.type';
 
 function IsFunction(argument: any) {
-  console.error('Dont use the function, is declare for future!');
+  // console.error('Dont use the function, is declare for future!');
   return argument;
 }
 

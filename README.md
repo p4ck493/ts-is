@@ -1,5 +1,5 @@
 # @p4ck493/ts-is
-1188 Tests
+1390 Tests
 
 ![NPM Latest Version](https://img.shields.io/npm/v/p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
@@ -66,7 +66,7 @@ import {Is} from "@p4ck493/ts-is";
     // What's new?
     
     // Is.Falsy will return true in these cases: false, null, undefined, 0, -0, NaN, "", '', ``; 
-    // Is.Truth will return true in these cases: [], 'undefined', 'null', Symbol(), true, BigInt(1), {}, Function, () => {}, BigInt, Symbol; 
+    // Is.Truthy will return true in these cases: [], 'undefined', 'null', Symbol(), true, BigInt(1), {}, Function, () => {}, BigInt, Symbol; 
     
     // Now you can write like this:
     
@@ -129,7 +129,7 @@ import {Is} from "@p4ck493/ts-is";
 | 14       | Is.String                         | argument: any   | ✔    |                       |
 | 15       | Is.Object                         | argument: any   | ✔    |                       |
 | 16       | Is.True                           | argument: any   | ✔    |                       |
-| 17 (new) | Is.Truth                          | argument: any   | ✔    |                       |
+| 17 (new) | Is.Truthy                         | argument: any   | ✔    |                       |
 | 18       | Is.Symbol                         | argument: any   | ✔    |                       |
 | 19       | Is.Undefined                      | argument: any   | ✔    |                       |
 | 20 (upd) | Is.Empty                          | argument: any   | x    | UniversalEmptyChecker |
@@ -151,7 +151,7 @@ import {Is} from "@p4ck493/ts-is";
 | 33       | Is.Not.String                     | argument: any   | ✔    |                       |
 | 34       | Is.Not.Object                     | argument: any   | ✔    |                       |
 | 35       | Is.Not.True                       | argument: any   | ✔    |                       |
-| 36 (new) | Is.Not.Truth                      | argument: any   | ✔    |                       |
+| 36 (new) | Is.Not.Truthy                     | argument: any   | ✔    |                       |
 | 37       | Is.Not.Symbol                     | argument: any   | ✔    |                       |
 | 38       | Is.Not.Undefined                  | argument: any   | ✔    |                       |
 | 39 (upd) | Is.Not.Empty                      | argument: any   | x    | UniversalEmptyChecker |
@@ -173,7 +173,7 @@ import {Is} from "@p4ck493/ts-is";
 | 54       | Is.All.String                     | argument: any[] | ✔    |                       |
 | 55       | Is.All.Object                     | argument: any[] | ✔    |                       |
 | 56       | Is.All.True                       | argument: any[] | ✔    |                       |
-| 57 (new) | Is.All.Truth                      | argument: any[] | x    |                       |
+| 57 (new) | Is.All.Truthy                     | argument: any[] | x    |                       |
 | 58       | Is.All.Symbol                     | argument: any[] | ✔    |                       |
 | 59       | Is.All.Undefined                  | argument: any[] | ✔    |                       |
 | 60 (upd) | Is.All.Empty                      | argument: any[] | x    | UniversalEmptyChecker |
@@ -195,7 +195,7 @@ import {Is} from "@p4ck493/ts-is";
 | 75       | Is.All.Not.String                 | argument: any[] | ✔    |                       |
 | 76       | Is.All.Not.Object                 | argument: any[] | ✔    |                       |
 | 77       | Is.All.Not.True                   | argument: any[] | ✔    |                       |
-| 78 (new) | Is.All.Not.Truth                  | argument: any[] | x    |                       |
+| 78 (new) | Is.All.Not.Truthy                 | argument: any[] | x    |                       |
 | 79       | Is.All.Not.Symbol                 | argument: any[] | ✔    |                       |
 | 80       | Is.All.Not.Undefined              | argument: any[] | ✔    |                       |
 | 81 (upd) | Is.All.Not.Empty                  | argument: any[] | x    | UniversalEmptyChecker |

@@ -19,7 +19,7 @@ import {FunctionMethod} from './function.method';
 import {MethodsInterface} from '../interfaces/methods.interface';
 import {InstanceofMethod} from './instanceof.method';
 import {FalsyMethod} from './falsy.method';
-import {TruthMethod} from './truth.method';
+import {TruthyMethod} from './truthy.method';
 
 /**
  * Export all accesses methods in library
@@ -42,7 +42,7 @@ export const Methods: MethodsInterface = {
   String: StringMethod,
   Object: ObjectMethod,
   True: TrueMethod,
-  Truth: TruthMethod,
+  Truthy: TruthyMethod,
   Symbol: SymbolMethod,
   Undefined: UndefinedMethod,
   Empty: EmptyMethod,

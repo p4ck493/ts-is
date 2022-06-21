@@ -17,7 +17,7 @@ import {TrueMethod} from '../methods/true.method';
 import {UndefinedMethod} from '../methods/undefined.method';
 import {EmptyMethod} from '../methods/empty.method';
 import {InstanceofMethod} from '../methods/instanceof.method';
-import {TruthMethod} from '../methods/truth.method';
+import {TruthyMethod} from '../methods/truthy.method';
 import {FalsyMethod} from '../methods/falsy.method';
 
 /**
@@ -42,7 +42,7 @@ export interface MethodsInterface {
     String: typeof StringMethod;
     Symbol: typeof SymbolMethod;
     True: typeof TrueMethod;
-    Truth: typeof TruthMethod;
+    Truthy: typeof TruthyMethod;
     Undefined: typeof UndefinedMethod;
     Empty: typeof EmptyMethod;
 }

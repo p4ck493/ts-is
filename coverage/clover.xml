@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1655843642699" clover="3.2.0">
-  <project timestamp="1655843642699" name="All files">
+<coverage generated="1655844770660" clover="3.2.0">
+  <project timestamp="1655844770660" name="All files">
     <metrics statements="366" coveredstatements="359" conditionals="94" coveredconditionals="83" methods="83" coveredmethods="68" elements="543" coveredelements="510" complexity="0" loc="366" ncloc="366" packages="25" files="48" classes="48"/>
     <package name="__test__.all.array">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -516,7 +516,7 @@
         <line num="9" count="101" type="stmt"/>
         <line num="11" count="51" type="stmt"/>
       </file>
-      <file name="truth.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/truth.method.js">
+      <file name="truthy.method.js" path="/Users/ivankarbashevskyi/Projects/Organizations/p4ck439/ts-is/lib/methods/truthy.method.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="51" type="stmt"/>
         <line num="3" count="51" type="stmt"/>

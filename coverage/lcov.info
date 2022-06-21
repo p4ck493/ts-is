@@ -943,11 +943,11 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:lib/methods/truth.method.js
-FN:9,TruthMethod
+SF:lib/methods/truthy.method.js
+FN:9,TruthyMethod
 FNF:1
 FNH:1
-FNDA:40,TruthMethod
+FNDA:40,TruthyMethod
 DA:2,51
 DA:3,51
 DA:4,51

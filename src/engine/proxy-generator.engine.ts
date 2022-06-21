@@ -1,5 +1,5 @@
-import { proxyRecursive } from './proxy-recursive.tool';
-import { FlagsToolInterface } from '../interfaces/tools/flags.tool.interface';
+import {proxyRecursive} from './proxy-recursive.engine';
+import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
 
 // GET
 type proxyGeneratorGetType = (target: object, name: string) => ReturnType<typeof proxyRecursive>;

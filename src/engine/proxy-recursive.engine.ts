@@ -3,20 +3,10 @@ import {afterWrappers, beforeWrappers, modelWrappers} from '../wrappers';
 import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
 import {CaseToolConst} from '../consts/tools/case.tool.const';
 import {CaseToolEnum} from '../enums/tools/case.tool.enum';
-import {CompareMethod} from '../methods/compare.method';
 import {InstanceofMethod} from '../methods/instanceof.method';
 import {Methods} from '../methods';
+import {findKey} from '../tools/find-key.tool';
 
-
-// TODO guard on arguments
-function findKey<T>(object: { [key: string]: T }, value: T): string | null {
-  for (const key of Object.keys(object)) {
-    if (CompareMethod<T>(object[key], value)) {
-      return key;
-    }
-  }
-  return null;
-}
 
 // GET
 
@@ -70,8 +60,6 @@ function proxyRecursiveApply(
 ): proxyRecursiveApplyType {
   return (targetApply, thisArg, argumentList) => {
     let result;
-
-    // TODO build switch for cases
 
     const key: CaseToolEnum = CaseToolEnum[findKey(CaseToolConst, flags) as keyof typeof CaseToolEnum];
 

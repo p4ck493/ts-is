@@ -15,8 +15,10 @@ import {StringMethod} from '../methods/string.method';
 import {SymbolMethod} from '../methods/symbol.method';
 import {TrueMethod} from '../methods/true.method';
 import {UndefinedMethod} from '../methods/undefined.method';
-import {UniversalEmptyCheckerMethod} from '../methods/universal-empty-checker.method';
+import {EmptyMethod} from '../methods/empty.method';
 import {InstanceofMethod} from '../methods/instanceof.method';
+import {TruthMethod} from '../methods/truth.method';
+import {FalsyMethod} from '../methods/falsy.method';
 
 /**
  * Declare names and types of methods
@@ -29,6 +31,7 @@ export interface MethodsInterface {
     EmptyObject: typeof EmptyObjectMethod;
     EmptyString: typeof EmptyStringMethod;
     False: typeof FalseMethod;
+    Falsy: typeof FalsyMethod;
     Function: typeof FunctionMethod;
     Instanceof: typeof InstanceofMethod;
     Null: typeof NullMethod;
@@ -39,6 +42,7 @@ export interface MethodsInterface {
     String: typeof StringMethod;
     Symbol: typeof SymbolMethod;
     True: typeof TrueMethod;
+    Truth: typeof TruthMethod;
     Undefined: typeof UndefinedMethod;
-    UniversalEmptyChecker: typeof UniversalEmptyCheckerMethod;
+    Empty: typeof EmptyMethod;
 }

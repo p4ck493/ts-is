@@ -1,4 +1,4 @@
-import {CompareMethod} from '../methods/compare.method';
+import { CompareMethod } from '../methods/compare.method';
 
 // TODO guard on arguments
 export function findKey<T>(object: { [key: string]: T }, value: T): string | null {

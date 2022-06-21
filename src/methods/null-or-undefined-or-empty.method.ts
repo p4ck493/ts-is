@@ -1,4 +1,4 @@
-import {EmptyMethod} from './empty.method';
+import { EmptyMethod } from './empty.method';
 
 /**
  *

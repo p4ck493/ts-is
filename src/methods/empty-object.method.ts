@@ -1,5 +1,5 @@
-import {EmptyMethod} from './empty.method';
-import {ObjectMethod} from './object.method';
+import { EmptyMethod } from './empty.method';
+import { ObjectMethod } from './object.method';
 
 /**
  *

@@ -1,8 +1,8 @@
-import {NullOrUndefinedMethod} from './null-or-undefined.method';
-import {BooleanMethod} from './boolean.method';
-import {NumberMethod} from './number.method';
-import {BigintMethod} from './bigint.method';
-import {FunctionMethod} from './function.method';
+import { NullOrUndefinedMethod } from './null-or-undefined.method';
+import { BooleanMethod } from './boolean.method';
+import { NumberMethod } from './number.method';
+import { BigintMethod } from './bigint.method';
+import { FunctionMethod } from './function.method';
 
 /**
  * Empty is: '', null, undefined, {}, NaN, Symbol(), [].

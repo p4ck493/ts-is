@@ -1,4 +1,4 @@
-import {FalsyMethod} from './falsy.method';
+import { FalsyMethod } from './falsy.method';
 
 /**
  *

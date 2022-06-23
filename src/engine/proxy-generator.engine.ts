@@ -1,11 +1,12 @@
-import { proxyRecursive } from './proxy-recursive.engine';
-import { FlagsToolInterface } from '../interfaces/tools/flags.tool.interface';
+import {proxyRecursive} from './proxy-recursive.engine';
+import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
 
 // GET
 type proxyGeneratorGetType = (target: object, name: string) => ReturnType<typeof proxyRecursive>;
 
 function proxyGeneratorGet(): proxyGeneratorGetType {
   return (target, name) => {
+    // TODO add proxy on flags and handle on set, change status of action when changed the value
     const flags: FlagsToolInterface = {
       AfterWrapper: false,
       BeforeWrapper: false,

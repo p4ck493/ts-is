@@ -1,11 +1,10 @@
-import { afterWrapperType, beforeWrapperType } from '../types/wrapper.type';
-import { afterWrappers, beforeWrappers, modelWrappers } from '../wrappers';
-import { FlagsToolInterface } from '../interfaces/tools/flags.tool.interface';
-import { CaseToolConst } from '../consts/tools/case.tool.const';
-import { CaseToolEnum } from '../enums/tools/case.tool.enum';
-import { InstanceofMethod } from '../methods/instanceof.method';
-import { Methods } from '../methods';
-import { findKey } from '../tools/find-key.tool';
+import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
+import {afterWrappers, beforeWrappers, modelWrappers} from '../wrappers';
+import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
+import {CaseToolConst} from '../consts/tools/case.tool.const';
+import {CaseToolEnum} from '../enums/tools/case.tool.enum';
+import {InstanceofMethod} from '../methods/instanceof.method';
+import {Methods} from '../methods';
 
 // GET
 
@@ -60,7 +59,7 @@ function proxyRecursiveApply(
   return (targetApply, thisArg, argumentList) => {
     let result;
 
-    const key: CaseToolEnum = CaseToolEnum[findKey(CaseToolConst, flags) as keyof typeof CaseToolEnum];
+    const key: CaseToolEnum = CaseToolConst[JSON.stringify(flags)];
 
     switch (key) {
       case CaseToolEnum.Method:

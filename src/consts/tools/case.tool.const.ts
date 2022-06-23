@@ -1,53 +1,52 @@
-import { CaseToolEnum } from '../../enums/tools/case.tool.enum';
-import { FlagsToolInterface } from '../../interfaces/tools/flags.tool.interface';
+import {CaseToolEnum} from '../../enums/tools/case.tool.enum';
 
-export const CaseToolConst: { [key in keyof typeof CaseToolEnum]: FlagsToolInterface } = {
-  Model: {
+export const CaseToolConst: {[key: string]: CaseToolEnum} = {
+  [JSON.stringify({
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: false,
-    AfterWrapper: false,
-  },
-  Method: {
+    AfterWrapper: false
+  })]: CaseToolEnum.Model,
+  [JSON.stringify({
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: false,
     AfterWrapper: false,
-  },
-  AfterWrapperAndMethod: {
+  })]: CaseToolEnum.Method,
+  [JSON.stringify({
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: false,
     AfterWrapper: true,
-  },
-  BeforeWrapperAndMethod: {
+  })]: CaseToolEnum.AfterWrapperAndMethod,
+  [JSON.stringify({
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: true,
     AfterWrapper: false,
-  },
-  BeforeAndAfterWrapperAndMethod: {
+  })]: CaseToolEnum.BeforeWrapperAndMethod,
+  [JSON.stringify({
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: true,
     AfterWrapper: true,
-  },
-  BeforeWrapperAndModel: {
+  })]: CaseToolEnum.BeforeAndAfterWrapperAndMethod,
+  [JSON.stringify({
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: true,
     AfterWrapper: false,
-  },
-  AfterWrapperAndModel: {
+  })]: CaseToolEnum.BeforeWrapperAndModel,
+  [JSON.stringify({
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: false,
     AfterWrapper: true,
-  },
-  BeforeAndAfterWrapperAndModel: {
+  })]: CaseToolEnum.AfterWrapperAndModel,
+  [JSON.stringify({
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: true,
     AfterWrapper: true,
-  },
-};
+  })]: CaseToolEnum.BeforeAndAfterWrapperAndModel,
+}

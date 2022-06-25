@@ -1,8 +1,13 @@
-import { EmptyMethod } from './empty.method';
+import {EmptyMethod} from './empty.method';
 
 /**
  *
- * @param argument is any type
+ * @param {unknown} argument
+ * @example
+ * Is.NullOrUndefinedOrEmpty()
+ * Is.Not.NullOrUndefinedOrEmpty()
+ * Is.All.NullOrUndefinedOrEmpty()
+ * Is.All.Not.NullOrUndefinedOrEmpty()
  */
 export function NullOrUndefinedOrEmptyMethod(argument: unknown): boolean {
   return EmptyMethod(argument);

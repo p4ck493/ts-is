@@ -6,12 +6,12 @@ import {ObjectMethod} from './object.method';
  * @param argument is object type
  * @returns {boolean}
  * @example
- * Is.EmptyObject()
- * Is.Not.EmptyObject()
- * Is.All.EmptyObject()
- * Is.All.Not.EmptyObject()
+ * Is.EmptyArray()
+ * Is.Not.EmptyArray()
+ * Is.All.EmptyArray()
+ * Is.All.Not.EmptyArray()
  */
-export function EmptyObjectMethod(argument: unknown): boolean {
+export function EmptyArrayMethod(argument: unknown): boolean {
   if (ObjectMethod(argument)) {
     return EmptyMethod(argument);
   }

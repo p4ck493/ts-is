@@ -1,10 +1,15 @@
+import {NullMethod} from './null.method';
+import {UndefinedMethod} from './undefined.method';
+
 /**
  *
- * @param argument is any type
+ * @param {unknown} argument
+ * @example
+ * Is.NullOrUndefined()
+ * Is.Not.NullOrUndefined()
+ * Is.All.NullOrUndefined()
+ * Is.All.Not.NullOrUndefined()
  */
-import { NullMethod } from './null.method';
-import { UndefinedMethod } from './undefined.method';
-
 export function NullOrUndefinedMethod(argument: unknown): boolean {
-  return NullMethod(argument) || UndefinedMethod(argument);
+    return NullMethod(argument) || UndefinedMethod(argument);
 }

@@ -1,9 +1,13 @@
-import { FunctionMethod } from './function.method';
+import {FunctionMethod} from './function.method';
 
 /**
  *
- * Example:
  *
+ * @param {unknown} argument - A unknown type
+ * @param {Function} [classRef] - Example: PersonModel
+ * @returns {boolean}
+ *
+ * @example
  * @RegisterInIs
  * class Person {
  *
@@ -26,15 +30,11 @@ import { FunctionMethod } from './function.method';
  *
  * // Case #2
  * Is.Not.Person.Array(arr) // Returns true
- *
- * @param argument is any type
- * @param classRef is a function (construction)
  */
 export function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
   if (argument instanceof Array) {
     if (FunctionMethod(classRef)) {
       if (argument.length) {
-        // TODO use sorting and just check first item
         return argument.every((item: T) => item instanceof classRef);
       } else {
         return false;

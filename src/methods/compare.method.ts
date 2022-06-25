@@ -1,5 +1,5 @@
-import { NullOrUndefinedMethod } from './null-or-undefined.method';
-import { ArrayMethod } from './array.method';
+import {NullOrUndefinedMethod} from './null-or-undefined.method';
+import {ArrayMethod} from './array.method';
 
 export enum TypeOfValueEnum {
   object = 'object',
@@ -9,6 +9,7 @@ export enum TypeOfValueEnum {
  *
  * @param objectOne is generic type
  * @param objectTwo is generic type
+ * @returns {boolean}
  */
 export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
   if (NullOrUndefinedMethod(objectOne) || NullOrUndefinedMethod(objectTwo)) {

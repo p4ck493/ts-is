@@ -1,6 +1,11 @@
 /**
  *
- * @param argument is any type
+ * @param {unknown} argument
+ * @example
+ * Is.Symbol()
+ * Is.Not.Symbol()
+ * Is.All.Symbol()
+ * Is.All.Not.Symbol()
  */
 export function SymbolMethod(argument: unknown): argument is symbol {
   return typeof argument === 'symbol';

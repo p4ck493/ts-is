@@ -3,6 +3,7 @@ import {FunctionMethod} from './function.method';
 /**
  *
  *
+ * @method Array
  * @param {unknown} argument - A unknown type
  * @param {Function} [classRef] - Example: PersonModel
  * @returns {boolean}

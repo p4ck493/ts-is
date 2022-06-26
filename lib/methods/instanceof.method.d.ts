@@ -1,5 +1,6 @@
 /**
  *
+ * @method Instanceof
  * @param argument object
  * @param classRef link to model
  */

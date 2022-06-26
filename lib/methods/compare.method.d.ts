@@ -3,7 +3,9 @@ export declare enum TypeOfValueEnum {
 }
 /**
  *
+ * @method Compare
  * @param objectOne is generic type
  * @param objectTwo is generic type
+ * @returns {boolean}
  */
 export declare function CompareMethod<T>(objectOne: T, objectTwo: T): boolean;

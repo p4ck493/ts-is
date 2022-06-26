@@ -1,5 +1,6 @@
 /**
  *
+ * @method Symbol
  * @param {unknown} argument
  * @example
  * Is.Symbol()

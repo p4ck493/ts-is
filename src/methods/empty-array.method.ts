@@ -3,6 +3,7 @@ import {ObjectMethod} from './object.method';
 
 /**
  *
+ * @method EmptyArray
  * @param argument is object type
  * @returns {boolean}
  * @example

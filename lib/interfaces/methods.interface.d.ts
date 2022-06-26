@@ -19,30 +19,31 @@ import {EmptyMethod} from '../methods/empty.method';
 import {InstanceofMethod} from '../methods/instanceof.method';
 import {TruthyMethod} from '../methods/truthy.method';
 import {FalsyMethod} from '../methods/falsy.method';
+import {AfterWrappersInterface, BeforeWrappersInterface} from './wrappers.interface';
 
 /**
  * Declare names and types of methods
  */
 export interface MethodsInterface {
-    Array: typeof ArrayMethod;
-    BigInt: typeof BigintMethod;
-    Boolean: typeof BooleanMethod;
-    Compare: typeof CompareMethod;
-    EmptyObject: typeof EmptyObjectMethod;
-    EmptyString: typeof EmptyStringMethod;
-    False: typeof FalseMethod;
-    Falsy: typeof FalsyMethod;
-    Function: typeof FunctionMethod;
-    Instanceof: typeof InstanceofMethod;
-    Null: typeof NullMethod;
-    NullOrUndefined: typeof NullOrUndefinedMethod;
-    NullOrUndefinedOrEmpty: typeof NullOrUndefinedOrEmptyMethod;
-    Number: typeof NumberMethod;
-    Object: typeof ObjectMethod;
-    String: typeof StringMethod;
-    Symbol: typeof SymbolMethod;
-    True: typeof TrueMethod;
-    Truthy: typeof TruthyMethod;
-    Undefined: typeof UndefinedMethod;
-    Empty: typeof EmptyMethod;
+    Array: (typeof ArrayMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    BigInt: (typeof BigintMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Boolean: (typeof BooleanMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Compare: (typeof CompareMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    EmptyObject: (typeof EmptyObjectMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    EmptyString: (typeof EmptyStringMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    False: (typeof FalseMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Falsy: (typeof FalsyMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Function: (typeof FunctionMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Instanceof: (typeof InstanceofMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Null: (typeof NullMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    NullOrUndefined: (typeof NullOrUndefinedMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    NullOrUndefinedOrEmpty: (typeof NullOrUndefinedOrEmptyMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Number: (typeof NumberMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Object: (typeof ObjectMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    String: (typeof StringMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Symbol: (typeof SymbolMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    True: (typeof TrueMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Truthy: (typeof TruthyMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Undefined: (typeof UndefinedMethod) & BeforeWrappersInterface & AfterWrappersInterface;
+    Empty: (typeof EmptyMethod) & BeforeWrappersInterface & AfterWrappersInterface;
 }

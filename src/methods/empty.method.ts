@@ -5,6 +5,8 @@ import {BigintMethod} from './bigint.method';
 import {FunctionMethod} from './function.method';
 
 /**
+ *
+ * @method empty
  * Empty is: '', null, undefined, {}, NaN, Symbol(), [].
  * @param argument is any type
  * @returns {boolean}

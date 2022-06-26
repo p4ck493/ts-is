@@ -1,8 +1,9 @@
-import { afterWrapperType } from '../../types/wrapper.type';
+import {afterWrapperType} from '../../types/wrapper.type';
 
 /**
  *
- * @param result must be boolean
+ * @method Not
+ * @param {boolean} result
  */
 export const NotWrapper: afterWrapperType = (result: boolean): result is false => {
   return !result;

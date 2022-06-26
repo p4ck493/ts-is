@@ -1,5 +1,6 @@
 /**
  *
+ * @method Null
  * @param {unknown} argument
  * @example
  * Is.Null()

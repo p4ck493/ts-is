@@ -1,52 +1,89 @@
 import {CaseToolEnum} from '../../enums/tools/case.tool.enum';
+import {FlagsToolInterface} from '../../interfaces/tools/flags.tool.interface';
 
-export const CaseToolConst: {[key: string]: CaseToolEnum} = {
-  [JSON.stringify({
+export const CaseToolConst: { [key in keyof typeof CaseToolEnum]: FlagsToolInterface } = {
+  Model: {
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: false,
-    AfterWrapper: false
-  })]: CaseToolEnum.Model,
-  [JSON.stringify({
+    AfterWrapper: false,
+    ConnectionWrapper: false,
+  },
+  Method: {
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: false,
     AfterWrapper: false,
-  })]: CaseToolEnum.Method,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  AfterWrapperAndMethod: {
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: false,
     AfterWrapper: true,
-  })]: CaseToolEnum.AfterWrapperAndMethod,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  BeforeWrapperAndMethod: {
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: true,
     AfterWrapper: false,
-  })]: CaseToolEnum.BeforeWrapperAndMethod,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  BeforeAndAfterWrapperAndMethod: {
     Method: true,
     ModelWrapper: false,
     BeforeWrapper: true,
     AfterWrapper: true,
-  })]: CaseToolEnum.BeforeAndAfterWrapperAndMethod,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  BeforeWrapperAndModel: {
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: true,
     AfterWrapper: false,
-  })]: CaseToolEnum.BeforeWrapperAndModel,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  AfterWrapperAndModel: {
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: false,
     AfterWrapper: true,
-  })]: CaseToolEnum.AfterWrapperAndModel,
-  [JSON.stringify({
+    ConnectionWrapper: false,
+  },
+  BeforeAndAfterWrapperAndModel: {
     Method: false,
     ModelWrapper: true,
     BeforeWrapper: true,
     AfterWrapper: true,
-  })]: CaseToolEnum.BeforeAndAfterWrapperAndModel,
-}
+    ConnectionWrapper: false,
+  },
+  BeforeAndConnectionAndAfterWrapperAndMethod: {
+    Method: true,
+    ModelWrapper: false,
+    BeforeWrapper: true,
+    AfterWrapper: true,
+    ConnectionWrapper: true,
+  },
+  BeforeAndConnectionWrapperAndMethod: {
+    Method: true,
+    ModelWrapper: false,
+    BeforeWrapper: true,
+    AfterWrapper: false,
+    ConnectionWrapper: true,
+  },
+  ConnectionAndAfterWrapperAndMethod: {
+    Method: true,
+    ModelWrapper: false,
+    BeforeWrapper: false,
+    AfterWrapper: true,
+    ConnectionWrapper: true,
+  },
+  ConnectionWrapperAndMethod: {
+    Method: true,
+    ModelWrapper: false,
+    BeforeWrapper: false,
+    AfterWrapper: false,
+    ConnectionWrapper: true,
+  },
+};

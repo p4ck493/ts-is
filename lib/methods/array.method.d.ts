@@ -1,7 +1,12 @@
 /**
  *
- * Example:
  *
+ * @method Array
+ * @param {unknown} argument - A unknown type
+ * @param {Function} [classRef] - Example: PersonModel
+ * @returns {boolean}
+ *
+ * @example
  * @RegisterInIs
  * class Person {
  *
@@ -24,8 +29,5 @@
  *
  * // Case #2
  * Is.Not.Person.Array(arr) // Returns true
- *
- * @param argument is any type
- * @param classRef is a function (construction)
  */
 export declare function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T>;

@@ -1,5 +1,6 @@
 /**
  *
+ * @method Bigint
  * @param {unknown} argument
  * @returns {boolean}
  * @example

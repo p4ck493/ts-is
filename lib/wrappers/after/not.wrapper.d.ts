@@ -2,6 +2,7 @@ import {afterWrapperType} from '../../types/wrapper.type';
 
 /**
  *
- * @param result must be boolean
+ * @method Not
+ * @param {boolean} result
  */
 export declare const NotWrapper: afterWrapperType;

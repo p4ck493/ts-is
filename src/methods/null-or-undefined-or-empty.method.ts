@@ -2,6 +2,7 @@ import {EmptyMethod} from './empty.method';
 
 /**
  *
+ * @method NullOrUndefinedOrEmpty
  * @param {unknown} argument
  * @example
  * Is.NullOrUndefinedOrEmpty()

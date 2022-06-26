@@ -3,6 +3,7 @@ import {UndefinedMethod} from './undefined.method';
 
 /**
  *
+ * @method NulOrUndefined
  * @param {unknown} argument
  * @example
  * Is.NullOrUndefined()

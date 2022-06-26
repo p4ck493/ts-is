@@ -5,6 +5,9 @@ export interface BeforeWrappersInterface {
     All: beforeWrapperType & MethodsInterface & AfterWrappersInterface & {
         [key: string]: (argument: unknown) => unknown;
     };
+    Or: beforeWrapperType & MethodsInterface & AfterWrappersInterface & {
+        [key: string]: (argument: unknown) => unknown;
+    };
 }
 export interface AfterWrappersInterface {
     Not: afterWrapperType & MethodsInterface & {

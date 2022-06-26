@@ -1,5 +1,5 @@
-import { proxyGenerator } from './engine/proxy-generator.engine';
-import { IsType } from './types/is.type';
+import {proxyGenerator} from './engine/proxy/generator';
+import {IsType} from './types/is.type';
 
 function IsFunction(argument: any) {
   // console.error('Dont use the function, is declare for future!');

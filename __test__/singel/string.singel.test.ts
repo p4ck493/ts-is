@@ -82,4 +82,9 @@ describe('String singel', () => {
         expect(Is.Not.String(value)).toBe(true);
     });
 
+    // TODO it isnt work :(
+    it.each([{value: ''}])('Is.String.Or.Number: Should true for $value', ({value}) => {
+        expect(Is.All.Not.Null.Or.Undefined.Or.String.Or.String(value)).toBe(true);
+    });
+
 });

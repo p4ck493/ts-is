@@ -1,5 +1,6 @@
 /**
  *
+ * @method False
  * @param {unknown} argument
  * @returns {boolean}
  * @example

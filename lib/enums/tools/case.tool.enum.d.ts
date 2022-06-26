@@ -6,5 +6,9 @@ export declare enum CaseToolEnum {
     BeforeAndAfterWrapperAndMethod = 4,
     BeforeWrapperAndModel = 5,
     AfterWrapperAndModel = 6,
-    BeforeAndAfterWrapperAndModel = 7
+    BeforeAndAfterWrapperAndModel = 7,
+    ConnectionWrapperAndMethod = 8,
+    BeforeAndConnectionWrapperAndMethod = 9,
+    ConnectionAndAfterWrapperAndMethod = 10,
+    BeforeAndConnectionAndAfterWrapperAndMethod = 11
 }

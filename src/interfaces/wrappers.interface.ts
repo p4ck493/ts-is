@@ -1,8 +1,11 @@
-import { afterWrapperType, beforeWrapperType } from '../types/wrapper.type';
-import { MethodsInterface } from './methods.interface';
+import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
+import {MethodsInterface} from './methods.interface';
 
 export interface BeforeWrappersInterface {
   All: beforeWrapperType &
+    MethodsInterface &
+    AfterWrappersInterface & { [key: string]: (argument: unknown) => unknown };
+  Or: beforeWrapperType &
     MethodsInterface &
     AfterWrappersInterface & { [key: string]: (argument: unknown) => unknown };
 }

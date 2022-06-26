@@ -3,4 +3,5 @@ export interface FlagsToolInterface {
     ModelWrapper: boolean;
     BeforeWrapper: boolean;
     AfterWrapper: boolean;
+    ConnectionWrapper: boolean;
 }

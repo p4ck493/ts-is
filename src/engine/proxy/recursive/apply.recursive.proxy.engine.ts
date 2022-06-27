@@ -159,8 +159,6 @@ export function proxyRecursiveApply(
                 break;
             case CaseToolEnum.BeforeAndConnectionWrapperAndMethod:
 
-                // TODO how to connect before and connection wrapper?
-
                 // Before
                 result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
                     // TODO lists.connectionWrapper make reduce
@@ -193,8 +191,28 @@ export function proxyRecursiveApply(
                 break;
 
             case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndModel:
-                //TODO
-                break
+
+                // Before
+                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+                    // TODO lists.connectionWrapper make reduce
+                    return currentValue(lists.connectionWrapper[0], argumentList, lists.models.map(method => InstanceofMethod), lists.models);
+                }, result);
+
+                // After
+                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+                    return currentValue(previousValue);
+                }, result);
+
+                break;
+
+            case CaseToolEnum.BeforeAndConnectionWrapperAndModel:
+                // Before
+                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+                    // TODO lists.connectionWrapper make reduce
+                    return currentValue(lists.connectionWrapper[0], argumentList, lists.models.map(method => InstanceofMethod), lists.models);
+                }, result);
+
+                break;
 
             default:
                 throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);

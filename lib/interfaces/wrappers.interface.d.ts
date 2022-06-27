@@ -3,12 +3,12 @@ import {MethodsInterface} from './methods.interface';
 
 export interface BeforeWrappersInterface {
     All: beforeWrapperType & MethodsInterface & AfterWrappersInterface & {
-        [key: string]: (argument: unknown) => unknown;
+        [key: string]: ((argument: unknown) => unknown) & ConnectionWrappersInterface & MethodsInterface;
     };
 }
 export interface ConnectionWrappersInterface {
     Or: MethodsInterface & {
-        [key: string]: (argument: unknown) => unknown;
+        [key: string]: ((argument: unknown) => unknown) & ConnectionWrappersInterface;
     };
 }
 export interface AfterWrappersInterface {

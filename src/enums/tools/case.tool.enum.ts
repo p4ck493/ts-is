@@ -14,4 +14,5 @@ export enum CaseToolEnum {
   ConnectionWrapperAndModel, // Is.PersonModel.Or.AddressModel
   ConnectionAndAfterWrapperAndModel, // Is.Not.Person.Or.Address
   BeforeAndConnectionAndAfterWrapperAndModel, // Is.All.Not.PersonModel.Or.AddressModel
+  BeforeAndConnectionWrapperAndModel, // Is.All.PersonModel.Or.AddressModel
 }

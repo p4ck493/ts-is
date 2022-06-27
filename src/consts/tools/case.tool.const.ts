@@ -107,4 +107,11 @@ export const CaseToolConst: { [key in keyof typeof CaseToolEnum]: FlagsToolInter
     AfterWrapper: true,
     ConnectionWrapper: true,
   },
+  BeforeAndConnectionWrapperAndModel: {
+    Method: false,
+    ModelWrapper: true,
+    BeforeWrapper: true,
+    AfterWrapper: false,
+    ConnectionWrapper: true,
+  },
 };

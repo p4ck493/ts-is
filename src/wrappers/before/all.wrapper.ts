@@ -28,7 +28,7 @@ export const AllWrapper: beforeWrapperType = (
           return execute(...argument);
         }
       }
-      return targetApply.call(this, argument, secondArgument);
+      return targetApply.call(this, argument, secondArgument, previousValue);
     });
   };
 

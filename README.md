@@ -231,9 +231,10 @@ import {Is} from "@p4ck493/ts-is";
 
 ## Tests
 ```
-Test Suites: 69 passed, 69 total
-Tests:       2655 passed, 2655 total
+Test Suites: 71 passed, 71 total
+Tests:       2745 passed, 2745 total
 Snapshots:   0 total
-Time:        7.095 s
+Time:        5.371 s
 Ran all test suites.
+
 ```

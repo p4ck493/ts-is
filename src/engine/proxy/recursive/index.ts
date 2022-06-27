@@ -2,7 +2,7 @@ import {
   afterWrapperType,
   beforeWrapperType,
   connectionWrapperType,
-  modelWrapperType
+  modelWrapperType,
 } from '../../../types/wrapper.type';
 import {afterWrappers, beforeWrappers, connectionWrappers, modelWrappers} from '../../../wrappers';
 import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
@@ -27,16 +27,12 @@ function checkFlags(flags: FlagsToolInterface, name: string): void {
  * Mixin: Is.All.Not.Boolean([true, false, [0]])
  *
  *
- * @param {object} target
- * @param {string} name
- * @param {FlagsToolInterface} flags
- * @param {ListsProxyEngineInterface} lists
  */
 export function proxyRecursive(
-    target: object,
-    name: string,
-    flags: FlagsToolInterface,
-    lists: ListsProxyEngineInterface
+  target: object,
+  name: string,
+  flags: FlagsToolInterface,
+  lists: ListsProxyEngineInterface,
 ): object {
   let newTarget: object = Methods;
 

@@ -1,7 +1,6 @@
 /**
  *
  * @method True
- * @param {unknown} argument
  * @example
  * Is.True()
  * Is.Not.True()

@@ -10,10 +10,14 @@ export enum TypeOfValueEnum {
  * @method Compare
  * @param objectOne is generic type
  * @param objectTwo is generic type
- * @returns {boolean}
  */
 export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
-  if (Methods.Null(objectOne) || Methods.Undefined(objectOne) || Methods.Null(objectTwo) || Methods.Undefined(objectTwo)) {
+  if (
+    Methods.Null(objectOne) ||
+    Methods.Undefined(objectOne) ||
+    Methods.Null(objectTwo) ||
+    Methods.Undefined(objectTwo)
+  ) {
     return false;
   }
 

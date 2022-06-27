@@ -1,8 +1,6 @@
 /**
  *
  * @method False
- * @param {unknown} argument
- * @returns {boolean}
  * @example
  * Is.False()
  * Is.Not.False()

@@ -4,7 +4,6 @@ import {NullMethod} from './null.method';
 /**
  *
  * @method Object
- * @param {unknown} argument
  * @example
  * Is.Object()
  * Is.Not.Object()

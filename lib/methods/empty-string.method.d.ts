@@ -2,7 +2,6 @@
  *
  * @method EmptyString
  * @param argument is string type
- * @returns {boolean}
  * @example
  * Is.EmptyString()
  * Is.Not.EmptyString()

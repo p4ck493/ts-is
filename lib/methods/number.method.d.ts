@@ -1,7 +1,6 @@
 /**
  *
  * @method Number
- * @param {unknown} argument
  * @example
  * Is.Number()
  * Is.Not.Number()

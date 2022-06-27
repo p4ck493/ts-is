@@ -1,7 +1,6 @@
 /**
  *
  * @method Function
- * @param {unknown} argument
  * @example
  * Is.Function()
  * Is.Not.Function()

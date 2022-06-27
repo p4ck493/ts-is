@@ -1,7 +1,6 @@
 /**
  *
  * @method String
- * @param {unknown} argument
  * @example
  * Is.String()
  * Is.Not.String()

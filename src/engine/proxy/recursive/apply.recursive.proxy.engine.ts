@@ -6,9 +6,9 @@ import {InstanceofMethod} from '../../../methods/instanceof.method';
 import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 type proxyRecursiveApplyType = (
-    targetApply: any,
-    thisArg: unknown,
-    argumentList: unknown[],
+  targetApply: any,
+  thisArg: unknown,
+  argumentList: unknown[],
 ) => ReturnType<typeof targetApply>;
 
 /**
@@ -51,173 +51,186 @@ type proxyRecursiveApplyType = (
  *
  */
 export function proxyRecursiveApply(
-    flags: FlagsToolInterface,
-    lists: ListsProxyEngineInterface
+  flags: FlagsToolInterface,
+  lists: ListsProxyEngineInterface,
 ): proxyRecursiveApplyType {
-    return (targetApply, thisArg, argumentList) => {
-        let result;
+  return (targetApply, thisArg, argumentList) => {
+    let result;
 
-        const key: CaseToolEnum = CaseToolEnum[findKey<FlagsToolInterface>(CaseToolConst, flags) as keyof typeof CaseToolEnum];
+    const key: CaseToolEnum =
+      CaseToolEnum[findKey<FlagsToolInterface>(CaseToolConst, flags) as keyof typeof CaseToolEnum];
 
-        switch (key) {
-            case CaseToolEnum.Method:
-                result = targetApply(...argumentList);
+    switch (key) {
+      case CaseToolEnum.Method:
+        result = targetApply(...argumentList);
 
-                break;
-            case CaseToolEnum.AfterWrapperAndMethod:
-                result = targetApply(...argumentList);
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+        break;
+      case CaseToolEnum.AfterWrapperAndMethod:
+        result = targetApply(...argumentList);
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.BeforeWrapperAndMethod:
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(targetApply, argumentList, previousValue);
-                }, result);
+        break;
+      case CaseToolEnum.BeforeWrapperAndMethod:
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(targetApply, argumentList, previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.Model:
-                result = InstanceofMethod(argumentList[0], targetApply);
+        break;
+      case CaseToolEnum.Model:
+        result = InstanceofMethod(argumentList[0], targetApply);
 
-                break;
-            case CaseToolEnum.BeforeWrapperAndModel:
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
-                }, result);
+        break;
+      case CaseToolEnum.BeforeWrapperAndModel:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.AfterWrapperAndModel:
-                result = InstanceofMethod(argumentList[0], targetApply);
+        break;
+      case CaseToolEnum.AfterWrapperAndModel:
+        result = InstanceofMethod(argumentList[0], targetApply);
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.BeforeAndAfterWrapperAndMethod:
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(targetApply, argumentList);
-                }, result);
+        break;
+      case CaseToolEnum.BeforeAndAfterWrapperAndMethod:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(targetApply, argumentList);
+        }, result);
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.BeforeAndAfterWrapperAndModel:
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
-                }, result);
+        break;
+      case CaseToolEnum.BeforeAndAfterWrapperAndModel:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(InstanceofMethod, argumentList, targetApply, previousValue);
+        }, result);
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.ConnectionWrapperAndMethod:
+        break;
+      case CaseToolEnum.ConnectionWrapperAndMethod:
+        // Connection
+        result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO use previousValue if will add new connection between method or models
+          return currentValue(...argumentList, lists.methods);
+        }, result);
+        break;
+      case CaseToolEnum.ConnectionAndAfterWrapperAndMethod:
+        // Connection
+        result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO use previousValue if will add new connection between method or models
+          return currentValue(...argumentList, lists.methods);
+        }, result);
 
-                // Connection
-                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO use previousValue if will add new connection between method or models
-                    return currentValue(...argumentList, lists.methods);
-                }, result);
-                break;
-            case CaseToolEnum.ConnectionAndAfterWrapperAndMethod:
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                // Connection
-                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO use previousValue if will add new connection between method or models
-                    return currentValue(...argumentList, lists.methods);
-                }, result);
+        break;
+      case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndMethod:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO lists.connectionWrapper make reduce
+          return currentValue(lists.connectionWrapper[0], argumentList, lists.methods);
+        }, result);
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
-            case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndMethod:
+        break;
+      case CaseToolEnum.BeforeAndConnectionWrapperAndMethod:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO lists.connectionWrapper make reduce
+          return currentValue(lists.connectionWrapper[0], argumentList, lists.methods);
+        }, result);
 
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO lists.connectionWrapper make reduce
-                    return currentValue(lists.connectionWrapper[0], argumentList, lists.methods);
-                }, result);
+        break;
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+      case CaseToolEnum.ConnectionWrapperAndModel:
+        // Connection
+        result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO use previousValue if will add new connection between method or models
+          return currentValue(
+            ...argumentList,
+            lists.models.map((method) => InstanceofMethod),
+            lists.models,
+          );
+        }, result);
+        break;
 
-                break;
-            case CaseToolEnum.BeforeAndConnectionWrapperAndMethod:
+      case CaseToolEnum.ConnectionAndAfterWrapperAndModel:
+        // Connection
+        result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO use previousValue if will add new connection between method or models
+          return currentValue(
+            ...argumentList,
+            lists.models.map((method) => InstanceofMethod),
+            lists.models,
+          );
+        }, result);
 
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO lists.connectionWrapper make reduce
-                    return currentValue(lists.connectionWrapper[0], argumentList, lists.methods);
-                }, result);
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                break;
+        break;
 
-            case CaseToolEnum.ConnectionWrapperAndModel:
-                // Connection
-                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO use previousValue if will add new connection between method or models
-                    return currentValue(...argumentList, lists.models.map(method => InstanceofMethod), lists.models);
-                }, result);
-                break;
+      case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndModel:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO lists.connectionWrapper make reduce
+          return currentValue(
+            lists.connectionWrapper[0],
+            argumentList,
+            lists.models.map((method) => InstanceofMethod),
+            lists.models,
+          );
+        }, result);
 
-            case CaseToolEnum.ConnectionAndAfterWrapperAndModel:
+        // After
+        result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+          return currentValue(previousValue);
+        }, result);
 
-                // Connection
-                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO use previousValue if will add new connection between method or models
-                    return currentValue(...argumentList, lists.models.map(method => InstanceofMethod), lists.models);
-                }, result);
+        break;
 
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
+      case CaseToolEnum.BeforeAndConnectionWrapperAndModel:
+        // Before
+        result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
+          // TODO lists.connectionWrapper make reduce
+          return currentValue(
+            lists.connectionWrapper[0],
+            argumentList,
+            lists.models.map((method) => InstanceofMethod),
+            lists.models,
+          );
+        }, result);
 
-                break;
+        break;
 
-            case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndModel:
+      default:
+        throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
+    }
 
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO lists.connectionWrapper make reduce
-                    return currentValue(lists.connectionWrapper[0], argumentList, lists.models.map(method => InstanceofMethod), lists.models);
-                }, result);
-
-                // After
-                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
-                    return currentValue(previousValue);
-                }, result);
-
-                break;
-
-            case CaseToolEnum.BeforeAndConnectionWrapperAndModel:
-                // Before
-                result = lists.beforeWrapper.reduce((previousValue: any, currentValue: any) => {
-                    // TODO lists.connectionWrapper make reduce
-                    return currentValue(lists.connectionWrapper[0], argumentList, lists.models.map(method => InstanceofMethod), lists.models);
-                }, result);
-
-                break;
-
-            default:
-                throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
-        }
-
-        return result;
-    };
+    return result;
+  };
 }

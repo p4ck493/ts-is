@@ -2,7 +2,6 @@
  *
  * @method EmptyArray
  * @param argument is object type
- * @returns {boolean}
  * @example
  * Is.EmptyArray()
  * Is.Not.EmptyArray()

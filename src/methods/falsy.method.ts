@@ -1,9 +1,6 @@
 /**
  *
- * @see {@link https://developer.mozilla.org/en-US/docs/Glossary/Falsy}
- *
  * @method Falsy
- * @param {unknown} argument
  * @example
  * Is.Falsy()
  * Is.Not.Falsy()

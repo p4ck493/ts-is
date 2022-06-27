@@ -9,9 +9,5 @@ import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.
  * Mixin: Is.All.Not.Boolean([true, false, [0]])
  *
  *
- * @param {object} target
- * @param {string} name
- * @param {FlagsToolInterface} flags
- * @param {ListsProxyEngineInterface} lists
  */
 export declare function proxyRecursive(target: object, name: string, flags: FlagsToolInterface, lists: ListsProxyEngineInterface): object;

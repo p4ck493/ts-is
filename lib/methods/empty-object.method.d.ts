@@ -2,7 +2,6 @@
  *
  * @method EmptyObject
  * @param argument is object type
- * @returns {boolean}
  * @example
  * Is.EmptyObject()
  * Is.Not.EmptyObject()

@@ -1,8 +1,6 @@
 /**
  *
  * @method Boolean
- * @param {unknown} argument
- * @returns {boolean}
  * @example
  * Is.Boolean()
  * Is.Not.Boolean()

@@ -1,7 +1,6 @@
 /**
  *
  * @method Object
- * @param {unknown} argument
  * @example
  * Is.Object()
  * Is.Not.Object()

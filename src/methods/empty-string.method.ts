@@ -5,7 +5,6 @@ import {StringMethod} from './string.method';
  *
  * @method EmptyString
  * @param argument is string type
- * @returns {boolean}
  * @example
  * Is.EmptyString()
  * Is.Not.EmptyString()

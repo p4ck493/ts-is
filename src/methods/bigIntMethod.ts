@@ -1,8 +1,6 @@
 /**
  *
  * @method Bigint
- * @param {unknown} argument
- * @returns {boolean}
  * @example
  * Is.Bigint()
  * Is.Not.Bigint()

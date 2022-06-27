@@ -1,7 +1,6 @@
 /**
  *
  * @method Undefined
- * @param {unknown} argument
  * @example
  * Is.Undefined()
  * Is.Not.Undefined()

@@ -24,24 +24,24 @@ import {EmptyArrayMethod} from '../methods/empty-array.method';
  * Declare names and types of methods
  */
 export interface MethodsInterface {
-    Array: (typeof ArrayMethod) & ConnectionWrappersInterface;
-    BigInt: (typeof BigIntMethod) & ConnectionWrappersInterface;
-    Boolean: (typeof BooleanMethod) & ConnectionWrappersInterface;
-    Compare: (typeof CompareMethod) & ConnectionWrappersInterface;
-    EmptyArray: (typeof EmptyArrayMethod) & ConnectionWrappersInterface;
-    EmptyObject: (typeof EmptyObjectMethod) & ConnectionWrappersInterface;
-    EmptyString: (typeof EmptyStringMethod) & ConnectionWrappersInterface;
-    False: (typeof FalseMethod) & ConnectionWrappersInterface;
-    Falsy: (typeof FalsyMethod) & ConnectionWrappersInterface;
-    Function: (typeof FunctionMethod) & ConnectionWrappersInterface;
-    Instanceof: (typeof InstanceofMethod) & ConnectionWrappersInterface;
-    Null: (typeof NullMethod) & ConnectionWrappersInterface;
-    Number: (typeof NumberMethod) & ConnectionWrappersInterface;
-    Object: (typeof ObjectMethod) & ConnectionWrappersInterface;
-    String: (typeof StringMethod) & ConnectionWrappersInterface;
-    Symbol: (typeof SymbolMethod) & ConnectionWrappersInterface;
-    True: (typeof TrueMethod) & ConnectionWrappersInterface;
-    Truthy: (typeof TruthyMethod) & ConnectionWrappersInterface;
-    Undefined: (typeof UndefinedMethod) & ConnectionWrappersInterface;
-    Empty: (typeof EmptyMethod) & ConnectionWrappersInterface;
+    Array: typeof ArrayMethod & ConnectionWrappersInterface;
+    BigInt: typeof BigIntMethod & ConnectionWrappersInterface;
+    Boolean: typeof BooleanMethod & ConnectionWrappersInterface;
+    Compare: typeof CompareMethod & ConnectionWrappersInterface;
+    EmptyArray: typeof EmptyArrayMethod & ConnectionWrappersInterface;
+    EmptyObject: typeof EmptyObjectMethod & ConnectionWrappersInterface;
+    EmptyString: typeof EmptyStringMethod & ConnectionWrappersInterface;
+    False: typeof FalseMethod & ConnectionWrappersInterface;
+    Falsy: typeof FalsyMethod & ConnectionWrappersInterface;
+    Function: typeof FunctionMethod & ConnectionWrappersInterface;
+    Instanceof: typeof InstanceofMethod & ConnectionWrappersInterface;
+    Null: typeof NullMethod & ConnectionWrappersInterface;
+    Number: typeof NumberMethod & ConnectionWrappersInterface;
+    Object: typeof ObjectMethod & ConnectionWrappersInterface;
+    String: typeof StringMethod & ConnectionWrappersInterface;
+    Symbol: typeof SymbolMethod & ConnectionWrappersInterface;
+    True: typeof TrueMethod & ConnectionWrappersInterface;
+    Truthy: typeof TruthyMethod & ConnectionWrappersInterface;
+    Undefined: typeof UndefinedMethod & ConnectionWrappersInterface;
+    Empty: typeof EmptyMethod & ConnectionWrappersInterface;
 }

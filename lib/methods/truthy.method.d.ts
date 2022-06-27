@@ -1,9 +1,7 @@
 /**
  *
- * @see {@link https://developer.mozilla.org/en-US/docs/Glossary/Truthy}
  *
  * @method Truthy
- * @param {unknown} argument
  * @example
  * Is.Truthy()
  * Is.Not.Truthy()

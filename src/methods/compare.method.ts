@@ -1,5 +1,5 @@
-import {ArrayMethod} from './array.method';
-import {Methods} from './index';
+import { ArrayMethod } from './array.method';
+import { Methods } from './index';
 
 export enum TypeOfValueEnum {
   object = 'object',

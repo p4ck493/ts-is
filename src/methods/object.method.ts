@@ -1,5 +1,5 @@
-import {ArrayMethod} from './array.method';
-import {NullMethod} from './null.method';
+import { ArrayMethod } from './array.method';
+import { NullMethod } from './null.method';
 
 /**
  *

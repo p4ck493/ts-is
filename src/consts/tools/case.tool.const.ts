@@ -1,5 +1,5 @@
-import {CaseToolEnum} from '../../enums/tools/case.tool.enum';
-import {FlagsToolInterface} from '../../interfaces/tools/flags.tool.interface';
+import { CaseToolEnum } from '../../enums/tools/case.tool.enum';
+import { FlagsToolInterface } from '../../interfaces/tools/flags.tool.interface';
 
 export const CaseToolConst: { [key in keyof typeof CaseToolEnum]: FlagsToolInterface } = {
   Model: {

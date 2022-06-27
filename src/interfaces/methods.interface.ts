@@ -1,24 +1,24 @@
-import {ArrayMethod} from '../methods/array.method';
-import {BigIntMethod} from '../methods/bigIntMethod';
-import {BooleanMethod} from '../methods/boolean.method';
-import {CompareMethod} from '../methods/compare.method';
-import {EmptyObjectMethod} from '../methods/empty-object.method';
-import {EmptyStringMethod} from '../methods/empty-string.method';
-import {FalseMethod} from '../methods/false.method';
-import {FunctionMethod} from '../methods/function.method';
-import {NullMethod} from '../methods/null.method';
-import {NumberMethod} from '../methods/number.method';
-import {ObjectMethod} from '../methods/object.method';
-import {StringMethod} from '../methods/string.method';
-import {SymbolMethod} from '../methods/symbol.method';
-import {TrueMethod} from '../methods/true.method';
-import {UndefinedMethod} from '../methods/undefined.method';
-import {EmptyMethod} from '../methods/empty.method';
-import {InstanceofMethod} from '../methods/instanceof.method';
-import {TruthyMethod} from '../methods/truthy.method';
-import {FalsyMethod} from '../methods/falsy.method';
-import {ConnectionWrappersInterface} from './wrappers.interface';
-import {EmptyArrayMethod} from '../methods/empty-array.method';
+import { ArrayMethod } from '../methods/array.method';
+import { BigIntMethod } from '../methods/bigIntMethod';
+import { BooleanMethod } from '../methods/boolean.method';
+import { CompareMethod } from '../methods/compare.method';
+import { EmptyObjectMethod } from '../methods/empty-object.method';
+import { EmptyStringMethod } from '../methods/empty-string.method';
+import { FalseMethod } from '../methods/false.method';
+import { FunctionMethod } from '../methods/function.method';
+import { NullMethod } from '../methods/null.method';
+import { NumberMethod } from '../methods/number.method';
+import { ObjectMethod } from '../methods/object.method';
+import { StringMethod } from '../methods/string.method';
+import { SymbolMethod } from '../methods/symbol.method';
+import { TrueMethod } from '../methods/true.method';
+import { UndefinedMethod } from '../methods/undefined.method';
+import { EmptyMethod } from '../methods/empty.method';
+import { InstanceofMethod } from '../methods/instanceof.method';
+import { TruthyMethod } from '../methods/truthy.method';
+import { FalsyMethod } from '../methods/falsy.method';
+import { ConnectionWrappersInterface } from './wrappers.interface';
+import { EmptyArrayMethod } from '../methods/empty-array.method';
 
 /**
  * Declare names and types of methods

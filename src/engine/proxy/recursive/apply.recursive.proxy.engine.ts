@@ -1,9 +1,9 @@
-import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
-import {CaseToolEnum} from '../../../enums/tools/case.tool.enum';
-import {findKey} from '../../../tools/find-key.tool';
-import {CaseToolConst} from '../../../consts/tools/case.tool.const';
-import {InstanceofMethod} from '../../../methods/instanceof.method';
-import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { FlagsToolInterface } from '../../../interfaces/tools/flags.tool.interface';
+import { CaseToolEnum } from '../../../enums/tools/case.tool.enum';
+import { findKey } from '../../../tools/find-key.tool';
+import { CaseToolConst } from '../../../consts/tools/case.tool.const';
+import { InstanceofMethod } from '../../../methods/instanceof.method';
+import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 type proxyRecursiveApplyType = (
   targetApply: any,

@@ -4,12 +4,12 @@ import {
   connectionWrapperType,
   modelWrapperType,
 } from '../../../types/wrapper.type';
-import {afterWrappers, beforeWrappers, connectionWrappers, modelWrappers} from '../../../wrappers';
-import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
-import {Methods} from '../../../methods';
-import {proxyRecursiveApply} from './apply.recursive.proxy.engine';
-import {proxyRecursiveGet} from './get.recursive.proxy.engine';
-import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { afterWrappers, beforeWrappers, connectionWrappers, modelWrappers } from '../../../wrappers';
+import { FlagsToolInterface } from '../../../interfaces/tools/flags.tool.interface';
+import { Methods } from '../../../methods';
+import { proxyRecursiveApply } from './apply.recursive.proxy.engine';
+import { proxyRecursiveGet } from './get.recursive.proxy.engine';
+import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 function checkFlags(flags: FlagsToolInterface, name: string): void {
   const notFoundAnyMethods: boolean[] = Object.values(flags).map((property) => property);

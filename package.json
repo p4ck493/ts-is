@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "The package for check some data in typescript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

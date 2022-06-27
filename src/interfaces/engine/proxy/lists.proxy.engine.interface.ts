@@ -1,4 +1,4 @@
-import {afterWrapperType, beforeWrapperType, connectionWrapperType} from '../../../types/wrapper.type';
+import { afterWrapperType, beforeWrapperType, connectionWrapperType } from '../../../types/wrapper.type';
 
 export interface ListsProxyEngineInterface {
   beforeWrapper: beforeWrapperType[];

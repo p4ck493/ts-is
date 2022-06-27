@@ -1,5 +1,5 @@
-import {connectionWrapperType} from '../../types/wrapper.type';
-import {TrueMethod} from '../../methods/true.method';
+import { connectionWrapperType } from '../../types/wrapper.type';
+import { TrueMethod } from '../../methods/true.method';
 
 /**
  *

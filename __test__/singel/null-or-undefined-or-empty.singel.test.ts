@@ -19,17 +19,17 @@ describe('Null or Undefined Or Empty singel', () => {
         {
             value: ``
         },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: NaN
-        },
         {
             value: undefined
         },
         {
             value: null
+        },
+    ];
+
+    const dataForBadTesting: {value: any}[] = [
+        {
+            value: NaN
         },
         {
             value: Symbol()
@@ -74,20 +74,20 @@ describe('Null or Undefined Or Empty singel', () => {
         }
     ];
 
-    it.each(dataForGoodTesting)('Is.NullOrUndefinedOrEmpty: Should true for $value', ({value}) => {
-        expect(Is.NullOrUndefinedOrEmpty(value)).toBe(true);
+    it.each(dataForGoodTesting)('Is.Null.Or.Undefined.Or.Empty: Should true for $value', ({value}) => {
+        expect(Is.Null.Or.Undefined.Or.Empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.NullOrUndefinedOrEmpty: Should false for $value', ({value}) => {
-        expect(Is.NullOrUndefinedOrEmpty(value)).toBe(false);
+    it.each(dataForBadTesting)('Is.Null.Or.Undefined.Or.Empty: Should false for $value', ({value}) => {
+        expect(Is.Null.Or.Undefined.Or.Empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.NullOrUndefinedOrEmpty: Should false for $value', ({value}) => {
-        expect(Is.Not.NullOrUndefinedOrEmpty(value)).toBe(false);
+    it.each(dataForGoodTesting)('Is.Not.Null.Or.Undefined.Or.Empty: Should false for $value', ({value}) => {
+        expect(Is.Not.Null.Or.Undefined.Or.Empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.NullOrUndefinedOrEmpty: Should true for $value', ({value}) => {
-        expect(Is.Not.NullOrUndefinedOrEmpty(value)).toBe(true);
+    it.each(dataForBadTesting)('Is.Not.Null.Or.Undefined.Or.Empty: Should true for $value', ({value}) => {
+        expect(Is.Not.Null.Or.Undefined.Or.Empty(value)).toBe(true);
     });
 
 });

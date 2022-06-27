@@ -1,5 +1,5 @@
 import {ArrayMethod} from '../methods/array.method';
-import {BigintMethod} from '../methods/bigint.method';
+import {BigIntMethod} from '../methods/bigIntMethod';
 import {BooleanMethod} from '../methods/boolean.method';
 import {CompareMethod} from '../methods/compare.method';
 import {EmptyObjectMethod} from '../methods/empty-object.method';
@@ -7,8 +7,6 @@ import {EmptyStringMethod} from '../methods/empty-string.method';
 import {FalseMethod} from '../methods/false.method';
 import {FunctionMethod} from '../methods/function.method';
 import {NullMethod} from '../methods/null.method';
-import {NullOrUndefinedMethod} from '../methods/null-or-undefined.method';
-import {NullOrUndefinedOrEmptyMethod} from '../methods/null-or-undefined-or-empty.method';
 import {NumberMethod} from '../methods/number.method';
 import {ObjectMethod} from '../methods/object.method';
 import {StringMethod} from '../methods/string.method';
@@ -20,15 +18,17 @@ import {InstanceofMethod} from '../methods/instanceof.method';
 import {TruthyMethod} from '../methods/truthy.method';
 import {FalsyMethod} from '../methods/falsy.method';
 import {ConnectionWrappersInterface} from './wrappers.interface';
+import {EmptyArrayMethod} from '../methods/empty-array.method';
 
 /**
  * Declare names and types of methods
  */
 export interface MethodsInterface {
     Array: (typeof ArrayMethod) & ConnectionWrappersInterface;
-    BigInt: (typeof BigintMethod) & ConnectionWrappersInterface;
+    BigInt: (typeof BigIntMethod) & ConnectionWrappersInterface;
     Boolean: (typeof BooleanMethod) & ConnectionWrappersInterface;
     Compare: (typeof CompareMethod) & ConnectionWrappersInterface;
+    EmptyArray: (typeof EmptyArrayMethod) & ConnectionWrappersInterface;
     EmptyObject: (typeof EmptyObjectMethod) & ConnectionWrappersInterface;
     EmptyString: (typeof EmptyStringMethod) & ConnectionWrappersInterface;
     False: (typeof FalseMethod) & ConnectionWrappersInterface;
@@ -36,8 +36,6 @@ export interface MethodsInterface {
     Function: (typeof FunctionMethod) & ConnectionWrappersInterface;
     Instanceof: (typeof InstanceofMethod) & ConnectionWrappersInterface;
     Null: (typeof NullMethod) & ConnectionWrappersInterface;
-    NullOrUndefined: (typeof NullOrUndefinedMethod) & ConnectionWrappersInterface;
-    NullOrUndefinedOrEmpty: (typeof NullOrUndefinedOrEmptyMethod) & ConnectionWrappersInterface;
     Number: (typeof NumberMethod) & ConnectionWrappersInterface;
     Object: (typeof ObjectMethod) & ConnectionWrappersInterface;
     String: (typeof StringMethod) & ConnectionWrappersInterface;

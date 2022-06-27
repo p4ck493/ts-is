@@ -49,6 +49,10 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "lib/methods/**",
+      "lib/wrappers/**"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/.git/",
       "<rootDir>/.DS_Store/",

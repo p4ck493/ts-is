@@ -66,20 +66,20 @@ describe('Null or Undefined singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.NullOrUndefined: Should true for $value', ({value}) => {
-        expect(Is.NullOrUndefined(value)).toBe(true);
+    it.each(dataForGoodTesting)('Is.Null.Or.Undefined: Should true for $value', ({value}) => {
+        expect(Is.Null.Or.Undefined(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.NullOrUndefined: Should false for $value', ({value}) => {
-        expect(Is.NullOrUndefined(value)).toBe(false);
+    it.each(dataForBadTesting)('Is.Null.Or.Undefined: Should false for $value', ({value}) => {
+        expect(Is.Null.Or.Undefined(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.NullOrUndefined: Should false for $value', ({value}) => {
-        expect(Is.Not.NullOrUndefined(value)).toBe(false);
+    it.each(dataForGoodTesting)('Is.Not.Null.Or.Undefined: Should false for $value', ({value}) => {
+        expect(Is.Not.Null.Or.Undefined(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.NullOrUndefined: Should true for $value', ({value}) => {
-        expect(Is.Not.NullOrUndefined(value)).toBe(true);
+    it.each(dataForBadTesting)('Is.Not.Null.Or.Undefined: Should true for $value', ({value}) => {
+        expect(Is.Not.Null.Or.Undefined(value)).toBe(true);
     });
 
 });

@@ -7,6 +7,7 @@ export type beforeWrapperType = (
 export type connectionWrapperType = (
   argument: unknown,
   targetApplyList: ((...arg: unknown[]) => boolean)[],
+  secondArgumentList?: unknown[],
 ) => boolean;
 export type modelWrapperType = new () => unknown;
 export type afterWrapperType = (result: boolean) => boolean;

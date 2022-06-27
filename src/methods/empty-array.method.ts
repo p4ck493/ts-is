@@ -1,5 +1,5 @@
 import {EmptyMethod} from './empty.method';
-import {ObjectMethod} from './object.method';
+import {ArrayMethod} from './array.method';
 
 /**
  *
@@ -13,7 +13,7 @@ import {ObjectMethod} from './object.method';
  * Is.All.Not.EmptyArray()
  */
 export function EmptyArrayMethod(argument: unknown): boolean {
-  if (ObjectMethod(argument)) {
+  if (ArrayMethod(argument)) {
     return EmptyMethod(argument);
   }
   return false;

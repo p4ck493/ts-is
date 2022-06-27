@@ -1,6 +1,7 @@
 import {beforeWrapperType} from '../../types/wrapper.type';
 import {executeType} from '../../types/execute.type';
 import {ArrayMethod} from '../../methods/array.method';
+import {EmptyArrayMethod} from '../../methods/empty-array.method';
 
 /**
  *
@@ -19,7 +20,13 @@ export const AllWrapper: beforeWrapperType = (
   const execute: executeType = (...args: unknown[]): boolean => {
     return args.every((argument: unknown): boolean => {
       if (ArrayMethod(argument) && argument.length) {
-        return execute(...argument);
+        if (targetApply instanceof EmptyArrayMethod) {
+          if (argument.some((item) => ArrayMethod(item))) {
+            return execute(...argument);
+          }
+        } else {
+          return execute(...argument);
+        }
       }
       return targetApply.call(this, argument, secondArgument);
     });

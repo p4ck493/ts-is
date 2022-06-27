@@ -10,6 +10,8 @@ export enum CaseToolEnum {
   ConnectionWrapperAndMethod, // Is.Null.Or.Undefined.Or.Empty
   BeforeAndConnectionWrapperAndMethod, // Is.All.String.Or.Number
   ConnectionAndAfterWrapperAndMethod, // Is.Not.String.Or.Number
-  BeforeAndConnectionAndAfterWrapperAndMethod, // Is.All.Not.PersonModel.Or.AddressModel
-  ConnectionWrapperAndMetod, // Is.PersonModel.Or.AddressModel
+  BeforeAndConnectionAndAfterWrapperAndMethod, // Is.All.Not.String.Or.Number
+  ConnectionWrapperAndModel, // Is.PersonModel.Or.AddressModel
+  ConnectionAndAfterWrapperAndModel, // Is.Not.Person.Or.Address
+  BeforeAndConnectionAndAfterWrapperAndModel, // Is.All.Not.PersonModel.Or.AddressModel
 }

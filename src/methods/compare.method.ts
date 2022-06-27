@@ -1,5 +1,5 @@
-import {NullOrUndefinedMethod} from './null-or-undefined.method';
 import {ArrayMethod} from './array.method';
+import {Methods} from './index';
 
 export enum TypeOfValueEnum {
   object = 'object',
@@ -13,7 +13,7 @@ export enum TypeOfValueEnum {
  * @returns {boolean}
  */
 export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
-  if (NullOrUndefinedMethod(objectOne) || NullOrUndefinedMethod(objectTwo)) {
+  if (Methods.Null(objectOne) || Methods.Undefined(objectOne) || Methods.Null(objectTwo) || Methods.Undefined(objectTwo)) {
     return false;
   }
 

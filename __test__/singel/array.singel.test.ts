@@ -1,5 +1,6 @@
 import {Is} from '../../lib';
 
+
 class Person {
 
 }

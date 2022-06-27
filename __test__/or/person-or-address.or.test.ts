@@ -7,7 +7,7 @@ class PersonModel {
 }
 
 @RegisterInIs({className: 'Man'})
-class ManModel {
+class ManModel extends PersonModel {
 
 }
 

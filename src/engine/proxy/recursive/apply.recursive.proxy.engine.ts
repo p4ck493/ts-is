@@ -59,7 +59,6 @@ export function proxyRecursiveApply(
 
         const key: CaseToolEnum = CaseToolEnum[findKey<FlagsToolInterface>(CaseToolConst, flags) as keyof typeof CaseToolEnum];
 
-        console.log(targetApply, thisArg, argumentList, lists, flags);
         switch (key) {
             case CaseToolEnum.Method:
                 result = targetApply(...argumentList);
@@ -170,15 +169,32 @@ export function proxyRecursiveApply(
 
                 break;
 
-            case CaseToolEnum.ConnectionWrapperAndMetod:
-                // TODO how to merge the model and connection  wrapper?
-                InstanceofMethod(argumentList[0], targetApply)
+            case CaseToolEnum.ConnectionWrapperAndModel:
                 // Connection
                 result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
                     // TODO use previousValue if will add new connection between method or models
-                    return currentValue(...argumentList, lists.methods);
+                    return currentValue(...argumentList, lists.models.map(method => InstanceofMethod), lists.models);
                 }, result);
                 break;
+
+            case CaseToolEnum.ConnectionAndAfterWrapperAndModel:
+
+                // Connection
+                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+                    // TODO use previousValue if will add new connection between method or models
+                    return currentValue(...argumentList, lists.models.map(method => InstanceofMethod), lists.models);
+                }, result);
+
+                // After
+                result = lists.afterWrapper.reduce((previousValue: any, currentValue: any) => {
+                    return currentValue(previousValue);
+                }, result);
+
+                break;
+
+            case CaseToolEnum.BeforeAndConnectionAndAfterWrapperAndModel:
+                //TODO
+                break
 
             default:
                 throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);

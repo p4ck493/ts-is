@@ -19,6 +19,12 @@ describe('String.Or.Number.Or.True or', () => {
         {
             value: 0
         },
+        {
+            value: 'undefined'
+        },
+        {
+            value: 'null'
+        },
     ];
 
     const dataForBadTesting: { value: any }[] = [
@@ -39,12 +45,6 @@ describe('String.Or.Number.Or.True or', () => {
         },
         {
             value: Symbol()
-        },
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
         },
         {
             value: BigInt(1)

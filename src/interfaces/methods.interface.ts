@@ -1,5 +1,5 @@
 import {ArrayMethod} from '../methods/array.method';
-import {BigintMethod} from '../methods/bigint.method';
+import {BigIntMethod} from '../methods/bigIntMethod';
 import {BooleanMethod} from '../methods/boolean.method';
 import {CompareMethod} from '../methods/compare.method';
 import {EmptyObjectMethod} from '../methods/empty-object.method';
@@ -18,15 +18,17 @@ import {InstanceofMethod} from '../methods/instanceof.method';
 import {TruthyMethod} from '../methods/truthy.method';
 import {FalsyMethod} from '../methods/falsy.method';
 import {ConnectionWrappersInterface} from './wrappers.interface';
+import {EmptyArrayMethod} from '../methods/empty-array.method';
 
 /**
  * Declare names and types of methods
  */
 export interface MethodsInterface {
   Array: (typeof ArrayMethod) & ConnectionWrappersInterface;
-  BigInt: (typeof BigintMethod) & ConnectionWrappersInterface;
+  BigInt: (typeof BigIntMethod) & ConnectionWrappersInterface;
   Boolean: (typeof BooleanMethod) & ConnectionWrappersInterface;
   Compare: (typeof CompareMethod) & ConnectionWrappersInterface;
+  EmptyArray: (typeof EmptyArrayMethod) & ConnectionWrappersInterface;
   EmptyObject: (typeof EmptyObjectMethod) & ConnectionWrappersInterface;
   EmptyString: (typeof EmptyStringMethod) & ConnectionWrappersInterface;
   False: (typeof FalseMethod) & ConnectionWrappersInterface;

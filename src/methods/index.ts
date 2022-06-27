@@ -3,8 +3,6 @@ import {EmptyObjectMethod} from './empty-object.method';
 import {EmptyStringMethod} from './empty-string.method';
 import {FalseMethod} from './false.method';
 import {NullMethod} from './null.method';
-import {NullOrUndefinedMethod} from './null-or-undefined.method';
-import {NullOrUndefinedOrEmptyMethod} from './null-or-undefined-or-empty.method';
 import {NumberMethod} from './number.method';
 import {TrueMethod} from './true.method';
 import {UndefinedMethod} from './undefined.method';
@@ -16,10 +14,10 @@ import {BooleanMethod} from './boolean.method';
 import {SymbolMethod} from './symbol.method';
 import {BigintMethod} from './bigint.method';
 import {FunctionMethod} from './function.method';
-import {MethodsInterface} from '../interfaces/methods.interface';
 import {InstanceofMethod} from './instanceof.method';
 import {FalsyMethod} from './falsy.method';
 import {TruthyMethod} from './truthy.method';
+import {MethodsInterface} from '../interfaces/methods.interface';
 
 /**
  * Export all accesses methods in library
@@ -36,8 +34,6 @@ export const Methods: MethodsInterface = {
   Function: FunctionMethod as any,
   Instanceof: InstanceofMethod as any,
   Null: NullMethod as any,
-  NullOrUndefined: NullOrUndefinedMethod as any,
-  NullOrUndefinedOrEmpty: NullOrUndefinedOrEmptyMethod as any,
   Number: NumberMethod as any,
   String: StringMethod as any,
   Object: ObjectMethod as any,

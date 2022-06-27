@@ -59,6 +59,7 @@ export function proxyRecursiveApply(
 
         const key: CaseToolEnum = CaseToolEnum[findKey<FlagsToolInterface>(CaseToolConst, flags) as keyof typeof CaseToolEnum];
 
+        console.log(targetApply, thisArg, argumentList, lists, flags);
         switch (key) {
             case CaseToolEnum.Method:
                 result = targetApply(...argumentList);
@@ -167,6 +168,16 @@ export function proxyRecursiveApply(
                     return currentValue(lists.connectionWrapper[0], argumentList, lists.methods);
                 }, result);
 
+                break;
+
+            case CaseToolEnum.ConnectionWrapperAndMetod:
+                // TODO how to merge the model and connection  wrapper?
+                InstanceofMethod(argumentList[0], targetApply)
+                // Connection
+                result = lists.connectionWrapper.reduce((previousValue: any, currentValue: any) => {
+                    // TODO use previousValue if will add new connection between method or models
+                    return currentValue(...argumentList, lists.methods);
+                }, result);
                 break;
 
             default:

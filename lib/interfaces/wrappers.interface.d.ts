@@ -5,12 +5,14 @@ export interface BeforeWrappersInterface {
     All: beforeWrapperType & MethodsInterface & AfterWrappersInterface & {
         [key: string]: (argument: unknown) => unknown;
     };
-    Or: beforeWrapperType & MethodsInterface & AfterWrappersInterface & {
+}
+export interface ConnectionWrappersInterface {
+    Or: MethodsInterface & {
         [key: string]: (argument: unknown) => unknown;
     };
 }
 export interface AfterWrappersInterface {
     Not: afterWrapperType & MethodsInterface & {
-        [key: string]: (argument: unknown) => unknown;
+        [key: string]: ((argument: unknown) => unknown) & ConnectionWrappersInterface & MethodsInterface;
     };
 }

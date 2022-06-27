@@ -5,22 +5,10 @@ describe('Null or Undefined Or Empty singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
-            value: undefined
-        },
-        {
-            value: null
-        },
-        {
-            value: Symbol()
-        },
-        {
             value: {}
         },
         {
             value: []
-        },
-        {
-            value: NaN
         },
         {
             value: ""
@@ -34,6 +22,18 @@ describe('Null or Undefined Or Empty singel', () => {
     ];
 
     const dataForBadTesting: {value: any}[] = [
+        {
+            value: NaN
+        },
+        {
+            value: undefined
+        },
+        {
+            value: null
+        },
+        {
+            value: Symbol()
+        },
         {
             value: {
                 property: 'value of property'

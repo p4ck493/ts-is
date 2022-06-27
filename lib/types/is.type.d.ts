@@ -1,6 +1,10 @@
 import {MethodsInterface} from '../interfaces/methods.interface';
-import {AfterWrappersInterface, BeforeWrappersInterface} from '../interfaces/wrappers.interface';
+import {
+    AfterWrappersInterface,
+    BeforeWrappersInterface,
+    ConnectionWrappersInterface
+} from '../interfaces/wrappers.interface';
 
-export declare type IsType = ((argument: unknown) => void) & MethodsInterface & BeforeWrappersInterface & AfterWrappersInterface & {
-    [key: string]: (argument: unknown) => unknown;
+export declare type IsType = ((argument: unknown) => void) & MethodsInterface & BeforeWrappersInterface & ConnectionWrappersInterface & AfterWrappersInterface & {
+    [key: string]: ((argument: unknown) => unknown) & MethodsInterface & ConnectionWrappersInterface;
 };

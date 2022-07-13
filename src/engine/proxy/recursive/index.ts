@@ -1,4 +1,4 @@
-import {connectionWrappers, wrappers} from '../../../wrappers';
+import wrappers from '../../../wrappers';
 import Methods from '../../methods';
 import proxyRecursiveApply from './apply.recursive.proxy.engine';
 import proxyRecursiveGet from './get.recursive.proxy.engine';
@@ -30,22 +30,12 @@ export function proxyRecursive(
         });
     }
 
-    // TODO check if need the wrappers here
     if (wrappers.hasOwnProperty(name)) {
         notFound = false;
-        (lists as any)[name].push({
+        lists[(name as 'not' | 'all' | 'or')].push({
             name,
             index,
-            wrapper: wrappers[name as keyof typeof wrappers]
-        });
-    }
-
-    if (connectionWrappers.hasOwnProperty(name)) {
-        notFound = false;
-        lists.connection.push({
-            name,
-            index,
-            connection: connectionWrappers[name as keyof typeof connectionWrappers]
+            method: wrappers[name as keyof typeof wrappers]
         });
     }
 

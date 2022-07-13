@@ -1,9 +1,9 @@
-import {afterWrapperType} from '../types/wrapper.type';
-
 /**
  *
  * @method Not
  */
-export const NotWrapper: afterWrapperType = (result: boolean): result is false => {
-  return !result;
-};
+function NotWrapper(result: boolean): result is false {
+    return !result;
+}
+
+export default NotWrapper;

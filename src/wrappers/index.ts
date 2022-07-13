@@ -1,9 +1,12 @@
-import {AllWrapper} from './all.wrapper';
-import {NotWrapper} from './not.wrapper';
+import NotWrapper from './not.wrapper';
+import AllWrapper from './all.wrapper';
+import OrWrapper from './or.connection.wrapper';
 
-export { connectionWrappers } from './connections';
-
-export const wrappers = {
-    not: NotWrapper,
-    all: AllWrapper,
+// TODO interfaces
+const wrappers = {
+    not: NotWrapper as any,
+    all: AllWrapper as any,
+    or: OrWrapper as any,
 };
+
+export default wrappers;

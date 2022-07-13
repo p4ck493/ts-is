@@ -1,21 +1,20 @@
-import {connectionWrapperType} from '../../../types/wrapper.type';
-import {wrappers} from '../../../wrappers';
+import wrappers from '../../../wrappers';
 
 export interface ListsProxyEngineInterface {
     all: {
         index: number;
         name: string;
-        wrapper: typeof wrappers;
+        method: typeof wrappers;
     }[];
     not: {
         index: number;
         name: string;
-        wrapper: typeof wrappers;
+        method: typeof wrappers;
     }[];
-    connection: {
+    or: {
         index: number;
         name: string;
-        connection: connectionWrapperType;
+        method: typeof wrappers;
     }[];
     methods: {
         index: number;

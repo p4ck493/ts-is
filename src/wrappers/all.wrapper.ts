@@ -1,5 +1,6 @@
 import {executeType} from '../types/execute.type';
-import Methods from '../engine/methods';
+import ArrayMethod from '../engine/methods/array.method';
+import EmptyMethod from '../engine/methods/empty.method';
 
 /**
  *
@@ -18,9 +19,9 @@ function AllWrapper(
 ): boolean {
     const execute: executeType = (...args: unknown[]): boolean => {
         return args.every((argument: unknown): boolean => {
-            if (Methods.array.method(argument) && argument.length) {
-                if (targetApply instanceof Methods.empty) {
-                    if (argument.some((item) => Methods.array.method(item))) {
+            if (ArrayMethod.method(argument) && argument.length) {
+                if (targetApply instanceof EmptyMethod.method) {
+                    if (argument.some((item) => ArrayMethod.method(item))) {
                         return execute(...argument);
                     }
                 } else {

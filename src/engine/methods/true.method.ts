@@ -21,7 +21,7 @@ class TrueMethod {
      */
     public static method(argument: unknown): argument is true {
         const context: TrueMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return argument === true;
     }
 }

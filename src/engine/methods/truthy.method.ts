@@ -23,7 +23,7 @@ class TruthyMethod {
      */
     public static method(argument: unknown): argument is true {
         const context: TruthyMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return !FalsyMethod.method(argument);
     }
 }

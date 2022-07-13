@@ -68,8 +68,10 @@ import {IsType} from './types/is.type';
  * is.array.all.not.object.or.empty
  *
  */
-export const is: IsType = proxyGenerator((argument: unknown) => {
-  // TODO return typeof argument or make something cool
-  return argument;
-});
+function defaultFunction(argument: unknown): unknown {
+    // TODO return typeof argument or make something cool
+    return argument;
+}
+
+export const is: IsType = proxyGenerator(defaultFunction);
 

@@ -20,8 +20,9 @@ class StringMethod {
      * @param argument
      */
     public static method(argument: unknown): argument is string {
+        console.log('argument', argument,  typeof argument === 'string');
         const context: StringMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        console.log('context', context);
         return typeof argument === 'string';
     }
 }

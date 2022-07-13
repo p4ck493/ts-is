@@ -21,7 +21,7 @@ class FalseMethod {
      */
     public static method(argument: unknown): argument is false {
         const context: FalseMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return argument === false;
     }
 }

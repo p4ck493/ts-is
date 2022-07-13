@@ -1,4 +1,4 @@
-import Methods from '../engine/methods';
+import TruthyMethod from '../engine/methods/truthy.method';
 
 /**
  *
@@ -10,7 +10,7 @@ function OrWrapper(
     secondArgumentList?: unknown[],
 ): boolean {
     return targetApplyList.reduce((previousValue: any, currentValue: any, currentIndex: number) => {
-        if (Methods.true.method(previousValue)) {
+        if (TruthyMethod.method(previousValue)) {
             return previousValue;
         }
         return currentValue.call(this, argument, secondArgumentList?.[currentIndex]);

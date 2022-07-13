@@ -21,7 +21,7 @@ class SymbolMethod {
      */
     public static method(argument: unknown): argument is symbol {
         const context: SymbolMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return typeof argument === 'symbol';
     }
 }

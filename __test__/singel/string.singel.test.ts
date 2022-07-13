@@ -19,6 +19,18 @@ describe('string singel', () => {
         {
             value: ``
         },
+        {
+            value: ``
+        },
+        {
+            value: `3`
+        },
+        {
+            value: `1`
+        },
+        {
+            value: `2`
+        },
     ];
 
     const dataForBadTesting: {value: any}[] = [
@@ -67,7 +79,7 @@ describe('string singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.string: Should true for $value', ({value}) => {
-        expect(is.string(value)).toBe(true);
+        expect(is.string('value')).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.string: Should false for $value', ({value}) => {

@@ -20,7 +20,7 @@ class NullMethod {
      */
     public static method(argument: unknown): argument is null {
         const context: NullMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return argument === null;
     }
 }

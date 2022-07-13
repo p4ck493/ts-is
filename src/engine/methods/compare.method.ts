@@ -1,7 +1,7 @@
 import {RegisterInIs} from '../../decorators';
 import NullMethod from './null.method';
 import UndefinedMethod from './undefined.method';
-import methods from './index';
+import ArrayMethod from './array.method';
 
 
 export enum TypeOfValueEnum {
@@ -22,7 +22,7 @@ class CompareMethod {
      */
     public static method<T>(objectOne: T, objectTwo: T): boolean {
         const context: CompareMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         if (
             NullMethod.method(objectOne) ||
             UndefinedMethod.method(objectOne) ||
@@ -35,7 +35,7 @@ class CompareMethod {
         const keysOfObjectOne: string[] = Object.keys(objectOne) ?? [];
         const keysOfObjectTwo: string[] = Object.keys(objectTwo) ?? [];
 
-        if (!methods.array.method(keysOfObjectOne) || !methods.array.method(keysOfObjectTwo)) {
+        if (!ArrayMethod.method(keysOfObjectOne) || !ArrayMethod.method(keysOfObjectTwo)) {
             return false;
         }
 

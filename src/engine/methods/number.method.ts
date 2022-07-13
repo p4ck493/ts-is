@@ -21,7 +21,7 @@ class NumberMethod {
      */
     public static method(argument: unknown): argument is number {
         const context: NumberMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return typeof argument === 'number' && !isNaN(argument);
     }
 }

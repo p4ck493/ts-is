@@ -27,7 +27,7 @@ class FunctionMethod {
      */
     public static method<T extends () => void>(argument: unknown): argument is T {
         const context: FunctionMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return {}.toString.call(argument) === '[object Function]';
     }
 }

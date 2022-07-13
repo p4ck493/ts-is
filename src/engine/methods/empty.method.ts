@@ -1,7 +1,7 @@
 import ArrayMethod from './array.method';
 import {RegisterInIs} from '../../decorators';
 import ObjectMethod from './object.method';
-import methods from './index';
+import StringMethod from './string.method';
 
 
 /**
@@ -22,8 +22,8 @@ class EmptyMethod {
      */
     public static method(argument: unknown): boolean {
         const context: EmptyMethod = this; // TODO ContextMethodInterface
-        console.log(context);
-        if (methods.string.method(argument) || ObjectMethod.method(argument) || ArrayMethod.method(argument)) {
+        // console.log(context);
+        if (StringMethod.method(argument) || ObjectMethod.method(argument) || ArrayMethod.method(argument)) {
             return Object.keys(argument as object)?.length === 0;
         }
         return false;

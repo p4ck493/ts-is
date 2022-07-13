@@ -6,6 +6,7 @@ import {proxyGeneratorApply} from './apply.generator.proxy.engine';
  * @param defaultFunction must be method
  */
 export function proxyGenerator(defaultFunction: object): any {
+    console.log('proxyGenerator');
     return new Proxy(defaultFunction, {
         get: proxyGeneratorGet(),
         apply: proxyGeneratorApply(),

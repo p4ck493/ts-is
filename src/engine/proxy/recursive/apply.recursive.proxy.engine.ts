@@ -15,7 +15,7 @@ type proxyRecursiveApplyType = (
     argumentList: unknown[],
 ) => ReturnType<typeof targetApply>;
 
-const recordOfCases: { [key: number]: () => void } = {
+const recordOfCases: { [key: number]: () => boolean } = {
     [CaseEnum.AND]: andCaseEngine,
     [CaseEnum.OR]: orCaseEngine,
     [CaseEnum.WRAPPER_OR]: wrapperOrCaseEngine,
@@ -29,8 +29,9 @@ const recordOfCases: { [key: number]: () => void } = {
 function proxyRecursiveApply(
     lists: ListsProxyEngineInterface,
 ): proxyRecursiveApplyType {
+    console.log('proxyRecursiveApply');
     return (targetApply, thisArg, argumentList): boolean => {
-        let result: boolean = false;
+        console.log(targetApply, thisArg, argumentList);
 
         const flags: FlagsToolInterface = {
             or: !!lists?.or?.length,
@@ -43,19 +44,15 @@ function proxyRecursiveApply(
             throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
         }
 
-        const key: CaseEnum =
-            CaseEnum[foundCase as keyof typeof CaseEnum];
+        const key: CaseEnum = CaseEnum[foundCase as keyof typeof CaseEnum];
 
         const context: ContextCaseInterface = {
-            result,
             targetApply,
             argumentList,
             lists,
         };
 
-        recordOfCases[key].apply(context);
-
-        return result;
+        return recordOfCases[key].call(context);
     };
 }
 

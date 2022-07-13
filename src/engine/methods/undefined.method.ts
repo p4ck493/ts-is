@@ -21,7 +21,7 @@ class UndefinedMethod {
      */
     public static method(argument: unknown): argument is undefined {
         const context: UndefinedMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return argument === undefined;
     }
 }

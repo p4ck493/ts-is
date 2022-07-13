@@ -4,23 +4,22 @@ import {
     registerInIsDecoratorType,
 } from '../types/decorators/register-in-is.decorator.type';
 import {RegisterInIsDecoratorInterface} from '../interfaces/decorators/register-in-is.decorator.interface';
-import methods from '../engine/methods';
+import {methods} from '../engine/methods';
 
 function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): registerInIsDecoratorType {
     return (constructor: registerInIsConstructorDecoratorType): void => {
-        let method: any = constructor; // TODO interface
-        let value: any = { // TODO interface
-            useCustomMethod: false,
-            method
-        };
+        let value: any = constructor; // TODO interface
         if (configuration?.customMethod) {
-            method = method?.[configuration.customMethod];
-            if (!method) {
+            value = value?.[configuration.customMethod];
+            if (!value) {
                 throw new Error(`Not found customMethod with name: ${configuration.customMethod}`);
             }
-            value = {
-                useCustomMethod: true,
-                method
+        } else {
+            // TODO add in case handle on result of execute function if not booelan that make somethink
+            value = () => {
+              return {
+                  classRef: constructor,
+              };
             };
         }
         let className: string | undefined = configuration?.className;
@@ -28,9 +27,9 @@ function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): 
             const object: registerInIsArgumentDecoratorType = new constructor();
             className = object.constructor.name;
         }
-        Reflect.defineProperty(methods, className, {
+        Object.defineProperty(methods, className, {
             value
-        });
+        })
     };
 }
 

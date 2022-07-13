@@ -1,5 +1,5 @@
 import {RegisterInIs} from '../../decorators';
-import methods from './index';
+import FunctionMethod from './function.method';
 
 /**
  *
@@ -44,10 +44,10 @@ class ArrayMethod {
      */
     public static method<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
         const context: ArrayMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
 
         if (argument instanceof Array) {
-            if (methods.function.method(classRef)) {
+            if (FunctionMethod.method(classRef)) {
                 if (argument.length) {
                     return argument.every((item: T) => item instanceof classRef);
                 } else {

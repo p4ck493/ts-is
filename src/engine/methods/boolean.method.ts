@@ -22,7 +22,7 @@ class BooleanMethod {
      */
     public static method(argument: unknown): argument is boolean {
         const context: BooleanMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return typeof argument === 'boolean';
     }
 }

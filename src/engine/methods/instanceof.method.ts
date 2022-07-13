@@ -19,7 +19,7 @@ class InstanceofMethod {
      */
     public static method<T>(argument: unknown, classRef: new () => T): argument is T {
         const context: InstanceofMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return argument instanceof classRef;
     }
 }

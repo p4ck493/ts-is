@@ -20,7 +20,7 @@ class BigIntMethod {
      */
     public static method(argument: unknown): argument is BigInteger {
         const context: BigIntMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return typeof argument === 'bigint';
     }
 }

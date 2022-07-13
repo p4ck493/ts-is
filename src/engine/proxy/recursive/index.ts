@@ -1,5 +1,5 @@
 import wrappers from '../../../wrappers';
-import Methods from '../../methods';
+import {methods} from '../../methods';
 import proxyRecursiveApply from './apply.recursive.proxy.engine';
 import proxyRecursiveGet from './get.recursive.proxy.engine';
 import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
@@ -17,12 +17,14 @@ export function proxyRecursive(
     name: string,
     lists: ListsProxyEngineInterface,
 ): object {
-    let newTarget: object = Methods;
+    console.log('proxyRecursive', index, target, name, lists);
+    let newTarget: any = methods; // TODo interface
     let notFound: boolean = true;
 
-    if (Methods.hasOwnProperty(name)) {
+    if (Reflect.has(methods, name)) {
         notFound = false;
-        newTarget = Methods[name as keyof typeof Methods];
+        newTarget = methods[name as keyof typeof methods];
+        console.log('newTarget', newTarget, newTarget('asd'));
         lists.methods.push({
             name,
             index,
@@ -44,7 +46,7 @@ export function proxyRecursive(
     }
 
     return new Proxy(newTarget, {
-        get: proxyRecursiveGet(index++, lists),
+        get: proxyRecursiveGet(index+1, lists),
         apply: proxyRecursiveApply(lists),
     });
 }

@@ -29,7 +29,7 @@ class ObjectMethod {
      */
     public static method<T extends object>(argument: unknown): argument is T {
         const context: ObjectMethod = this; // TODO ContextMethodInterface
-        console.log(context);
+        // console.log(context);
         return typeof argument === 'object' && !ArrayMethod.method(argument) && !NullMethod.method(argument);
     }
 }

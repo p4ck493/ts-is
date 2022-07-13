@@ -6,11 +6,6 @@ export const dataForGoodTesting: {value: any[]}[] = [
 
 export const dataForBadTesting: {value: any[]}[] = [
     {
-        value: [{
-            property: 1
-        }]
-    },
-    {
         value: [Symbol()]
     },
     {
@@ -69,6 +64,14 @@ export const dataForBadTesting: {value: any[]}[] = [
     },
     {
         value: [NaN]
+    },
+];
+
+export const dataForGoodCaseTesting: {value: any[]}[] = [
+    {
+        value: [{
+            property: 1
+        }]
     },
 ];
 

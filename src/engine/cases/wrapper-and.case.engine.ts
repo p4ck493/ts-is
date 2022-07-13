@@ -10,13 +10,38 @@ function wrapperAndCaseEngine(): boolean {
     const notWrapper: ListsProxyEngineInterface['not'][0] = context.lists.not[0];
     const allWrapper: ListsProxyEngineInterface['all'][0] = context.lists.all[0];
 
-    const execute = (methodObject: ListsProxyEngineInterface['methods'][0]): boolean => {
-        // TODO check if allWrapper is exist and then work recursive for arguments
-        const result: any = methodObject.method.apply({}, context.argumentList);
+    const execute = (methodObject: ListsProxyEngineInterface['methods'][0], argument: unknown[]): boolean => {
+        const result: any = methodObject.method.apply({}, argument);
         if (methods.boolean(result)) {
             return result;
         } else {
-            return methods.instanceof.call({}, context.argumentList[0], result.classRef)
+            return methods.instanceof.call({}, argument[0], result.classRef)
+        }
+    }
+
+    const middleware = (methodObject: ListsProxyEngineInterface['methods'][0]): boolean => {
+
+        if (allWrapper) {
+
+            const recursive = (...args: unknown[]): boolean => {
+                return args.every((argument: unknown): boolean => {
+                    if (methods.array(argument) && argument.length) {
+                        if (methodObject.method instanceof methods.empty) {
+                            if (argument.some((item) => methods.array(item))) {
+                                return recursive(...argument);
+                            }
+                        } else {
+                            return recursive(...argument);
+                        }
+                    }
+                    return methodObject.method.call(this, argument);
+                });
+            };
+
+            return recursive(...(context.argumentList as []));
+
+        } else {
+            return execute(methodObject, context.argumentList);
         }
     };
 
@@ -32,14 +57,14 @@ function wrapperAndCaseEngine(): boolean {
 
         if (notWrapper && methodObject.index > notWrapper.index) {
 
-            if (execute(methodObject)) {
+            if (middleware(methodObject)) {
                 result = false;
                 break;
             }
 
         } else {
 
-            if (!execute(methodObject)) {
+            if (!middleware(methodObject)) {
                 result = false;
                 break;
             }

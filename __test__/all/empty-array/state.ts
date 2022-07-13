@@ -4,6 +4,12 @@ export const dataForGoodTesting: {value: any[]}[] = [
     },
 ];
 
+export const dataForGoodCaseTesting: {value: any[]}[] = [
+    {
+        value: [['test']]
+    },
+];
+
 export const dataForBadTesting: {value: any[]}[] = [
     {
         value: [{}]

@@ -12,12 +12,6 @@ export const dataForGoodTesting: {value: any[]}[] = [
 
 export const dataForBadTesting: {value: any[]}[] = [
     {
-        value: ['undefined']
-    },
-    {
-        value: ['null']
-    },
-    {
         value: [true]
     },
     {
@@ -64,6 +58,15 @@ export const dataForBadTesting: {value: any[]}[] = [
     },
     {
         value: [NaN]
+    },
+];
+
+export const dataForGoodCaseTesting: {value: any[]}[] = [
+    {
+        value: ['undefined']
+    },
+    {
+        value: ['null']
     },
 ];
 

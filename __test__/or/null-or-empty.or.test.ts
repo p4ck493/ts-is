@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('Null.Or.Empty or', () => {
+describe('null.or.empty or', () => {
 
     const dataForGoodTesting: { value: any }[] = [
         {
@@ -67,20 +67,20 @@ describe('Null.Or.Empty or', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Null.Or.Empty: Should true for $value', ({value}) => {
-        expect(Is.Null.Or.Empty(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.null.or.empty: Should true for $value', ({value}) => {
+        expect(is.null.or.empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Null.Or.Empty: Should false for $value', ({value}) => {
-        expect(Is.Null.Or.Empty(value)).toBe(false);
+    it.each(dataForBadTesting)('is.null.or.empty: Should false for $value', ({value}) => {
+        expect(is.null.or.empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Null.Or.Empty: Should false for $value', ({value}) => {
-        expect(Is.Not.Null.Or.Empty(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.null.or.empty: Should false for $value', ({value}) => {
+        expect(is.not.null.or.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Null.Or.Empty: Should true for $value', ({value}) => {
-        expect(Is.Not.Null.Or.Empty(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.null.or.empty: Should true for $value', ({value}) => {
+        expect(is.not.null.or.empty(value)).toBe(true);
     });
 
 });

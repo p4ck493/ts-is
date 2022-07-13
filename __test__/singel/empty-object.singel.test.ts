@@ -1,4 +1,4 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
 describe('Empty Object singel', () => {
@@ -74,20 +74,20 @@ describe('Empty Object singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.EmptyObject: Should true for $value', ({value}) => {
-        expect(Is.EmptyObject(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.object.empty: Should true for $value', ({value}) => {
+        expect(is.object.empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.EmptyObject: Should false for $value', ({value}) => {
-        expect(Is.EmptyObject(value)).toBe(false);
+    it.each(dataForBadTesting)('is.object.empty: Should false for $value', ({value}) => {
+        expect(is.object.empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.EmptyObject: Should false for $value', ({value}) => {
-        expect(Is.Not.EmptyObject(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.object.not.empty: Should false for $value', ({value}) => {
+        expect(is.object.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.EmptyObject: Should true for $value', ({value}) => {
-        expect(Is.Not.EmptyObject(value)).toBe(true);
+    it.each(dataForBadTesting)('is.object.not.empty: Should true for $value', ({value}) => {
+        expect(is.object.not.empty(value)).toBe(true);
     });
 
 });

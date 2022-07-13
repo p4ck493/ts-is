@@ -1,4 +1,4 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 import {RegisterInIs} from '../../lib/decorators';
 
 @RegisterInIs({className: 'Person'})
@@ -21,7 +21,7 @@ class AnotherModel {
 
 }
 
-describe('Person.Or.Address or', () => {
+describe('Person.or.Address or', () => {
 
     const dataForGoodTesting: { value: any }[] = [
         {
@@ -99,20 +99,20 @@ describe('Person.Or.Address or', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Person.Or.Address: Should true for $value', ({value}) => {
-        expect(Is.Person.Or.Address(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.Person.or.Address: Should true for $value', ({value}) => {
+        expect(is.Person.or.Address(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Person.Or.Address: Should false for $value', ({value}) => {
-        expect(Is.Person.Or.Address(value)).toBe(false);
+    it.each(dataForBadTesting)('is.Person.or.Address: Should false for $value', ({value}) => {
+        expect(is.Person.or.Address(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Person.Or.Address: Should false for $value', ({value}) => {
-        expect(Is.Not.Person.Or.Address(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Person.or.Address: Should false for $value', ({value}) => {
+        expect(is.not.Person.or.Address(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Person.Or.Address: Should true for $value', ({value}) => {
-        expect(Is.Not.Person.Or.Address(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.Person.or.Address: Should true for $value', ({value}) => {
+        expect(is.not.Person.or.Address(value)).toBe(true);
     });
 
 });

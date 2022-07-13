@@ -1,7 +1,7 @@
 export interface FlagsToolInterface {
-  Method: boolean;
-  ModelWrapper: boolean;
-  BeforeWrapper: boolean;
-  AfterWrapper: boolean;
-  ConnectionWrapper: boolean;
+  method: boolean;
+  model: boolean;
+  all: boolean;
+  not: boolean;
+  connection: boolean;
 }

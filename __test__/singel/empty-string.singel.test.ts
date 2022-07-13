@@ -1,4 +1,4 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
 describe('Empty String singel', () => {
@@ -69,20 +69,20 @@ describe('Empty String singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.EmptyString: Should true for $value', ({value}) => {
-        expect(Is.EmptyString(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.string.empty: Should true for $value', ({value}) => {
+        expect(is.string.empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.EmptyString: Should false for $value', ({value}) => {
-        expect(Is.EmptyString(value)).toBe(false);
+    it.each(dataForBadTesting)('is.string.empty: Should false for $value', ({value}) => {
+        expect(is.string.empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.EmptyString: Should false for $value', ({value}) => {
-        expect(Is.Not.EmptyString(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.string.not.empty: Should false for $value', ({value}) => {
+        expect(is.string.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.EmptyString: Should true for $value', ({value}) => {
-        expect(Is.Not.EmptyString(value)).toBe(true);
+    it.each(dataForBadTesting)('is.string.not.empty: Should true for $value', ({value}) => {
+        expect(is.string.not.empty(value)).toBe(true);
     });
 
 });

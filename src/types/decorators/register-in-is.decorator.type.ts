@@ -4,6 +4,9 @@ export type registerInIsArgumentDecoratorType = {
   };
 };
 
-export type registerInIsConstructorDecoratorType = new () => registerInIsArgumentDecoratorType;
+export type registerInIsConstructorDecoratorType = {
+  new (): registerInIsArgumentDecoratorType,
+  [key: string]: any;
+};
 
 export type registerInIsDecoratorType = (constructor: registerInIsConstructorDecoratorType) => void;

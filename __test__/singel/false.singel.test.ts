@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('False singel', () => {
+describe('false singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -66,20 +66,20 @@ describe('False singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.False: Should true for $value', ({value}) => {
-        expect(Is.False(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.false: Should true for $value', ({value}) => {
+        expect(is.false(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.False: Should false for $value', ({value}) => {
-        expect(Is.False(value)).toBe(false);
+    it.each(dataForBadTesting)('is.false: Should false for $value', ({value}) => {
+        expect(is.false(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.False: Should false for $value', ({value}) => {
-        expect(Is.Not.False(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.false: Should false for $value', ({value}) => {
+        expect(is.not.false(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.False: Should true for $value', ({value}) => {
-        expect(Is.Not.False(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.false: Should true for $value', ({value}) => {
+        expect(is.not.false(value)).toBe(true);
     });
 
 });

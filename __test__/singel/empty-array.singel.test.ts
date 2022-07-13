@@ -1,4 +1,4 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
 describe('Empty Array singel', () => {
@@ -74,20 +74,20 @@ describe('Empty Array singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.EmptyArray: Should true for $value', ({value}) => {
-        expect(Is.EmptyArray(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.array.empty: Should true for $value', ({value}) => {
+        expect(is.array.empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.EmptyArray: Should false for $value', ({value}) => {
-        expect(Is.EmptyArray(value)).toBe(false);
+    it.each(dataForBadTesting)('is.array.empty: Should false for $value', ({value}) => {
+        expect(is.array.empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.EmptyArray: Should false for $value', ({value}) => {
-        expect(Is.Not.EmptyArray(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.array.not.empty: Should false for $value', ({value}) => {
+        expect(is.array.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.EmptyArray: Should true for $value', ({value}) => {
-        expect(Is.Not.EmptyArray(value)).toBe(true);
+    it.each(dataForBadTesting)('is.array.not.empty: Should true for $value', ({value}) => {
+        expect(is.not.array.empty(value)).toBe(true);
     });
 
 });

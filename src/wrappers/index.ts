@@ -1,4 +1,9 @@
-export { afterWrappers } from './after';
-export { beforeWrappers } from './before';
-export { modelWrappers } from './models';
+import {AllWrapper} from './all.wrapper';
+import {NotWrapper} from './not.wrapper';
+
 export { connectionWrappers } from './connections';
+
+export const wrappers = {
+    not: NotWrapper,
+    all: AllWrapper,
+};

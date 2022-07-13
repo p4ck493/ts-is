@@ -1,6 +1,6 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
-describe('Is singel', () => {
+describe('is singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -65,12 +65,12 @@ describe('Is singel', () => {
     const dataForBadTesting: {value: any}[] = [
     ];
 
-    it.each(dataForGoodTesting)('Is: Should true for $value', ({value}) => {
-        expect(Is(value)).toBe(value);
+    it.each(dataForGoodTesting)('is: Should true for $value', ({value}) => {
+        expect(is(value)).toBe(value);
     });
 
-    // it.each(dataForBadTesting)('Is: Should false for $value', ({value}) => {
-    //     expect(Is(value)).toBe(false);
+    // it.each(dataForBadTesting)('is: Should false for $value', ({value}) => {
+    //     expect(is(value)).toBe(false);
     // });
 
 });

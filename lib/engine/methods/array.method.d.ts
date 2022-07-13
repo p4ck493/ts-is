@@ -28,12 +28,5 @@
  * Is.Not.Person.Array(arr) // Returns true
  *
  */
-declare class ArrayMethod {
-    /**
-     *
-     * @param argument
-     * @param classRef TODO change argument "classRef" to array of function: [PersonModel, Symbol, Boolean, Number, ...]
-     */
-    static method<T>(argument: unknown, classRef?: new () => T): argument is Array<T>;
-}
+declare function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T>;
 export default ArrayMethod;

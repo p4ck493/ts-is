@@ -28,8 +28,11 @@ function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): 
             className = object.constructor.name;
         }
         Object.defineProperty(methods, className, {
+            configurable: true,
+            enumerable: true,
+            writable: true,
             value
-        })
+        });
     };
 }
 

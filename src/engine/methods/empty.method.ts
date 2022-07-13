@@ -1,7 +1,5 @@
-import ArrayMethod from './array.method';
-import {RegisterInIs} from '../../decorators';
-import ObjectMethod from './object.method';
-import StringMethod from './string.method';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+import {methods} from './index';
 
 
 /**
@@ -11,23 +9,13 @@ import StringMethod from './string.method';
  * @param argument is any type
  * @returns {boolean}
  */
-@RegisterInIs({
-    className: 'empty',
-    customMethod: 'method'
-})
-class EmptyMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): boolean {
-        const context: EmptyMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        if (StringMethod.method(argument) || ObjectMethod.method(argument) || ArrayMethod.method(argument)) {
-            return Object.keys(argument as object)?.length === 0;
-        }
-        return false;
+function EmptyMethod(argument: unknown): boolean {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    if (methods.string(argument) || methods.object(argument) || methods.array(argument)) {
+        return Object.keys(argument as object)?.length === 0;
     }
+    return false;
 }
 
 export default EmptyMethod;

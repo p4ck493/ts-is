@@ -7,11 +7,5 @@
  * Is.All.False()
  * Is.All.Not.False()
  */
-declare class FalseMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method(argument: unknown): argument is false;
-}
+declare function FalseMethod(argument: unknown): argument is false;
 export default FalseMethod;

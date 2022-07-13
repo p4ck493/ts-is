@@ -1,5 +1,5 @@
-import {RegisterInIs} from '../../decorators';
-import FunctionMethod from './function.method';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+import {methods} from './index';
 
 /**
  *
@@ -32,33 +32,22 @@ import FunctionMethod from './function.method';
  *
  */
 
-@RegisterInIs({
-    className: 'array',
-    customMethod: 'method'
-})
-class ArrayMethod {
-    /**
-     *
-     * @param argument
-     * @param classRef TODO change argument "classRef" to array of function: [PersonModel, Symbol, Boolean, Number, ...]
-     */
-    public static method<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
-        const context: ArrayMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
+function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
 
-        if (argument instanceof Array) {
-            if (FunctionMethod.method(classRef)) {
-                if (argument.length) {
-                    return argument.every((item: T) => item instanceof classRef);
-                } else {
-                    return false;
-                }
+    if (argument instanceof Array) {
+        if (methods.function(classRef)) {
+            if (argument.length) {
+                return argument.every((item: T) => item instanceof classRef);
+            } else {
+                return false;
             }
-            return true;
         }
-
-        return false;
+        return true;
     }
+
+    return false;
 }
 
 export default ArrayMethod;

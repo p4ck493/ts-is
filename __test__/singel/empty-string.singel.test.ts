@@ -32,12 +32,6 @@ describe('Empty String singel', () => {
             value: null
         },
         {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
             value: true
         },
         {
@@ -69,6 +63,15 @@ describe('Empty String singel', () => {
         },
     ];
 
+    const dataForGoodCaseTesting: {value: any}[] = [
+        {
+            value: 'undefined'
+        },
+        {
+            value: 'null'
+        },
+    ];
+
     it.each(dataForGoodTesting)('is.string.empty: Should true for $value', ({value}) => {
         expect(is.string.empty(value)).toBe(true);
     });
@@ -81,7 +84,11 @@ describe('Empty String singel', () => {
         expect(is.string.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.string.not.empty: Should true for $value', ({value}) => {
+    it.each(dataForBadTesting)('is.string.not.empty: Should false for $value', ({value}) => {
+        expect(is.string.not.empty(value)).toBe(false);
+    });
+
+    it.each(dataForGoodCaseTesting)('is.string.not.empty: Should true for $value', ({value}) => {
         expect(is.string.not.empty(value)).toBe(true);
     });
 

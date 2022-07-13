@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 /**
  *
@@ -9,20 +9,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.Null()
  * Is.All.Not.Null()
  */
-@RegisterInIs({
-    className: 'null',
-    customMethod: 'method'
-})
-class NullMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is null {
-        const context: NullMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return argument === null;
-    }
+function NullMethod(argument: unknown): argument is null {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return argument === null;
 }
 
 export default NullMethod;

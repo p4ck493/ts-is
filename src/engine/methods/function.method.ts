@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -16,20 +16,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.Function<PersonModel>()
  * Is.All.Not.Function<PersonModel>()
  */
-@RegisterInIs({
-    className: 'function',
-    customMethod: 'method'
-})
-class FunctionMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method<T extends () => void>(argument: unknown): argument is T {
-        const context: FunctionMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return {}.toString.call(argument) === '[object Function]';
-    }
+function FunctionMethod<T extends () => void>(argument: unknown): argument is T {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return {}.toString.call(argument) === '[object Function]';
 }
 
 export default FunctionMethod;

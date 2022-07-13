@@ -1,6 +1,5 @@
-import ArrayMethod from './array.method';
-import {RegisterInIs} from '../../decorators';
-import NullMethod from './null.method';
+import {methods} from './index';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -18,20 +17,10 @@ import NullMethod from './null.method';
  * Is.All.Object<PersonModel>()
  * Is.All.Not.Object<PersonModel>()
  */
-@RegisterInIs({
-    className: 'object',
-    customMethod: 'method'
-})
-class ObjectMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method<T extends object>(argument: unknown): argument is T {
-        const context: ObjectMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return typeof argument === 'object' && !ArrayMethod.method(argument) && !NullMethod.method(argument);
-    }
+function ObjectMethod<T extends object>(argument: unknown): argument is T {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return typeof argument === 'object' && !methods.array(argument) && !methods.null(argument);
 }
 
 export default ObjectMethod;

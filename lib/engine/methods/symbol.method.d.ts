@@ -7,11 +7,5 @@
  * Is.All.Symbol()
  * Is.All.Not.Symbol()
  */
-declare class SymbolMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method(argument: unknown): argument is symbol;
-}
+declare function SymbolMethod(argument: unknown): argument is symbol;
 export default SymbolMethod;

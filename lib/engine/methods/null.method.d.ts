@@ -7,11 +7,5 @@
  * Is.All.Null()
  * Is.All.Not.Null()
  */
-declare class NullMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method(argument: unknown): argument is null;
-}
+declare function NullMethod(argument: unknown): argument is null;
 export default NullMethod;

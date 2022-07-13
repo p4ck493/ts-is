@@ -1,4 +1,21 @@
-import {MethodInterface, ProxyMethodsInterface} from '../../interfaces/methods.interface';
+import {MethodInterface, MethodsInterface} from '../../interfaces/methods.interface';
+import ArrayMethod from './array.method';
+import BigIntMethod from './bigIntMethod';
+import BooleanMethod from './boolean.method';
+import CompareMethod from './compare.method';
+import EmptyMethod from './empty.method';
+import FalseMethod from './false.method';
+import FalsyMethod from './falsy.method';
+import FunctionMethod from './function.method';
+import InstanceofMethod from './instanceof.method';
+import NullMethod from './null.method';
+import NumberMethod from './number.method';
+import ObjectMethod from './object.method';
+import StringMethod from './string.method';
+import SymbolMethod from './symbol.method';
+import TrueMethod from './true.method';
+import TruthyMethod from './truthy.method';
+import UndefinedMethod from './undefined.method';
 
 /**
  * Use this const for register classes.
@@ -18,39 +35,22 @@ import {MethodInterface, ProxyMethodsInterface} from '../../interfaces/methods.i
  *
  */
 // TODO find how we can add only autocomplete
-export const methods: ProxyMethodsInterface & MethodInterface = {
-    array: (() => {
-    }) as any,
-    bigInt: (() => {
-    }) as any,
-    boolean: (() => {
-    }) as any,
-    compare: (() => {
-    }) as any,
-    empty: (() => {
-    }) as any,
-    false: (() => {
-    }) as any,
-    falsy: (() => {
-    }) as any,
-    function: (() => {
-    }) as any,
-    instanceof: (() => {
-    }) as any,
-    null: (() => {
-    }) as any,
-    number: (() => {
-    }) as any,
-    object: (() => {
-    }) as any,
-    string: (() => {
-    }) as any,
-    symbol: (() => {
-    }) as any,
-    true: (() => {
-    }) as any,
-    truthy: (() => {
-    }) as any,
-    undefined: (() => {
-    }) as any
+export const methods: MethodsInterface & MethodInterface = {
+    array: ArrayMethod as any,
+    bigInt: BigIntMethod as any,
+    boolean: BooleanMethod as any,
+    compare: CompareMethod as any,
+    empty: EmptyMethod as any,
+    false: FalseMethod as any,
+    falsy: FalsyMethod as any,
+    function: FunctionMethod as any,
+    instanceof: InstanceofMethod as any,
+    null: NullMethod as any,
+    number: NumberMethod as any,
+    object: ObjectMethod as any,
+    string: StringMethod as any,
+    symbol: SymbolMethod as any,
+    true: TrueMethod as any,
+    truthy: TruthyMethod as any,
+    undefined: UndefinedMethod as any
 };

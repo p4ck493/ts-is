@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -10,20 +10,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.Symbol()
  * Is.All.Not.Symbol()
  */
-@RegisterInIs({
-    className: 'symbol',
-    customMethod: 'method'
-})
-class SymbolMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is symbol {
-        const context: SymbolMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return typeof argument === 'symbol';
-    }
+function SymbolMethod(argument: unknown): argument is symbol {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return typeof argument === 'symbol';
 }
 
 export default SymbolMethod;

@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -10,20 +10,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.Number()
  * Is.All.Not.Number()
  */
-@RegisterInIs({
-    className: 'number',
-    customMethod: 'method'
-})
-class NumberMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is number {
-        const context: NumberMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return typeof argument === 'number' && !isNaN(argument);
-    }
+function NumberMethod(argument: unknown): argument is number {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return typeof argument === 'number' && !isNaN(argument);
 }
 
 export default NumberMethod;

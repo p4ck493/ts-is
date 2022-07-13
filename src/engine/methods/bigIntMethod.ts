@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 /**
  *
@@ -9,20 +9,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.Bigint()
  * Is.All.Not.Bigint()
  */
-@RegisterInIs({
-    className: 'bigInt',
-    customMethod: 'method'
-})
-class BigIntMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is BigInteger {
-        const context: BigIntMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return typeof argument === 'bigint';
-    }
+function BigIntMethod(argument: unknown): argument is BigInteger {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return typeof argument === 'bigint';
 }
 
 export default BigIntMethod;

@@ -1,4 +1,4 @@
-import {MethodInterface, ProxyMethodsInterface} from '../../interfaces/methods.interface';
+import {MethodInterface, MethodsInterface} from '../../interfaces/methods.interface';
 
 /**
  * Use this const for register classes.
@@ -17,4 +17,4 @@ import {MethodInterface, ProxyMethodsInterface} from '../../interfaces/methods.i
  * }
  *
  */
-export declare const methods: ProxyMethodsInterface & MethodInterface;
+export declare const methods: MethodsInterface & MethodInterface;

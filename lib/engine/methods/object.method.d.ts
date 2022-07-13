@@ -13,11 +13,5 @@
  * Is.All.Object<PersonModel>()
  * Is.All.Not.Object<PersonModel>()
  */
-declare class ObjectMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method<T extends object>(argument: unknown): argument is T;
-}
+declare function ObjectMethod<T extends object>(argument: unknown): argument is T;
 export default ObjectMethod;

@@ -74,6 +74,21 @@ describe('Empty Array singel', () => {
         },
     ];
 
+    const dataForGoodCaseTesting: {value: any}[] = [
+        {
+            value: ['test']
+        },
+        {
+            value: [1]
+        },
+        {
+            value: [[]]
+        },
+        {
+            value: [{}]
+        },
+    ];
+
     it.each(dataForGoodTesting)('is.array.empty: Should true for $value', ({value}) => {
         expect(is.array.empty(value)).toBe(true);
     });
@@ -86,8 +101,12 @@ describe('Empty Array singel', () => {
         expect(is.array.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.array.not.empty: Should true for $value', ({value}) => {
-        expect(is.not.array.empty(value)).toBe(true);
+    it.each(dataForBadTesting)('is.array.not.empty: Should false for $value', ({value}) => {
+        expect(is.array.not.empty(value)).toBe(false);
+    });
+
+    it.each(dataForGoodCaseTesting)('is.array.not.empty: Should true for $value', ({value}) => {
+        expect(is.array.not.empty(value)).toBe(true);
     });
 
 });

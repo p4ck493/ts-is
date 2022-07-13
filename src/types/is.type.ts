@@ -1,4 +1,4 @@
-import {ProxyMethodsInterface} from '../interfaces/methods.interface';
+import {MethodsInterface} from '../interfaces/methods.interface';
 import {
     AfterWrappersInterface,
     BeforeWrappersInterface,
@@ -6,9 +6,9 @@ import {
 } from '../interfaces/wrappers.interface';
 
 export type IsType = ((argument: unknown) => void) &
-    ProxyMethodsInterface &
+    MethodsInterface &
     BeforeWrappersInterface &
     ConnectionWrappersInterface &
     AfterWrappersInterface & {
-    [key: string]: ((argument: unknown) => unknown) & ProxyMethodsInterface & ConnectionWrappersInterface;
+    [key: string]: ((argument: unknown) => unknown) & MethodsInterface & ConnectionWrappersInterface;
 };

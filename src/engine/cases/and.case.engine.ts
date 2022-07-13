@@ -1,15 +1,14 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
-import InstanceofMethod from '../methods/instanceof.method';
-import BooleanMethod from '../methods/boolean.method';
+import {methods} from '../methods';
 
 function andCaseEngine(): boolean {
     const context: ContextCaseInterface = this;
     return context.lists.methods.every((methodObject) => {
-        const result: any = methodObject.method.call({}, ...context.argumentList);
-        if (BooleanMethod.method(result)) {
+        const result: any = methodObject.method.apply({}, context.argumentList);
+        if (methods.boolean(result)) {
             return result;
         } else {
-            return InstanceofMethod.method.call({}, context.argumentList, result.classRef)
+            return methods.instanceof.call({}, context.argumentList[0], result.classRef)
         }
 
     });

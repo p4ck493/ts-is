@@ -8,11 +8,5 @@
  * Is.All.Truthy()
  * Is.All.Not.Truthy()
  */
-declare class TruthyMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method(argument: unknown): argument is true;
-}
+declare function TruthyMethod(argument: unknown): argument is true;
 export default TruthyMethod;

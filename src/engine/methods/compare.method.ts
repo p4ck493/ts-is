@@ -1,69 +1,60 @@
-import {RegisterInIs} from '../../decorators';
-import NullMethod from './null.method';
-import UndefinedMethod from './undefined.method';
-import ArrayMethod from './array.method';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+import {methods} from './index';
 
 
 export enum TypeOfValueEnum {
     object = 'object',
 }
 
-@RegisterInIs({
-    className: 'compare',
-    customMethod: 'method'
-})
-class CompareMethod {
+/**
+ *
+ * @method Compare
+ * @param objectOne is generic type
+ * @param objectTwo is generic type
+ */
+function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    if (
+        methods.null(objectOne) ||
+        methods.undefined(objectOne) ||
+        methods.null(objectTwo) ||
+        methods.undefined(objectTwo)
+    ) {
+        return false;
+    }
 
-    /**
-     *
-     * @method Compare
-     * @param objectOne is generic type
-     * @param objectTwo is generic type
-     */
-    public static method<T>(objectOne: T, objectTwo: T): boolean {
-        const context: CompareMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        if (
-            NullMethod.method(objectOne) ||
-            UndefinedMethod.method(objectOne) ||
-            NullMethod.method(objectTwo) ||
-            UndefinedMethod.method(objectTwo)
-        ) {
-            return false;
-        }
+    const keysOfObjectOne: string[] = Object.keys(objectOne) ?? [];
+    const keysOfObjectTwo: string[] = Object.keys(objectTwo) ?? [];
 
-        const keysOfObjectOne: string[] = Object.keys(objectOne) ?? [];
-        const keysOfObjectTwo: string[] = Object.keys(objectTwo) ?? [];
+    if (!methods.array(keysOfObjectOne) || !methods.array(keysOfObjectTwo)) {
+        return false;
+    }
 
-        if (!ArrayMethod.method(keysOfObjectOne) || !ArrayMethod.method(keysOfObjectTwo)) {
-            return false;
-        }
+    if (keysOfObjectOne.length !== keysOfObjectOne.length) {
+        return false;
+    }
 
-        if (keysOfObjectOne.length !== keysOfObjectOne.length) {
-            return false;
-        }
-
-        if (!keysOfObjectOne.length && !keysOfObjectTwo.length) {
-            return true;
-        }
-
-        for (const keyOfObjectOne of keysOfObjectTwo) {
-            switch (typeof (objectOne as any)[keyOfObjectOne]) {
-                case TypeOfValueEnum.object:
-                    if (!this.method((objectOne as any)[keyOfObjectOne], (objectTwo as any)[keyOfObjectOne])) {
-                        return false;
-                    }
-                    break;
-                default:
-                    if ((objectOne as any)[keyOfObjectOne] !== (objectTwo as any)[keyOfObjectOne]) {
-                        return false;
-                    }
-                    break;
-            }
-        }
-
+    if (!keysOfObjectOne.length && !keysOfObjectTwo.length) {
         return true;
     }
+
+    for (const keyOfObjectOne of keysOfObjectTwo) {
+        switch (typeof (objectOne as any)[keyOfObjectOne]) {
+            case TypeOfValueEnum.object:
+                if (!CompareMethod((objectOne as any)[keyOfObjectOne], (objectTwo as any)[keyOfObjectOne])) {
+                    return false;
+                }
+                break;
+            default:
+                if ((objectOne as any)[keyOfObjectOne] !== (objectTwo as any)[keyOfObjectOne]) {
+                    return false;
+                }
+                break;
+        }
+    }
+
+    return true;
 }
 
 export default CompareMethod;

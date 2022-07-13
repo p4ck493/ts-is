@@ -13,11 +13,5 @@
  * Is.All.Function<PersonModel>()
  * Is.All.Not.Function<PersonModel>()
  */
-declare class FunctionMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method<T extends () => void>(argument: unknown): argument is T;
-}
+declare function FunctionMethod<T extends () => void>(argument: unknown): argument is T;
 export default FunctionMethod;

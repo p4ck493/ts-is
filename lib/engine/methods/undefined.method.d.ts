@@ -1,17 +1,11 @@
 /**
  *
- * @method Undefined
+ * @method undefined
  * @example
- * Is.Undefined()
- * Is.Not.Undefined()
- * Is.All.Undefined()
- * Is.All.Not.Undefined()
+ * Is.undefined()
+ * Is.Not.undefined()
+ * Is.All.undefined()
+ * Is.All.Not.undefined()
  */
-declare class UndefinedMethod {
-    /**
-     *
-     * @param argument
-     */
-    static method(argument: unknown): argument is undefined;
-}
+declare function UndefinedMethod(argument: unknown): argument is undefined;
 export default UndefinedMethod;

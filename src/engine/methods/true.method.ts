@@ -1,4 +1,4 @@
-import {RegisterInIs} from '../../decorators';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -10,20 +10,10 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.True()
  * Is.All.Not.True()
  */
-@RegisterInIs({
-    className: 'true',
-    customMethod: 'method'
-})
-class TrueMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is true {
-        const context: TrueMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return argument === true;
-    }
+function TrueMethod(argument: unknown): argument is true {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return argument === true;
 }
 
 export default TrueMethod;

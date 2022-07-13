@@ -1,7 +1,6 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
-import BooleanMethod from '../methods/boolean.method';
-import InstanceofMethod from '../methods/instanceof.method';
 import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import {methods} from '../methods';
 
 function wrapperAndCaseEngine(): boolean {
     const context: ContextCaseInterface = this;
@@ -13,11 +12,11 @@ function wrapperAndCaseEngine(): boolean {
 
     const execute = (methodObject: ListsProxyEngineInterface['methods'][0]): boolean => {
         // TODO check if allWrapper is exist and then work recursive for arguments
-        const result: any = methodObject.method.call({}, ...context.argumentList);
-        if (BooleanMethod.method(result)) {
+        const result: any = methodObject.method.apply({}, context.argumentList);
+        if (methods.boolean(result)) {
             return result;
         } else {
-            return InstanceofMethod.method.call({}, context.argumentList, result.classRef)
+            return methods.instanceof.call({}, context.argumentList[0], result.classRef)
         }
     };
 

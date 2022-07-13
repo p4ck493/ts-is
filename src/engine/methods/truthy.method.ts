@@ -1,5 +1,5 @@
-import {RegisterInIs} from '../../decorators';
-import FalsyMethod from './falsy.method';
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+import {methods} from './index';
 
 
 /**
@@ -12,20 +12,10 @@ import FalsyMethod from './falsy.method';
  * Is.All.Truthy()
  * Is.All.Not.Truthy()
  */
-@RegisterInIs({
-    className: 'truthy',
-    customMethod: 'method'
-})
-class TruthyMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is true {
-        const context: TruthyMethod = this; // TODO ContextMethodInterface
-        // console.log(context);
-        return !FalsyMethod.method(argument);
-    }
+function TruthyMethod(argument: unknown): argument is true {
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    // console.log(context);
+    return !methods.falsy(argument);
 }
 
 export default TruthyMethod;

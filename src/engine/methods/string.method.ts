@@ -1,6 +1,3 @@
-import {RegisterInIs} from '../../decorators';
-
-
 /**
  *
  * @method String
@@ -10,21 +7,13 @@ import {RegisterInIs} from '../../decorators';
  * Is.All.String()
  * Is.All.Not.String()
  */
-@RegisterInIs({
-    className: 'string',
-    customMethod: 'method'
-})
-class StringMethod {
-    /**
-     *
-     * @param argument
-     */
-    public static method(argument: unknown): argument is string {
-        console.log('argument', argument,  typeof argument === 'string');
-        const context: StringMethod = this; // TODO ContextMethodInterface
-        console.log('context', context);
-        return typeof argument === 'string';
-    }
+import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+
+function StringMethod(argument: unknown): argument is string {
+    console.log('argument', argument, typeof argument === 'string');
+    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
+    console.log('context', context);
+    return typeof argument === 'string';
 }
 
 export default StringMethod

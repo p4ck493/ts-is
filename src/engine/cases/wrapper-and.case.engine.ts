@@ -31,7 +31,7 @@ function wrapperAndCaseEngine(): boolean {
 
         console.log('methodObject&notWrapper', methodObject, notWrapper);
 
-        if (methodObject.index > notWrapper.index) {
+        if (notWrapper && methodObject.index > notWrapper.index) {
 
             if (execute(methodObject)) {
                 result = false;

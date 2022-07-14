@@ -1,23 +1,23 @@
 import {advancedDataForBadTesting, dataForBadTesting, dataForGoodTesting} from './state';
-import {Is} from '../../../../lib';
+import {is} from '../../../../lib';
 
 
-describe('Is.All.Not.Null.Or.Undefined', () => {
+describe('is.all.not.null.or.undefined', () => {
 
-    it.each(dataForBadTesting)('Is.All.Not.Null.Or.Undefined: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.Null.Or.Undefined(value)).toBe(true);
+    it.each(dataForBadTesting)('is.all.not.null.or.undefined: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.not.null.or.undefined(value)).toBe(true);
     });
 
-    it.each(dataForGoodTesting)('Is.All.Not.Null.Or.Undefined: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.Null.Or.Undefined(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.all.not.null.or.undefined: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.null.or.undefined(value)).toBe(false);
     });
 
-    it.each(advancedDataForBadTesting)('Is.All.Null.Or.Undefined: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.Null.Or.Undefined(value)).toBe(false);
+    it.each(advancedDataForBadTesting)('is.all.null.or.undefined: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.null.or.undefined(value)).toBe(false);
     });
 
-    it.each(advancedDataForBadTesting)('Is.All.Not.Null.Or.Undefined: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.Null.Or.Undefined(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.null.or.undefined: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.not.null.or.undefined(value)).toBe(true);
     });
 
 });

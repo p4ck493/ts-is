@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('BigInt singel', () => {
+describe('bigInt singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -66,20 +66,20 @@ describe('BigInt singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.BigInt: Should true for $value', ({value}) => {
-        expect(Is.BigInt(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.bigInt: Should true for $value', ({value}) => {
+        expect(is.bigInt(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.BigInt: Should false for $value', ({value}) => {
-        expect(Is.BigInt(value)).toBe(false);
+    it.each(dataForBadTesting)('is.bigInt: Should false for $value', ({value}) => {
+        expect(is.bigInt(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.BigInt: Should false for $value', ({value}) => {
-        expect(Is.Not.BigInt(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.bigInt: Should false for $value', ({value}) => {
+        expect(is.not.bigInt(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.BigInt: Should true for $value', ({value}) => {
-        expect(Is.Not.BigInt(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.bigInt: Should true for $value', ({value}) => {
+        expect(is.not.bigInt(value)).toBe(true);
     });
 
 });

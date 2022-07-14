@@ -5,6 +5,9 @@ export const dataForGoodTesting: {value: any[]}[] = [
     {
         value: [null]
     },
+    {
+        value: [null, undefined]
+    },
 ];
 
 export const dataForBadTesting: {value: any[]}[] = [

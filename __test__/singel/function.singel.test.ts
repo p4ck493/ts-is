@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('Null singel', () => {
+describe('function singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -69,20 +69,20 @@ describe('Null singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Function: Should true for $value', ({value}) => {
-        expect(Is.Function(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.function: Should true for $value', ({value}) => {
+        expect(is.function(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Function: Should false for $value', ({value}) => {
-        expect(Is.Function(value)).toBe(false);
+    it.each(dataForBadTesting)('is.function: Should false for $value', ({value}) => {
+        expect(is.function(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Function: Should false for $value', ({value}) => {
-        expect(Is.Not.Function(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.function: Should false for $value', ({value}) => {
+        expect(is.not.function(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Function: Should true for $value', ({value}) => {
-        expect(Is.Not.Function(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.function: Should true for $value', ({value}) => {
+        expect(is.not.function(value)).toBe(true);
     });
 
 });

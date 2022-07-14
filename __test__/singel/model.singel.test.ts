@@ -1,5 +1,5 @@
 import {RegisterInIs} from '../../lib/decorators';
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 @RegisterInIs()
 // @ts-ignore
@@ -83,20 +83,20 @@ describe('Model singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Person: Should true for $value', ({value}) => {
-        expect(Is.Person(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.Person: Should true for $value', ({value}) => {
+        expect(is.Person(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Array: Should false for $value', ({value}) => {
-        expect(Is.Person(value)).toBe(false);
+    it.each(dataForBadTesting)('is.Person: Should false for $value', ({value}) => {
+        expect(is.Person(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Person: Should false for $value', ({value}) => {
-        expect(Is.Not.Person(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Person: Should false for $value', ({value}) => {
+        expect(is.not.Person(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Person: Should true for $value', ({value}) => {
-        expect(Is.Not.Person(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.Person: Should true for $value', ({value}) => {
+        expect(is.not.Person(value)).toBe(true);
     });
 
 });

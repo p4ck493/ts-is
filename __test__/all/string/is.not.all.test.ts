@@ -1,24 +1,24 @@
-import {Is} from "../../../lib";
+import {is} from "../../../lib";
 import {advancedDataForBadTesting, dataForBadTesting, dataForGoodTesting} from './state';
 
 
-describe('Is.All.Not.String', () => {
+describe('is.all.not.string', () => {
 
-    it.each(dataForBadTesting)('Is.All.Not.String: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.String(value)).toBe(true);
+    it.each(dataForBadTesting)('is.all.not.string: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.not.string(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('Is.All.Not.String: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.String(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.string: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.not.string(value)).toBe(true);
     });
 
 
-    it.each(dataForGoodTesting)('Is.All.Not.String: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.Not.String(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.all.not.string: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.string(value)).toBe(false);
     });
 
-    it.each(advancedDataForBadTesting)('Is.All.String: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.String(value)).toBe(false);
+    it.each(advancedDataForBadTesting)('is.all.string: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.string(value)).toBe(false);
     });
 
 });

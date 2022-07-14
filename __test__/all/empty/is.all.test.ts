@@ -1,15 +1,15 @@
-import {Is} from "../../../lib";
+import {is} from "../../../lib";
 import {dataForBadTesting, dataForGoodTesting} from './state';
 
 
-describe('Is.All.Empty', () => {
+describe('is.all.empty', () => {
 
-    it.each(dataForGoodTesting)('Is.All.Empty: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Empty(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.all.empty: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.empty(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.All.Empty: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.Empty(value)).toBe(false);
+    it.each(dataForBadTesting)('is.all.empty: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.empty(value)).toBe(false);
     });
 
 });

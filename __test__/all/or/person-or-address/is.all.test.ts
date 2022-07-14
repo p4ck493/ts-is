@@ -1,15 +1,15 @@
 import {dataForBadTesting, dataForGoodTesting} from './state';
-import {Is} from '../../../../lib';
+import {is} from '../../../../lib';
 
 
-describe('Is.All.Person.Or.Man', () => {
+describe('is.all.Person.or.Man', () => {
 
-    it.each(dataForGoodTesting)('Is.All.Person.Or.Man: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.Person.Or.Man(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.all.Person.or.Man: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.Person.or.Man(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.All.Person.Or.Man: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.Person.Or.Man(value)).toBe(false);
+    it.each(dataForBadTesting)('is.all.Person.or.Man: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.Person.or.Man(value)).toBe(false);
     });
 
 });

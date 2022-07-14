@@ -1,4 +1,6 @@
-export { afterWrappers } from './after';
-export { beforeWrappers } from './before';
-export { modelWrappers } from './models';
-export { connectionWrappers } from './connections';
+declare const wrappers: {
+    not: any;
+    all: any;
+    or: any;
+};
+export default wrappers;

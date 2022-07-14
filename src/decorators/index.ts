@@ -1,3 +1,1 @@
-import { registerInIsDecorator } from './register-in-is.decorator';
-
-export const RegisterInIs: typeof registerInIsDecorator = registerInIsDecorator;
+export {default as RegisterInIs} from './register-in-is.decorator';

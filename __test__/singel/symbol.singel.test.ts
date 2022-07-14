@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('Symbol singel', () => {
+describe('symbol singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -66,20 +66,20 @@ describe('Symbol singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Symbol: Should true for $value', ({value}) => {
-        expect(Is.Symbol(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.symbol: Should true for $value', ({value}) => {
+        expect(is.symbol(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Symbol: Should false for $value', ({value}) => {
-        expect(Is.Symbol(value)).toBe(false);
+    it.each(dataForBadTesting)('is.symbol: Should false for $value', ({value}) => {
+        expect(is.symbol(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Symbol: Should false for $value', ({value}) => {
-        expect(Is.Not.Symbol(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.symbol: Should false for $value', ({value}) => {
+        expect(is.not.symbol(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Symbol: Should true for $value', ({value}) => {
-        expect(Is.Not.Symbol(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.symbol: Should true for $value', ({value}) => {
+        expect(is.not.symbol(value)).toBe(true);
     });
 
 });

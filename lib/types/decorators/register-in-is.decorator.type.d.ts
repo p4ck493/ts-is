@@ -3,5 +3,8 @@ export declare type registerInIsArgumentDecoratorType = {
         name: string;
     };
 };
-export declare type registerInIsConstructorDecoratorType = new () => registerInIsArgumentDecoratorType;
+export declare type registerInIsConstructorDecoratorType = {
+    new (): registerInIsArgumentDecoratorType;
+    [key: string]: any;
+};
 export declare type registerInIsDecoratorType = (constructor: registerInIsConstructorDecoratorType) => void;

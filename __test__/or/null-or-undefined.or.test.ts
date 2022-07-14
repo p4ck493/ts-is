@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('Undefined.Or.Null or', () => {
+describe('undefined.or.null or', () => {
 
     const dataForGoodTesting: { value: any }[] = [
         {
@@ -67,20 +67,20 @@ describe('Undefined.Or.Null or', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Undefined.Or.Null: Should true for $value', ({value}) => {
-        expect(Is.Undefined.Or.Null(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.undefined.or.null: Should true for $value', ({value}) => {
+        expect(is.undefined.or.null(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Undefined.Or.Null: Should false for $value', ({value}) => {
-        expect(Is.Undefined.Or.Null(value)).toBe(false);
+    it.each(dataForBadTesting)('is.undefined.or.null: Should false for $value', ({value}) => {
+        expect(is.undefined.or.null(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Undefined.Or.Null: Should false for $value', ({value}) => {
-        expect(Is.Not.Undefined.Or.Null(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.undefined.or.null: Should false for $value', ({value}) => {
+        expect(is.not.undefined.or.null(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Undefined.Or.Null: Should true for $value', ({value}) => {
-        expect(Is.Not.Undefined.Or.Null(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.undefined.or.null: Should true for $value', ({value}) => {
+        expect(is.not.undefined.or.null(value)).toBe(true);
     });
 
 });

@@ -1,11 +1,11 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
 class Person {
 
 }
 
-describe('Array singel', () => {
+describe('array singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -88,20 +88,20 @@ describe('Array singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Array: Should true for $value', ({value}) => {
-        expect(Is.Array(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.array: Should true for $value', ({value}) => {
+        expect(is.array(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Array: Should false for $value', ({value}) => {
-        expect(Is.Array(value)).toBe(false);
+    it.each(dataForBadTesting)('is.array: Should false for $value', ({value}) => {
+        expect(is.array(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Array: Should false for $value', ({value}) => {
-        expect(Is.Not.Array(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.array: Should false for $value', ({value}) => {
+        expect(is.not.array(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Array: Should true for $value', ({value}) => {
-        expect(Is.Not.Array(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.array: Should true for $value', ({value}) => {
+        expect(is.not.array(value)).toBe(true);
     });
 
     const dataForGoodAdvancedTesting: {value: any, classRef: new () => unknown}[] = [
@@ -111,12 +111,23 @@ describe('Array singel', () => {
         },
     ];
 
-    it.each(dataForGoodAdvancedTesting)('Is.Array: Should true for $value & $classRef', ({value, classRef}) => {
-        expect(Is.Array(value, classRef)).toBe(true);
+    it.each(dataForGoodAdvancedTesting)('is.array: Should true for $value & $classRef', ({value, classRef}) => {
+        expect(is.array(value, classRef)).toBe(true);
     });
 
-    it.each(dataForGoodAdvancedTesting)('Is.Not.Array: Should false for $value & $classRef', ({value, classRef}) => {
-        expect(Is.Not.Array(value, classRef)).toBe(false);
+    it.each(dataForGoodAdvancedTesting)('is.not.array: Should false for $value & $classRef', ({value, classRef}) => {
+        expect(is.not.array(value, classRef)).toBe(false);
     });
+
+    // TODO new case
+    // const dataForGoodAdvancedTesting1: {value: any}[] = [
+    //     {
+    //         value: [1],
+    //     },
+    // ];
+    //
+    // it.each(dataForGoodAdvancedTesting1)('is.array: Should true for $value', ({value}) => {
+    //     expect(is.array.all.number(value)).toBe(true);
+    // });
 
 });

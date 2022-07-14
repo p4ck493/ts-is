@@ -1,7 +1,7 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
-describe('Boolean singel', () => {
+describe('boolean singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -66,20 +66,20 @@ describe('Boolean singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Boolean: Should true for $value', ({value}) => {
-        expect(Is.Boolean(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.boolean: Should true for $value', ({value}) => {
+        expect(is.boolean(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Boolean: Should false for $value', ({value}) => {
-        expect(Is.Boolean(value)).toBe(false);
+    it.each(dataForBadTesting)('is.boolean: Should false for $value', ({value}) => {
+        expect(is.boolean(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Boolean: Should false for $value', ({value}) => {
-        expect(Is.Not.Boolean(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.boolean: Should false for $value', ({value}) => {
+        expect(is.not.boolean(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Boolean: Should true for $value', ({value}) => {
-        expect(Is.Not.Boolean(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.boolean: Should true for $value', ({value}) => {
+        expect(is.not.boolean(value)).toBe(true);
     });
 
 });

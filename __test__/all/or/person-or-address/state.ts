@@ -1,5 +1,6 @@
 import {RegisterInIs} from '../../../../lib/decorators';
 
+
 @RegisterInIs()
 // @ts-ignore
 class Person {
@@ -8,7 +9,7 @@ class Person {
 
 @RegisterInIs()
 // @ts-ignore
-class Woman extends Person{
+class Woman extends Person {
 
 }
 
@@ -35,7 +36,15 @@ export const dataForGoodTesting: {value: any[]}[] = [
     {
         value: [new Person(), [new Woman()], new ManModel()]
     },
+    {
+        value: [new ManModel(), new Person(), new ManModel()]
+    },
 ];
+
+// TODO create another data for check this:
+// {
+//     value: [[]]
+// },
 
 export const dataForBadTesting: {value: any[]}[] = [
     {
@@ -82,9 +91,6 @@ export const dataForBadTesting: {value: any[]}[] = [
     },
     {
         value: [0]
-    },
-    {
-        value: [[]]
     },
     {
         value: [Function]

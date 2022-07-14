@@ -1,4 +1,11 @@
-export { afterWrappers } from './after';
-export { beforeWrappers } from './before';
-export { modelWrappers } from './models';
-export { connectionWrappers } from './connections';
+// TODO interfaces
+const wrappers = {
+    not: (() => {
+    }) as any,
+    all: (() => {
+    }) as any,
+    or: (() => {
+    }) as any,
+};
+
+export default wrappers;

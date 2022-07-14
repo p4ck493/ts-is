@@ -1,15 +1,15 @@
-import {Is} from "../../../lib";
+import {is} from "../../../lib";
 import {dataForBadTesting, dataForGoodTesting} from './state';
 
 
-describe('Is.All.BigInt', () => {
+describe('is.all.bigInt', () => {
 
-    it.each(dataForGoodTesting)('Is.All.BigInt: Should true for $value', ({value}: {value: any}) => {
-        expect(Is.All.BigInt(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.all.bigInt: Should true for $value', ({value}: {value: any}) => {
+        expect(is.all.bigInt(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.All.BigInt: Should false for $value', ({value}: {value: any}) => {
-        expect(Is.All.BigInt(value)).toBe(false);
+    it.each(dataForBadTesting)('is.all.bigInt: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.bigInt(value)).toBe(false);
     });
 
 });

@@ -1,4 +1,4 @@
-import {Is} from '../../lib';
+import {is} from '../../lib';
 
 
 describe('Object singel', () => {
@@ -41,20 +41,20 @@ describe('Object singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('Is.Compare: Should true for $first === $second', ({first, second}) => {
-        expect(Is.Compare(first, second)).toBe(true);
+    it.each(dataForGoodTesting)('is.compare: Should true for $first === $second', ({first, second}) => {
+        expect(is.compare(first, second)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('Is.Compare: Should false for $first === $second', ({first, second}) => {
-        expect(Is.Compare(first, second)).toBe(false);
+    it.each(dataForBadTesting)('is.compare: Should false for $first === $second', ({first, second}) => {
+        expect(is.compare(first, second)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('Is.Not.Compare: Should false for $first === $second', ({first, second}) => {
-        expect(Is.Not.Compare(first, second)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.compare: Should false for $first === $second', ({first, second}) => {
+        expect(is.not.compare(first, second)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('Is.Not.Compare: Should true for $first === $second', ({first, second}) => {
-        expect(Is.Not.Compare(first, second)).toBe(true);
+    it.each(dataForBadTesting)('is.not.compare: Should true for $first === $second', ({first, second}) => {
+        expect(is.not.compare(first, second)).toBe(true);
     });
 
 });

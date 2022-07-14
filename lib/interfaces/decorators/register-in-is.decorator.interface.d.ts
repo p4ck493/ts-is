@@ -1,3 +1,4 @@
 export interface RegisterInIsDecoratorInterface {
-    className: string;
+    className?: string;
+    customMethod?: string;
 }

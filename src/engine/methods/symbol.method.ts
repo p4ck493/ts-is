@@ -1,6 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
-
-
 /**
  *
  * @method Symbol
@@ -11,8 +8,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Symbol()
  */
 function SymbolMethod(argument: unknown): argument is symbol {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return typeof argument === 'symbol';
 }
 

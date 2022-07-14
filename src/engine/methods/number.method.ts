@@ -1,4 +1,4 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
+
 
 
 /**
@@ -11,8 +11,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Number()
  */
 function NumberMethod(argument: unknown): argument is number {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return typeof argument === 'number' && !isNaN(argument);
 }
 

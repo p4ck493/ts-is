@@ -1,25 +1,26 @@
 import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
-import orCaseEngine from '../../cases/or.case.engine';
-import wrapperOrCaseEngine from '../../cases/wrapper-or.case.engine';
+import OrCaseEngine from '../../cases/or.case.engine';
+import WrapperOrCaseEngine from '../../cases/wrapper-or.case.engine';
 import {findKey} from '../../../tools/find-key.tool';
 import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
 import {CaseConst} from '../../../consts/case.const';
 import CaseEnum from '../../../enums/case.enum';
-import andCaseEngine from '../../cases/and.case.engine';
-import wrapperAndCaseEngine from '../../cases/wrapper-and.case.engine';
+import AndCaseEngine from '../../cases/and.case.engine';
+import WrapperAndCaseEngine from '../../cases/wrapper-and.case.engine';
 import ContextCaseInterface from '../../../interfaces/context-case.interface';
+import BaseCaseEngine from '../../cases/base.case.engine';
 
 type proxyRecursiveApplyType = (
     targetApply: any,
     thisArg: unknown,
-    argumentList: unknown[],
+    argumentList: unknown[] & unknown[][],
 ) => ReturnType<typeof targetApply>;
 
-const recordOfCases: { [key: number]: () => boolean } = {
-    [CaseEnum.AND]: andCaseEngine,
-    [CaseEnum.OR]: orCaseEngine,
-    [CaseEnum.WRAPPER_OR]: wrapperOrCaseEngine,
-    [CaseEnum.WRAPPER_AND]: wrapperAndCaseEngine,
+const recordOfCases: Record<number, BaseCaseEngine> = {
+    [CaseEnum.AND]: AndCaseEngine,
+    [CaseEnum.OR]: OrCaseEngine,
+    [CaseEnum.WRAPPER_OR]: WrapperOrCaseEngine,
+    [CaseEnum.WRAPPER_AND]: WrapperAndCaseEngine,
 };
 
 /**
@@ -51,7 +52,7 @@ function proxyRecursiveApply(
             lists,
         };
 
-        return recordOfCases[key].call(context);
+        return (recordOfCases[key] as BaseCaseEngine).runCase.call(context);
     };
 }
 

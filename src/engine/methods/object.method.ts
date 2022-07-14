@@ -1,5 +1,4 @@
 import {methods} from './index';
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 
 
 /**
@@ -18,8 +17,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Object<PersonModel>()
  */
 function ObjectMethod<T extends object>(argument: unknown): argument is T {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return typeof argument === 'object' && !methods.array(argument) && !methods.null(argument);
 }
 

@@ -1,5 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
-
 /**
  *
  * @method Bigint
@@ -10,8 +8,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Bigint()
  */
 function BigIntMethod(argument: unknown): argument is BigInteger {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return typeof argument === 'bigint';
 }
 

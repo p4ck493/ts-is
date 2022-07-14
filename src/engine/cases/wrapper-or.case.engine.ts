@@ -1,83 +1,108 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
 import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 import {methods} from '../methods';
+import BaseCaseEngine from './base.case.engine';
 
-function wrapperOrCaseEngine(): boolean {
-    const context: ContextCaseInterface = this;
+class WrapperOrCaseEngine extends BaseCaseEngine {
+    public static override runCase(): boolean {
+        const context: ContextCaseInterface = this as unknown as ContextCaseInterface;
 
-    const notWrapper: ListsProxyEngineInterface['not'][0] = context.lists.not[0];
-    const allWrapper: ListsProxyEngineInterface['all'][0] = context.lists.all[0];
+        const notWrapper: ListsProxyEngineInterface['not'][0] = context.lists.not[0];
+        const allWrapper: ListsProxyEngineInterface['all'][0] = context.lists.all[0];
+        const orWrapper: ListsProxyEngineInterface['or'][0] = context.lists.or[0];
 
-    const execute = (methodObject: ListsProxyEngineInterface['methods'][0], argument: unknown[]): boolean => {
-        const result: any = methodObject.method.apply({}, argument);
-        if (methods.boolean(result)) {
-            return result;
-        } else {
-            return methods.instanceof.call({}, argument[0], result.classRef)
-        }
-    }
+        const middleware = (methodObject: ListsProxyEngineInterface['methods'][0]): boolean => {
 
-    const middleware = (methodObject: ListsProxyEngineInterface['methods'][0]): boolean => {
+            return BaseCaseEngine.runCommand(methodObject, context.argumentList);
+
+        };
+
+        let result: boolean = true;
 
         if (allWrapper) {
 
-            const recursive = (...args: unknown[]): boolean => {
-                // TODO problem with every, if we will check: is.all.not.null.or.undefined, that we check all is null and is undefined, why?
-                return args.every((argument: unknown): boolean => {
-                    if (methods.array(argument) && argument.length) {
-                        if (methodObject.method instanceof methods.empty) {
-                            if (argument.some((item) => methods.array(item))) {
-                                return recursive(...argument);
-                            }
-                        } else {
-                            return recursive(...argument);
-                        }
-                    }
-                    return execute(methodObject, [argument]);
-                });
-            };
-
-            return recursive(...(context.argumentList as []));
-
-        } else {
-            return execute(methodObject, context.argumentList);
-        }
-
-    };
-
-    let result: boolean = true;
-
-    let methodObject: ListsProxyEngineInterface['methods'][0];
-
-    for (let index: number = 0; index < context.lists.methods.length; index++) {
-
-        methodObject = context.lists.methods[index];
-
-        if (notWrapper && methodObject.index > notWrapper.index) {
-
-            // is.not.person.or.string()
             // is.all.not.person.or.man()
-
-            result = !middleware(methodObject);
-            if (!result) {
-                break;
-            }
-
-        } else {
-
             // is.all.person.or.man()
 
-            result = middleware(methodObject);
+            const methodListForCheck = context.lists.methods.filter((method) => {
+                return method.index > (notWrapper?.index ?? (orWrapper.index - 2));
+            });
 
-            if (result) {
-                break;
+            const recursive = (argumentList: unknown[][]): boolean => {
+                const listForNextInteraction: unknown[][] = [];
+                const listForNow: unknown[][] = [];
+                let localResult: boolean = false;
+                argumentList?.forEach((argument: unknown[]) => {
+                    if (methods.array(argument) && argument?.length) {
+                        if (argument.some((arg) => methods.array(arg))) {
+                            argument.forEach((arg) => {
+                                if (methods.array(arg) && arg.length) {
+                                    listForNextInteraction.push(arg);
+                                } else {
+                                    listForNow.push([arg]);
+                                }
+                            });
+                        } else {
+                            listForNow.push(...argument.map((arg) => {
+                                return [arg];
+                            }));
+                        }
+                    } else {
+                        listForNow.push(argument);
+                    }
+                });
+                if (listForNow.length) {
+                    const runCommand = (argument: unknown[]): boolean => {
+                        return methodListForCheck.some((method) => {
+                            return BaseCaseEngine.runCommand(method, argument);
+                        });
+                    };
+                    localResult = listForNow.every((argument) => runCommand(argument));
+                    if (notWrapper) {
+                        localResult = !localResult;
+                    }
+                }
+                if (!localResult) {
+                    if (listForNextInteraction.length) {
+                        localResult = recursive(listForNextInteraction);
+                    }
+                }
+                return localResult;
+            };
+
+            result = recursive(context.argumentList);
+            // if (notWrapper) {
+            //     result = !result;
+            // }
+
+
+        } else {
+
+            // is.not.Person.or.Man
+
+            let methodObject: ListsProxyEngineInterface['methods'][0];
+
+            for (let index: number = 0; index < context.lists.methods.length; index++) {
+
+                methodObject = context.lists.methods[index];
+
+                if (methodObject.index > notWrapper.index) {
+
+                    // is.not.person.or.string()
+
+                    result = !middleware(methodObject);
+                    if (!result) {
+                        break;
+                    }
+
+                }
+
             }
 
         }
 
+        return result;
     }
-
-    return result;
 }
 
-export default wrapperOrCaseEngine;
+export default WrapperOrCaseEngine;

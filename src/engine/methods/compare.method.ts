@@ -1,4 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 import {methods} from './index';
 
 
@@ -13,7 +12,6 @@ export enum TypeOfValueEnum {
  * @param objectTwo is generic type
  */
 function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
     if (
         methods.null(objectOne) ||
         methods.undefined(objectOne) ||

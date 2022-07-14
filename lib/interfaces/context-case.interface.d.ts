@@ -2,6 +2,6 @@ import {ListsProxyEngineInterface} from './engine/proxy/lists.proxy.engine.inter
 
 export default interface ContextCaseInterface {
     targetApply: unknown;
-    argumentList: unknown[];
+    argumentList: unknown[] & unknown[][];
     lists: ListsProxyEngineInterface;
 }

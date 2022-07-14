@@ -16,8 +16,8 @@ describe('is.all.array.not.empty', () => {
         expect(is.all.array.not.empty(value)).toBe(false);
     });
 
-    it.each(dataForGoodCaseTesting)('is.all.array.not.empty: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.array.not.empty(value)).toBe(true);
+    it.each(dataForGoodCaseTesting)('is.all.array.not.empty: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.array.not.empty(value)).toBe(false);
     });
 
     it.each(advancedDataForBadTesting)('is.array.all.empty: Should false for $value', ({value}: {value: any}) => {

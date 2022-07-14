@@ -37,9 +37,14 @@ export const dataForGoodTesting: {value: any[]}[] = [
         value: [new Person(), [new Woman()], new ManModel()]
     },
     {
-        value: [new Person(), new Woman(), new ManModel()]
+        value: [new ManModel(), new Person(), new ManModel()]
     },
 ];
+
+// TODO create another data for check this:
+// {
+//     value: [[]]
+// },
 
 export const dataForBadTesting: {value: any[]}[] = [
     {
@@ -86,9 +91,6 @@ export const dataForBadTesting: {value: any[]}[] = [
     },
     {
         value: [0]
-    },
-    {
-        value: [[]]
     },
     {
         value: [Function]

@@ -1,4 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
 import {methods} from './index';
 
 /**
@@ -33,8 +32,6 @@ import {methods} from './index';
  */
 
 function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
 
     if (argument instanceof Array) {
         if (methods.function(classRef)) {

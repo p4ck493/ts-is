@@ -1,5 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
-
 /**
  *
  * @method Null
@@ -10,8 +8,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Null()
  */
 function NullMethod(argument: unknown): argument is null {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return argument === null;
 }
 

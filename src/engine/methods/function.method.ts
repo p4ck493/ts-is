@@ -1,6 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
-
-
 /**
  *
  * @method Function
@@ -17,8 +14,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.Function<PersonModel>()
  */
 function FunctionMethod<T extends () => void>(argument: unknown): argument is T {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return {}.toString.call(argument) === '[object Function]';
 }
 

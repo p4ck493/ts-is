@@ -1,6 +1,3 @@
-import {ContextMethodInterface} from '../../interfaces/context-method.interface';
-
-
 /**
  *
  * @method True
@@ -11,8 +8,6 @@ import {ContextMethodInterface} from '../../interfaces/context-method.interface'
  * Is.All.Not.True()
  */
 function TrueMethod(argument: unknown): argument is true {
-    const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     return argument === true;
 }
 

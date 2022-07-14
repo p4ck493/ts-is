@@ -80,11 +80,7 @@ class WrapperOrCaseEngine extends BaseCaseEngine {
 
             // is.not.Person.or.Man
 
-            let methodObject: ListsProxyEngineInterface['methods'][0];
-
-            for (let index: number = 0; index < context.lists.methods.length; index++) {
-
-                methodObject = context.lists.methods[index];
+            for (const methodObject of context.lists.methods) {
 
                 if (methodObject.index > notWrapper.index) {
 

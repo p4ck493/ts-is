@@ -40,11 +40,7 @@ class WrapperAndCaseEngine extends BaseCaseEngine {
 
         let result: boolean = true;
 
-        let methodObject: ListsProxyEngineInterface['methods'][0];
-
-        for (let index: number = 0; index < context.lists.methods.length; index++) {
-
-            methodObject = context.lists.methods[index];
+        for (const methodObject of context.lists.methods) {
 
             if (notWrapper && methodObject.index > notWrapper.index) {
 

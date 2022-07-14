@@ -3,11 +3,6 @@ import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 
-/**
- *
- * @param index
- * @param lists
- */
 function proxyRecursiveGet(
     index: number,
     lists: ListsProxyEngineInterface

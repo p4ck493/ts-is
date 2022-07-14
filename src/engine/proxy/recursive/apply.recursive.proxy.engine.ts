@@ -23,10 +23,6 @@ const recordOfCases: Record<number, BaseCaseEngine> = {
     [CaseEnum.WRAPPER_AND]: WrapperAndCaseEngine,
 };
 
-/**
- *
- * @param lists
- */
 function proxyRecursiveApply(
     lists: ListsProxyEngineInterface,
 ): proxyRecursiveApplyType {

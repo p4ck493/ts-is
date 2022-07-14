@@ -1,5 +1,5 @@
-import {methods} from '../methods';
-import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { methods } from '../methods';
+import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 interface BaseCaseEngineInterface {
   runCase: () => boolean;

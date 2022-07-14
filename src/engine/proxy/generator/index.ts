@@ -1,5 +1,5 @@
-import {proxyGeneratorGet} from './get.generator.proxy.engine';
-import {proxyGeneratorApply} from './apply.generator.proxy.engine';
+import { proxyGeneratorGet } from './get.generator.proxy.engine';
+import { proxyGeneratorApply } from './apply.generator.proxy.engine';
 
 /**
  *

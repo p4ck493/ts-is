@@ -1,9 +1,9 @@
-import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 import OrCaseEngine from '../../cases/or.case.engine';
 import WrapperOrCaseEngine from '../../cases/wrapper-or.case.engine';
-import {findKey} from '../../../tools/find-key.tool';
-import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
-import {CaseConst} from '../../../consts/case.const';
+import { findKey } from '../../../tools/find-key.tool';
+import { FlagsToolInterface } from '../../../interfaces/tools/flags.tool.interface';
+import { CaseConst } from '../../../consts/case.const';
 import CaseEnum from '../../../enums/case.enum';
 import AndCaseEngine from '../../cases/and.case.engine';
 import WrapperAndCaseEngine from '../../cases/wrapper-and.case.engine';

@@ -1,5 +1,5 @@
-import {afterWrapperType, beforeWrapperType} from '../types/wrapper.type';
-import {MethodsInterface} from './methods.interface';
+import { afterWrapperType, beforeWrapperType } from '../types/wrapper.type';
+import { MethodsInterface } from './methods.interface';
 
 export interface BeforeWrappersInterface {
   all: beforeWrapperType &

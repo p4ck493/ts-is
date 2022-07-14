@@ -15,7 +15,7 @@ import EmptyMethod from '../engine/methods/empty.method';
 import InstanceofMethod from '../engine/methods/instanceof.method';
 import TruthyMethod from '../engine/methods/truthy.method';
 import FalsyMethod from '../engine/methods/falsy.method';
-import {ConnectionWrappersInterface} from './wrappers.interface';
+import { ConnectionWrappersInterface } from './wrappers.interface';
 
 export interface MethodInterface {
   [key: string]: {

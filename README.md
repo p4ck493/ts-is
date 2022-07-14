@@ -1,240 +1,285 @@
-# @p4ck493/ts-is
-2655 Tests
-
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
 ![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
+![Issues](https://img.shields.io/github/issues/p4ck493/ts-is)
+![Forks](https://img.shields.io/github/forks/p4ck493/ts-is)
+![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
+![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
+
+# ts-is
+
+> 2666 Tests
+
+## Prerequisites
+
+this package was created in order to simplify writing in typescript / javascript, it often happens that you need to have
+checks for different types of data, these checks can be "huge", but if you could simply describe in words what we want
+to check?
+
+For example, why write:
+
+```typescript
+if (
+    typeof variable === 'object' &&
+    variable !== null &&
+    !Array.isArray(variable)
+) {
+}
+```
+
+if you can write something like:
+
+```typescript
+if (is.object(variable)) {
+}
+```
+
+## Table of contents
+
+- [ts-is](#ts-is)
+    - [Prerequisites](#prerequisites)
+    - [Table of contents](#table-of-contents)
+    - [Installation](#installation)
+    - [Usage](#usage)
+        - [Import](#import)
+        - [Example](#example)
+          - [Methods](#methods)
+          - [Methods with connection](#methods-with-connection)
+          - [Methods with wrappers](#methods-with-wrappers)
+          - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
+          - [Methods with your models](#methods-with-your-models)
+          - [Custom method](#custom-method)
+    - [API](#api)
+    - [Contributing](#contributing)
+    - [Authors](#authors)
+    - [License](#license)
 
 ## Installation
 
-```bash
-$ npm install @p4ck493/ts-is
+```sh
+npm install @p4ck493/ts-is
 ```
 
-## Import
+## Usage
+
+### Import
+
+```sh
+import {is} from "@p4ck493/ts-is";
+```
+
+### Example
+
+#### Methods
 
 ```typescript
-import {Is} from "@p4ck493/ts-is";
+is.array([]) // true
+
+is.bigInt(1n) // true
+
+is.boolean(false) // true
+
+is.compare({a: 1}, {a: 1}) // true
+
+is.empty('') // true
+
+is.false(false) // true
+
+is.falsy('') // true 
+
+is.function((() => {})) // true
+
+is.instanceof((new Boolean(false)), Boolean) // true
+
+is.null(null) // true
+
+is.number(0) // true
+
+is.object({}) // true
+
+is.string('') // true
+
+is.symbol(Symbol()) // true
+
+is.true(true) // true
+
+is.truthy(1) // true
+
+is.undefined(undefined) // true
 ```
 
-
-## Some examples:
+#### Methods with connection
 
 ```typescript
+is.array.empty([]) // true
 
-    import {RegisterInIs} from './index';
-    
-    Is.Null("unknown") // Return false
-    Is.Not.Null("unknown") // Return true
-    Is.Number(0) // Return true
-    Is.Number("0") // Return false
-    Is.Not.Number(0) // Return false
-    Is.Not.Number("0") // Return true
-    Is.Not.Number(NaN) // Return true
-    Is.Number(NaN) // Return false
-    
-    // Why do you need to use the package?
-    // because you don't want to write like this:
-    if (
-        typeof variable === 'object' &&
-        variable !== null &&
-        !Array.isArray(variable)
-    ) {
-    
-    }
-    
-    // but you want to write like this:
-    if (Is.Object(variable)) {
-    
-    }
-    
-    // Below another examples
-    
-    Is.Function(variable)
-    // Use generic if you need to specific type after "if"
-    Is.Function<typeof variable>(variable)
-    Is.Function<FunctionName>(variable)
-    
-    Is.Array(variable)
-    
-    Is.All.Boolean([true, false, [true, [false]], 0]) // Result is false beacouse in array exist 0
-    Is.All.Not.Boolean([true, false, [true, [false]], 0]) // Result is true beacouse in array exist 0
-    
-    // Another cases
-    
-    // Or
-    Is.Null.Or.Undefined(variable)
-    Is.Undefined.Or.Null.Or.Empty(variable)
-    Is.Not.Null.Or.Undefined.Or.Boolean(variable)
-    Is.All.Number.Or.String(variable)
-    
-    // Case with model
-    Is.Person.Or.Address(variable)
-    Is.Not.Address.Or.AnotherModel(variable)
-    Is.All.Person.Or.AnotherModel(variable)
-    Is.All.Not.AnotherModel.Or.Address(variable)
-    
-    // Is.Falsy will return true in these cases: false, null, undefined, 0, -0, NaN, "", '', ``; 
-    // Is.Truthy will return true in these cases: [], 'undefined', 'null', Symbol(), true, BigInt(1), {}, Function, () => {}, BigInt, Symbol;
-    
-    // Also, if you need to test some models, you can register the models for packaging and use them:
-    
-    @RegisterInIs()
-    class PersonModel {
-    
-    }
-    
-    @RegisterInIs({
-        className: 'Address'
-    })
-    class AddressModel {
-    
-    }
-    
-    Is.PersonModel(new PersonModel()) // Returns true
-    Is.PersonModel(new Address()) // Returns false
-    
-    Is.Not.PersonModel(new PersonModel()) // Returns false
-    Is.Not.PersonModel(new Address()) // Returns true
-    
-    Is.All.PersonModel([new PersonModel(), new PersonModel()]) // Returns true
-    Is.All.PersonModel([new Address(), new PersonModel()]) // Returns false
-    
-    Is.All.Not.Address([new PersonModel(), new PersonModel()]) // Returns true
-    Is.All.Not.Address([new Address(), new PersonModel()]) // Returns true
-    Is.All.Not.Address([new Address(), new Address()]) // Returns false
+is.bigInt.or.number(-1) // true
 
-    @RegisterInIs()
-    class ManModel extends PersonModel {
+is.boolean.or.truthy('false') // true
 
-    }
+is.false.or.falsy('') // true 
 
-    Is.PersonModel(new ManModel()) // Returns true
-    Is.ManModel(new ManModel()) // Returns true
-    Is.ManModel(new Address()) // Returns false
+is.null.or.undefined(null) // true
 
+is.object.or.function({}) // true
+
+is.string.or.true.or.symbol(true) // true
 ```
 
+#### Methods with wrappers
+
+```typescript
+is.object.not.empty({a: 1}) // true
+
+is.not.object({}) // false
+
+is.all.string(['qwerty', [['qwerty_1'], 'qwerty_2']]) // true
+
+is.not.number(1n) // true
+
+is.all.true([true, [true], [true, false]]) // false
+
+is.all.not.null(['qwerty', ['qwerty_1', 100], Symbol()]) // true
+
+is.all.not.undefined([200, [Symbol()], [true], undefined, null, 'string']) // false
+```
+
+#### Methods with wrappers and connection
+
+```typescript
+is.all.not.null.or.undefined([1, 2, 3, 4, 5, ['string'], Symbol()]) // true
+is.all.not.null.or.undefined.empty([5, 4, 3, 2, 1, [''], Symbol()]) // false
+```
+
+#### Methods with your models
+
+> You have the option to add any class to the package yourself for further testing
+
+```typescript
+@RegisterInIs({
+    className: 'person' // You can customize the model name, i.e.: is.person((new Person())) // true
+})
+class PersonModel {
+
+}
+
+@RegisterInIs({
+    className: 'woman'
+})
+class WomanModel extends PersonModel {
+
+}
+
+@RegisterInIs({
+    className: 'man'
+})
+class ManModel extends PersonModel {
+
+}
+
+@RegisterInIs()
+class AddressModel {
+
+}
+
+const person = new PersonModel();
+const man = new ManModel();
+const woman = new WomanModel();
+const address = new AddressModel();
+
+is.person(person) // true
+
+is.person(man) // true
+
+is.person(woman) // true
+
+is.person(address) // false
+
+is.AddressModel(address) // true
+
+is.woman.or.man(woman) // true
+
+is.not.woman(man) // true
+
+is.not.man(man) // false
+
+is.all.person([person, [man], [woman]]) // true
+
+is.all.not.AddressModel([[person], [woman], [man]]) // true
+```
+
+#### Custom method
+
+```typescript
+@RegisterInIs({
+    customMethod: 'customNameOfMethod'
+})
+class PostModel {
+    public static customNameOfMethod(argument: unknown): argument is PostModel {
+        return `Hello ${argument}`;
+    }
+}
+
+is.PostModel('world') // Returns: Hello world
+
+```
 
 ## API
-### All methods return boolean
 
-| #        | Name of method                                      | Argument        | Test | Old name                          |
-|----------|-----------------------------------------------------|-----------------|------|-----------------------------------|
-|          | **Is**                                              |                 |      |                                   |
-| 1        | Is.Array                                            | argument: any   | ✔    |                                   |
-| 2        | Is.BigInt                                           | argument: any   | ✔    |                                   |
-| 3        | Is.Boolean                                          | argument: any   | ✔    |                                   |
-| 4        | Is.Compare                                          | argument: any   | ✔    |                                   |
-| 5        | Is.EmptyArray                                       | argument: any   | ✔    |                                   |
-| 6        | Is.EmptyObject                                      | argument: any   | ✔    |                                   |
-| 7        | Is.EmptyString                                      | argument: any   | ✔    |                                   |
-| 8        | Is.False                                            | argument: any   | ✔    |                                   |
-| 9        | Is.Falsy                                            | argument: any   | ✔    |                                   |
-| 10       | Is.Function                                         | argument: any   | ✔    |                                   |
-| 11       | Is.Null                                             | argument: any   | ✔    |                                   |
-| 12 (upd) | Is.Null.Or.Undefined                                | argument: any   | ✔    | Is.NullOrUndefined                |
-| 13 (upd) | Is.Null.Or.Undefined.Or.Empty                       | argument: any   | ✔    | Is.NullOrUndefinedOrEmpty         |
-| 14       | Is.Number                                           | argument: any   | ✔    |                                   |
-| 15       | Is.String                                           | argument: any   | ✔    |                                   |
-| 16       | Is.Object                                           | argument: any   | ✔    |                                   |
-| 17       | Is.True                                             | argument: any   | ✔    |                                   |
-| 18       | Is.Truthy                                           | argument: any   | ✔    |                                   |
-| 19       | Is.Symbol                                           | argument: any   | ✔    |                                   |
-| 20       | Is.Undefined                                        | argument: any   | ✔    |                                   |
-| 21       | Is.Empty                                            | argument: any   | ✔    | UniversalEmptyChecker             |
-| 22       | Is.[ClassName]                                      | argument: any   | ✔    |                                   |
-| 23 (new) | Is.[Method/ClassName].Or.[Method/ClassName]         | argument: any   | ✔    |                                   |
-|          | **Is.Not**                                          |                 |      |                                   |
-| 24       | Is.Not.Array                                        | argument: any   | ✔    |                                   |
-| 25       | Is.Not.BigInt                                       | argument: any   | ✔    |                                   |
-| 26       | Is.Not.Boolean                                      | argument: any   | ✔    |                                   |
-| 27       | Is.Not.Compare                                      | argument: any   | ✔    |                                   |
-| 28       | Is.Not.EmptyArray                                   | argument: any   | ✔    |                                   |
-| 29       | Is.Not.EmptyObject                                  | argument: any   | ✔    |                                   |
-| 30       | Is.Not.EmptyString                                  | argument: any   | ✔    |                                   |
-| 31       | Is.Not.False                                        | argument: any   | ✔    |                                   |
-| 32       | Is.Not.False                                        | argument: any   | ✔    |                                   |
-| 33       | Is.Not.Function                                     | argument: any   | ✔    |                                   |
-| 34       | Is.Not.Null                                         | argument: any   | ✔    |                                   |
-| 35 (upd) | Is.Not.Null.Or.Undefined                            | argument: any   | ✔    | Is.Not.NullOrUndefined            |
-| 36 (upd) | Is.Not.Null.Or.Undefined.Or.Empty                   | argument: any   | ✔    | Is.Not.NullOrUndefinedOrEmpty     |
-| 37       | Is.Not.Number                                       | argument: any   | ✔    |                                   |
-| 38       | Is.Not.String                                       | argument: any   | ✔    |                                   |
-| 39       | Is.Not.Object                                       | argument: any   | ✔    |                                   |
-| 40       | Is.Not.True                                         | argument: any   | ✔    |                                   |
-| 41       | Is.Not.Truthy                                       | argument: any   | ✔    |                                   |
-| 42       | Is.Not.Symbol                                       | argument: any   | ✔    |                                   |
-| 43       | Is.Not.Undefined                                    | argument: any   | ✔    |                                   |
-| 44       | Is.Not.Empty                                        | argument: any   | ✔    | UniversalEmptyChecker             |
-| 45       | Is.Not.[ModelName/ClassName]                        | argument: any   | ✔    |                                   |
-| 46 (new) | Is.Not.[Method].Or.[Method]                         | argument: any   | ✔    |                                   |
-|          | **Is.All**                                          |                 |      |                                   |
-| 47       | Is.All.Array                                        | argument: any[] | ✔    |                                   |
-| 48       | Is.All.BigInt                                       | argument: any[] | ✔    |                                   |
-| 49       | Is.All.Boolean                                      | argument: any[] | ✔    |                                   |
-| 50       | Is.All.Compare                                      | argument: any[] | x    |                                   |
-| 51       | Is.All.EmptyArray                                   | argument: any[] | ✔    |                                   |
-| 52       | Is.All.EmptyObject                                  | argument: any[] | ✔    |                                   |
-| 53       | Is.All.EmptyString                                  | argument: any[] | ✔    |                                   |
-| 54       | Is.All.False                                        | argument: any[] | ✔    |                                   |
-| 55       | Is.All.Falsy                                        | argument: any[] | ✔    |                                   |
-| 56       | Is.All.Function                                     | argument: any[] | ✔    |                                   |
-| 57       | Is.All.Null                                         | argument: any[] | ✔    |                                   |
-| 58 (upd) | Is.All.Null.Or.Undefined                            | argument: any[] | x    | Is.All.NullOrUndefined            |
-| 59 (upd) | Is.All.Null.Or.Undefined.Or.Empty                   | argument: any[] | x    | Is.All.NullOrUndefinedOrEmpty     |
-| 60       | Is.All.Number                                       | argument: any[] | ✔    |                                   |
-| 61       | Is.All.String                                       | argument: any[] | ✔    |                                   |
-| 62       | Is.All.Object                                       | argument: any[] | ✔    |                                   |
-| 63       | Is.All.True                                         | argument: any[] | ✔    |                                   |
-| 64       | Is.All.Truthy                                       | argument: any[] | ✔    |                                   |
-| 65       | Is.All.Symbol                                       | argument: any[] | ✔    |                                   |
-| 66       | Is.All.Undefined                                    | argument: any[] | ✔    |                                   |
-| 67       | Is.All.Empty                                        | argument: any[] | ✔    | UniversalEmptyChecker             |
-| 68       | Is.All.[ClassName]                                  | argument: any[] | ✔    |                                   |
-| 69 (new) | Is.All.[Method/ClassName].Or.[Method/ClassName]     | argument: any[] | ✔    |                                   |
-|          | **Is.All.Not**                                      |                 |      |                                   |
-| 70       | Is.All.Not.Array                                    | argument: any[] | ✔    |                                   |
-| 71       | Is.All.Not.BigInt                                   | argument: any[] | ✔    |                                   |
-| 72       | Is.All.Not.Boolean                                  | argument: any[] | ✔    |                                   |
-| 73       | Is.All.Not.Compare                                  | argument: any[] | x    |                                   |
-| 74       | Is.All.Not.EmptyArray                               | argument: any[] | ✔    |                                   |
-| 74       | Is.All.Not.EmptyObject                              | argument: any[] | ✔    |                                   |
-| 75       | Is.All.Not.EmptyString                              | argument: any[] | ✔    |                                   |
-| 76       | Is.All.Not.False                                    | argument: any[] | ✔    |                                   |
-| 77       | Is.All.Not.Falsy                                    | argument: any[] | ✔    |                                   |
-| 78       | Is.All.Not.Function                                 | argument: any[] | ✔    |                                   |
-| 79       | Is.All.Not.Null                                     | argument: any[] | ✔    |                                   |
-| 80 (upd) | Is.All.Not.Null.Or.Undefined                        | argument: any[] | x    | Is.All.Not.NullOrUndefined        |
-| 81 (upd) | Is.All.Not.Null.Or.Undefined.Or.Empty               | argument: any[] | x    | Is.All.Not.NullOrUndefinedOrEmpty |
-| 82       | Is.All.Not.Number                                   | argument: any[] | ✔    |                                   |
-| 83       | Is.All.Not.String                                   | argument: any[] | ✔    |                                   |
-| 84       | Is.All.Not.Object                                   | argument: any[] | ✔    |                                   |
-| 85       | Is.All.Not.True                                     | argument: any[] | ✔    |                                   |
-| 86       | Is.All.Not.Truthy                                   | argument: any[] | ✔    |                                   |
-| 87       | Is.All.Not.Symbol                                   | argument: any[] | ✔    |                                   |
-| 88       | Is.All.Not.Undefined                                | argument: any[] | ✔    |                                   |
-| 89       | Is.All.Not.Empty                                    | argument: any[] | ✔    | UniversalEmptyChecker             |
-| 90       | Is.All.Not.[ClassName]                              | argument: any[] | ✔    |                                   |
-| 91 (new) | Is.All.Not.[Method/ClassName].Or.[Method/ClassName] | argument: any[] | x    |                                   |
+### All methods return a boolean type
+
+### List of methods
+
+| Name       | Test |
+|------------|------|
+| array      | ✅    |
+| bigInt     | ✅    |
+| boolean    | ✅    |
+| compare    | ✅    |
+| empty      | ✅    |
+| false      | ✅    |
+| falsy      | ✅    |
+| function   | ✅    |
+| instanceof | ✅    |
+| null       | ✅    |
+| number     | ✅    |
+| object     | ✅    |
+| string     | ✅    |
+| symbol     | ✅    |
+| true       | ✅    |
+| truthy     | ✅    |
+| undefined  | ✅    |
+
+### List of wrappers and connections
+
+| Name | Test |
+|------|------|
+| not  | ✅    |
+| all  | ✅    |
+| or   | ✅    |
 
 
-## API Tools
 
-| #   | Name of method | Argument                                 | Test | Return        |
-|-----|----------------|------------------------------------------|------|---------------|
-| 1   | findKey        | argument: {[key: string]: {}}, value: {} | ✔    | string / null |
+## Contributing
 
+[//]: # (Please read [CONTRIBUTING.md]&#40;CONTRIBUTING.md&#41; for details on our code of conduct, and the process for submitting pull requests to us.)
 
-## Tests
-```
-Test Suites: 71 passed, 71 total
-Tests:       2745 passed, 2745 total
-Snapshots:   0 total
-Time:        5.371 s
-Ran all test suites.
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Add your changes: `git add .`
+4. Commit your changes: `git commit -am 'Add some feature'`
+5. Push to the branch: `git push origin my-new-feature`
+6. Submit a pull request 😎
 
-```
+## Authors
+
+* **Ivan Karbashevskyi** - *Initial work* - [Karbashevskyi](https://github.com/Karbashevskyi)
+
+See also the list of [contributors](https://github.com/p4ck493/ts-is/contributors) who participated in this project.
+
+## License
+
+[MIT License](https://andreasonny.mit-license.org/2019) © p4ck493

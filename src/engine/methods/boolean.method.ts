@@ -1,6 +1,3 @@
-
-
-
 /**
  *
  * @method Boolean
@@ -11,7 +8,7 @@
  * Is.All.Not.Boolean()
  */
 function BooleanMethod(argument: unknown): argument is boolean {
-    return typeof argument === 'boolean';
+  return typeof argument === 'boolean';
 }
 
 export default BooleanMethod;

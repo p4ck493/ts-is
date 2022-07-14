@@ -18,31 +18,33 @@ import FalsyMethod from '../engine/methods/falsy.method';
 import {ConnectionWrappersInterface} from './wrappers.interface';
 
 export interface MethodInterface {
-    [key: string]: {
-        useCustomMethod: boolean;
-        method: any;
-    } & ConnectionWrappersInterface & MethodsInterface & ((argument: unknown) => boolean);
+  [key: string]: {
+    useCustomMethod: boolean;
+    method: any;
+  } & ConnectionWrappersInterface &
+    MethodsInterface &
+    ((argument: unknown) => boolean);
 }
 
 /**
  * Declare names and types of methods
  */
 export interface MethodsInterface {
-    array: typeof ArrayMethod & MethodInterface;
-    bigInt: typeof BigIntMethod & MethodInterface;
-    boolean: typeof BooleanMethod & MethodInterface;
-    compare: typeof CompareMethod & MethodInterface;
-    false: typeof FalseMethod & MethodInterface;
-    falsy: typeof FalsyMethod & MethodInterface;
-    function: typeof FunctionMethod & MethodInterface;
-    instanceof: typeof InstanceofMethod & MethodInterface;
-    null: typeof NullMethod & MethodInterface;
-    number: typeof NumberMethod & MethodInterface;
-    object: typeof ObjectMethod & MethodInterface;
-    string: typeof StringMethod & MethodInterface;
-    symbol: typeof SymbolMethod & MethodInterface;
-    true: typeof TrueMethod & MethodInterface;
-    truthy: typeof TruthyMethod & MethodInterface;
-    undefined: typeof UndefinedMethod & MethodInterface;
-    empty: typeof EmptyMethod & MethodInterface;
+  array: typeof ArrayMethod & MethodInterface;
+  bigInt: typeof BigIntMethod & MethodInterface;
+  boolean: typeof BooleanMethod & MethodInterface;
+  compare: typeof CompareMethod & MethodInterface;
+  false: typeof FalseMethod & MethodInterface;
+  falsy: typeof FalsyMethod & MethodInterface;
+  function: typeof FunctionMethod & MethodInterface;
+  instanceof: typeof InstanceofMethod & MethodInterface;
+  null: typeof NullMethod & MethodInterface;
+  number: typeof NumberMethod & MethodInterface;
+  object: typeof ObjectMethod & MethodInterface;
+  string: typeof StringMethod & MethodInterface;
+  symbol: typeof SymbolMethod & MethodInterface;
+  true: typeof TrueMethod & MethodInterface;
+  truthy: typeof TruthyMethod & MethodInterface;
+  undefined: typeof UndefinedMethod & MethodInterface;
+  empty: typeof EmptyMethod & MethodInterface;
 }

@@ -1,6 +1,5 @@
 import {methods} from './index';
 
-
 /**
  *
  *
@@ -12,7 +11,7 @@ import {methods} from './index';
  * Is.All.Not.Truthy()
  */
 function TruthyMethod(argument: unknown): argument is true {
-    return !methods.falsy(argument);
+  return !methods.falsy(argument);
 }
 
 export default TruthyMethod;

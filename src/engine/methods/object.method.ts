@@ -1,6 +1,5 @@
 import {methods} from './index';
 
-
 /**
  *
  * @method Object
@@ -17,7 +16,7 @@ import {methods} from './index';
  * Is.All.Not.Object<PersonModel>()
  */
 function ObjectMethod<T extends object>(argument: unknown): argument is T {
-    return typeof argument === 'object' && !methods.array(argument) && !methods.null(argument);
+  return typeof argument === 'object' && !methods.array(argument) && !methods.null(argument);
 }
 
 export default ObjectMethod;

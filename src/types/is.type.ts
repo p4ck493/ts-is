@@ -6,9 +6,9 @@ import {
 } from '../interfaces/wrappers.interface';
 
 export type IsType = ((argument: unknown) => void) &
-    MethodsInterface &
-    BeforeWrappersInterface &
-    ConnectionWrappersInterface &
-    AfterWrappersInterface & {
+  MethodsInterface &
+  BeforeWrappersInterface &
+  ConnectionWrappersInterface &
+  AfterWrappersInterface & {
     [key: string]: ((argument: unknown) => unknown) & MethodsInterface & ConnectionWrappersInterface;
-};
+  };

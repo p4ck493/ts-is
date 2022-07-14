@@ -8,7 +8,7 @@
  * Is.All.Not.Bigint()
  */
 function BigIntMethod(argument: unknown): argument is BigInteger {
-    return typeof argument === 'bigint';
+  return typeof argument === 'bigint';
 }
 
 export default BigIntMethod;

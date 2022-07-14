@@ -8,7 +8,7 @@
  * Is.All.Not.False()
  */
 function FalseMethod(argument: unknown): argument is false {
-    return argument === false;
+  return argument === false;
 }
 
 export default FalseMethod;

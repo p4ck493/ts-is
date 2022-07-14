@@ -14,7 +14,7 @@
  * Is.All.Not.Function<PersonModel>()
  */
 function FunctionMethod<T extends () => void>(argument: unknown): argument is T {
-    return {}.toString.call(argument) === '[object Function]';
+  return {}.toString.call(argument) === '[object Function]';
 }
 
 export default FunctionMethod;

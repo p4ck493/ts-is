@@ -8,7 +8,7 @@
  * Is.All.Not.Null()
  */
 function NullMethod(argument: unknown): argument is null {
-    return argument === null;
+  return argument === null;
 }
 
 export default NullMethod;

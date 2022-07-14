@@ -8,7 +8,7 @@
  * Is.All.Not.Symbol()
  */
 function SymbolMethod(argument: unknown): argument is symbol {
-    return typeof argument === 'symbol';
+  return typeof argument === 'symbol';
 }
 
 export default SymbolMethod;

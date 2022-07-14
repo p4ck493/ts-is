@@ -22,6 +22,7 @@ function wrapperOrCaseEngine(): boolean {
         if (allWrapper) {
 
             const recursive = (...args: unknown[]): boolean => {
+                // TODO problem with every, if we will check: is.all.not.null.or.undefined, that we check all is null and is undefined, why?
                 return args.every((argument: unknown): boolean => {
                     if (methods.array(argument) && argument.length) {
                         if (methodObject.method instanceof methods.empty) {

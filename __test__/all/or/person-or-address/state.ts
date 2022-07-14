@@ -36,6 +36,9 @@ export const dataForGoodTesting: {value: any[]}[] = [
     {
         value: [new Person(), [new Woman()], new ManModel()]
     },
+    {
+        value: [new Person(), new Woman(), new ManModel()]
+    },
 ];
 
 export const dataForBadTesting: {value: any[]}[] = [

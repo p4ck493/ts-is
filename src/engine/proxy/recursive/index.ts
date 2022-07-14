@@ -17,14 +17,12 @@ export function proxyRecursive(
     name: string,
     lists: ListsProxyEngineInterface,
 ): object {
-    console.log('proxyRecursive', index, target, name, lists);
     let newTarget: any = methods; // TODo interface
     let notFound: boolean = true;
 
     if (Reflect.has(methods, name)) {
         notFound = false;
         newTarget = methods[name as keyof typeof methods];
-        console.log('newTarget', newTarget, newTarget('asd'));
         lists.methods.push({
             name,
             index,
@@ -46,7 +44,7 @@ export function proxyRecursive(
     }
 
     return new Proxy(newTarget, {
-        get: proxyRecursiveGet(index+1, lists),
+        get: proxyRecursiveGet(index + 1, lists),
         apply: proxyRecursiveApply(lists),
     });
 }

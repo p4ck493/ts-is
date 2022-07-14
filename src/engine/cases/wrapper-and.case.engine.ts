@@ -34,7 +34,7 @@ function wrapperAndCaseEngine(): boolean {
                             return recursive(...argument);
                         }
                     }
-                    return methodObject.method.call(this, argument);
+                    return execute(methodObject, [argument]);
                 });
             };
 
@@ -53,22 +53,18 @@ function wrapperAndCaseEngine(): boolean {
 
         methodObject = context.lists.methods[index];
 
-        console.log('methodObject&notWrapper', methodObject, notWrapper);
-
         if (notWrapper && methodObject.index > notWrapper.index) {
 
-            if (middleware(methodObject)) {
-                result = false;
-                break;
-            }
+            result = !middleware(methodObject);
 
         } else {
 
-            if (!middleware(methodObject)) {
-                result = false;
-                break;
-            }
+            result = middleware(methodObject);
 
+        }
+
+        if (!result) {
+            break;
         }
 
     }

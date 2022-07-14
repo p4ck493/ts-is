@@ -14,7 +14,6 @@ export enum TypeOfValueEnum {
  */
 function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
     const context: ContextMethodInterface = this; // TODO ContextMethodInterface
-    // console.log(context);
     if (
         methods.null(objectOne) ||
         methods.undefined(objectOne) ||

@@ -6,7 +6,7 @@ export const dataForGoodTesting: {value: any[]}[] = [
 
 export const dataForGoodCaseTesting: {value: any[]}[] = [
     {
-        value: [['test']]
+        value: [[[]]]
     },
 ];
 

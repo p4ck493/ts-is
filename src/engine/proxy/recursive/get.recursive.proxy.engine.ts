@@ -12,9 +12,7 @@ function proxyRecursiveGet(
     index: number,
     lists: ListsProxyEngineInterface
 ): proxyRecursiveGetType {
-    console.log('proxyRecursiveGet', 'index', index);
     return (targetGet, nameGet: string) => {
-        console.log(targetGet, nameGet);
         return proxyRecursive(index, targetGet[nameGet], nameGet, lists);
     };
 }

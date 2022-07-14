@@ -1,5 +1,6 @@
 import {RegisterInIs} from '../../../../lib/decorators';
 
+
 @RegisterInIs()
 // @ts-ignore
 class Person {
@@ -8,7 +9,7 @@ class Person {
 
 @RegisterInIs()
 // @ts-ignore
-class Woman extends Person{
+class Woman extends Person {
 
 }
 

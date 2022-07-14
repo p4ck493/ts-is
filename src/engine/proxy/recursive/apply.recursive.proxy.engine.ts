@@ -29,9 +29,8 @@ const recordOfCases: { [key: number]: () => boolean } = {
 function proxyRecursiveApply(
     lists: ListsProxyEngineInterface,
 ): proxyRecursiveApplyType {
-    console.log('proxyRecursiveApply');
+
     return (targetApply, thisArg, argumentList): boolean => {
-        console.log(targetApply, thisArg, argumentList);
 
         const flags: FlagsToolInterface = {
             or: !!lists?.or?.length,

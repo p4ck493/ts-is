@@ -18,7 +18,7 @@ export function proxyRecursive(
     lists: ListsProxyEngineInterface,
 ): object {
     let newTarget: any = methods; // TODo interface
-    let notFound: boolean = true;
+    let notFound = true;
 
     if (Reflect.has(methods, name)) {
         notFound = false;

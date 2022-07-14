@@ -17,7 +17,7 @@ class WrapperOrCaseEngine extends BaseCaseEngine {
 
         };
 
-        let result: boolean = true;
+        let result = true;
 
         if (allWrapper) {
 
@@ -31,7 +31,7 @@ class WrapperOrCaseEngine extends BaseCaseEngine {
             const recursive = (argumentList: unknown[][]): boolean => {
                 const listForNextInteraction: unknown[][] = [];
                 const listForNow: unknown[][] = [];
-                let localResult: boolean = false;
+                let localResult = false;
                 argumentList?.forEach((argument: unknown[]) => {
                     if (methods.array(argument) && argument?.length) {
                         if (argument.some((arg) => methods.array(arg))) {

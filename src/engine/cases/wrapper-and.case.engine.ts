@@ -38,7 +38,7 @@ class WrapperAndCaseEngine extends BaseCaseEngine {
             }
         };
 
-        let result: boolean = true;
+        let result = true;
 
         for (const methodObject of context.lists.methods) {
 

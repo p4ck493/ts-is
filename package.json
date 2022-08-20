@@ -6,6 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
+    "prepare:test": "npm run build && npm test",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",

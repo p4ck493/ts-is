@@ -17,6 +17,7 @@ import TrueMethod from './true.method';
 import TruthyMethod from './truthy.method';
 import UndefinedMethod from './undefined.method';
 import DateMethod from './date.method';
+import SetMethod from './set.method';
 
 /**
  * Use this const for register classes.
@@ -50,6 +51,7 @@ export const methods: MethodsInterface & MethodInterface = {
   null: NullMethod as any,
   number: NumberMethod as any,
   object: ObjectMethod as any,
+  set: SetMethod as any,
   string: StringMethod as any,
   symbol: SymbolMethod as any,
   true: TrueMethod as any,

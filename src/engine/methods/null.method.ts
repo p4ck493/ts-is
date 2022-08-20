@@ -1,11 +1,11 @@
 /**
  *
- * @method Null
+ * @method null
  * @example
- * Is.Null()
- * Is.Not.Null()
- * Is.All.Null()
- * Is.All.Not.Null()
+ * is.null()
+ * is.not.null()
+ * is.all.null()
+ * is.all.not.null()
  */
 function NullMethod(argument: unknown): argument is null {
   return argument === null;

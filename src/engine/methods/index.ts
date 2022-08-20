@@ -1,4 +1,4 @@
-import { MethodInterface, MethodsInterface } from '../../interfaces/methods.interface';
+import {MethodInterface, MethodsInterface} from '../../interfaces/methods.interface';
 import ArrayMethod from './array.method';
 import BigIntMethod from './bigIntMethod';
 import BooleanMethod from './boolean.method';
@@ -16,6 +16,7 @@ import SymbolMethod from './symbol.method';
 import TrueMethod from './true.method';
 import TruthyMethod from './truthy.method';
 import UndefinedMethod from './undefined.method';
+import DateMethod from './date.method';
 
 /**
  * Use this const for register classes.
@@ -40,6 +41,7 @@ export const methods: MethodsInterface & MethodInterface = {
   bigInt: BigIntMethod as any,
   boolean: BooleanMethod as any,
   compare: CompareMethod as any,
+  date: DateMethod as any,
   empty: EmptyMethod as any,
   false: FalseMethod as any,
   falsy: FalsyMethod as any,

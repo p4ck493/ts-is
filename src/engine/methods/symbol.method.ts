@@ -1,11 +1,11 @@
 /**
  *
- * @method Symbol
+ * @method symbol
  * @example
- * Is.Symbol()
- * Is.Not.Symbol()
- * Is.All.Symbol()
- * Is.All.Not.Symbol()
+ * is.symbol()
+ * is.not.symbol()
+ * is.all.symbol()
+ * is.all.not.symbol()
  */
 function SymbolMethod(argument: unknown): argument is symbol {
   return typeof argument === 'symbol';

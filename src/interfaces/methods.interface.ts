@@ -15,7 +15,8 @@ import EmptyMethod from '../engine/methods/empty.method';
 import InstanceofMethod from '../engine/methods/instanceof.method';
 import TruthyMethod from '../engine/methods/truthy.method';
 import FalsyMethod from '../engine/methods/falsy.method';
-import { ConnectionWrappersInterface } from './wrappers.interface';
+import {ConnectionWrappersInterface} from './wrappers.interface';
+import DateMethod from '../engine/methods/date.method';
 
 export interface MethodInterface {
   [key: string]: {
@@ -47,4 +48,5 @@ export interface MethodsInterface {
   truthy: typeof TruthyMethod & MethodInterface;
   undefined: typeof UndefinedMethod & MethodInterface;
   empty: typeof EmptyMethod & MethodInterface;
+  date: typeof DateMethod & MethodInterface;
 }

@@ -1,4 +1,4 @@
-import { methods } from './index';
+import {methods} from './index';
 
 export enum TypeOfValueEnum {
   object = 'object',
@@ -6,7 +6,7 @@ export enum TypeOfValueEnum {
 
 /**
  *
- * @method Compare
+ * @method compare
  * @param objectOne is generic type
  * @param objectTwo is generic type
  */

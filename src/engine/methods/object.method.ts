@@ -1,19 +1,19 @@
-import { methods } from './index';
+import {methods} from './index';
 
 /**
  *
- * @method Object
+ * @method object
  * @example
- * Is.Object()
- * Is.Not.Object()
- * Is.All.Object()
- * Is.All.Not.Object()
+ * is.object()
+ * is.not.object()
+ * is.all.object()
+ * is.all.not.object()
  *
  * // Or with generic
- * Is.Object<PersonModel>()
- * Is.Not.Object<PersonModel>()
- * Is.All.Object<PersonModel>()
- * Is.All.Not.Object<PersonModel>()
+ * is.object<PersonModel>()
+ * is.not.object<PersonModel>()
+ * is.all.object<PersonModel>()
+ * is.all.not.object<PersonModel>()
  */
 function ObjectMethod<T extends object>(argument: unknown): argument is T {
   return typeof argument === 'object' && !methods.array(argument) && !methods.null(argument);

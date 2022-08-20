@@ -3,7 +3,7 @@ export declare enum TypeOfValueEnum {
 }
 /**
  *
- * @method Compare
+ * @method compare
  * @param objectOne is generic type
  * @param objectTwo is generic type
  */

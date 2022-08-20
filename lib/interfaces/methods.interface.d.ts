@@ -22,6 +22,7 @@ import {IsType} from '../types/is.type';
 import ErrorMethod from '../engine/methods/error.method';
 import EvalErrorMethod from '../engine/methods/eval-error.method';
 import ReferenceErrorMethod from '../engine/methods/reference-error.method';
+import SyntaxErrorMethod from '../engine/methods/syntax-error.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -55,4 +56,5 @@ export interface MethodsInterface {
     error: typeof ErrorMethod & IsType;
     evalError: typeof EvalErrorMethod & IsType;
     referenceError: typeof ReferenceErrorMethod & IsType;
+    syntaxError: typeof SyntaxErrorMethod & IsType;
 }

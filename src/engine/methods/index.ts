@@ -21,6 +21,7 @@ import SetMethod from './set.method';
 import ErrorMethod from './error.method';
 import EvalErrorMethod from './eval-error.method';
 import ReferenceErrorMethod from './reference-error.method';
+import SyntaxErrorMethod from './syntax-error.method';
 
 /**
  * Use this const for register classes.
@@ -60,6 +61,7 @@ export const methods: MethodsInterface & MethodInterface = {
   set: SetMethod as any,
   string: StringMethod as any,
   symbol: SymbolMethod as any,
+  syntaxError: SyntaxErrorMethod as any,
   true: TrueMethod as any,
   truthy: TruthyMethod as any,
   undefined: UndefinedMethod as any,

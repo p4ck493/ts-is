@@ -21,6 +21,7 @@ import SetMethod from '../engine/methods/set.method';
 import {IsType} from '../types/is.type';
 import ErrorMethod from '../engine/methods/error.method';
 import EvalErrorMethod from '../engine/methods/eval-error.method';
+import ReferenceErrorMethod from '../engine/methods/reference-error.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -53,4 +54,5 @@ export interface MethodsInterface {
     set: typeof SetMethod & IsType;
     error: typeof ErrorMethod & IsType;
     evalError: typeof EvalErrorMethod & IsType;
+    referenceError: typeof ReferenceErrorMethod & IsType;
 }

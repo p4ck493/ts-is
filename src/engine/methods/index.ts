@@ -20,6 +20,7 @@ import DateMethod from './date.method';
 import SetMethod from './set.method';
 import ErrorMethod from './error.method';
 import EvalErrorMethod from './eval-error.method';
+import ReferenceErrorMethod from './reference-error.method';
 
 /**
  * Use this const for register classes.
@@ -55,6 +56,7 @@ export const methods: MethodsInterface & MethodInterface = {
   null: NullMethod as any,
   number: NumberMethod as any,
   object: ObjectMethod as any,
+  referenceError: ReferenceErrorMethod as any,
   set: SetMethod as any,
   string: StringMethod as any,
   symbol: SymbolMethod as any,

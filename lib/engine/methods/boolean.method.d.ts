@@ -1,11 +1,11 @@
 /**
  *
- * @method Boolean
+ * @method boolean
  * @example
- * Is.Boolean()
- * Is.Not.Boolean()
- * Is.All.Boolean()
- * Is.All.Not.Boolean()
+ * is.boolean()
+ * is.not.boolean()
+ * is.all.boolean()
+ * is.all.not.boolean()
  */
 declare function BooleanMethod(argument: unknown): argument is boolean;
 export default BooleanMethod;

@@ -1,14 +1,14 @@
 /**
  *
- * @method Falsy
+ * @method falsy
  * @example
- * Is.Falsy()
- * Is.Not.Falsy()
- * Is.All.Falsy()
- * Is.All.Not.Falsy()
+ * is.falsy()
+ * is.not.falsy()
+ * is.all.falsy()
+ * is.all.not.falsy()
  */
 function FalsyMethod(argument: unknown): argument is false {
-    return !argument;
+  return !argument;
 }
 
 export default FalsyMethod;

@@ -5,7 +5,7 @@ export type registerInIsArgumentDecoratorType = {
 };
 
 export type registerInIsConstructorDecoratorType = {
-  new (): registerInIsArgumentDecoratorType,
+  new (): registerInIsArgumentDecoratorType;
   [key: string]: any;
 };
 

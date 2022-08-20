@@ -1,4 +1,4 @@
-import {methods} from './index';
+import { methods } from './index';
 
 /**
  *
@@ -32,19 +32,18 @@ import {methods} from './index';
  */
 
 function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
-
-    if (argument instanceof Array) {
-        if (methods.function(classRef)) {
-            if (argument.length) {
-                return argument.every((item: T) => item instanceof classRef);
-            } else {
-                return false;
-            }
-        }
-        return true;
+  if (argument instanceof Array) {
+    if (methods.function(classRef)) {
+      if (argument.length) {
+        return argument.every((item: T) => item instanceof classRef);
+      } else {
+        return false;
+      }
     }
+    return true;
+  }
 
-    return false;
+  return false;
 }
 
 export default ArrayMethod;

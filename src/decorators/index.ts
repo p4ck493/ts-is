@@ -1,1 +1,1 @@
-export {default as RegisterInIs} from './register-in-is.decorator';
+export { default as RegisterInIs } from './register-in-is.decorator';

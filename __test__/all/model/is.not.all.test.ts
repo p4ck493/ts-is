@@ -1,5 +1,5 @@
-import {is} from "../../../lib";
 import {advancedDataForBadTesting, dataForBadTesting, dataForGoodTesting} from './state';
+import {is} from '../../../lib';
 
 
 describe('is.all.not.Person', () => {

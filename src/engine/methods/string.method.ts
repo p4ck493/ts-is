@@ -1,15 +1,15 @@
 /**
  *
- * @method String
+ * @method string
  * @example
- * Is.String()
- * Is.Not.String()
- * Is.All.String()
- * Is.All.Not.String()
+ * is.string()
+ * is.not.string()
+ * is.all.string()
+ * is.all.not.string()
  */
 
 function StringMethod(argument: unknown): argument is string {
-    return typeof argument === 'string';
+  return typeof argument === 'string';
 }
 
-export default StringMethod
+export default StringMethod;

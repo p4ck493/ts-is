@@ -1,11 +1,11 @@
 /**
  *
- * @method False
+ * @method false
  * @example
- * Is.False()
- * Is.Not.False()
- * Is.All.False()
- * Is.All.Not.False()
+ * is.false()
+ * is.not.false()
+ * is.all.false()
+ * is.all.not.false()
  */
 declare function FalseMethod(argument: unknown): argument is false;
 export default FalseMethod;

@@ -18,6 +18,7 @@ import FalsyMethod from '../engine/methods/falsy.method';
 import {ConnectionWrappersInterface} from './wrappers.interface';
 import DateMethod from '../engine/methods/date.method';
 import SetMethod from '../engine/methods/set.method';
+import {IsType} from '../types/is.type';
 
 export interface MethodInterface {
     [key: string]: {
@@ -29,23 +30,23 @@ export interface MethodInterface {
  * Declare names and types of methods
  */
 export interface MethodsInterface {
-    array: typeof ArrayMethod & MethodInterface;
-    bigInt: typeof BigIntMethod & MethodInterface;
-    boolean: typeof BooleanMethod & MethodInterface;
-    compare: typeof CompareMethod & MethodInterface;
-    false: typeof FalseMethod & MethodInterface;
-    falsy: typeof FalsyMethod & MethodInterface;
-    function: typeof FunctionMethod & MethodInterface;
-    instanceof: typeof InstanceofMethod & MethodInterface;
-    null: typeof NullMethod & MethodInterface;
-    number: typeof NumberMethod & MethodInterface;
-    object: typeof ObjectMethod & MethodInterface;
-    string: typeof StringMethod & MethodInterface;
-    symbol: typeof SymbolMethod & MethodInterface;
-    true: typeof TrueMethod & MethodInterface;
-    truthy: typeof TruthyMethod & MethodInterface;
-    undefined: typeof UndefinedMethod & MethodInterface;
-    empty: typeof EmptyMethod & MethodInterface;
-    date: typeof DateMethod & MethodInterface;
-    set: typeof SetMethod & MethodInterface;
+    array: typeof ArrayMethod & IsType;
+    bigInt: typeof BigIntMethod & IsType;
+    boolean: typeof BooleanMethod & IsType;
+    compare: typeof CompareMethod & IsType;
+    false: typeof FalseMethod & IsType;
+    falsy: typeof FalsyMethod & IsType;
+    function: typeof FunctionMethod & IsType;
+    instanceof: typeof InstanceofMethod & IsType;
+    null: typeof NullMethod & IsType;
+    number: typeof NumberMethod & IsType;
+    object: typeof ObjectMethod & IsType;
+    string: typeof StringMethod & IsType;
+    symbol: typeof SymbolMethod & IsType;
+    true: typeof TrueMethod & IsType;
+    truthy: typeof TruthyMethod & IsType;
+    undefined: typeof UndefinedMethod & IsType;
+    empty: typeof EmptyMethod & IsType;
+    date: typeof DateMethod & IsType;
+    set: typeof SetMethod & IsType;
 }

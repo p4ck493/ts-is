@@ -1,4 +1,4 @@
-import {is} from "../../../lib";
+import {is} from '../../../lib';
 import {advancedDataForBadTesting, dataForBadTesting, dataForGoodTesting} from './state';
 
 

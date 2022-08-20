@@ -1,5 +1,5 @@
-import { methods } from '../methods';
-import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import {methods} from '../methods/index';
+import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 interface BaseCaseEngineInterface {
   runCase: () => boolean;
@@ -13,7 +13,7 @@ abstract class BaseCaseEngine implements BaseCaseEngineInterface {
     if (methods.boolean(result)) {
       return result;
     } else {
-      return methods.instanceof.call({}, argument[0], result.classRef);
+      return methods.instanceof.call<any, any, boolean>({}, argument[0], result.classRef);
     }
   }
 

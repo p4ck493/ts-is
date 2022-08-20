@@ -1,5 +1,5 @@
 import ArrayMethod from '../engine/methods/array.method';
-import BigIntMethod from '../engine/methods/bigIntMethod';
+import BigIntMethod from '../engine/methods/bigInt.method';
 import BooleanMethod from '../engine/methods/boolean.method';
 import CompareMethod from '../engine/methods/compare.method';
 import FalseMethod from '../engine/methods/false.method';
@@ -20,6 +20,7 @@ import DateMethod from '../engine/methods/date.method';
 import SetMethod from '../engine/methods/set.method';
 import {IsType} from '../types/is.type';
 import ErrorMethod from '../engine/methods/error.method';
+import EvalErrorMethod from '../engine/methods/eval-error.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -51,4 +52,5 @@ export interface MethodsInterface {
     date: typeof DateMethod & IsType;
     set: typeof SetMethod & IsType;
     error: typeof ErrorMethod & IsType;
+    evalError: typeof EvalErrorMethod & IsType;
 }

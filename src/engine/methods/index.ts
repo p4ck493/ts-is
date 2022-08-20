@@ -1,6 +1,6 @@
 import {MethodInterface, MethodsInterface} from '../../interfaces/methods.interface';
 import ArrayMethod from './array.method';
-import BigIntMethod from './bigIntMethod';
+import BigIntMethod from './bigInt.method';
 import BooleanMethod from './boolean.method';
 import CompareMethod from './compare.method';
 import EmptyMethod from './empty.method';
@@ -19,6 +19,7 @@ import UndefinedMethod from './undefined.method';
 import DateMethod from './date.method';
 import SetMethod from './set.method';
 import ErrorMethod from './error.method';
+import EvalErrorMethod from './eval-error.method';
 
 /**
  * Use this const for register classes.
@@ -46,6 +47,7 @@ export const methods: MethodsInterface & MethodInterface = {
   date: DateMethod as any,
   empty: EmptyMethod as any,
   error: ErrorMethod as any,
+  evalError: EvalErrorMethod as any,
   false: FalseMethod as any,
   falsy: FalsyMethod as any,
   function: FunctionMethod as any,

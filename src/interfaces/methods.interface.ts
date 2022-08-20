@@ -19,6 +19,7 @@ import {ConnectionWrappersInterface} from './wrappers.interface';
 import DateMethod from '../engine/methods/date.method';
 import SetMethod from '../engine/methods/set.method';
 import {IsType} from '../types/is.type';
+import ErrorMethod from '../engine/methods/error.method';
 
 export interface MethodInterface {
   [key: string]: {
@@ -52,4 +53,5 @@ export interface MethodsInterface {
   empty: typeof EmptyMethod & IsType;
   date: typeof DateMethod & IsType;
   set: typeof SetMethod & IsType;
+  error: typeof ErrorMethod & IsType;
 }

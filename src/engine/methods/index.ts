@@ -18,6 +18,7 @@ import TruthyMethod from './truthy.method';
 import UndefinedMethod from './undefined.method';
 import DateMethod from './date.method';
 import SetMethod from './set.method';
+import ErrorMethod from './error.method';
 
 /**
  * Use this const for register classes.
@@ -44,6 +45,7 @@ export const methods: MethodsInterface & MethodInterface = {
   compare: CompareMethod as any,
   date: DateMethod as any,
   empty: EmptyMethod as any,
+  error: ErrorMethod as any,
   false: FalseMethod as any,
   falsy: FalsyMethod as any,
   function: FunctionMethod as any,

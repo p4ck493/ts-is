@@ -24,6 +24,7 @@ import ReferenceErrorMethod from './reference-error.method';
 import SyntaxErrorMethod from './syntax-error.method';
 import TypeErrorMethod from './type-error.method';
 import URIErrorMethod from './uri-error.method';
+import RegExpMethod from './regexp.method';
 
 /**
  * Use this const for register classes.
@@ -60,6 +61,7 @@ export const methods: MethodsInterface & MethodInterface = {
   number: NumberMethod as any,
   object: ObjectMethod as any,
   referenceError: ReferenceErrorMethod as any,
+  regExp: RegExpMethod as any,
   set: SetMethod as any,
   string: StringMethod as any,
   symbol: SymbolMethod as any,

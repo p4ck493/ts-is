@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 2666 Tests
+> 3188 Tests
 
 ## Prerequisites
 
@@ -252,6 +252,7 @@ is.PostModel('world') // Returns: Hello world
 | number         | ✅    |     
 | object         | ✅    |     
 | referenceError | ✅🆕  |
+| regExpError    | ✅🆕  |
 | set            | ✅🆕  |
 | string         | ✅    |     
 | symbol         | ✅    |     

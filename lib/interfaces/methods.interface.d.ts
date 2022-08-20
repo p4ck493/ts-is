@@ -25,6 +25,7 @@ import ReferenceErrorMethod from '../engine/methods/reference-error.method';
 import SyntaxErrorMethod from '../engine/methods/syntax-error.method';
 import TypeErrorMethod from '../engine/methods/type-error.method';
 import URIErrorMethod from '../engine/methods/uri-error.method';
+import RegExpMethod from '../engine/methods/regexp.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -61,4 +62,5 @@ export interface MethodsInterface {
     syntaxError: typeof SyntaxErrorMethod & IsType;
     typeError: typeof TypeErrorMethod & IsType;
     URIError: typeof URIErrorMethod & IsType;
+    regExp: typeof RegExpMethod & IsType;
 }

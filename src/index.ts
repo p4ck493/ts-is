@@ -1,5 +1,5 @@
-import {proxyGenerator} from './engine/proxy/generator/index';
-import {IsType} from './types/is.type';
+import { proxyGenerator } from './engine/proxy/generator/index';
+import { IsType } from './types/is.type';
 
 /**
  *

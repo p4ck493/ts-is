@@ -1,4 +1,4 @@
-import {MethodInterface, MethodsInterface} from '../../interfaces/methods.interface';
+import { MethodInterface, MethodsInterface } from '../../interfaces/methods.interface';
 import ArrayMethod from './array.method';
 import BigIntMethod from './bigInt.method';
 import BooleanMethod from './boolean.method';

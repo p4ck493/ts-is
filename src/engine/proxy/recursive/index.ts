@@ -1,8 +1,8 @@
 import wrappers from '../../../wrappers/index';
-import {methods} from '../../methods/index';
+import { methods } from '../../methods/index';
 import proxyRecursiveApply from './apply.recursive.proxy.engine';
 import proxyRecursiveGet from './get.recursive.proxy.engine';
-import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 /**
  *

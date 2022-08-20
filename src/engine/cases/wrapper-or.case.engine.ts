@@ -1,6 +1,6 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
-import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
-import {methods} from '../methods/index';
+import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { methods } from '../methods/index';
 import BaseCaseEngine from './base.case.engine';
 
 class WrapperOrCaseEngine extends BaseCaseEngine {

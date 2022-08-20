@@ -15,10 +15,10 @@ import EmptyMethod from '../engine/methods/empty.method';
 import InstanceofMethod from '../engine/methods/instanceof.method';
 import TruthyMethod from '../engine/methods/truthy.method';
 import FalsyMethod from '../engine/methods/falsy.method';
-import {ConnectionWrappersInterface} from './wrappers.interface';
+import { ConnectionWrappersInterface } from './wrappers.interface';
 import DateMethod from '../engine/methods/date.method';
 import SetMethod from '../engine/methods/set.method';
-import {IsType} from '../types/is.type';
+import { IsType } from '../types/is.type';
 import ErrorMethod from '../engine/methods/error.method';
 import EvalErrorMethod from '../engine/methods/eval-error.method';
 import ReferenceErrorMethod from '../engine/methods/reference-error.method';
@@ -61,11 +61,11 @@ export interface MethodsInterface {
   date: typeof DateMethod & IsType;
   set: typeof SetMethod & IsType;
   error: typeof ErrorMethod & IsType;
-  evalError: typeof EvalErrorMethod & IsType,
-  referenceError: typeof ReferenceErrorMethod & IsType,
-  syntaxError: typeof SyntaxErrorMethod & IsType,
-  typeError: typeof TypeErrorMethod & IsType,
-  URIError: typeof URIErrorMethod & IsType,
-  regExp: typeof RegExpMethod & IsType,
-  map: typeof MapMethod & IsType,
+  evalError: typeof EvalErrorMethod & IsType;
+  referenceError: typeof ReferenceErrorMethod & IsType;
+  syntaxError: typeof SyntaxErrorMethod & IsType;
+  typeError: typeof TypeErrorMethod & IsType;
+  URIError: typeof URIErrorMethod & IsType;
+  regExp: typeof RegExpMethod & IsType;
+  map: typeof MapMethod & IsType;
 }

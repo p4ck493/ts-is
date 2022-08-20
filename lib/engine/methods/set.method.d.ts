@@ -1,5 +1,5 @@
 /**
  * @method date
  */
-declare function SetMethod<T>(argument: unknown): argument is Set<T>;
+declare function SetMethod<T = any>(argument: unknown): argument is Set<T>;
 export default SetMethod;

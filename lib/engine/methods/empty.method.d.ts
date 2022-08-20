@@ -1,7 +1,7 @@
 /**
  *
  * @method empty
- * Empty is: '', {}, [].
+ * Empty is: '', {}, [], new Map().
  * @param argument is any type
  */
 declare function EmptyMethod(argument: unknown): boolean;

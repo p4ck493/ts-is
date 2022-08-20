@@ -19,6 +19,9 @@ describe('empty singel', () => {
         {
             value: []
         },
+        {
+            value: new Map()
+        },
     ];
 
     const dataForBadTesting: {value: any}[] = [
@@ -26,6 +29,9 @@ describe('empty singel', () => {
             value: {
                 property: 1
             }
+        },
+        {
+            value: new Map([['a', 'b']])
         },
         {
             value: null

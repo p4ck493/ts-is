@@ -46,12 +46,12 @@ if (is.object(variable)) {
     - [Usage](#usage)
         - [Import](#import)
         - [Example](#example)
-          - [Methods](#methods)
-          - [Methods with connection](#methods-with-connection)
-          - [Methods with wrappers](#methods-with-wrappers)
-          - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
-          - [Methods with your models](#methods-with-your-models)
-          - [Custom method](#custom-method)
+            - [Methods](#methods)
+            - [Methods with connection](#methods-with-connection)
+            - [Methods with wrappers](#methods-with-wrappers)
+            - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
+            - [Methods with your models](#methods-with-your-models)
+            - [Custom method](#custom-method)
     - [API](#api)
     - [Contributing](#contributing)
     - [Authors](#authors)
@@ -90,7 +90,8 @@ is.false(false) // true
 
 is.falsy('') // true 
 
-is.function((() => {})) // true
+is.function((() => {
+})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
@@ -233,25 +234,33 @@ is.PostModel('world') // Returns: Hello world
 
 ### List of methods
 
-| Name       | Test |
-|------------|------|
-| array      | ✅    |
-| bigInt     | ✅    |
-| boolean    | ✅    |
-| compare    | ✅    |
-| empty      | ✅    |
-| false      | ✅    |
-| falsy      | ✅    |
-| function   | ✅    |
-| instanceof | ✅    |
-| null       | ✅    |
-| number     | ✅    |
-| object     | ✅    |
-| string     | ✅    |
-| symbol     | ✅    |
-| true       | ✅    |
-| truthy     | ✅    |
-| undefined  | ✅    |
+| Name           | Test |
+|----------------|------|
+| array          | ✅    |
+| bigInt         | ✅    |     
+| boolean        | ✅    |     
+| compare        | ✅    |     
+| date           | ✅🆕  |
+| empty          | ✅    |     
+| error          | ✅🆕  |
+| evalError      | ✅🆕  |
+| false          | ✅    |     
+| falsy          | ✅    |     
+| function       | ✅    |     
+| instanceof     | ✅    |     
+| null           | ✅    |     
+| number         | ✅    |     
+| object         | ✅    |     
+| referenceError | ✅🆕  |
+| set            | ✅🆕  |
+| string         | ✅    |     
+| symbol         | ✅    |     
+| syntaxError    | ✅🆕  |
+| true           | ✅    |     
+| truthy         | ✅    |     
+| typeError      | ✅🆕  |
+| undefined      | ✅    |     
+| URIError       | ✅🆕  |
 
 ### List of wrappers and connections
 
@@ -260,8 +269,6 @@ is.PostModel('world') // Returns: Hello world
 | not  | ✅    |
 | all  | ✅    |
 | or   | ✅    |
-
-
 
 ## Contributing
 

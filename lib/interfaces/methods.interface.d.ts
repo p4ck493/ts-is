@@ -24,6 +24,7 @@ import EvalErrorMethod from '../engine/methods/eval-error.method';
 import ReferenceErrorMethod from '../engine/methods/reference-error.method';
 import SyntaxErrorMethod from '../engine/methods/syntax-error.method';
 import TypeErrorMethod from '../engine/methods/type-error.method';
+import URIErrorMethod from '../engine/methods/uri-error.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -59,4 +60,5 @@ export interface MethodsInterface {
     referenceError: typeof ReferenceErrorMethod & IsType;
     syntaxError: typeof SyntaxErrorMethod & IsType;
     typeError: typeof TypeErrorMethod & IsType;
+    URIError: typeof URIErrorMethod & IsType;
 }

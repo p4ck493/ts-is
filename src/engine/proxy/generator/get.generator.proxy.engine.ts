@@ -1,4 +1,4 @@
-import { proxyRecursive } from '../recursive/index';
+import {proxyRecursive} from '../recursive';
 
 type proxyGeneratorGetType = (target: object, name: string) => ReturnType<typeof proxyRecursive>;
 

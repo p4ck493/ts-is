@@ -1,4 +1,4 @@
-import { methods } from '../engine/methods/index';
+import {methods} from '../engine/methods';
 
 // TODO guard on arguments
 // TODO create another report for the method

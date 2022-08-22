@@ -1,4 +1,4 @@
-import wrappers from '../../../wrappers/index';
+import wrappers from '../../../wrappers';
 
 export interface ListsProxyEngineInterface {
   all: {

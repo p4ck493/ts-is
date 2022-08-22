@@ -71,7 +71,39 @@ npm install @p4ck493/ts-is
 import {is} from "@p4ck493/ts-is";
 ```
 
-### Example
+### Examples
+
+#### Syntax
+
+```typescript
+
+$cmd = 'any command';
+
+is.$cmd(); // Correct: is[$cmd]()
+is.$cmd.$cmd(); // Correct: is[$cmd][$cmd]()
+is.$cmd.or.$cmd(); // Correct: is[$cmd].or.[$cmd]()
+is.$cmd.not.$cmd(); // Correct: is[$cmd].not.[$cmd]()
+is.$cmd.all.$cmd(); // Correct: is[$cmd].all.[$cmd]()
+is.$cmd.all.not.$cmd(); // Correct: is[$cmd].all.not.[$cmd]()
+
+$model = 'any model wich declare in pacakge by decorator';
+
+is.$model(); // Correct: is[$model]()
+is.$model.$model(); // Correct: is[$model][$model]()
+is.$model.or.$model(); // Correct: is[$model].or.[$model]()
+is.$model.not.$model(); // Correct: is[$model].not.[$model]()
+is.$model.all.$model(); // Correct: is[$model].all.[$model]()
+is.$model.all.not.$model(); // Correct: is[$model].all.not.[$model]()
+
+// And yes, you can mix:
+
+is.$cmd.$model(); // Correct: is[$cmd][$model]()
+is.$model.or.$cmd(); // Correct: is[$model].or.[$cmd]()
+is.$cmd.not.$model(); // Correct: is[$cmd].not.[$model]()
+is.$model.all.$cmd(); // Correct: is[$model].all.[$cmd]()
+is.$cmd.all.not.$model(); // Correct: is[$cmd].all.not.[$model]()
+
+```
 
 #### Methods
 
@@ -110,6 +142,7 @@ is.true(true) // true
 is.truthy(1) // true
 
 is.undefined(undefined) // true
+
 ```
 
 #### Methods with connection

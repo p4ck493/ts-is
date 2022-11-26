@@ -1,10 +1,5 @@
-import { methods } from './index';
+import {methods} from './index';
 
-/**
- * @method syntaxError
- */
-function SyntaxErrorMethod(argument: unknown): argument is SyntaxError {
+export function SyntaxErrorMethod(argument: unknown): argument is SyntaxError {
   return methods.instanceof(argument, SyntaxError);
 }
-
-export default SyntaxErrorMethod;

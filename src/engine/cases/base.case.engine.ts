@@ -1,11 +1,11 @@
-import { methods } from '../methods';
-import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import {methods} from '../methods';
+import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 interface BaseCaseEngineInterface {
   runCase: () => boolean;
 }
 
-abstract class BaseCaseEngine implements BaseCaseEngineInterface {
+export abstract class BaseCaseEngine implements BaseCaseEngineInterface {
   public static runCase: () => boolean;
 
   public static runCommand(methodObject: ListsProxyEngineInterface['methods'][0], argument: unknown[]): boolean {
@@ -25,5 +25,3 @@ abstract class BaseCaseEngine implements BaseCaseEngineInterface {
     return false;
   }
 }
-
-export default BaseCaseEngine;

@@ -1,5 +1,1 @@
-/**
- * @method date
- */
-declare function DateMethod(argument: unknown): argument is Date;
-export default DateMethod;
+export declare function DateMethod(argument: unknown): argument is Date;

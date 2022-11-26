@@ -4,4 +4,3 @@ export declare enum CaseEnum {
     WRAPPER_OR = 2,
     WRAPPER_AND = 3
 }
-export default CaseEnum;

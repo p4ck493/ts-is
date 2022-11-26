@@ -1,6 +1,5 @@
-import BaseCaseEngine from './base.case.engine';
+import {BaseCaseEngine} from './base.case.engine';
 
-declare class OrCaseEngine extends BaseCaseEngine {
+export declare class OrCaseEngine extends BaseCaseEngine {
     static runCase(): boolean;
 }
-export default OrCaseEngine;

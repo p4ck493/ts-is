@@ -1,8 +1,8 @@
-import wrappers from '../../../wrappers';
-import { methods } from '../../methods';
-import proxyRecursiveApply from './apply.recursive.proxy.engine';
-import proxyRecursiveGet from './get.recursive.proxy.engine';
-import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import {wrappers} from '../../../wrappers';
+import {methods} from '../../methods';
+import {proxyRecursiveApply} from './apply.recursive.proxy.engine';
+import {proxyRecursiveGet} from './get.recursive.proxy.engine';
+import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 
 /**
  *
@@ -12,34 +12,44 @@ import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/list
  * @param lists of all
  */
 export function proxyRecursive(index: number, target: object, name: string, lists: ListsProxyEngineInterface): object {
-  let newTarget: any = methods; // TODo interface
-  let notFound = true;
+    let newTarget: any = methods; // TODO interface
+    lists.lastCommandIsCall = name === 'call';
+    lists.lastCommandIsApply = name === 'apply';
+    if (lists.lastCommandIsCall || lists.lastCommandIsApply) {
+        newTarget = lists?.methods?.at?.(-1)?.method ?? true;
+    } else {
+        let notFound = true;
 
-  if (Reflect.has(methods, name)) {
-    notFound = false;
-    newTarget = methods[name as keyof typeof methods];
-    lists.methods.push({
-      name,
-      index,
-      method: newTarget,
+        if (notFound) {
+
+            if (Reflect.has(methods, name)) {
+                notFound = false;
+                newTarget = methods[name as keyof typeof methods];
+                lists.methods.push({
+                    name,
+                    index,
+                    method: newTarget,
+                });
+            }
+
+            if (wrappers.hasOwnProperty(name)) {
+                notFound = false;
+                lists[name as 'not' | 'all' | 'or'].push({
+                    name,
+                    index,
+                    method: wrappers[name as keyof typeof wrappers],
+                });
+            }
+
+        }
+
+        if (notFound) {
+            throw new Error(`Not found propery with name: ${name}`);
+        }
+    }
+
+    return new Proxy(newTarget, {
+        get: proxyRecursiveGet(index + 1, lists),
+        apply: proxyRecursiveApply(lists),
     });
-  }
-
-  if (wrappers.hasOwnProperty(name)) {
-    notFound = false;
-    lists[name as 'not' | 'all' | 'or'].push({
-      name,
-      index,
-      method: wrappers[name as keyof typeof wrappers],
-    });
-  }
-
-  if (notFound) {
-    throw new Error(`Not found propery with name: ${name}`);
-  }
-
-  return new Proxy(newTarget, {
-    get: proxyRecursiveGet(index + 1, lists),
-    apply: proxyRecursiveApply(lists),
-  });
 }

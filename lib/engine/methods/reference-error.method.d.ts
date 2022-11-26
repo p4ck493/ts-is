@@ -1,5 +1,1 @@
-/**
- * @method referenceError
- */
-declare function ReferenceErrorMethod(argument: unknown): argument is ReferenceError;
-export default ReferenceErrorMethod;
+export declare function ReferenceErrorMethod(argument: unknown): argument is ReferenceError;

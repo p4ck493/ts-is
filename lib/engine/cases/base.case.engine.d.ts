@@ -3,7 +3,7 @@ import {ListsProxyEngineInterface} from '../../interfaces/engine/proxy/lists.pro
 interface BaseCaseEngineInterface {
     runCase: () => boolean;
 }
-declare abstract class BaseCaseEngine implements BaseCaseEngineInterface {
+export declare abstract class BaseCaseEngine implements BaseCaseEngineInterface {
     static runCase: () => boolean;
     static runCommand(methodObject: ListsProxyEngineInterface['methods'][0], argument: unknown[]): boolean;
     /**
@@ -12,4 +12,4 @@ declare abstract class BaseCaseEngine implements BaseCaseEngineInterface {
      */
     runCase(): boolean;
 }
-export default BaseCaseEngine;
+export {};

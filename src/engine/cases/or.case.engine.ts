@@ -1,7 +1,7 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
-import BaseCaseEngine from './base.case.engine';
+import { BaseCaseEngine } from './base.case.engine';
 
-class OrCaseEngine extends BaseCaseEngine {
+export class OrCaseEngine extends BaseCaseEngine {
   public static override runCase(): boolean {
     const context: ContextCaseInterface = this as unknown as ContextCaseInterface;
     return context.lists.methods.some((methodObject) => {
@@ -9,5 +9,3 @@ class OrCaseEngine extends BaseCaseEngine {
     });
   }
 }
-
-export default OrCaseEngine;

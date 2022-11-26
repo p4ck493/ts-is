@@ -1,6 +1,8 @@
-import wrappers from '../../../wrappers';
+import { wrappers } from '../../../wrappers';
 
 export interface ListsProxyEngineInterface {
+  lastCommandIsCall: boolean;
+  lastCommandIsApply: boolean;
   all: {
     index: number;
     name: string;

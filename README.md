@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 3258 Tests
+> 4518 Tests
 
 ## Prerequisites
 
@@ -52,6 +52,9 @@ if (is.object(variable)) {
             - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
             - [Methods with your models](#methods-with-your-models)
             - [Custom method](#custom-method)
+        - [Use Cases](#use-cases)
+          - [array:filter](#arrayfilter)
+          - [observable:pipe:filter](#observablepipefilter)
     - [API](#api)
     - [Contributing](#contributing)
     - [Authors](#authors)
@@ -79,29 +82,29 @@ import {is} from "@p4ck493/ts-is";
 
 $cmd = 'any command';
 
-is.$cmd(); // Correct: is[$cmd]()
-is.$cmd.$cmd(); // Correct: is[$cmd][$cmd]()
-is.$cmd.or.$cmd(); // Correct: is[$cmd].or.[$cmd]()
-is.$cmd.not.$cmd(); // Correct: is[$cmd].not.[$cmd]()
-is.$cmd.all.$cmd(); // Correct: is[$cmd].all.[$cmd]()
-is.$cmd.all.not.$cmd(); // Correct: is[$cmd].all.not.[$cmd]()
+is[$cmd]();
+is[$cmd][$cmd]();
+is[$cmd].or[$cmd]();
+is[$cmd].not[$cmd]();
+is[$cmd].all[$cmd]();
+is[$cmd].all.not[$cmd]();
 
 $model = 'any model wich declare in pacakge by decorator';
 
-is.$model(); // Correct: is[$model]()
-is.$model.$model(); // Correct: is[$model][$model]()
-is.$model.or.$model(); // Correct: is[$model].or.[$model]()
-is.$model.not.$model(); // Correct: is[$model].not.[$model]()
-is.$model.all.$model(); // Correct: is[$model].all.[$model]()
-is.$model.all.not.$model(); // Correct: is[$model].all.not.[$model]()
+is[$model]();
+is[$model][$model]();
+is[$model].or[$model]();
+is[$model].not[$model]();
+is[$model].all[$model]();
+is[$model].all.not[$model]();
 
 // And yes, you can mix:
 
-is.$cmd.$model(); // Correct: is[$cmd][$model]()
-is.$model.or.$cmd(); // Correct: is[$model].or.[$cmd]()
-is.$cmd.not.$model(); // Correct: is[$cmd].not.[$model]()
-is.$model.all.$cmd(); // Correct: is[$model].all.[$cmd]()
-is.$cmd.all.not.$model(); // Correct: is[$cmd].all.not.[$model]()
+is[$cmd][$model]();
+is[$model].or[$cmd]();
+is[$cmd].not[$model]();
+is[$model].all[$cmd]();
+is[$cmd].all.not[$model]();
 
 ```
 
@@ -261,41 +264,81 @@ is.PostModel('world') // Returns: Hello world
 
 ```
 
+### Use Cases
+
+#### array:filter
+```typescript
+
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.filter(is.number)) // [0, 1]
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.filter(is.string)); // ['', 'test']
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.filter(is.string.not.empty)); // ['test']
+
+```
+
+#### observable:pipe:filter
+```typescript
+
+const stream$: Stream<boolean> = new Stream<boolean>();
+
+stream$.pipe(filter(is.boolean)).subscribe(console.log) // true, false
+
+stream$.next([false]); // Bad
+stream$.next(0); // Bad
+
+stream$.next(true); // Good
+
+stream$.next({false: false}); // Bad
+
+stream$.next(false); // Good
+
+stream$.next(1); // Bad
+stream$.next('false'); // Bad
+
+```
+
 ## API
 
 ### All methods return a boolean type
 
 ### List of methods
 
-| Name           | Test |
-|----------------|------|
-| array          | ✅    |
-| bigInt         | ✅    |     
-| boolean        | ✅    |     
-| compare        | ✅    |     
-| date           | ✅🆕  |
-| empty          | ✅    |     
-| error          | ✅🆕  |
-| evalError      | ✅🆕  |
-| false          | ✅    |     
-| falsy          | ✅    |     
-| function       | ✅    |     
-| instanceof     | ✅    |
-| map            | ✅🆕  |     
-| null           | ✅    |     
-| number         | ✅    |     
-| object         | ✅    |     
-| referenceError | ✅🆕  |
-| regExpError    | ✅🆕  |
-| set            | ✅🆕  |
-| string         | ✅    |     
-| symbol         | ✅    |     
-| syntaxError    | ✅🆕  |
-| true           | ✅    |     
-| truthy         | ✅    |     
-| typeError      | ✅🆕  |
-| undefined      | ✅    |     
-| URIError       | ✅🆕  |
+| Name             | Test |
+|------------------|------|
+| array            | ✅    |
+| bigInt           | ✅    |     
+| boolean          | ✅    |     
+| compare          | ✅    |     
+| date             | ✅    |
+| empty            | ✅    |     
+| error            | ✅    |
+| evalError        | ✅    |
+| false            | ✅    |     
+| falsy            | ✅    |     
+| function         | ✅    |     
+| instanceof       | ✅    |
+| map              | ✅    |     
+| null             | ✅    |     
+| number           | ✅    |     
+| object           | ✅    |     
+| referenceError   | ✅    |
+| regExpError      | ✅    |
+| set              | ✅    |
+| string           | ✅    |     
+| symbol           | ✅    |     
+| syntaxError      | ✅    |
+| true             | ✅    |     
+| truthy           | ✅    |     
+| typeError        | ✅    |
+| undefined        | ✅    |     
+| URIError         | ✅    |
+| weakSet          | ✅🆕  |
+| weakMap          | ✅🆕  |
+| dataView         | ✅🆕  |
 
 ### List of wrappers and connections
 

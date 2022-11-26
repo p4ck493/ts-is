@@ -6,7 +6,7 @@ import {
 import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/register-in-is.decorator.interface';
 import { methods } from '../engine/methods';
 
-function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): registerInIsDecoratorType {
+export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): registerInIsDecoratorType {
   return (constructor: registerInIsConstructorDecoratorType): void => {
     let value: any = constructor; // TODO interface
     if (configuration?.customMethod) {
@@ -15,7 +15,6 @@ function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): 
         throw new Error(`Not found customMethod with name: ${configuration.customMethod}`);
       }
     } else {
-      // TODO add in case handle on result of execute function if not booelan that make somethink
       value = () => {
         return {
           classRef: constructor,
@@ -35,5 +34,3 @@ function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): 
     });
   };
 }
-
-export default registerInIsDecorator;

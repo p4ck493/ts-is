@@ -1,9 +1,9 @@
-import { MethodsInterface } from '../interfaces/methods.interface';
 import {
   AfterWrappersInterface,
   BeforeWrappersInterface,
   ConnectionWrappersInterface,
 } from '../interfaces/wrappers.interface';
+import { MethodsInterface } from '../engine/methods';
 
 export type IsType = ((argument: unknown) => void) &
   MethodsInterface &

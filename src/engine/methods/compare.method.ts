@@ -4,13 +4,7 @@ export enum TypeOfValueEnum {
   object = 'object',
 }
 
-/**
- *
- * @method compare
- * @param objectOne is generic type
- * @param objectTwo is generic type
- */
-function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
+export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
   if (
     methods.null(objectOne) ||
     methods.undefined(objectOne) ||
@@ -52,5 +46,3 @@ function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
 
   return true;
 }
-
-export default CompareMethod;

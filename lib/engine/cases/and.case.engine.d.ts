@@ -1,6 +1,5 @@
-import BaseCaseEngine from './base.case.engine';
+import {BaseCaseEngine} from './base.case.engine';
 
-declare class AndCaseEngine extends BaseCaseEngine {
+export declare class AndCaseEngine extends BaseCaseEngine {
     static runCase(): boolean;
 }
-export default AndCaseEngine;

@@ -1,13 +1,11 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
 import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 import { methods } from '../methods';
-import BaseCaseEngine from './base.case.engine';
+import { BaseCaseEngine } from './base.case.engine';
 
-class WrapperAndCaseEngine extends BaseCaseEngine {
+export class WrapperAndCaseEngine extends BaseCaseEngine {
   public static override runCase(): boolean {
     const context: ContextCaseInterface = this as unknown as ContextCaseInterface;
-
-    // TODO more than one NOT
 
     const notWrapper: ListsProxyEngineInterface['not'][0] = context.lists.not[0];
     const allWrapper: ListsProxyEngineInterface['all'][0] = context.lists.all[0];
@@ -52,5 +50,3 @@ class WrapperAndCaseEngine extends BaseCaseEngine {
     return result;
   }
 }
-
-export default WrapperAndCaseEngine;

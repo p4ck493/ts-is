@@ -1,9 +1,9 @@
 import ContextCaseInterface from '../../interfaces/context-case.interface';
 import { ListsProxyEngineInterface } from '../../interfaces/engine/proxy/lists.proxy.engine.interface';
 import { methods } from '../methods';
-import BaseCaseEngine from './base.case.engine';
+import { BaseCaseEngine } from './base.case.engine';
 
-class WrapperOrCaseEngine extends BaseCaseEngine {
+export class WrapperOrCaseEngine extends BaseCaseEngine {
   public static override runCase(): boolean {
     const context: ContextCaseInterface = this as unknown as ContextCaseInterface;
 
@@ -70,16 +70,12 @@ class WrapperOrCaseEngine extends BaseCaseEngine {
       };
 
       result = recursive(context.argumentList);
-      // if (notWrapper) {
-      //     result = !result;
-      // }
     } else {
       // is.not.Person.or.Man
 
       for (const methodObject of context.lists.methods) {
         if (methodObject.index > notWrapper.index) {
           // is.not.person.or.string()
-
           result = !middleware(methodObject);
           if (!result) {
             break;
@@ -91,5 +87,3 @@ class WrapperOrCaseEngine extends BaseCaseEngine {
     return result;
   }
 }
-
-export default WrapperOrCaseEngine;

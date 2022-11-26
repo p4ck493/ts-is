@@ -1,7 +1,6 @@
 import { FlagsToolInterface } from '../interfaces/tools/flags.tool.interface';
-import CaseEnum from '../enums/case.enum';
 
-export const CaseConst: { [key in keyof typeof CaseEnum]: FlagsToolInterface } = {
+export const CaseConst: { [key in 'OR' | 'AND' | 'WRAPPER_OR' | 'WRAPPER_AND']: FlagsToolInterface } = {
   OR: {
     or: true,
     wrapper: false,

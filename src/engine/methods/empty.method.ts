@@ -1,12 +1,6 @@
 import { methods } from './index';
 
-/**
- *
- * @method empty
- * Empty is: '', {}, [], new Map().
- * @param argument is any type
- */
-function EmptyMethod(argument: unknown): boolean {
+export function EmptyMethod(argument: unknown): boolean {
   if (methods.string(argument) || methods.object(argument) || methods.array(argument)) {
     if (methods.map(argument)) {
       return argument.size === 0;
@@ -15,5 +9,3 @@ function EmptyMethod(argument: unknown): boolean {
   }
   return false;
 }
-
-export default EmptyMethod;

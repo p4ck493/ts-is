@@ -1,4 +1,5 @@
 import {is} from '../../lib';
+import {BroadcastChannel} from 'broadcast-channel'
 
 describe('BroadcastChannel singel', () => {
 

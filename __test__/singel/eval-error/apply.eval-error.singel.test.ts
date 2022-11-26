@@ -1,6 +1,6 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
-describe('evalError singel', () => {
+describe('evalError singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -93,19 +93,19 @@ describe('evalError singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.evalError: Should true for $value', ({value}) => {
-        expect(is.evalError(value)).toBe(true);
+        expect(is.evalError.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.evalError: Should false for $value', ({value}) => {
-        expect(is.evalError(value)).toBe(false);
+        expect(is.evalError.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.not.evalError: Should false for $value', ({value}) => {
-        expect(is.not.evalError(value)).toBe(false);
+        expect(is.not.evalError.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.not.evalError: Should true for $value', ({value}) => {
-        expect(is.not.evalError(value)).toBe(true);
+        expect(is.not.evalError.apply({}, [value])).toBe(true);
     });
 
 });

@@ -1,7 +1,7 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
 
-describe('empty singel', () => {
+describe('empty singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -81,19 +81,19 @@ describe('empty singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.empty: Should true for $value', ({value}) => {
-        expect(is.empty(value)).toBe(true);
+        expect(is.empty.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.empty: Should false for $value', ({value}) => {
-        expect(is.empty(value)).toBe(false);
+        expect(is.empty.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.not.empty: Should false for $value', ({value}) => {
-        expect(is.not.empty(value)).toBe(false);
+        expect(is.not.empty.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.not.empty: Should true for $value', ({value}) => {
-        expect(is.not.empty(value)).toBe(true);
+        expect(is.not.empty.apply({}, [value])).toBe(true);
     });
 
 });

@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 3258 Tests
+> 4352 Tests
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
-describe('error singel', () => {
+describe('error singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -90,19 +90,19 @@ describe('error singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.error: Should true for $value', ({value}) => {
-        expect(is.error(value)).toBe(true);
+        expect(is.error.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.error: Should false for $value', ({value}) => {
-        expect(is.error(value)).toBe(false);
+        expect(is.error.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.not.error: Should false for $value', ({value}) => {
-        expect(is.not.error(value)).toBe(false);
+        expect(is.not.error.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.not.error: Should true for $value', ({value}) => {
-        expect(is.not.error(value)).toBe(true);
+        expect(is.not.error.apply({}, [value])).toBe(true);
     });
 
 });

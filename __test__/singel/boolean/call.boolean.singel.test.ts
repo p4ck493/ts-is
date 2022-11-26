@@ -1,12 +1,15 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
 
-describe('bigInt singel', () => {
+describe('boolean singel: call', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
-            value: BigInt(1)
+            value: true
         },
+        {
+            value: false
+        }
     ];
 
     const dataForBadTesting: {value: any}[] = [
@@ -20,13 +23,7 @@ describe('bigInt singel', () => {
             value: Symbol()
         },
         {
-            value: []
-        },
-        {
-            value: true
-        },
-        {
-            value: false
+            value: BigInt(1)
         },
         {
             value: ""
@@ -39,6 +36,9 @@ describe('bigInt singel', () => {
         },
         {
             value: {}
+        },
+        {
+            value: []
         },
         {
             value: 0
@@ -66,20 +66,20 @@ describe('bigInt singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.bigInt: Should true for $value', ({value}) => {
-        expect(is.bigInt(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.boolean: Should true for $value', ({value}) => {
+        expect(is.boolean.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.bigInt: Should false for $value', ({value}) => {
-        expect(is.bigInt(value)).toBe(false);
+    it.each(dataForBadTesting)('is.boolean: Should false for $value', ({value}) => {
+        expect(is.boolean.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.bigInt: Should false for $value', ({value}) => {
-        expect(is.not.bigInt(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.boolean: Should false for $value', ({value}) => {
+        expect(is.not.boolean.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.bigInt: Should true for $value', ({value}) => {
-        expect(is.not.bigInt(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.boolean: Should true for $value', ({value}) => {
+        expect(is.not.boolean.call({}, value)).toBe(true);
     });
 
 });

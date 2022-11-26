@@ -1,7 +1,7 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
 
-describe('boolean singel', () => {
+describe('boolean singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -67,19 +67,19 @@ describe('boolean singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.boolean: Should true for $value', ({value}) => {
-        expect(is.boolean(value)).toBe(true);
+        expect(is.boolean.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.boolean: Should false for $value', ({value}) => {
-        expect(is.boolean(value)).toBe(false);
+        expect(is.boolean.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.not.boolean: Should false for $value', ({value}) => {
-        expect(is.not.boolean(value)).toBe(false);
+        expect(is.not.boolean.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.not.boolean: Should true for $value', ({value}) => {
-        expect(is.not.boolean(value)).toBe(true);
+        expect(is.not.boolean.apply({}, [value])).toBe(true);
     });
 
 });

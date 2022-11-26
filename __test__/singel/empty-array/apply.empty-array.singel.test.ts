@@ -1,7 +1,7 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
 
-describe('Empty Array singel', () => {
+describe('Empty Array singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -90,23 +90,23 @@ describe('Empty Array singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.array.empty: Should true for $value', ({value}) => {
-        expect(is.array.empty(value)).toBe(true);
+        expect(is.array.empty.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.array.empty: Should false for $value', ({value}) => {
-        expect(is.array.empty(value)).toBe(false);
+        expect(is.array.empty.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.array.not.empty: Should false for $value', ({value}) => {
-        expect(is.array.not.empty(value)).toBe(false);
+        expect(is.array.not.empty.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.array.not.empty: Should false for $value', ({value}) => {
-        expect(is.array.not.empty(value)).toBe(false);
+        expect(is.array.not.empty.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodCaseTesting)('is.array.not.empty: Should true for $value', ({value}) => {
-        expect(is.array.not.empty(value)).toBe(true);
+        expect(is.array.not.empty.apply({}, [value])).toBe(true);
     });
 
 });

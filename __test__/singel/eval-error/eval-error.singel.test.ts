@@ -1,14 +1,20 @@
-import {is} from '../../lib';
+import {is} from '../../../lib';
 
-describe('date singel', () => {
+describe('evalError singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
-            value: new Date(),
+            value: new EvalError(),
         }
     ];
 
     const dataForBadTesting: {value: any}[] = [
+        {
+            value: new Error(),
+        },
+        {
+            value: new Date(),
+        },
         {
             value: [],
         },
@@ -86,20 +92,20 @@ describe('date singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.date: Should true for $value', ({value}) => {
-        expect(is.date(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.evalError: Should true for $value', ({value}) => {
+        expect(is.evalError(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.date: Should false for $value', ({value}) => {
-        expect(is.date(value)).toBe(false);
+    it.each(dataForBadTesting)('is.evalError: Should false for $value', ({value}) => {
+        expect(is.evalError(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.date: Should false for $value', ({value}) => {
-        expect(is.not.date(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.evalError: Should false for $value', ({value}) => {
+        expect(is.not.evalError(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.date: Should true for $value', ({value}) => {
-        expect(is.not.date(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.evalError: Should true for $value', ({value}) => {
+        expect(is.not.evalError(value)).toBe(true);
     });
 
 });

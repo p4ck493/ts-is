@@ -1,11 +1,11 @@
-import {is} from '../../lib/index';
+import {is} from '../../../lib/index';
 
 
 class Person {
 
 }
 
-describe('array singel', () => {
+describe('array singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -89,19 +89,19 @@ describe('array singel', () => {
     ];
 
     it.each(dataForGoodTesting)('is.array: Should true for $value', ({value}) => {
-        expect(is.array(value)).toBe(true);
+        expect(is.array.apply({}, [value])).toBe(true);
     });
 
     it.each(dataForBadTesting)('is.array: Should false for $value', ({value}) => {
-        expect(is.array(value)).toBe(false);
+        expect(is.array.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.not.array: Should false for $value', ({value}) => {
-        expect(is.not.array(value)).toBe(false);
+        expect(is.not.array.apply({}, [value])).toBe(false);
     });
 
     it.each(dataForBadTesting)('is.not.array: Should true for $value', ({value}) => {
-        expect(is.not.array(value)).toBe(true);
+        expect(is.not.array.apply({}, [value])).toBe(true);
     });
 
     const dataForGoodAdvancedTesting: {value: any, classRef: new () => unknown}[] = [
@@ -127,7 +127,7 @@ describe('array singel', () => {
     // ];
     //
     // it.each(dataForGoodAdvancedTesting1)('is.array: Should true for $value', ({value}) => {
-    //     expect(is.array.all.number(value)).toBe(true);
+    //     expect(is.array.all.number.apply({}, [value])).toBe(true);
     // });
 
 });

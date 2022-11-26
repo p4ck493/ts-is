@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 4576 Tests
+> 4518 Tests
 
 ## Prerequisites
 
@@ -339,7 +339,6 @@ stream$.next('false'); // Bad
 | weakSet          | ✅🆕  |
 | weakMap          | ✅🆕  |
 | dataView         | ✅🆕  |
-| broadcastChannel | ✅🆕  |
 
 ### List of wrappers and connections
 

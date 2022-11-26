@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 4352 Tests
+> 4576 Tests
 
 ## Prerequisites
 
@@ -269,9 +269,14 @@ is.PostModel('world') // Returns: Hello world
 #### array:filter
 ```typescript
 
-const onlyNumbers: number[] = [0, 1, '', 'test'].filter(is.number); // [0, 1]
-const onlyStringList: string[] = [0, 1, '', 'test'].filter(is.string); // ['', 'test']
-const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'].filter(is.string.not.empty); // ['test']
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.filter(is.number)) // [0, 1]
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.filter(is.string)); // ['', 'test']
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.filter(is.string.not.empty)); // ['test']
 
 ```
 
@@ -302,35 +307,39 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Test |
-|----------------|------|
-| array          | ✅    |
-| bigInt         | ✅    |     
-| boolean        | ✅    |     
-| compare        | ✅    |     
-| date           | ✅🆕  |
-| empty          | ✅    |     
-| error          | ✅🆕  |
-| evalError      | ✅🆕  |
-| false          | ✅    |     
-| falsy          | ✅    |     
-| function       | ✅    |     
-| instanceof     | ✅    |
-| map            | ✅🆕  |     
-| null           | ✅    |     
-| number         | ✅    |     
-| object         | ✅    |     
-| referenceError | ✅🆕  |
-| regExpError    | ✅🆕  |
-| set            | ✅🆕  |
-| string         | ✅    |     
-| symbol         | ✅    |     
-| syntaxError    | ✅🆕  |
-| true           | ✅    |     
-| truthy         | ✅    |     
-| typeError      | ✅🆕  |
-| undefined      | ✅    |     
-| URIError       | ✅🆕  |
+| Name             | Test |
+|------------------|------|
+| array            | ✅    |
+| bigInt           | ✅    |     
+| boolean          | ✅    |     
+| compare          | ✅    |     
+| date             | ✅    |
+| empty            | ✅    |     
+| error            | ✅    |
+| evalError        | ✅    |
+| false            | ✅    |     
+| falsy            | ✅    |     
+| function         | ✅    |     
+| instanceof       | ✅    |
+| map              | ✅    |     
+| null             | ✅    |     
+| number           | ✅    |     
+| object           | ✅    |     
+| referenceError   | ✅    |
+| regExpError      | ✅    |
+| set              | ✅    |
+| string           | ✅    |     
+| symbol           | ✅    |     
+| syntaxError      | ✅    |
+| true             | ✅    |     
+| truthy           | ✅    |     
+| typeError        | ✅    |
+| undefined        | ✅    |     
+| URIError         | ✅    |
+| weakSet          | ✅🆕  |
+| weakMap          | ✅🆕  |
+| dataView         | ✅🆕  |
+| broadcastChannel | ✅🆕  |
 
 ### List of wrappers and connections
 

@@ -1,6 +1,5 @@
 import {FlagsToolInterface} from '../interfaces/tools/flags.tool.interface';
-import {CaseEnum} from '../enums/case.enum';
 
 export declare const CaseConst: {
-    [key in keyof typeof CaseEnum]: FlagsToolInterface;
+    [key in 'OR' | 'AND' | 'WRAPPER_OR' | 'WRAPPER_AND']: FlagsToolInterface;
 };

@@ -1,14 +1,12 @@
 import {ListsProxyEngineInterface} from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
 import {OrCaseEngine} from '../../cases/or.case.engine';
 import {WrapperOrCaseEngine} from '../../cases/wrapper-or.case.engine';
-import {findKey} from '../../../tools/find-key.tool';
-import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
 import {CaseConst} from '../../../consts/case.const';
-import {CaseEnum} from '../../../enums/case.enum';
 import {AndCaseEngine} from '../../cases/and.case.engine';
 import {WrapperAndCaseEngine} from '../../cases/wrapper-and.case.engine';
 import ContextCaseInterface from '../../../interfaces/context-case.interface';
 import {BaseCaseEngine} from '../../cases/base.case.engine';
+import {FlagsToolInterface} from '../../../interfaces/tools/flags.tool.interface';
 
 type proxyRecursiveApplyType = (
     targetApply: any,
@@ -16,11 +14,11 @@ type proxyRecursiveApplyType = (
     argumentList: unknown[] & unknown[][],
 ) => ReturnType<typeof targetApply>;
 
-const recordOfCases: Record<number, BaseCaseEngine> = {
-    [CaseEnum.AND]: AndCaseEngine,
-    [CaseEnum.OR]: OrCaseEngine,
-    [CaseEnum.WRAPPER_OR]: WrapperOrCaseEngine,
-    [CaseEnum.WRAPPER_AND]: WrapperAndCaseEngine,
+const recordOfCases: Record<string, BaseCaseEngine> = {
+    [JSON.stringify(CaseConst.AND)]: AndCaseEngine,
+    [JSON.stringify(CaseConst.OR)]: OrCaseEngine,
+    [JSON.stringify(CaseConst.WRAPPER_OR)]: WrapperOrCaseEngine,
+    [JSON.stringify(CaseConst.WRAPPER_AND)]: WrapperAndCaseEngine,
 };
 
 export function proxyRecursiveApply(lists: ListsProxyEngineInterface): proxyRecursiveApplyType {
@@ -30,13 +28,11 @@ export function proxyRecursiveApply(lists: ListsProxyEngineInterface): proxyRecu
             wrapper: !!lists?.all?.length || !!lists?.not?.length,
         };
 
-        const foundCase = findKey<FlagsToolInterface>(CaseConst, flags);
+        const foundCase = recordOfCases[JSON.stringify(flags)];
 
         if (!foundCase) {
             throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
         }
-
-        const key: CaseEnum = CaseEnum[foundCase as keyof typeof CaseEnum];
 
         if (lists.lastCommandIsCall) {
             argumentList.splice(0, 1);
@@ -52,6 +48,6 @@ export function proxyRecursiveApply(lists: ListsProxyEngineInterface): proxyRecu
             lists,
         };
 
-        return (recordOfCases[key] as BaseCaseEngine).runCase.call(context);
+        return foundCase.runCase.call(context);
     };
 }

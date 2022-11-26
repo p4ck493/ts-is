@@ -1,4 +1,4 @@
-import {methods} from './index';
+import { methods } from './index';
 
 export enum TypeOfValueEnum {
   object = 'object',

@@ -1,4 +1,4 @@
-import {methods} from './index';
+import { methods } from './index';
 
 /**
  * @method error

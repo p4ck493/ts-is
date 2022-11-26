@@ -1,5 +1,5 @@
-import {methods} from './index';
+import { methods } from './index';
 
 export function BroadcastChannelMethod(argument: unknown): argument is BroadcastChannel {
-    return methods.instanceof(argument, BroadcastChannel);
+  return methods.instanceof(argument, BroadcastChannel);
 }

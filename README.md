@@ -52,6 +52,9 @@ if (is.object(variable)) {
             - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
             - [Methods with your models](#methods-with-your-models)
             - [Custom method](#custom-method)
+        - [Use Cases](#use-cases)
+          - [array:filter](#arrayfilter)
+          - [observable:pipe:filter](#observablepipefilter)
     - [API](#api)
     - [Contributing](#contributing)
     - [Authors](#authors)
@@ -261,14 +264,35 @@ is.PostModel('world') // Returns: Hello world
 
 ```
 
-## Cases
+### Use Cases
 
-### filter
+#### array:filter
 ```typescript
 
 const onlyNumbers: number[] = [0, 1, '', 'test'].filter(is.number); // [0, 1]
 const onlyStringList: string[] = [0, 1, '', 'test'].filter(is.string); // ['', 'test']
 const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'].filter(is.string.not.empty); // ['test']
+
+```
+
+#### observable:pipe:filter
+```typescript
+
+const stream$: Stream<boolean> = new Stream<boolean>();
+
+stream$.pipe(filter(is.boolean)).subscribe(console.log) // true, false
+
+stream$.next([false]); // Bad
+stream$.next(0); // Bad
+
+stream$.next(true); // Good
+
+stream$.next({false: false}); // Bad
+
+stream$.next(false); // Good
+
+stream$.next(1); // Bad
+stream$.next('false'); // Bad
 
 ```
 

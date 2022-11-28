@@ -1,12 +1,12 @@
 import {
   registerInIsArgumentDecoratorType,
   registerInIsConstructorDecoratorType,
-  registerInIsDecoratorType,
 } from '../types/decorators/register-in-is.decorator.type';
 import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/register-in-is.decorator.interface';
 import { methods } from '../engine/methods';
 
-export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): registerInIsDecoratorType {
+export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): any {
+  // TODO interface
   return (constructor: registerInIsConstructorDecoratorType): void => {
     let value: any = constructor; // TODO interface
     if (configuration?.customMethod) {

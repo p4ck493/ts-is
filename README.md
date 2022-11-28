@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 4518 Tests
+> 6816 Tests
 
 ## Prerequisites
 
@@ -332,38 +332,40 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name             | Test |
-|------------------|------|
-| array            | ✅    |
-| bigInt           | ✅    |     
-| boolean          | ✅    |     
-| compare          | ✅    |     
-| date             | ✅    |
-| empty            | ✅    |     
-| error            | ✅    |
-| evalError        | ✅    |
-| false            | ✅    |     
-| falsy            | ✅    |     
-| function         | ✅    |     
-| instanceof       | ✅    |
-| map              | ✅    |     
-| null             | ✅    |     
-| number           | ✅    |     
-| object           | ✅    |     
-| referenceError   | ✅    |
-| regExpError      | ✅    |
-| set              | ✅    |
-| string           | ✅    |     
-| symbol           | ✅    |     
-| syntaxError      | ✅    |
-| true             | ✅    |     
-| truthy           | ✅    |     
-| typeError        | ✅    |
-| undefined        | ✅    |     
-| URIError         | ✅    |
-| weakSet          | ✅🆕  |
-| weakMap          | ✅🆕  |
-| dataView         | ✅🆕  |
+| Name           | Test |
+|----------------|------|
+| array          | ✅    |
+| bigInt         | ✅    |     
+| boolean        | ✅    |     
+| compare        | ✅    |     
+| date           | ✅    |
+| empty          | ✅    |     
+| error          | ✅    |
+| evalError      | ✅    |
+| false          | ✅    |     
+| falsy          | ✅    |     
+| function       | ✅    |     
+| instanceof     | ✅    |
+| map            | ✅    |     
+| null           | ✅    |     
+| number         | ✅    |     
+| object         | ✅    |     
+| referenceError | ✅    |
+| regExpError    | ✅    |
+| set            | ✅    |
+| string         | ✅    |     
+| symbol         | ✅    |     
+| syntaxError    | ✅    |
+| true           | ✅    |     
+| truthy         | ✅    |     
+| typeError      | ✅    |
+| undefined      | ✅    |     
+| URIError       | ✅    |
+| weakSet        | ✅🆕  |
+| weakMap        | ✅🆕  |
+| dataView       | ✅🆕  |
+| NaN            | ✅🆕  |
+| zero           | ✅🆕  |
 
 ### List of wrappers and connections
 

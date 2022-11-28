@@ -30,6 +30,8 @@ import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
 import {IsType} from '../../types/is.type';
 import {WeakMapMethod} from './weak-map.method';
 import {DataViewMethod} from './data-view.method';
+import {NanMethod} from './nan.method';
+import {ZeroMethod} from './zero.method';
 
 export interface MethodInterface {
   [key: string]: {
@@ -74,9 +76,10 @@ export interface MethodsInterface {
   weakSet: typeof WeakSetMethod & IsType;
   weakMap: typeof WeakMapMethod & IsType;
   dataView: typeof DataViewMethod & IsType;
+  zero: typeof ZeroMethod & IsType;
+  NaN: typeof NanMethod & IsType;
 }
 
-// TODO add is.zero, is.NaN
 export const methods: MethodsInterface & MethodInterface = {
   array: ArrayMethod as any,
   bigInt: BigIntMethod as any,
@@ -108,4 +111,6 @@ export const methods: MethodsInterface & MethodInterface = {
   weakSet: WeakSetMethod as any,
   weakMap: WeakMapMethod as any,
   dataView: DataViewMethod as any,
+  zero: ZeroMethod as any,
+  NaN: NanMethod as any,
 };

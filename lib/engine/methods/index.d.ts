@@ -30,7 +30,8 @@ import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
 import {IsType} from '../../types/is.type';
 import {WeakMapMethod} from './weak-map.method';
 import {DataViewMethod} from './data-view.method';
-import {BroadcastChannelMethod} from './broadcast-channel.method';
+import {NanMethod} from './nan.method';
+import {ZeroMethod} from './zero.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -72,6 +73,7 @@ export interface MethodsInterface {
     weakSet: typeof WeakSetMethod & IsType;
     weakMap: typeof WeakMapMethod & IsType;
     dataView: typeof DataViewMethod & IsType;
-    broadcastChannel: typeof BroadcastChannelMethod & IsType;
+    zero: typeof ZeroMethod & IsType;
+    NaN: typeof NanMethod & IsType;
 }
 export declare const methods: MethodsInterface & MethodInterface;

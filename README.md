@@ -119,16 +119,25 @@ is.boolean(false) // true
 
 is.compare({a: 1}, {a: 1}) // true
 
+is.date(new Date()) // true
+
 is.empty('') // true
+
+is.error(new Error()) // true
+
+is.evalError(new EvalError()) // true
 
 is.false(false) // true
 
+is.dataView(new DataView(new ArrayBuffer(16), 0)) // true
+
 is.falsy('') // true 
 
-is.function((() => {
-})) // true
+is.function((() => {})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
+
+is.map(new Map()) // true
 
 is.null(null) // true
 
@@ -136,15 +145,31 @@ is.number(0) // true
 
 is.object({}) // true
 
+is.referenceError(new ReferenceError()) // true
+
+is.regExp(new RegExp()) // true
+
+is.set(new Set()) // true
+
 is.string('') // true
 
 is.symbol(Symbol()) // true
+
+is.syntaxError(new SyntaxError()) // true
 
 is.true(true) // true
 
 is.truthy(1) // true
 
+is.typeError(new TypeError()) // true
+
 is.undefined(undefined) // true
+
+is.URIError(new URIError()) // true
+
+is.weakMap(new WeakMap()) // true
+
+is.weakSet(new WeakSet()) // true
 
 ```
 

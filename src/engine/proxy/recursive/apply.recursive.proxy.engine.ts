@@ -1,53 +1,105 @@
-import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
-import { OrCaseEngine } from '../../cases/or.case.engine';
-import { WrapperOrCaseEngine } from '../../cases/wrapper-or.case.engine';
-import { CaseConst } from '../../../consts/case.const';
-import { AndCaseEngine } from '../../cases/and.case.engine';
-import { WrapperAndCaseEngine } from '../../cases/wrapper-and.case.engine';
-import ContextCaseInterface from '../../../interfaces/context-case.interface';
-import { BaseCaseEngine } from '../../cases/base.case.engine';
-import { FlagsToolInterface } from '../../../interfaces/tools/flags.tool.interface';
+import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {methods} from '../../methods';
 
 type proxyRecursiveApplyType = (
-  targetApply: any,
-  thisArg: unknown,
-  argumentList: unknown[] & unknown[][],
+    targetApply: any,
+    thisArg: unknown,
+    argumentList: unknown[] & unknown[][],
 ) => ReturnType<typeof targetApply>;
 
-const recordOfCases: Record<string, BaseCaseEngine> = {
-  [JSON.stringify(CaseConst.AND)]: AndCaseEngine,
-  [JSON.stringify(CaseConst.OR)]: OrCaseEngine,
-  [JSON.stringify(CaseConst.WRAPPER_OR)]: WrapperOrCaseEngine,
-  [JSON.stringify(CaseConst.WRAPPER_AND)]: WrapperAndCaseEngine,
-};
+export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRecursiveApplyType {
+    return (targetApply, thisArg, argumentList): boolean => {
 
-export function proxyRecursiveApply(lists: ListsProxyEngineInterface): proxyRecursiveApplyType {
-  return (targetApply, thisArg, argumentList): boolean => {
-    const flags: FlagsToolInterface = {
-      or: !!lists?.or?.length,
-      wrapper: !!lists?.all?.length || !!lists?.not?.length,
+        console.log(globalThis);
+        console.log(params.commandList);
+        console.log('params', params, 'targetApply', targetApply, 'thisArg', thisArg, 'argumentList', argumentList);
+
+        // TODO call apply
+        // if (params.lastCommandIsCall) {
+        //     argumentList.splice(0, 1);
+        // }
+        //
+        // if (params.lastCommandIsApply) {
+        //     argumentList = argumentList[1] as any;
+        // }
+
+        const list = convertListToFinaleList(params.commandList, argumentList);
+        console.log('list', list);
+
+        const result: boolean = customReduce(list);
+        console.log('result', result);
+
+        return result;
+
     };
-
-    const foundCase = recordOfCases[JSON.stringify(flags)];
-
-    if (!foundCase) {
-      throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
-    }
-
-    if (lists.lastCommandIsCall) {
-      argumentList.splice(0, 1);
-    }
-
-    if (lists.lastCommandIsApply) {
-      argumentList = argumentList[1] as any;
-    }
-
-    const context: ContextCaseInterface = {
-      targetApply,
-      argumentList,
-      lists,
-    };
-
-    return foundCase.runCase.call(context);
-  };
 }
+
+function convertListToFinaleList(list: string[], argumentList: any[]): (boolean | number | boolean[])[] {
+    let beforeNewList: (boolean | number | boolean[])[] = [];
+
+    // TODO .all.
+
+    for (let i: number = 0; i < list.length; i++) {
+
+        if (list[i] === 'not') {
+            beforeNewList.push(0);
+            continue;
+        }
+
+        if (list[i + 1] === 'or') {
+            const lastItem: boolean | number | boolean[] | undefined = beforeNewList[beforeNewList.length - 1];
+            if (Array.isArray(lastItem)) {
+                lastItem.push(getResult(list[i], argumentList));
+            } else {
+                beforeNewList.push([getResult(list[i], argumentList)]);
+            }
+            i++;
+            continue;
+        }
+
+        if (i > 1 && list[i - 1] === 'or') {
+            (beforeNewList[beforeNewList.length - 1] as boolean[]).push(getResult(list[i], argumentList));
+        } else {
+            beforeNewList.push(getResult(list[i], argumentList));
+        }
+    }
+
+    return beforeNewList;
+}
+
+function getResult(name: string, argumentList: any): boolean {
+    // TODO call, apply, model, globalThis
+    console.log('getResult: ', 'name', name, 'argumentList', argumentList);
+    return methods[name].apply({}, argumentList);
+}
+
+function customReduce(arr: (boolean | number | boolean[])[]): boolean {
+    const prev: {
+        result: boolean;
+        index: number;
+        indexNot: number;
+    } = {
+        result: false,
+        indexNot: arr.findIndex((a) => a === 0),
+        index: 0,
+    };
+    for (let curr of arr) {
+        if (prev.indexNot !== prev.index) {
+            if (Array.isArray(curr)) {
+                curr = curr.some((t) => t);
+            }
+            if (prev.index > prev.indexNot && prev.indexNot > -1) {
+                curr = !curr;
+            }
+            if (typeof curr === 'boolean') {
+                if (curr) {
+                    prev.result = curr;
+                } else {
+                    return false;
+                }
+            }
+        }
+        prev.index++;
+    }
+    return prev.result;
+};

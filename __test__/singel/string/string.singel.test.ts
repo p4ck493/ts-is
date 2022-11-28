@@ -3,6 +3,13 @@ import {is} from '../../../lib';
 
 describe('string singel', () => {
 
+    // it('is.string: Should true for $value', () => {
+    //     // expect(is.string.not.null.or.undefined('is.string: Should true for $value')).toBe(true);
+    //     // expect(is.string.null.or.undefined('is.string: Should true for $value')).toBe(true);
+    //     expect(is.string.not.null.or.undefined('is.string: Should true for $value')).toBe(true);
+    //     // expect(is.array.not.empty.or.null.call({}, 'is.string: Should true for $value')).toBe(true);
+    // });
+
     const dataForGoodTesting: {value: any}[] = [
         {
             value: 'undefined'

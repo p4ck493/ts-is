@@ -9,32 +9,22 @@ type proxyRecursiveApplyType = (
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRecursiveApplyType {
     return (targetApply, thisArg, argumentList): boolean => {
-
-        console.log(globalThis);
-        console.log(params.commandList);
-        console.log('params', params, 'targetApply', targetApply, 'thisArg', thisArg, 'argumentList', argumentList);
-
-        // TODO call apply
-        // if (params.lastCommandIsCall) {
-        //     argumentList.splice(0, 1);
-        // }
-        //
-        // if (params.lastCommandIsApply) {
-        //     argumentList = argumentList[1] as any;
-        // }
-
-        const list = convertListToFinaleList(params.commandList, argumentList);
-        console.log('list', list);
-
-        const result: boolean = customReduce(list);
-        console.log('result', result);
-
-        return result;
-
+        // TODO fix problem with argumentList, why is can be array in array is bad,
+        // TODO only one array layer
+        try {
+            if (['apply', 'call'].includes(params.commandList.at(-1) ?? '')) {
+                argumentList.splice(0, 1);
+                params.commandList = params.commandList.slice(0, params.commandList.length - 1);
+            }
+            const a = convertStringListToDecideList(params.commandList, argumentList);
+            return decideResult(a);
+        } catch (e) {
+            return false;
+        }
     };
 }
 
-function convertListToFinaleList(list: string[], argumentList: any[]): (boolean | number | boolean[])[] {
+function convertStringListToDecideList(list: string[], argumentList: any[]): (boolean | number | boolean[])[] {
     let beforeNewList: (boolean | number | boolean[])[] = [];
 
     // TODO .all.
@@ -68,38 +58,48 @@ function convertListToFinaleList(list: string[], argumentList: any[]): (boolean 
 }
 
 function getResult(name: string, argumentList: any): boolean {
-    // TODO call, apply, model, globalThis
-    console.log('getResult: ', 'name', name, 'argumentList', argumentList);
-    return methods[name].apply({}, argumentList);
+
+    if (Reflect.has(methods, name)) {
+        return methods[name].apply({}, argumentList);
+    }
+
+    if (Reflect.has((globalThis ?? {}), name)) {
+        if (typeof (globalThis as any)[name] === 'function') {
+            return (globalThis as any)[name].apply({}, argumentList);
+        }
+    }
+
+    if (Reflect.has((window ?? {}), name)) {
+        if (typeof (window as any)[name] === 'function') {
+            return (window as any)[name].apply({}, argumentList);
+        }
+    }
+
+    return false;
+
 }
 
-function customReduce(arr: (boolean | number | boolean[])[]): boolean {
-    const prev: {
-        result: boolean;
-        index: number;
-        indexNot: number;
-    } = {
-        result: false,
-        indexNot: arr.findIndex((a) => a === 0),
-        index: 0,
-    };
-    for (let curr of arr) {
-        if (prev.indexNot !== prev.index) {
+function decideResult(list: (boolean | number | boolean[])[]): boolean {
+    const indexNot: number = list.findIndex((a) => a === 0);
+    let index: number = 0, result: boolean = false;
+
+    for (let curr of list) {
+        if (indexNot !== index) {
             if (Array.isArray(curr)) {
                 curr = curr.some((t) => t);
             }
-            if (prev.index > prev.indexNot && prev.indexNot > -1) {
+            if (index > indexNot && indexNot > -1) {
                 curr = !curr;
             }
             if (typeof curr === 'boolean') {
                 if (curr) {
-                    prev.result = curr;
+                    result = curr;
                 } else {
                     return false;
                 }
             }
         }
-        prev.index++;
+        index++;
     }
-    return prev.result;
+    return result;
 };

@@ -12,9 +12,13 @@ import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/param
 export function proxyRecursive(target: object, name: string, params: ParamsProxyEngineInterface): object {
     params.commandList.push(name);
 
-    // TODO apply, call
+    if (['apply', 'call'].includes(name)) {
+        target = getMethod(<string>params.commandList.at(-2));
+    } else {
+        target = getMethod(name);
+    }
 
-    return new Proxy(getMethod(name), {
+    return new Proxy(target, {
         get: proxyRecursiveGet(params),
         apply: proxyRecursiveApply(params),
     });
@@ -22,7 +26,7 @@ export function proxyRecursive(target: object, name: string, params: ParamsProxy
 
 function getMethod(name: string): any {
     if (Reflect.has(methods, name)) {
-        return methods[name as keyof typeof methods];
+        return methods[name];
     }
     return methods;
 }

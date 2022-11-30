@@ -9,15 +9,24 @@ type proxyRecursiveApplyType = (
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRecursiveApplyType {
     return (targetApply, thisArg, argumentList): boolean => {
-        // TODO fix problem with argumentList, why is can be array in array is bad,
-        // TODO only one array layer
         try {
-            if (['apply', 'call'].includes(params.commandList.at(-1) ?? '')) {
-                argumentList.splice(0, 1);
-                params.commandList = params.commandList.slice(0, params.commandList.length - 1);
+
+            // TODO .all.
+
+            const lastCommand = <string>params.commandList.pop();
+
+            switch (lastCommand) {
+                case 'apply':
+                    argumentList = argumentList[1] as any;
+                    break;
+                case 'call':
+                    argumentList.splice(0, 1);
+                    break;
+                default:
+                    params.commandList.push(lastCommand);
             }
-            const a = convertStringListToDecideList(params.commandList, argumentList);
-            return decideResult(a);
+
+            return decideResult(convertStringListToDecideList(params.commandList, argumentList));
         } catch (e) {
             return false;
         }
@@ -26,8 +35,6 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
 
 function convertStringListToDecideList(list: string[], argumentList: any[]): (boolean | number | boolean[])[] {
     let beforeNewList: (boolean | number | boolean[])[] = [];
-
-    // TODO .all.
 
     for (let i: number = 0; i < list.length; i++) {
 

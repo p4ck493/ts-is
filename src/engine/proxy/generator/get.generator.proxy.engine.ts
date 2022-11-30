@@ -5,7 +5,7 @@ type proxyGeneratorGetType = (target: object, name: string) => ReturnType<typeof
 export function proxyGeneratorGet(): proxyGeneratorGetType {
     return (target, name) => {
         return proxyRecursive(target, name, {
-            commandList: [],
+            commandList: []
         });
     };
 }

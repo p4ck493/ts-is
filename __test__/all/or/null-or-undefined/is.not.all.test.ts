@@ -16,8 +16,8 @@ describe('is.all.not.null.or.undefined', () => {
         expect(is.all.null.or.undefined(value)).toBe(false);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.null.or.undefined: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.null.or.undefined(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.null.or.undefined: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.null.or.undefined(value)).toBe(false);
     });
 
 });

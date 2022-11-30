@@ -8,8 +8,8 @@ describe('is.all.not.bigInt', () => {
         expect(is.all.not.bigInt(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.bigInt: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.bigInt(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.bigInt: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.bigInt(value)).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.all.not.bigInt: Should false for $value', ({value}: {value: any}) => {

@@ -8,8 +8,8 @@ describe('is.all.not.function', () => {
         expect(is.all.not.function(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.function: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.function(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.function: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.function(value)).toBe(false);
     });
 
 

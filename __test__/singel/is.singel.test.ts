@@ -62,8 +62,8 @@ describe('is singel', () => {
         },
     ];
 
-    const dataForBadTesting: {value: any}[] = [
-    ];
+    // const dataForBadTesting: {value: any}[] = [
+    // ];
 
     it.each(dataForGoodTesting)('is: Should true for $value', ({value}) => {
         expect(is(value)).toBe(value);

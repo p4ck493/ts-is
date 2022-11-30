@@ -8,8 +8,8 @@ describe('is.all.not.boolean', () => {
         expect(is.all.not.boolean(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.boolean: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.boolean(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.boolean: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.boolean(value)).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.all.not.boolean: Should false for $value', ({value}: {value: any}) => {

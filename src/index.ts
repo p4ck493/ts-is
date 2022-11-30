@@ -1,5 +1,5 @@
-import { proxyGenerator } from './engine/proxy/generator';
-import { IsType } from './types/is.type';
+import {proxyGenerator} from './engine/proxy/generator';
+import {IsType} from './types/is.type';
 
 /**
  *
@@ -68,6 +68,10 @@ import { IsType } from './types/is.type';
  * is.array.all.not.object.or.empty
  *
  */
+
+// TODO Add new wrapper for: is.some.Person([])
+// TODO Add new wrapper for: is.some.not.Person([])
+
 function defaultFunction(argument: unknown): unknown {
   // TODO return typeof argument or make something cool
   return argument;

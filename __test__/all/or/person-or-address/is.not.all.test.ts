@@ -16,8 +16,8 @@ describe('is.all.not.Person.or.Man', () => {
         expect(is.all.Person.or.Man(value)).toBe(false);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.Person.or.Man: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.Person.or.Man(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.Person.or.Man: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.Person.or.Man(value)).toBe(false);
     });
 
 });

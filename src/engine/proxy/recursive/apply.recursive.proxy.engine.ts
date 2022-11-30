@@ -4,6 +4,7 @@ import {
     ParamsProxyEngineInterface
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
 import {InstanceofMethod} from '../../methods/instanceof.method';
+import {BooleanMethod} from '../../methods/boolean.method';
 
 type proxyRecursiveApplyType = (
     notUsedTargetApply: any,
@@ -28,12 +29,30 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
                     params.commandList.push(lastCommand);
             }
 
-            const indexAll: number = params.commandList.findIndex((command: CommandMixType) => command === 'all');
-            if (indexAll > -1) {
-                // TODO .all.
-                // TODO Delete string 'all' from array
-                // TODO check if argument is array  in array if true run decideResult in loop
-                console.log(params.commandList, indexAll, params.commandList[indexAll]);
+            if (params.commandList.indexOf('all') > -1) {
+                params.commandList.splice(params.commandList.indexOf('all'), 1);
+
+                const recursive = (args: unknown[] | unknown[][], globalNot: boolean = false) => {
+                    for (const argument of args) {
+                        if (Array.isArray(argument) && argument.length > 0) {
+                            recursive(argument, globalNot);
+                        } else {
+                            const result: boolean = decideResult(convertStringListToDecideList(params.commandList, [argument]));
+                            if ((globalNot && result) || (!globalNot && !result)) {
+                                throw new Error('false');
+                            }
+                        }
+                    }
+                };
+
+                if (params.commandList.indexOf('not') > -1) {
+                    params.commandList.splice(params.commandList.indexOf('not'), 1);
+                    recursive(argumentList, true);
+                } else {
+                    recursive(argumentList);
+                }
+
+                return true;
             }
 
             return decideResult(convertStringListToDecideList(params.commandList, argumentList));
@@ -43,65 +62,69 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
     };
 }
 
-function convertStringListToDecideList(
-    list: ParamsProxyEngineInterface['commandList'],
-    argumentList: any[]
-): (boolean | number | boolean[])[] {
-    let beforeNewList: (boolean | number | boolean[])[] = [];
+function getResult(command: CommandType | string, argumentList: unknown[]): boolean {
+    if (typeof command === 'string') {
 
-    const run = (command: CommandType | string): boolean => {
-
-        if (typeof command === 'string') {
-
-            if (Reflect.has((globalThis ?? {}), command)) {
-                if (typeof (globalThis as any)[command] === 'function') {
-                    return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]])
-                }
+        if (Reflect.has((globalThis ?? {}), command)) {
+            if (typeof (globalThis as any)[command] === 'function') {
+                return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]])
             }
+        }
 
-            if (Reflect.has((window ?? {}), command)) {
-                if (typeof (window as any)[command] === 'function') {
-                    return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]])
-                }
+        if (Reflect.has((window ?? {}), command)) {
+            if (typeof (window as any)[command] === 'function') {
+                return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]])
             }
+        }
 
-            return false;
+        return false;
 
+    } else {
+        const result: any = command.apply({}, argumentList);
+        if (BooleanMethod(result)) {
+            return result;
         } else {
-            return command.apply({}, argumentList);
-        }
-    };
-
-    for (let i: number = 0; i < list.length; i++) {
-
-        if (list[i] === 'not') {
-            beforeNewList.push(0);
-            continue;
-        }
-
-        if (list[i + 1] === 'or') {
-            const lastItem: boolean | number | boolean[] | undefined = beforeNewList[beforeNewList.length - 1];
-            if (Array.isArray(lastItem)) {
-                lastItem.push(run(list[i]));
-            } else {
-                beforeNewList.push(run(list[i]));
-            }
-            i++;
-            continue;
-        }
-
-        if (i > 1 && list[i - 1] === 'or') {
-            (beforeNewList[beforeNewList.length - 1] as boolean[]).push(run(list[i]));
-        } else {
-            beforeNewList.push(run(list[i]));
+            return InstanceofMethod.apply({}, [argumentList[0], result.classRef]);
         }
     }
-
-    return beforeNewList;
 }
 
-function decideResult(list: (boolean | number | boolean[])[]): boolean {
-    const indexNot: number = list.findIndex((a) => a === 0);
+type convertResultType = {
+    list: (boolean | number | boolean[])[],
+    indexNot: number | undefined
+};
+
+function convertStringListToDecideList(
+    list: ParamsProxyEngineInterface['commandList'],
+    argumentList: any
+): convertResultType {
+    const convertResult: convertResultType = {
+        list: [],
+        indexNot: undefined,
+    };
+    for (let i: number = 0; i < list.length; i++) {
+        switch (list[i]) {
+            case 'not':
+                convertResult.indexNot = convertResult.list.push(0) - 1;
+                continue;
+            case 'or':
+                const lastItem: boolean | number | boolean[] | undefined = convertResult.list.at(-1);
+                const result: boolean = getResult(list[i + 1], argumentList);
+                if (Array.isArray(lastItem)) {
+                    lastItem.push(result)
+                } else {
+                    convertResult.list[convertResult.list.length - 1] = [<boolean>lastItem, result];
+                }
+                i++;
+                continue;
+            default:
+                convertResult.list.push(getResult(list[i], argumentList));
+        }
+    }
+    return convertResult;
+}
+
+function decideResult({list, indexNot}: convertResultType): boolean {
     let index: number = 0, result: boolean = false;
 
     for (let curr of list) {
@@ -109,7 +132,7 @@ function decideResult(list: (boolean | number | boolean[])[]): boolean {
             if (Array.isArray(curr)) {
                 curr = curr.some((t) => t);
             }
-            if (index > indexNot && indexNot > -1) {
+            if (typeof indexNot === 'number' && index > indexNot && indexNot > -1) {
                 curr = !curr;
             }
             if (typeof curr === 'boolean') {

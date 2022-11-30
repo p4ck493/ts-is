@@ -8,8 +8,8 @@ describe('is.all.not.empty', () => {
         expect(is.all.not.empty(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.empty: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.empty(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.empty: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.empty(value)).toBe(false);
     });
 
     it.each(dataForGoodTesting)('is.all.not.empty: Should false for $value', ({value}: {value: any}) => {

@@ -8,8 +8,8 @@ describe('is.all.not.symbol', () => {
         expect(is.all.not.symbol(value)).toBe(true);
     });
 
-    it.each(advancedDataForBadTesting)('is.all.not.symbol: Should true for $value', ({value}: {value: any}) => {
-        expect(is.all.not.symbol(value)).toBe(true);
+    it.each(advancedDataForBadTesting)('is.all.not.symbol: Should false for $value', ({value}: {value: any}) => {
+        expect(is.all.not.symbol(value)).toBe(false);
     });
 
 

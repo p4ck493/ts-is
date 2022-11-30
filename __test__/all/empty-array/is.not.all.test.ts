@@ -5,7 +5,7 @@ import {advancedDataForBadTesting, dataForBadTesting, dataForGoodCaseTesting, da
 describe('is.all.array.not.empty', () => {
 
     it.each(dataForBadTesting)('is.all.array.not.empty: Should false for $value', ({value}: {value: any}) => {
-        expect(is.all.array.not.empty(value)).toBe(false);
+        expect(is.all.array.not.empty([value])).toBe(false);
     });
 
     it.each(advancedDataForBadTesting)('is.all.array.not.empty: Should false for $value', ({value}: {value: any}) => {

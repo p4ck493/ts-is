@@ -22,7 +22,6 @@ import {EvalErrorMethod} from './eval-error.method';
 import {ReferenceErrorMethod} from './reference-error.method';
 import {SyntaxErrorMethod} from './syntax-error.method';
 import {TypeErrorMethod} from './type-error.method';
-import {URIErrorMethod} from './uri-error.method';
 import {RegExpMethod} from './regexp.method';
 import {MapMethod} from './map.method';
 import {WeakSetMethod} from './weak-set.method';
@@ -68,7 +67,6 @@ export interface MethodsInterface {
     referenceError: typeof ReferenceErrorMethod & IsType;
     syntaxError: typeof SyntaxErrorMethod & IsType;
     typeError: typeof TypeErrorMethod & IsType;
-    URIError: typeof URIErrorMethod & IsType;
     regExp: typeof RegExpMethod & IsType;
     weakSet: typeof WeakSetMethod & IsType;
     weakMap: typeof WeakMapMethod & IsType;

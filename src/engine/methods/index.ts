@@ -22,7 +22,6 @@ import {EvalErrorMethod} from './eval-error.method';
 import {ReferenceErrorMethod} from './reference-error.method';
 import {SyntaxErrorMethod} from './syntax-error.method';
 import {TypeErrorMethod} from './type-error.method';
-import {URIErrorMethod} from './uri-error.method';
 import {RegExpMethod} from './regexp.method';
 import {MapMethod} from './map.method';
 import {WeakSetMethod} from './weak-set.method';
@@ -71,7 +70,7 @@ export interface MethodsInterface {
   referenceError: typeof ReferenceErrorMethod & IsType;
   syntaxError: typeof SyntaxErrorMethod & IsType;
   typeError: typeof TypeErrorMethod & IsType;
-  URIError: typeof URIErrorMethod & IsType;
+  // URIError: typeof URIErrorMethod & IsType;
   regExp: typeof RegExpMethod & IsType;
   weakSet: typeof WeakSetMethod & IsType;
   weakMap: typeof WeakMapMethod & IsType;
@@ -107,7 +106,7 @@ export const methods: MethodsInterface & MethodInterface = {
   truthy: TruthyMethod as any,
   typeError: TypeErrorMethod as any,
   undefined: UndefinedMethod as any,
-  URIError: URIErrorMethod as any,
+  // URIError: URIErrorMethod as any,
   weakSet: WeakSetMethod as any,
   weakMap: WeakMapMethod as any,
   dataView: DataViewMethod as any,

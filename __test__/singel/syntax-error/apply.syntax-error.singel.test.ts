@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('syntaxError singel: apply', () => {
+describe('SyntaxError singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -98,20 +98,20 @@ describe('syntaxError singel: apply', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.syntaxError: Should true for $value', ({value}) => {
-        expect(is.syntaxError.apply({}, [value])).toBe(true);
+    it.each(dataForGoodTesting)('is.SyntaxError: Should true for $value', ({value}) => {
+        expect(is.SyntaxError.apply({}, [value])).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.syntaxError: Should false for $value', ({value}) => {
-        expect(is.syntaxError.apply({}, [value])).toBe(false);
+    it.each(dataForBadTesting)('is.SyntaxError: Should false for $value', ({value}) => {
+        expect(is.SyntaxError.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.syntaxError: Should false for $value', ({value}) => {
-        expect(is.not.syntaxError.apply({}, [value])).toBe(false);
+    it.each(dataForGoodTesting)('is.not.SyntaxError: Should false for $value', ({value}) => {
+        expect(is.not.SyntaxError.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.syntaxError: Should true for $value', ({value}) => {
-        expect(is.not.syntaxError.apply({}, [value])).toBe(true);
+    it.each(dataForBadTesting)('is.not.SyntaxError: Should true for $value', ({value}) => {
+        expect(is.not.SyntaxError.apply({}, [value])).toBe(true);
     });
 
 });

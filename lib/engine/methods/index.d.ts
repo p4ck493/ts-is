@@ -18,19 +18,14 @@ import {UndefinedMethod} from './undefined.method';
 import {DateMethod} from './date.method';
 import {SetMethod} from './set.method';
 import {ErrorMethod} from './error.method';
-import {EvalErrorMethod} from './eval-error.method';
-import {ReferenceErrorMethod} from './reference-error.method';
 import {SyntaxErrorMethod} from './syntax-error.method';
 import {TypeErrorMethod} from './type-error.method';
 import {RegExpMethod} from './regexp.method';
 import {MapMethod} from './map.method';
-import {WeakSetMethod} from './weak-set.method';
 import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
 import {IsType} from '../../types/is.type';
-import {WeakMapMethod} from './weak-map.method';
-import {DataViewMethod} from './data-view.method';
-import {NanMethod} from './nan.method';
 import {ZeroMethod} from './zero.method';
+import {PrimitiveMethod} from './primitive.method';
 
 export interface MethodInterface {
     [key: string]: {
@@ -63,15 +58,10 @@ export interface MethodsInterface {
     date: typeof DateMethod & IsType;
     set: typeof SetMethod & IsType;
     error: typeof ErrorMethod & IsType;
-    evalError: typeof EvalErrorMethod & IsType;
-    referenceError: typeof ReferenceErrorMethod & IsType;
     syntaxError: typeof SyntaxErrorMethod & IsType;
     typeError: typeof TypeErrorMethod & IsType;
     regExp: typeof RegExpMethod & IsType;
-    weakSet: typeof WeakSetMethod & IsType;
-    weakMap: typeof WeakMapMethod & IsType;
-    dataView: typeof DataViewMethod & IsType;
     zero: typeof ZeroMethod & IsType;
-    NaN: typeof NanMethod & IsType;
+    primitive: typeof PrimitiveMethod & IsType;
 }
 export declare const methods: MethodsInterface & MethodInterface;

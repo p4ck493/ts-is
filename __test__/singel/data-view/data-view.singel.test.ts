@@ -92,20 +92,20 @@ describe('DataView singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.dataView: Should true for $value', ({value}) => {
-        expect(is.dataView(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.DataView: Should true for $value', ({value}) => {
+        expect(is.DataView(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.dataView: Should false for $value', ({value}) => {
-        expect(is.dataView(value)).toBe(false);
+    it.each(dataForBadTesting)('is.DataView: Should false for $value', ({value}) => {
+        expect(is.DataView(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.dataView: Should false for $value', ({value}) => {
-        expect(is.not.dataView(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.DataView: Should false for $value', ({value}) => {
+        expect(is.not.DataView(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.dataView: Should true for $value', ({value}) => {
-        expect(is.not.dataView(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.DataView: Should true for $value', ({value}) => {
+        expect(is.not.DataView(value)).toBe(true);
     });
 
 });

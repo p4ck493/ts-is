@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('referenceError singel: call', () => {
+describe('ReferenceError singel: call', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -95,20 +95,20 @@ describe('referenceError singel: call', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.referenceError: Should true for $value', ({value}) => {
-        expect(is.referenceError.call({}, value)).toBe(true);
+    it.each(dataForGoodTesting)('is.ReferenceError: Should true for $value', ({value}) => {
+        expect(is.ReferenceError.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.referenceError: Should false for $value', ({value}) => {
-        expect(is.referenceError.call({}, value)).toBe(false);
+    it.each(dataForBadTesting)('is.ReferenceError: Should false for $value', ({value}) => {
+        expect(is.ReferenceError.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.referenceError: Should false for $value', ({value}) => {
-        expect(is.not.referenceError.call({}, value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.ReferenceError: Should false for $value', ({value}) => {
+        expect(is.not.ReferenceError.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.referenceError: Should true for $value', ({value}) => {
-        expect(is.not.referenceError.call({}, value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.ReferenceError: Should true for $value', ({value}) => {
+        expect(is.not.ReferenceError.call({}, value)).toBe(true);
     });
 
 });

@@ -89,20 +89,20 @@ describe('WeakSet singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.weakSet: Should true for $value', ({value}) => {
-        expect(is.weakSet(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.WeakSet: Should true for $value', ({value}) => {
+        expect(is.WeakSet(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.weakSet: Should false for $value', ({value}) => {
-        expect(is.weakSet(value)).toBe(false);
+    it.each(dataForBadTesting)('is.WeakSet: Should false for $value', ({value}) => {
+        expect(is.WeakSet(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.weakSet: Should false for $value', ({value}) => {
-        expect(is.not.weakSet(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.WeakSet: Should false for $value', ({value}) => {
+        expect(is.not.WeakSet(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.weakSet: Should true for $value', ({value}) => {
-        expect(is.not.weakSet(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.WeakSet: Should true for $value', ({value}) => {
+        expect(is.not.WeakSet(value)).toBe(true);
     });
 
 });

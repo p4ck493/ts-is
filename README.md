@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 5146 Tests
+> 5144 Tests
 
 ## Prerequisites
 
@@ -309,47 +309,49 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Test |
-|----------------|------|
+| Name           | Test | Status  | New                 | 
+|----------------|------|---------|---------------------|
 | array          | ✅    |
 | bigInt         | ✅    |     
 | boolean        | ✅    |     
 | compare        | ✅    |     
-| date           | ✅    |
+| date           | ✅    | DELETED | is.Date()           |
 | empty          | ✅    |     
-| error          | ✅    |
-| evalError      | ✅    |
+| error          | ✅    | DELETED | is.Error()          |
+| evalError      | ✅    | DELETED | is.EvalError()      |
 | false          | ✅    |     
 | falsy          | ✅    |     
 | function       | ✅    |     
 | instanceof     | ✅    |
-| map            | ✅    |     
+| map            | ✅    | DELETED | is.Map()            |     
 | null           | ✅    |     
 | number         | ✅    |     
 | object         | ✅    |     
-| referenceError | ✅    |
-| regExpError    | ✅    |
-| set            | ✅    |
+| referenceError | ✅    | DELETED | is.ReferenceError() |
+| regExp         | ✅    | DELETED | is.RegExp()         |
+| set            | ✅    | DELETED | is.Set()            |
 | string         | ✅    |     
 | symbol         | ✅    |     
-| syntaxError    | ✅    |
+| syntaxError    | ✅    | DELETED | is.SyntaxError()    |
 | true           | ✅    |     
 | truthy         | ✅    |     
-| typeError      | ✅    |
+| typeError      | ✅    | DELETED | is.TypeError()      |
 | undefined      | ✅    |     
-| URIError       | ✅    |
-| weakSet        | ✅🆕  |
-| weakMap        | ✅🆕  |
-| dataView       | ✅🆕  |
-| NaN            | ✅🆕  |
-| zero           | ✅🆕  |
+| URIError       | ✅    | DELETED | is.URIError()       |
+| weakSet        | ✅    | DELETED | is.WeakSet()        |
+| weakMap        | ✅    | DELETED | is.WeakMap()        |
+| dataView       | ✅    | DELETED | is.DataView()       |
+| NaN            | 🛑   | DELETED | isNaN()             |
+| zero           | ✅    |
+| primitive      | ✅🆕  |
 
 ### List of wrappers and connections
 
-| Name | Test |
-|------|------|
-| not  | ✅    |
-| or   | ✅    |
+| Name | Test    |
+|------|---------|
+| not  | ✅       |
+| or   | ✅       |
+| all  | DELETED |
 
 ## Contributing
 

@@ -92,20 +92,20 @@ describe('WeakMap singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.weakMap: Should true for $value', ({value}) => {
-        expect(is.weakMap(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.WeakMap: Should true for $value', ({value}) => {
+        expect(is.WeakMap(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.weakMap: Should false for $value', ({value}) => {
-        expect(is.weakMap(value)).toBe(false);
+    it.each(dataForBadTesting)('is.WeakMap: Should false for $value', ({value}) => {
+        expect(is.WeakMap(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.weakMap: Should false for $value', ({value}) => {
-        expect(is.not.weakMap(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.WeakMap: Should false for $value', ({value}) => {
+        expect(is.not.WeakMap(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.weakMap: Should true for $value', ({value}) => {
-        expect(is.not.weakMap(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.WeakMap: Should true for $value', ({value}) => {
+        expect(is.not.WeakMap(value)).toBe(true);
     });
 
 });

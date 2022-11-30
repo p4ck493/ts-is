@@ -92,20 +92,20 @@ describe('WeakMap singel: call', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.weakMap: Should true for $value', ({value}) => {
-        expect(is.weakMap.call({}, value)).toBe(true);
+    it.each(dataForGoodTesting)('is.WeakMap: Should true for $value', ({value}) => {
+        expect(is.WeakMap.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.weakMap: Should false for $value', ({value}) => {
-        expect(is.weakMap.call({}, value)).toBe(false);
+    it.each(dataForBadTesting)('is.WeakMap: Should false for $value', ({value}) => {
+        expect(is.WeakMap.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.weakMap: Should false for $value', ({value}) => {
-        expect(is.not.weakMap.call({}, value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.WeakMap: Should false for $value', ({value}) => {
+        expect(is.not.WeakMap.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.weakMap: Should true for $value', ({value}) => {
-        expect(is.not.weakMap.call({}, value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.WeakMap: Should true for $value', ({value}) => {
+        expect(is.not.WeakMap.call({}, value)).toBe(true);
     });
 
 });

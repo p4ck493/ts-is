@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('set singel: call', () => {
+describe('Set singel: call', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -86,20 +86,20 @@ describe('set singel: call', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.set: Should true for $value', ({value}) => {
-        expect(is.set.call({}, value)).toBe(true);
+    it.each(dataForGoodTesting)('is.Set: Should true for $value', ({value}) => {
+        expect(is.Set.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.set: Should false for $value', ({value}) => {
-        expect(is.set.call({}, value)).toBe(false);
+    it.each(dataForBadTesting)('is.Set: Should false for $value', ({value}) => {
+        expect(is.Set.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.set: Should false for $value', ({value}) => {
-        expect(is.not.set.call({}, value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Set: Should false for $value', ({value}) => {
+        expect(is.not.Set.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.set: Should true for $value', ({value}) => {
-        expect(is.not.set.call({}, value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.Set: Should true for $value', ({value}) => {
+        expect(is.not.Set.call({}, value)).toBe(true);
     });
 
 });

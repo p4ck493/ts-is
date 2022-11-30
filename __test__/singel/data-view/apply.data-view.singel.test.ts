@@ -92,20 +92,20 @@ describe('DataView singel: apply', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.dataView: Should true for $value', ({value}) => {
-        expect(is.dataView.apply({} , [value])).toBe(true);
+    it.each(dataForGoodTesting)('is.DataView: Should true for $value', ({value}) => {
+        expect(is.DataView.apply({} , [value])).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.dataView: Should false for $value', ({value}) => {
-        expect(is.dataView.apply({} , [value])).toBe(false);
+    it.each(dataForBadTesting)('is.DataView: Should false for $value', ({value}) => {
+        expect(is.DataView.apply({} , [value])).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.dataView: Should false for $value', ({value}) => {
-        expect(is.not.dataView.apply({} , [value])).toBe(false);
+    it.each(dataForGoodTesting)('is.not.DataView: Should false for $value', ({value}) => {
+        expect(is.not.DataView.apply({} , [value])).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.dataView: Should true for $value', ({value}) => {
-        expect(is.not.dataView.apply({} , [value])).toBe(true);
+    it.each(dataForBadTesting)('is.not.DataView: Should true for $value', ({value}) => {
+        expect(is.not.DataView.apply({} , [value])).toBe(true);
     });
 
 });

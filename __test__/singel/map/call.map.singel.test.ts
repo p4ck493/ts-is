@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('map singel: call', () => {
+describe('Map singel: call', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -107,20 +107,20 @@ describe('map singel: call', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.map: Should true for $value', ({value}) => {
-        expect(is.map.call({}, value)).toBe(true);
+    it.each(dataForGoodTesting)('is.Map: Should true for $value', ({value}) => {
+        expect(is.Map.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.map: Should false for $value', ({value}) => {
-        expect(is.map.call({}, value)).toBe(false);
+    it.each(dataForBadTesting)('is.Map: Should false for $value', ({value}) => {
+        expect(is.Map.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.map: Should false for $value', ({value}) => {
-        expect(is.not.map.call({}, value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Map: Should false for $value', ({value}) => {
+        expect(is.not.Map.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.map: Should true for $value', ({value}) => {
-        expect(is.not.map.call({}, value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.Map: Should true for $value', ({value}) => {
+        expect(is.not.Map.call({}, value)).toBe(true);
     });
 
 });

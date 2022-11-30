@@ -1,5 +1,5 @@
-import {proxyRecursive} from './index';
-import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+import { proxyRecursive } from './index';
+import { ParamsProxyEngineInterface } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 

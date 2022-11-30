@@ -1,7 +1,10 @@
 import {methods} from '../../methods';
 import {proxyRecursiveApply} from './apply.recursive.proxy.engine';
 import {proxyRecursiveGet} from './get.recursive.proxy.engine';
-import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {
+    CommandMixType,
+    ParamsProxyEngineInterface
+} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
 
 /**
  *
@@ -9,13 +12,17 @@ import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/param
  * @param name of current part of command is.object.not.empty() ['is', 'object', 'not', 'empty']
  * @param params ParamsProxyEngineInterface
  */
-export function proxyRecursive(target: object, name: string, params: ParamsProxyEngineInterface): object {
-    params.commandList.push(name);
+export function proxyRecursive(target: object | string, name: string, params: ParamsProxyEngineInterface): object {
+    target = getMethod(name);
+    params.commandList.push(<CommandMixType>target);
 
-    if (['apply', 'call'].includes(name)) {
-        target = getMethod(<string>params.commandList.at(-2));
-    } else {
-        target = getMethod(name);
+    if (typeof target === 'string') {
+        if (['not', 'or', 'all'].includes(target)) {
+            target = methods;
+        } else {
+            target = () => {
+            };
+        }
     }
 
     return new Proxy(target, {
@@ -24,9 +31,12 @@ export function proxyRecursive(target: object, name: string, params: ParamsProxy
     });
 }
 
-function getMethod(name: string): any {
+function getMethod(name: string): CommandMixType | string {
+
     if (Reflect.has(methods, name)) {
         return methods[name];
     }
-    return methods;
+
+    return name;
+
 }

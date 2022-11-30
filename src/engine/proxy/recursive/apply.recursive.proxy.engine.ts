@@ -1,19 +1,21 @@
-import {ParamsProxyEngineInterface} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
-import {methods} from '../../methods';
+import {
+    CommandMixType,
+    CommandType,
+    ParamsProxyEngineInterface
+} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {InstanceofMethod} from '../../methods/instanceof.method';
 
 type proxyRecursiveApplyType = (
-    targetApply: any,
+    notUsedTargetApply: any,
     thisArg: unknown,
     argumentList: unknown[] & unknown[][],
-) => ReturnType<typeof targetApply>;
+) => ReturnType<typeof notUsedTargetApply>;
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRecursiveApplyType {
-    return (targetApply, thisArg, argumentList): boolean => {
+    return (notUsedTargetApply, thisArg, argumentList): boolean => {
         try {
 
-            // TODO .all.
-
-            const lastCommand = <string>params.commandList.pop();
+            const lastCommand = <CommandMixType>params.commandList.pop();
 
             switch (lastCommand) {
                 case 'apply':
@@ -26,6 +28,12 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
                     params.commandList.push(lastCommand);
             }
 
+            const indexAll: number = params.commandList.findIndex((command: CommandMixType) => command === 'all');
+            if (indexAll > -1) {
+                // TODO .all.
+                console.log(params.commandList, indexAll, params.commandList[indexAll]);
+            }
+
             return decideResult(convertStringListToDecideList(params.commandList, argumentList));
         } catch (e) {
             return false;
@@ -33,8 +41,34 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
     };
 }
 
-function convertStringListToDecideList(list: string[], argumentList: any[]): (boolean | number | boolean[])[] {
+function convertStringListToDecideList(
+    list: ParamsProxyEngineInterface['commandList'],
+    argumentList: any[]
+): (boolean | number | boolean[])[] {
     let beforeNewList: (boolean | number | boolean[])[] = [];
+
+    const run = (command: CommandType | string): boolean => {
+
+        if (typeof command === 'string') {
+
+            if (Reflect.has((globalThis ?? {}), command)) {
+                if (typeof (globalThis as any)[command] === 'function') {
+                    return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]])
+                }
+            }
+
+            if (Reflect.has((window ?? {}), command)) {
+                if (typeof (window as any)[command] === 'function') {
+                    return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]])
+                }
+            }
+
+            return false;
+
+        } else {
+            return command.apply({}, argumentList);
+        }
+    };
 
     for (let i: number = 0; i < list.length; i++) {
 
@@ -46,44 +80,22 @@ function convertStringListToDecideList(list: string[], argumentList: any[]): (bo
         if (list[i + 1] === 'or') {
             const lastItem: boolean | number | boolean[] | undefined = beforeNewList[beforeNewList.length - 1];
             if (Array.isArray(lastItem)) {
-                lastItem.push(getResult(list[i], argumentList));
+                lastItem.push(run(list[i]));
             } else {
-                beforeNewList.push([getResult(list[i], argumentList)]);
+                beforeNewList.push(run(list[i]));
             }
             i++;
             continue;
         }
 
         if (i > 1 && list[i - 1] === 'or') {
-            (beforeNewList[beforeNewList.length - 1] as boolean[]).push(getResult(list[i], argumentList));
+            (beforeNewList[beforeNewList.length - 1] as boolean[]).push(run(list[i]));
         } else {
-            beforeNewList.push(getResult(list[i], argumentList));
+            beforeNewList.push(run(list[i]));
         }
     }
 
     return beforeNewList;
-}
-
-function getResult(name: string, argumentList: any): boolean {
-
-    if (Reflect.has(methods, name)) {
-        return methods[name].apply({}, argumentList);
-    }
-
-    if (Reflect.has((globalThis ?? {}), name)) {
-        if (typeof (globalThis as any)[name] === 'function') {
-            return (globalThis as any)[name].apply({}, argumentList);
-        }
-    }
-
-    if (Reflect.has((window ?? {}), name)) {
-        if (typeof (window as any)[name] === 'function') {
-            return (window as any)[name].apply({}, argumentList);
-        }
-    }
-
-    return false;
-
 }
 
 function decideResult(list: (boolean | number | boolean[])[]): boolean {

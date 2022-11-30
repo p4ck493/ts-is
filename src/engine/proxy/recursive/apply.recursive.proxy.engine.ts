@@ -29,32 +29,6 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
                     params.commandList.push(lastCommand);
             }
 
-            if (params.commandList.indexOf('all') > -1) {
-                params.commandList.splice(params.commandList.indexOf('all'), 1);
-
-                const recursive = (args: unknown[] | unknown[][], globalNot: boolean = false) => {
-                    for (const argument of args) {
-                        if (Array.isArray(argument) && argument.length > 0) {
-                            recursive(argument, globalNot);
-                        } else {
-                            const result: boolean = decideResult(convertStringListToDecideList(params.commandList, [argument]));
-                            if ((globalNot && result) || (!globalNot && !result)) {
-                                throw new Error('false');
-                            }
-                        }
-                    }
-                };
-
-                if (params.commandList.indexOf('not') > -1) {
-                    params.commandList.splice(params.commandList.indexOf('not'), 1);
-                    recursive(argumentList, true);
-                } else {
-                    recursive(argumentList);
-                }
-
-                return true;
-            }
-
             return decideResult(convertStringListToDecideList(params.commandList, argumentList));
         } catch (e) {
             return false;

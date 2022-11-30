@@ -11,7 +11,7 @@
 
 # ts-is
 
-> 6816 Tests
+> 5146 Tests
 
 ## Prerequisites
 
@@ -86,8 +86,6 @@ is[$cmd]();
 is[$cmd][$cmd]();
 is[$cmd].or[$cmd]();
 is[$cmd].not[$cmd]();
-is[$cmd].all[$cmd]();
-is[$cmd].all.not[$cmd]();
 
 $model = 'any model wich declare in pacakge by decorator';
 
@@ -95,16 +93,12 @@ is[$model]();
 is[$model][$model]();
 is[$model].or[$model]();
 is[$model].not[$model]();
-is[$model].all[$model]();
-is[$model].all.not[$model]();
 
 // And yes, you can mix:
 
 is[$cmd][$model]();
 is[$model].or[$cmd]();
 is[$cmd].not[$model]();
-is[$model].all[$cmd]();
-is[$cmd].all.not[$model]();
 
 ```
 
@@ -198,22 +192,8 @@ is.object.not.empty({a: 1}) // true
 
 is.not.object({}) // false
 
-is.all.string(['qwerty', [['qwerty_1'], 'qwerty_2']]) // true
-
 is.not.number(1n) // true
 
-is.all.true([true, [true], [true, false]]) // false
-
-is.all.not.null(['qwerty', ['qwerty_1', 100], Symbol()]) // true
-
-is.all.not.undefined([200, [Symbol()], [true], undefined, null, 'string']) // false
-```
-
-#### Methods with wrappers and connection
-
-```typescript
-is.all.not.null.or.undefined([1, 2, 3, 4, 5, ['string'], Symbol()]) // true
-is.all.not.null.or.undefined.empty([5, 4, 3, 2, 1, [''], Symbol()]) // false
 ```
 
 #### Methods with your models
@@ -268,9 +248,6 @@ is.not.woman(man) // true
 
 is.not.man(man) // false
 
-is.all.person([person, [man], [woman]]) // true
-
-is.all.not.AddressModel([[person], [woman], [man]]) // true
 ```
 
 #### Custom method
@@ -372,7 +349,6 @@ stream$.next('false'); // Bad
 | Name | Test |
 |------|------|
 | not  | ✅    |
-| all  | ✅    |
 | or   | ✅    |
 
 ## Contributing

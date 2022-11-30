@@ -17,7 +17,7 @@ export function proxyRecursive(target: object | string, name: string, params: Pa
     params.commandList.push(<CommandMixType>target);
 
     if (typeof target === 'string') {
-        if (['not', 'or', 'all'].includes(target)) {
+        if (['not', 'or'].includes(target)) {
             target = methods;
         } else {
             target = () => {

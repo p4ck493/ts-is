@@ -15,13 +15,6 @@ import {SymbolMethod} from './symbol.method';
 import {TrueMethod} from './true.method';
 import {TruthyMethod} from './truthy.method';
 import {UndefinedMethod} from './undefined.method';
-import {DateMethod} from './date.method';
-import {SetMethod} from './set.method';
-import {ErrorMethod} from './error.method';
-import {SyntaxErrorMethod} from './syntax-error.method';
-import {TypeErrorMethod} from './type-error.method';
-import {RegExpMethod} from './regexp.method';
-import {MapMethod} from './map.method';
 import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
 import {IsType} from '../../types/is.type';
 import {ZeroMethod} from './zero.method';
@@ -45,7 +38,6 @@ export interface MethodsInterface {
     falsy: typeof FalsyMethod & IsType;
     function: typeof FunctionMethod & IsType;
     instanceof: typeof InstanceofMethod & IsType;
-    map: typeof MapMethod & IsType;
     null: typeof NullMethod & IsType;
     number: typeof NumberMethod & IsType;
     object: typeof ObjectMethod & IsType;
@@ -55,12 +47,6 @@ export interface MethodsInterface {
     truthy: typeof TruthyMethod & IsType;
     undefined: typeof UndefinedMethod & IsType;
     empty: typeof EmptyMethod & IsType;
-    date: typeof DateMethod & IsType;
-    set: typeof SetMethod & IsType;
-    error: typeof ErrorMethod & IsType;
-    syntaxError: typeof SyntaxErrorMethod & IsType;
-    typeError: typeof TypeErrorMethod & IsType;
-    regExp: typeof RegExpMethod & IsType;
     zero: typeof ZeroMethod & IsType;
     primitive: typeof PrimitiveMethod & IsType;
 }

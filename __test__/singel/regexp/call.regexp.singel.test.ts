@@ -104,20 +104,20 @@ describe('RegExp singel: call', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.regExp: Should true for $value', ({value}) => {
-        expect(is.regExp.call({}, value)).toBe(true);
+    it.each(dataForGoodTesting)('is.RegExp: Should true for $value', ({value}) => {
+        expect(is.RegExp.call({}, value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.regExp: Should false for $value', ({value}) => {
-        expect(is.regExp.call({}, value)).toBe(false);
+    it.each(dataForBadTesting)('is.RegExp: Should false for $value', ({value}) => {
+        expect(is.RegExp.call({}, value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.regExp: Should false for $value', ({value}) => {
-        expect(is.not.regExp.call({}, value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.RegExp: Should false for $value', ({value}) => {
+        expect(is.not.RegExp.call({}, value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.regExp: Should true for $value', ({value}) => {
-        expect(is.not.regExp.call({}, value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.RegExp: Should true for $value', ({value}) => {
+        expect(is.not.RegExp.call({}, value)).toBe(true);
     });
 
 });

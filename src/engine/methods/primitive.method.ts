@@ -3,7 +3,7 @@ export function PrimitiveMethod(argument: unknown): boolean {
         return true;
     }
 
-    if (typeof argument == "object" || typeof argument == "function") {
+    if (typeof argument === 'object' || typeof argument === 'function') {
         return false;
     } else {
         return true;

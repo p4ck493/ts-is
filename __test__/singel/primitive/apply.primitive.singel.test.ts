@@ -42,12 +42,6 @@ describe('Primitive singel: apply', () => {
         {
             value: Symbol()
         },
-        {
-            value: BigInt(1n)
-        },
-        {
-            value: 1n
-        },
     ];
 
     const dataForBadTesting: {value: any}[] = [

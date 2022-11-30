@@ -31,6 +31,8 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
             const indexAll: number = params.commandList.findIndex((command: CommandMixType) => command === 'all');
             if (indexAll > -1) {
                 // TODO .all.
+                // TODO Delete string 'all' from array
+                // TODO check if argument is array  in array if true run decideResult in loop
                 console.log(params.commandList, indexAll, params.commandList[indexAll]);
             }
 

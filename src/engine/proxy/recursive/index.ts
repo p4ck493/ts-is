@@ -14,7 +14,7 @@ import {
  */
 export function proxyRecursive(target: object | string, name: string, params: ParamsProxyEngineInterface): object {
     target = getMethod(name);
-    params.commandList.push(<CommandMixType>target);
+    params.commandList.push(target as CommandMixType);
 
     if (typeof target === 'string') {
         if (['not', 'or'].includes(target)) {

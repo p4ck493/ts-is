@@ -16,7 +16,7 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRe
     return (notUsedTargetApply, thisArg, argumentList): boolean => {
         try {
 
-            const lastCommand = <CommandMixType>params.commandList.pop();
+            const lastCommand = params.commandList.pop() as CommandMixType;
 
             switch (lastCommand) {
                 case 'apply':
@@ -76,7 +76,7 @@ function convertStringListToDecideList(
         list: [],
         indexNot: undefined,
     };
-    for (let i: number = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
         switch (list[i]) {
             case 'not':
                 convertResult.indexNot = convertResult.list.push(0) - 1;
@@ -87,7 +87,7 @@ function convertStringListToDecideList(
                 if (Array.isArray(lastItem)) {
                     lastItem.push(result)
                 } else {
-                    convertResult.list[convertResult.list.length - 1] = [<boolean>lastItem, result];
+                    convertResult.list[convertResult.list.length - 1] = [lastItem as boolean, result];
                 }
                 i++;
                 continue;
@@ -99,7 +99,8 @@ function convertStringListToDecideList(
 }
 
 function decideResult({list, indexNot}: convertResultType): boolean {
-    let index: number = 0, result: boolean = false;
+    let index = 0;
+    let result = false;
 
     for (let curr of list) {
         if (indexNot !== index) {

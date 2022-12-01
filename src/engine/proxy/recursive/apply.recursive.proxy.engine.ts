@@ -3,8 +3,8 @@ import {
   CommandType,
   ParamsProxyEngineInterface,
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
-import {InstanceofMethod} from '../../methods/instanceof.method';
-import {BooleanMethod} from '../../methods/boolean.method';
+import { InstanceofMethod } from '../../methods/instanceof.method';
+import { BooleanMethod } from '../../methods/boolean.method';
 
 type proxyRecursiveApplyType = (
   notUsedTargetApply: any,

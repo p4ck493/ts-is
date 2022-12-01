@@ -1,5 +1,5 @@
-import {AfterWrappersInterface, ConnectionWrappersInterface} from '../interfaces/wrappers.interface';
-import {AllMethodsInterface} from '../engine/methods';
+import { AfterWrappersInterface, ConnectionWrappersInterface } from '../interfaces/wrappers.interface';
+import { AllMethodsInterface } from '../engine/methods';
 
 export type IsType = ((argument: unknown) => void) &
   AllMethodsInterface &

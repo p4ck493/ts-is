@@ -26,14 +26,11 @@ export interface MethodInterface {
         useCustomMethod: boolean;
         method: any;
     } & ConnectionWrappersInterface &
-        MethodsInterface &
+        AllMethodsInterface &
         ((argument: unknown) => boolean);
 }
 
-/**
- * Declare names and types of methods
- */
-export interface MethodsInterface {
+export interface BaseMethodsInterface {
     array: typeof ArrayMethod & IsType;
     bigInt: typeof BigIntMethod & IsType;
     boolean: typeof BooleanMethod & IsType;
@@ -54,38 +51,121 @@ export interface MethodsInterface {
     zero: typeof ZeroMethod & IsType;
     primitive: typeof PrimitiveMethod & IsType;
     promise: typeof PromiseMethod & IsType;
-
-    // EXTERNAL
-    Map?: typeof Map & IsType;
-    String?: typeof String & IsType;
-    Date?: typeof Date & IsType;
-    Set?: typeof Set & IsType;
-    URIError?: typeof URIError & IsType;
-    RegExp?: typeof RegExp & IsType;
-    WeakSet?: typeof WeakSet & IsType;
-    WeakMap?: typeof WeakMap & IsType;
-    DataView?: typeof DataView & IsType;
-    Float32Array?: typeof Float32Array & IsType;
-    Int32Array?: typeof Int32Array & IsType;
-    Uint8ClampedArray?: typeof Uint8ClampedArray & IsType;
-    Int8Array?: typeof Int8Array & IsType;
-    Uint8Array?: typeof Uint8Array & IsType;
-    Int16Array?: typeof Int16Array & IsType;
-    Uint16Array?: typeof Uint16Array & IsType;
-    Uint32Array?: typeof Uint32Array & IsType;
-    Float64Array?: typeof Float64Array & IsType;
-    BigInt64Array?: typeof BigInt64Array & IsType;
-    BigUint64Array?: typeof BigUint64Array & IsType;
-    RangeError?: typeof RangeError & IsType;
-    Error?: typeof Error & IsType;
-    EvalError?: typeof EvalError & IsType;
-    ReferenceError?: typeof ReferenceError & IsType;
-    SyntaxError?: typeof SyntaxError & IsType;
-    TypeError?: typeof TypeError & IsType;
-    HTMLElement?: typeof HTMLElement & IsType;
 }
 
-export const methods: MethodsInterface & MethodInterface = {
+export interface ExternalMethodsInterface {
+    Map: typeof InstanceofMethod<typeof Map> & IsType;
+    String: typeof InstanceofMethod<String> & IsType;
+    Date: typeof InstanceofMethod<Date> & IsType;
+    Set: typeof InstanceofMethod<typeof Set> & IsType;
+    URIError: typeof InstanceofMethod<URIError> & IsType;
+    RegExp: typeof InstanceofMethod<RegExp> & IsType;
+    WeakSet: typeof InstanceofMethod<typeof WeakSet> & IsType;
+    WeakMap: typeof InstanceofMethod<typeof WeakMap> & IsType;
+    DataView: typeof InstanceofMethod<DataView> & IsType;
+    Float32Array: typeof InstanceofMethod<Float32Array> & IsType;
+    Int32Array: typeof InstanceofMethod<Int32Array> & IsType;
+    Uint8ClampedArray: typeof InstanceofMethod<Uint8ClampedArray> & IsType;
+    Int8Array: typeof InstanceofMethod<Int8Array> & IsType;
+    Uint8Array: typeof InstanceofMethod<Uint8Array> & IsType;
+    Int16Array: typeof InstanceofMethod<Int16Array> & IsType;
+    Uint16Array: typeof InstanceofMethod<Uint16Array> & IsType;
+    Uint32Array: typeof InstanceofMethod<Uint32Array> & IsType;
+    Float64Array: typeof InstanceofMethod<Float64Array> & IsType;
+    BigInt64Array: typeof InstanceofMethod<BigInt64Array> & IsType;
+    BigUint64Array: typeof InstanceofMethod<BigUint64Array> & IsType;
+    RangeError: typeof InstanceofMethod<RangeError> & IsType;
+    Error: typeof InstanceofMethod<Error> & IsType;
+    EvalError: typeof InstanceofMethod<EvalError> & IsType;
+    ReferenceError: typeof InstanceofMethod<ReferenceError> & IsType;
+    SyntaxError: typeof InstanceofMethod<SyntaxError> & IsType;
+    TypeError: typeof InstanceofMethod<TypeError> & IsType;
+}
+
+export interface HTMLElementsMethodsInterface {
+    HTMLAllCollection: typeof InstanceofMethod<HTMLAllCollection> & IsType;
+    HTMLAnchorElement: typeof InstanceofMethod<HTMLAnchorElement> & IsType;
+    HTMLAreaElement: typeof InstanceofMethod<HTMLAreaElement> & IsType;
+    HTMLAudioElement: typeof InstanceofMethod<HTMLAudioElement> & IsType;
+    HTMLBRElement: typeof InstanceofMethod<HTMLBRElement> & IsType;
+    HTMLBaseElement: typeof InstanceofMethod<HTMLBaseElement> & IsType;
+    HTMLBodyElement: typeof InstanceofMethod<HTMLBodyElement> & IsType;
+    HTMLButtonElement: typeof InstanceofMethod<HTMLButtonElement> & IsType;
+    HTMLCanvasElement: typeof InstanceofMethod<HTMLCanvasElement> & IsType;
+    HTMLCollection: typeof InstanceofMethod<HTMLCollection> & IsType;
+    HTMLDListElement: typeof InstanceofMethod<HTMLDListElement> & IsType;
+    HTMLDataElement: typeof InstanceofMethod<HTMLDataElement> & IsType;
+    HTMLDataListElement: typeof InstanceofMethod<HTMLDataListElement> & IsType;
+    HTMLDetailsElement: typeof InstanceofMethod<HTMLDetailsElement> & IsType;
+    HTMLDialogElement: typeof InstanceofMethod<HTMLDialogElement> & IsType;
+    HTMLDirectoryElement: typeof InstanceofMethod<HTMLDirectoryElement> & IsType;
+    HTMLDivElement: typeof InstanceofMethod<HTMLDivElement> & IsType;
+    HTMLDocument: typeof InstanceofMethod<HTMLDocument> & IsType;
+    HTMLElement: typeof InstanceofMethod<HTMLElement> & IsType;
+    HTMLEmbedElement: typeof InstanceofMethod<HTMLEmbedElement> & IsType;
+    HTMLFieldSetElement: typeof InstanceofMethod<HTMLFieldSetElement> & IsType;
+    HTMLFontElement: typeof InstanceofMethod<HTMLFontElement> & IsType;
+    HTMLFormControlsCollection: typeof InstanceofMethod<HTMLFormControlsCollection> & IsType;
+    HTMLFormElement: typeof InstanceofMethod<HTMLFormElement> & IsType;
+    HTMLFrameElement: typeof InstanceofMethod<HTMLFrameElement> & IsType;
+    HTMLFrameSetElement: typeof InstanceofMethod<HTMLFrameSetElement> & IsType;
+    HTMLHRElement: typeof InstanceofMethod<HTMLHRElement> & IsType;
+    HTMLHeadElement: typeof InstanceofMethod<HTMLHeadElement> & IsType;
+    HTMLHeadingElement: typeof InstanceofMethod<HTMLHeadingElement> & IsType;
+    HTMLHtmlElement: typeof InstanceofMethod<HTMLHtmlElement> & IsType;
+    HTMLIFrameElement: typeof InstanceofMethod<HTMLIFrameElement> & IsType;
+    HTMLImageElement: typeof InstanceofMethod<HTMLImageElement> & IsType;
+    HTMLInputElement: typeof InstanceofMethod<HTMLInputElement> & IsType;
+    HTMLLIElement: typeof InstanceofMethod<HTMLLIElement> & IsType;
+    HTMLLabelElement: typeof InstanceofMethod<HTMLLabelElement> & IsType;
+    HTMLLegendElement: typeof InstanceofMethod<HTMLLegendElement> & IsType;
+    HTMLLinkElement: typeof InstanceofMethod<HTMLLinkElement> & IsType;
+    HTMLMapElement: typeof InstanceofMethod<HTMLMapElement> & IsType;
+    HTMLMarqueeElement: typeof InstanceofMethod<HTMLMarqueeElement> & IsType;
+    HTMLMediaElement: typeof InstanceofMethod<HTMLMediaElement> & IsType;
+    HTMLMenuElement: typeof InstanceofMethod<HTMLMenuElement> & IsType;
+    HTMLMetaElement: typeof InstanceofMethod<HTMLMetaElement> & IsType;
+    HTMLMeterElement: typeof InstanceofMethod<HTMLMeterElement> & IsType;
+    HTMLModElement: typeof InstanceofMethod<HTMLModElement> & IsType;
+    HTMLOListElement: typeof InstanceofMethod<HTMLOListElement> & IsType;
+    HTMLObjectElement: typeof InstanceofMethod<HTMLObjectElement> & IsType;
+    HTMLOptGroupElement: typeof InstanceofMethod<HTMLOptGroupElement> & IsType;
+    HTMLOptionElement: typeof InstanceofMethod<HTMLOptionElement> & IsType;
+    HTMLOptionsCollection: typeof InstanceofMethod<HTMLOptionsCollection> & IsType;
+    HTMLOutputElement: typeof InstanceofMethod<HTMLOutputElement> & IsType;
+    HTMLParagraphElement: typeof InstanceofMethod<HTMLParagraphElement> & IsType;
+    HTMLParamElement: typeof InstanceofMethod<HTMLParamElement> & IsType;
+    HTMLPictureElement: typeof InstanceofMethod<HTMLPictureElement> & IsType;
+    HTMLPreElement: typeof InstanceofMethod<HTMLPreElement> & IsType;
+    HTMLProgressElement: typeof InstanceofMethod<HTMLProgressElement> & IsType;
+    HTMLQuoteElement: typeof InstanceofMethod<HTMLQuoteElement> & IsType;
+    HTMLScriptElement: typeof InstanceofMethod<HTMLScriptElement> & IsType;
+    HTMLSelectElement: typeof InstanceofMethod<HTMLSelectElement> & IsType;
+    HTMLSlotElement: typeof InstanceofMethod<HTMLSlotElement> & IsType;
+    HTMLSourceElement: typeof InstanceofMethod<HTMLSourceElement> & IsType;
+    HTMLSpanElement: typeof InstanceofMethod<HTMLSpanElement> & IsType;
+    HTMLStyleElement: typeof InstanceofMethod<HTMLStyleElement> & IsType;
+    HTMLTableCaptionElement: typeof InstanceofMethod<HTMLTableCaptionElement> & IsType;
+    HTMLTableCellElement: typeof InstanceofMethod<HTMLTableCellElement> & IsType;
+    HTMLTableColElement: typeof InstanceofMethod<HTMLTableColElement> & IsType;
+    HTMLTableElement: typeof InstanceofMethod<HTMLTableElement> & IsType;
+    HTMLTableRowElement: typeof InstanceofMethod<HTMLTableRowElement> & IsType;
+    HTMLTableSectionElement: typeof InstanceofMethod<HTMLTableSectionElement> & IsType;
+    HTMLTemplateElement: typeof InstanceofMethod<HTMLTemplateElement> & IsType;
+    HTMLTextAreaElement: typeof InstanceofMethod<HTMLTextAreaElement> & IsType;
+    HTMLTimeElement: typeof InstanceofMethod<HTMLTimeElement> & IsType;
+    HTMLTitleElement: typeof InstanceofMethod<HTMLTitleElement> & IsType;
+    HTMLTrackElement: typeof InstanceofMethod<HTMLTrackElement> & IsType;
+    HTMLUListElement: typeof InstanceofMethod<HTMLUListElement> & IsType;
+    HTMLUnknownElement: typeof InstanceofMethod<HTMLUnknownElement> & IsType;
+    HTMLVideoElement: typeof InstanceofMethod<HTMLVideoElement> & IsType;
+}
+
+export interface AllMethodsInterface extends BaseMethodsInterface, ExternalMethodsInterface, HTMLElementsMethodsInterface {
+}
+
+// @ts-ignore
+export const methods: AllMethodsInterface & MethodInterface = {
     array: ArrayMethod as any,
     bigInt: BigIntMethod as any,
     boolean: BooleanMethod as any,

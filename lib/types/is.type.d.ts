@@ -1,6 +1,6 @@
 import {AfterWrappersInterface, ConnectionWrappersInterface} from '../interfaces/wrappers.interface';
-import {MethodsInterface} from '../engine/methods';
+import {AllMethodsInterface} from '../engine/methods';
 
-export declare type IsType = ((argument: unknown) => void) & MethodsInterface & ConnectionWrappersInterface & AfterWrappersInterface & {
-    [key: string]: ((argument: unknown) => unknown) & MethodsInterface & ConnectionWrappersInterface;
+export declare type IsType = ((argument: unknown) => void) & AllMethodsInterface & ConnectionWrappersInterface & AfterWrappersInterface & {
+    [key: string]: ((argument: unknown) => unknown) & AllMethodsInterface & ConnectionWrappersInterface;
 };

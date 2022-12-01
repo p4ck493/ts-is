@@ -3,8 +3,8 @@ import {
   CommandType,
   ParamsProxyEngineInterface,
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { InstanceofMethod } from '../../methods/instanceof.method';
-import { BooleanMethod } from '../../methods/boolean.method';
+import {InstanceofMethod} from '../../methods/instanceof.method';
+import {BooleanMethod} from '../../methods/boolean.method';
 
 type proxyRecursiveApplyType = (
   notUsedTargetApply: any,
@@ -43,9 +43,21 @@ function getResult(command: CommandType | string, argumentList: unknown[]): bool
       }
     }
 
+    if (Reflect.has(self ?? {}, command)) {
+      if (typeof (self as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (self as any)[command]]);
+      }
+    }
+
     if (Reflect.has(window ?? {}, command)) {
       if (typeof (window as any)[command] === 'function') {
         return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]]);
+      }
+    }
+
+    if (Reflect.has(global ?? {}, command)) {
+      if (typeof (global as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (global as any)[command]]);
       }
     }
 

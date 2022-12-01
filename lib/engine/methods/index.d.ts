@@ -21,12 +21,6 @@ import {ZeroMethod} from './zero.method';
 import {PrimitiveMethod} from './primitive.method';
 import {PromiseMethod} from './promise.method';
 
-export interface MethodInterface {
-    [key: string]: {
-        useCustomMethod: boolean;
-        method: any;
-    } & ConnectionWrappersInterface & AllMethodsInterface & ((argument: unknown) => boolean);
-}
 export interface BaseMethodsInterface {
     array: typeof ArrayMethod & IsType;
     bigInt: typeof BigIntMethod & IsType;
@@ -156,5 +150,11 @@ export interface HTMLElementsMethodsInterface {
     HTMLVideoElement: typeof InstanceofMethod<HTMLVideoElement> & IsType;
 }
 export interface AllMethodsInterface extends BaseMethodsInterface, ExternalMethodsInterface, HTMLElementsMethodsInterface {
+}
+export interface MethodInterface {
+    [key: string]: {
+        useCustomMethod: boolean;
+        method: any;
+    } & ConnectionWrappersInterface & AllMethodsInterface & ((argument: unknown) => boolean);
 }
 export declare const methods: AllMethodsInterface & MethodInterface;

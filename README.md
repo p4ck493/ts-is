@@ -372,14 +372,15 @@ stream$.next('false'); // Bad
 | NaN            | 🛑   | DELETED | isNaN()             |
 | zero           | ✅    |
 | primitive      | ✅🆕  |
+| promise        | 🛑🆕 |
 
 ### List of wrappers and connections
 
-| Name | Test    |
-|------|---------|
-| not  | ✅       |
-| or   | ✅       |
-| all  | DELETED |
+| Name | Test | Status  |
+|------|------|---------|
+| not  | ✅    |
+| or   | ✅    |
+| all  | 🛑   | DELETED |
 
 ## Contributing
 

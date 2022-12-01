@@ -45,7 +45,7 @@ export interface BaseMethodsInterface {
 }
 export interface ExternalMethodsInterface {
     Map: typeof InstanceofMethod<typeof Map> & IsType;
-    String: typeof InstanceofMethod<String> & IsType;
+    String: typeof InstanceofMethod<string> & IsType;
     Date: typeof InstanceofMethod<Date> & IsType;
     Set: typeof InstanceofMethod<typeof Set> & IsType;
     URIError: typeof InstanceofMethod<URIError> & IsType;
@@ -87,17 +87,12 @@ export interface HTMLElementsMethodsInterface {
     HTMLDataListElement: typeof InstanceofMethod<HTMLDataListElement> & IsType;
     HTMLDetailsElement: typeof InstanceofMethod<HTMLDetailsElement> & IsType;
     HTMLDialogElement: typeof InstanceofMethod<HTMLDialogElement> & IsType;
-    HTMLDirectoryElement: typeof InstanceofMethod<HTMLDirectoryElement> & IsType;
     HTMLDivElement: typeof InstanceofMethod<HTMLDivElement> & IsType;
-    HTMLDocument: typeof InstanceofMethod<HTMLDocument> & IsType;
     HTMLElement: typeof InstanceofMethod<HTMLElement> & IsType;
     HTMLEmbedElement: typeof InstanceofMethod<HTMLEmbedElement> & IsType;
     HTMLFieldSetElement: typeof InstanceofMethod<HTMLFieldSetElement> & IsType;
-    HTMLFontElement: typeof InstanceofMethod<HTMLFontElement> & IsType;
     HTMLFormControlsCollection: typeof InstanceofMethod<HTMLFormControlsCollection> & IsType;
     HTMLFormElement: typeof InstanceofMethod<HTMLFormElement> & IsType;
-    HTMLFrameElement: typeof InstanceofMethod<HTMLFrameElement> & IsType;
-    HTMLFrameSetElement: typeof InstanceofMethod<HTMLFrameSetElement> & IsType;
     HTMLHRElement: typeof InstanceofMethod<HTMLHRElement> & IsType;
     HTMLHeadElement: typeof InstanceofMethod<HTMLHeadElement> & IsType;
     HTMLHeadingElement: typeof InstanceofMethod<HTMLHeadingElement> & IsType;
@@ -110,7 +105,6 @@ export interface HTMLElementsMethodsInterface {
     HTMLLegendElement: typeof InstanceofMethod<HTMLLegendElement> & IsType;
     HTMLLinkElement: typeof InstanceofMethod<HTMLLinkElement> & IsType;
     HTMLMapElement: typeof InstanceofMethod<HTMLMapElement> & IsType;
-    HTMLMarqueeElement: typeof InstanceofMethod<HTMLMarqueeElement> & IsType;
     HTMLMediaElement: typeof InstanceofMethod<HTMLMediaElement> & IsType;
     HTMLMenuElement: typeof InstanceofMethod<HTMLMenuElement> & IsType;
     HTMLMetaElement: typeof InstanceofMethod<HTMLMetaElement> & IsType;

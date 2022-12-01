@@ -11,9 +11,9 @@
 
 # ts-is
 
-> 5144 Tests
+[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
 
-## Prerequisites
+## ℹ️ Prerequisites
 
 this package was created in order to simplify writing in typescript / javascript, it often happens that you need to have
 checks for different types of data, these checks can be "huge", but if you could simply describe in words what we want
@@ -25,7 +25,8 @@ For example, why write:
 if (
     typeof variable === 'object' &&
     variable !== null &&
-    !Array.isArray(variable)
+    !Array.isArray(variable) &&
+    Object.keys(variable)?.length
 ) {
 }
 ```
@@ -33,11 +34,11 @@ if (
 if you can write something like:
 
 ```typescript
-if (is.object(variable)) {
+if (is.object.not.empty(variable)) {
 }
 ```
 
-## Table of contents
+## 📝 Table of contents
 
 - [ts-is](#ts-is)
     - [Prerequisites](#prerequisites)
@@ -60,13 +61,13 @@ if (is.object(variable)) {
     - [Authors](#authors)
     - [License](#license)
 
-## Installation
+## 💿 Installation
 
 ```sh
 npm install @p4ck493/ts-is
 ```
 
-## Usage
+## 🙌 Usage
 
 ### Import
 
@@ -331,7 +332,7 @@ stream$.next('false'); // Bad
 
 ```
 
-## API
+## 🗃️ API
 
 ### All methods return a boolean type
 
@@ -382,7 +383,7 @@ stream$.next('false'); // Bad
 | or   | ✅    |
 | all  | 🛑   | DELETED |
 
-## Contributing
+## 👤 Contributing
 
 [//]: # (Please read [CONTRIBUTING.md]&#40;CONTRIBUTING.md&#41; for details on our code of conduct, and the process for submitting pull requests to us.)
 
@@ -393,12 +394,12 @@ stream$.next('false'); // Bad
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request 😎
 
-## Authors
+## ✍️ Authors
 
 * **Ivan Karbashevskyi** - *Initial work* - [Karbashevskyi](https://github.com/Karbashevskyi)
 
 See also the list of [contributors](https://github.com/p4ck493/ts-is/contributors) who participated in this project.
 
-## License
+## 📜 License
 
 [MIT License](https://andreasonny.mit-license.org/2019) © p4ck493

@@ -76,11 +76,13 @@ export interface MethodsInterface {
     Float64Array?: typeof Float64Array & IsType;
     BigInt64Array?: typeof BigInt64Array & IsType;
     BigUint64Array?: typeof BigUint64Array & IsType;
+    RangeError?: typeof RangeError & IsType;
     Error?: typeof Error & IsType;
     EvalError?: typeof EvalError & IsType;
     ReferenceError?: typeof ReferenceError & IsType;
     SyntaxError?: typeof SyntaxError & IsType;
     TypeError?: typeof TypeError & IsType;
+    HTMLElement?: typeof HTMLElement & IsType;
 }
 
 export const methods: MethodsInterface & MethodInterface = {

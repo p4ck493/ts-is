@@ -113,17 +113,17 @@ is.boolean(false) // true
 
 is.compare({a: 1}, {a: 1}) // true
 
-is.date(new Date()) // true
+is.Date(new Date()) // true
 
 is.empty('') // true
 
-is.error(new Error()) // true
+is.Error(new Error()) // true
 
-is.evalError(new EvalError()) // true
+is.EvalError(new EvalError()) // true
 
 is.false(false) // true
 
-is.dataView(new DataView(new ArrayBuffer(16), 0)) // true
+is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
@@ -131,7 +131,7 @@ is.function((() => {})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
-is.map(new Map()) // true
+is.Map(new Map()) // true
 
 is.null(null) // true
 
@@ -139,31 +139,31 @@ is.number(0) // true
 
 is.object({}) // true
 
-is.referenceError(new ReferenceError()) // true
+is.ReferenceError(new ReferenceError()) // true
 
-is.regExp(new RegExp()) // true
+is.RegExp(new RegExp()) // true
 
-is.set(new Set()) // true
+is.Set(new Set()) // true
 
 is.string('') // true
 
 is.symbol(Symbol()) // true
 
-is.syntaxError(new SyntaxError()) // true
+is.SyntaxError(new SyntaxError()) // true
 
 is.true(true) // true
 
 is.truthy(1) // true
 
-is.typeError(new TypeError()) // true
+is.TypeError(new TypeError()) // true
 
 is.undefined(undefined) // true
 
 is.URIError(new URIError()) // true
 
-is.weakMap(new WeakMap()) // true
+is.WeakMap(new WeakMap()) // true
 
-is.weakSet(new WeakSet()) // true
+is.WeakSet(new WeakSet()) // true
 
 ```
 
@@ -279,6 +279,34 @@ console.log(onlyStringList.filter(is.string)); // ['', 'test']
 
 const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
 console.log(onlyNotEmptyStringList.filter(is.string.not.empty)); // ['test']
+
+```
+
+#### array:some
+```typescript
+
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.some(is.string.or.object)) // true
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.some(is.not.symbol)); // false
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.some(is.string.empty)); // true
+
+```
+
+#### array:every
+```typescript
+
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.every(is.string.or.number)) // true
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.every(is.string)); // false
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.every(is.not.object)); // true
 
 ```
 

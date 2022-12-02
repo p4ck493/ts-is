@@ -14,8 +14,7 @@
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json",
-    "publish": "npm publish --access public"
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",

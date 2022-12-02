@@ -3,3 +3,4 @@
 dist
 node_modules
 coverage
+/jest-html-reporters-attach/

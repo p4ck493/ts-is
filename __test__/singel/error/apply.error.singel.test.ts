@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('error singel: apply', () => {
+describe('Error singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -89,20 +89,20 @@ describe('error singel: apply', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.error: Should true for $value', ({value}) => {
-        expect(is.error.apply({}, [value])).toBe(true);
+    it.each(dataForGoodTesting)('is.Error: Should true for $value', ({value}) => {
+        expect(is.Error.apply({}, [value])).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.error: Should false for $value', ({value}) => {
-        expect(is.error.apply({}, [value])).toBe(false);
+    it.each(dataForBadTesting)('is.Error: Should false for $value', ({value}) => {
+        expect(is.Error.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.error: Should false for $value', ({value}) => {
-        expect(is.not.error.apply({}, [value])).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Error: Should false for $value', ({value}) => {
+        expect(is.not.Error.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.error: Should true for $value', ({value}) => {
-        expect(is.not.error.apply({}, [value])).toBe(true);
+    it.each(dataForBadTesting)('is.not.Error: Should true for $value', ({value}) => {
+        expect(is.not.Error.apply({}, [value])).toBe(true);
     });
 
 });

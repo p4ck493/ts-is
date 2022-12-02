@@ -1,3 +1,4 @@
+# ts-is
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
@@ -9,11 +10,7 @@
 ![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
 
-# ts-is
-
-> 4518 Tests
-
-## Prerequisites
+## 💡 Idea
 
 this package was created in order to simplify writing in typescript / javascript, it often happens that you need to have
 checks for different types of data, these checks can be "huge", but if you could simply describe in words what we want
@@ -25,7 +22,8 @@ For example, why write:
 if (
     typeof variable === 'object' &&
     variable !== null &&
-    !Array.isArray(variable)
+    !Array.isArray(variable) &&
+    Object.keys(variable)?.length
 ) {
 }
 ```
@@ -33,42 +31,45 @@ if (
 if you can write something like:
 
 ```typescript
-if (is.object(variable)) {
+if (is.object.not.empty(variable)) {
 }
 ```
 
-## Table of contents
+## 📝 Table of contents
 
 - [ts-is](#ts-is)
-    - [Prerequisites](#prerequisites)
-    - [Table of contents](#table-of-contents)
-    - [Installation](#installation)
-    - [Usage](#usage)
-        - [Import](#import)
-        - [Example](#example)
+    - [Idea](#-idea)
+    - [Table of contents](#-table-of-contents)
+    - [Installation](#-installation)
+    - [Usage](#-usage)
+        - [Example](#examples)
             - [Methods](#methods)
             - [Methods with connection](#methods-with-connection)
             - [Methods with wrappers](#methods-with-wrappers)
-            - [Methods with wrappers and connection](#methods-with-wrappers-and-connection)
             - [Methods with your models](#methods-with-your-models)
             - [Custom method](#custom-method)
         - [Use Cases](#use-cases)
-          - [array:filter](#arrayfilter)
-          - [observable:pipe:filter](#observablepipefilter)
-    - [API](#api)
-    - [Contributing](#contributing)
-    - [Authors](#authors)
-    - [License](#license)
+            - [array:filter](#array--filter)
+            - [array:some](#array--some)
+            - [array:every](#array--every)
+            - [observable:pipe:filter](#observable--pipe--filter)
+    - [API](#-api)
+    - [What's new in 3.0.0?](#whats-new-in-300)
+        - [In general](#in-general-)
+        - [In details](#in-details-)
+        - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
+    - [Contributing](#-contributing)
+    - [Result of testing](#result-of-testing)
+    - [Authors](#-authors)
+    - [License](#-license)
 
-## Installation
+## 💿 Installation
 
 ```sh
 npm install @p4ck493/ts-is
 ```
 
-## Usage
-
-### Import
+## 🙌 Usage
 
 ```sh
 import {is} from "@p4ck493/ts-is";
@@ -86,25 +87,19 @@ is[$cmd]();
 is[$cmd][$cmd]();
 is[$cmd].or[$cmd]();
 is[$cmd].not[$cmd]();
-is[$cmd].all[$cmd]();
-is[$cmd].all.not[$cmd]();
 
-$model = 'any model wich declare in pacakge by decorator';
+$model = 'any model wich declare in package by decorator';
 
 is[$model]();
 is[$model][$model]();
 is[$model].or[$model]();
 is[$model].not[$model]();
-is[$model].all[$model]();
-is[$model].all.not[$model]();
 
 // And yes, you can mix:
 
 is[$cmd][$model]();
 is[$model].or[$cmd]();
 is[$cmd].not[$model]();
-is[$model].all[$cmd]();
-is[$cmd].all.not[$model]();
 
 ```
 
@@ -119,9 +114,17 @@ is.boolean(false) // true
 
 is.compare({a: 1}, {a: 1}) // true
 
+is.Date(new Date()) // true
+
 is.empty('') // true
 
+is.Error(new Error()) // true
+
+is.EvalError(new EvalError()) // true
+
 is.false(false) // true
+
+is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
@@ -130,21 +133,39 @@ is.function((() => {
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
+is.Map(new Map()) // true
+
 is.null(null) // true
 
 is.number(0) // true
 
 is.object({}) // true
 
+is.ReferenceError(new ReferenceError()) // true
+
+is.RegExp(new RegExp()) // true
+
+is.Set(new Set()) // true
+
 is.string('') // true
 
 is.symbol(Symbol()) // true
+
+is.SyntaxError(new SyntaxError()) // true
 
 is.true(true) // true
 
 is.truthy(1) // true
 
+is.TypeError(new TypeError()) // true
+
 is.undefined(undefined) // true
+
+is.URIError(new URIError()) // true
+
+is.WeakMap(new WeakMap()) // true
+
+is.WeakSet(new WeakSet()) // true
 
 ```
 
@@ -173,22 +194,8 @@ is.object.not.empty({a: 1}) // true
 
 is.not.object({}) // false
 
-is.all.string(['qwerty', [['qwerty_1'], 'qwerty_2']]) // true
-
 is.not.number(1n) // true
 
-is.all.true([true, [true], [true, false]]) // false
-
-is.all.not.null(['qwerty', ['qwerty_1', 100], Symbol()]) // true
-
-is.all.not.undefined([200, [Symbol()], [true], undefined, null, 'string']) // false
-```
-
-#### Methods with wrappers and connection
-
-```typescript
-is.all.not.null.or.undefined([1, 2, 3, 4, 5, ['string'], Symbol()]) // true
-is.all.not.null.or.undefined.empty([5, 4, 3, 2, 1, [''], Symbol()]) // false
 ```
 
 #### Methods with your models
@@ -243,9 +250,6 @@ is.not.woman(man) // true
 
 is.not.man(man) // false
 
-is.all.person([person, [man], [woman]]) // true
-
-is.all.not.AddressModel([[person], [woman], [man]]) // true
 ```
 
 #### Custom method
@@ -267,6 +271,7 @@ is.PostModel('world') // Returns: Hello world
 ### Use Cases
 
 #### array:filter
+
 ```typescript
 
 const onlyNumbers: number[] = [0, 1, '', 'test'];
@@ -280,7 +285,38 @@ console.log(onlyNotEmptyStringList.filter(is.string.not.empty)); // ['test']
 
 ```
 
+#### array:some
+
+```typescript
+
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.some(is.string.or.object)) // true
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.some(is.not.symbol)); // false
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.some(is.string.empty)); // true
+
+```
+
+#### array:every
+
+```typescript
+
+const onlyNumbers: number[] = [0, 1, '', 'test'];
+console.log(onlyNumbers.every(is.string.or.number)) // true
+
+const onlyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyStringList.every(is.string)); // false
+
+const onlyNotEmptyStringList: string[] = [0, 1, '', 'test'];
+console.log(onlyNotEmptyStringList.every(is.not.object)); // true
+
+```
+
 #### observable:pipe:filter
+
 ```typescript
 
 const stream$: Stream<boolean> = new Stream<boolean>();
@@ -301,54 +337,203 @@ stream$.next('false'); // Bad
 
 ```
 
-## API
+## 🗃️ API
 
 ### All methods return a boolean type
 
 ### List of methods
 
-| Name             | Test |
-|------------------|------|
-| array            | ✅    |
-| bigInt           | ✅    |     
-| boolean          | ✅    |     
-| compare          | ✅    |     
-| date             | ✅    |
-| empty            | ✅    |     
-| error            | ✅    |
-| evalError        | ✅    |
-| false            | ✅    |     
-| falsy            | ✅    |     
-| function         | ✅    |     
-| instanceof       | ✅    |
-| map              | ✅    |     
-| null             | ✅    |     
-| number           | ✅    |     
-| object           | ✅    |     
-| referenceError   | ✅    |
-| regExpError      | ✅    |
-| set              | ✅    |
-| string           | ✅    |     
-| symbol           | ✅    |     
-| syntaxError      | ✅    |
-| true             | ✅    |     
-| truthy           | ✅    |     
-| typeError        | ✅    |
-| undefined        | ✅    |     
-| URIError         | ✅    |
-| weakSet          | ✅🆕  |
-| weakMap          | ✅🆕  |
-| dataView         | ✅🆕  |
+| Name           | Testing | Status  | New name            | 
+|----------------|---------|---------|---------------------|
+| array          | ✅       |
+| bigInt         | ✅       |
+| boolean        | ✅       |
+| compare        | ✅       |
+| date           | ✅       | DELETED | is.Date()           |
+| empty          | ✅       |
+| error          | ✅       | DELETED | is.Error()          |
+| evalError      | ✅       | DELETED | is.EvalError()      |
+| false          | ✅       |
+| falsy          | ✅       |
+| function       | ✅       |
+| instanceof     | ✅       |
+| map            | ✅       | DELETED | is.Map()            |     
+| null           | ✅       |
+| number         | ✅       |
+| object         | ✅       |
+| referenceError | ✅       | DELETED | is.ReferenceError() |
+| regExp         | ✅       | DELETED | is.RegExp()         |
+| set            | ✅       | DELETED | is.Set()            |
+| string         | ✅       |
+| symbol         | ✅       |
+| syntaxError    | ✅       | DELETED | is.SyntaxError()    |
+| true           | ✅       |
+| truthy         | ✅       |
+| typeError      | ✅       | DELETED | is.TypeError()      |
+| undefined      | ✅       |
+| URIError       | ✅       | DELETED | is.URIError()       |
+| weakSet        | ✅       | DELETED | is.WeakSet()        |
+| weakMap        | ✅       | DELETED | is.WeakMap()        |
+| dataView       | ✅       | DELETED | is.DataView()       |
+| NaN            | 🛑      | DELETED | isNaN()             |
+| zero           | ✅       |
+| primitive      | ✅       |
+| promise        | 🛑      |
 
 ### List of wrappers and connections
 
-| Name | Test |
-|------|------|
+| Name | Test | Status  |
+|------|------|---------|
 | not  | ✅    |
-| all  | ✅    |
 | or   | ✅    |
+| all  | 🛑   | DELETED |
 
-## Contributing
+&nbsp;
+<center>┉</center>
+
+## What's new in 3.0.0?
+
+### In general:
+
+1. ✅ New engine.
+2. ✅ More teams.
+3. ✅ Better speed of execution of commands.
+4. ✅ More tests.
+5. ✅ Less code.
+6. ✅ Smaller package size from 60 kb to 38 kb.
+
+### In details:
+
+Removed several commands, for example is.NaN, because there is a system one that works the same, namely isNaN.
+Added support for global contexts, i.e. now if there is no check in the package, you can try to call it universally, the
+package will try to find what you are looking for and check what is found with the one provided through the instanceof
+command. Previously, all commands after a dot started with a lowercase letter, only in the case when you call a
+registered external class (example: is.PersonModel), then in this case you already both named it and used it, now some
+declared commands also start with a capital letter, this is because that these classes are not taken from the package,
+but from the global context.
+
+### Why did the package start serving global contexts and which ones?
+
+1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in
+   order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because
+   they have not yet been declared in the package interface.
+2. The package started serving (if any) the following global contexts: globalThis, global, self, window.
+
+### New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.
+
+#### Generale
+
+| Name              | Testing |
+|-------------------|---------|
+| Map               | ✅       |
+| String            | 🛑      |
+| Date              | ✅       |
+| Set               | ✅       |
+| URIError          | ✅       |
+| RegExp            | ✅       |
+| WeakSet           | ✅       |
+| WeakMap           | ✅       |
+| DataView          | ✅       |
+| Float32Array      | 🛑      |
+| Int32Array        | 🛑      |
+| Uint8ClampedArray | 🛑      |
+| Int8Array         | 🛑      |
+| Uint8Array        | 🛑      |
+| Int16Array        | 🛑      |
+| Uint16Array       | 🛑      |
+| Uint32Array       | 🛑      |
+| Float64Array      | 🛑      |
+| BigInt64Array     | 🛑      |
+| BigUint64Array    | 🛑      |
+| RangeError        | 🛑      |
+| Error             | ✅       |
+| EvalError         | ✅       |
+| ReferenceError    | ✅       |
+| SyntaxError       | ✅       |
+| TypeError         | ✅       |
+
+#### HTML
+
+| Name                       | Testing |
+|----------------------------|---------|
+| HTMLAllCollection          | 🛑      |
+| HTMLAnchorElement          | 🛑      |
+| HTMLAreaElement            | 🛑      |
+| HTMLAudioElement           | 🛑      |
+| HTMLBRElement              | 🛑      |
+| HTMLBaseElement            | 🛑      |
+| HTMLBodyElement            | 🛑      |
+| HTMLButtonElement          | 🛑      |
+| HTMLCanvasElement          | 🛑      |
+| HTMLCollection             | 🛑      |
+| HTMLDListElement           | 🛑      |
+| HTMLDataElement            | 🛑      |
+| HTMLDataListElement        | 🛑      |
+| HTMLDetailsElement         | 🛑      |
+| HTMLDialogElement          | 🛑      |
+| HTMLDivElement             | 🛑      |
+| HTMLElement                | 🛑      |
+| HTMLEmbedElement           | 🛑      |
+| HTMLFieldSetElement        | 🛑      |
+| HTMLFormControlsCollection | 🛑      |
+| HTMLFormElement            | 🛑      |
+| HTMLHRElement              | 🛑      |
+| HTMLHeadElement            | 🛑      |
+| HTMLHeadingElement         | 🛑      |
+| HTMLHtmlElement            | 🛑      |
+| HTMLIFrameElement          | 🛑      |
+| HTMLImageElement           | 🛑      |
+| HTMLInputElement           | 🛑      |
+| HTMLLIElement              | 🛑      |
+| HTMLLabelElement           | 🛑      |
+| HTMLLegendElement          | 🛑      |
+| HTMLLinkElement            | 🛑      |
+| HTMLMapElement             | 🛑      |
+| HTMLMediaElement           | 🛑      |
+| HTMLMenuElement            | 🛑      |
+| HTMLMetaElement            | 🛑      |
+| HTMLMeterElement           | 🛑      |
+| HTMLModElement             | 🛑      |
+| HTMLOListElement           | 🛑      |
+| HTMLObjectElement          | 🛑      |
+| HTMLOptGroupElement        | 🛑      |
+| HTMLOptionElement          | 🛑      |
+| HTMLOptionsCollection      | 🛑      |
+| HTMLOutputElement          | 🛑      |
+| HTMLParagraphElement       | 🛑      |
+| HTMLParamElement           | 🛑      |
+| HTMLPictureElement         | 🛑      |
+| HTMLPreElement             | 🛑      |
+| HTMLProgressElement        | 🛑      |
+| HTMLQuoteElement           | 🛑      |
+| HTMLScriptElement          | 🛑      |
+| HTMLSelectElement          | 🛑      |
+| HTMLSlotElement            | 🛑      |
+| HTMLSourceElement          | 🛑      |
+| HTMLSpanElement            | 🛑      |
+| HTMLStyleElement           | 🛑      |
+| HTMLTableCaptionElement    | 🛑      |
+| HTMLTableCellElement       | 🛑      |
+| HTMLTableColElement        | 🛑      |
+| HTMLTableElement           | 🛑      |
+| HTMLTableRowElement        | 🛑      |
+| HTMLTableSectionElement    | 🛑      |
+| HTMLTemplateElement        | 🛑      |
+| HTMLTextAreaElement        | 🛑      |
+| HTMLTimeElement            | 🛑      |
+| HTMLTitleElement           | 🛑      |
+| HTMLTrackElement           | 🛑      |
+| HTMLUListElement           | 🛑      |
+| HTMLUnknownElement         | 🛑      |
+| HTMLVideoElement           | 🛑      |
+
+&nbsp;
+<center>┉</center>
+
+## Result of testing
+[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
+
+## 👤 Contributing
 
 [//]: # (Please read [CONTRIBUTING.md]&#40;CONTRIBUTING.md&#41; for details on our code of conduct, and the process for submitting pull requests to us.)
 
@@ -359,12 +544,12 @@ stream$.next('false'); // Bad
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request 😎
 
-## Authors
+## ✍️ Authors
 
 * **Ivan Karbashevskyi** - *Initial work* - [Karbashevskyi](https://github.com/Karbashevskyi)
 
 See also the list of [contributors](https://github.com/p4ck493/ts-is/contributors) who participated in this project.
 
-## License
+## 📜 License
 
 [MIT License](https://andreasonny.mit-license.org/2019) © p4ck493

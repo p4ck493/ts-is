@@ -6,9 +6,8 @@ import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/registe
 import { methods } from '../engine/methods';
 
 export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): any {
-  // TODO interface
   return (constructor: registerInIsConstructorDecoratorType): void => {
-    let value: any = constructor; // TODO interface
+    let value: any = constructor;
     if (configuration?.customMethod) {
       value = value?.[configuration.customMethod];
       if (!value) {

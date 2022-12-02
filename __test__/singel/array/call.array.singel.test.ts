@@ -119,15 +119,5 @@ describe('array singel: call', () => {
         expect(is.not.array(value, classRef)).toBe(false);
     });
 
-    // TODO new case
-    // const dataForGoodAdvancedTesting1: {value: any}[] = [
-    //     {
-    //         value: [1],
-    //     },
-    // ];
-    //
-    // it.each(dataForGoodAdvancedTesting1)('is.array: Should true for $value', ({value}) => {
-    //     expect(is.array.all.number.call({}, value)).toBe(true);
-    // });
 
 });

@@ -1,5 +1,5 @@
-import { methods } from './index';
+import { FalsyMethod } from './falsy.method';
 
 export function TruthyMethod(argument: unknown): argument is true {
-  return !methods.falsy(argument);
+  return !FalsyMethod(argument);
 }

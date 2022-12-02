@@ -4,8 +4,11 @@ type proxyGeneratorApplyType = (
   argumentList: unknown[],
 ) => ReturnType<typeof target>;
 
+/**
+ * This work only for command: is()
+ */
 export function proxyGeneratorApply(): proxyGeneratorApplyType {
-  return (target: (...arg: unknown[]) => boolean, thisArg: unknown, argumentList: unknown[]) => {
+  return (target, thisArg, argumentList) => {
     return target(...argumentList);
   };
 }

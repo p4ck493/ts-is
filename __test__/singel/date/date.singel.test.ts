@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('date singel', () => {
+describe('Date singel', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -86,20 +86,20 @@ describe('date singel', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.date: Should true for $value', ({value}) => {
-        expect(is.date(value)).toBe(true);
+    it.each(dataForGoodTesting)('is.Date: Should true for $value', ({value}) => {
+        expect(is.Date(value)).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.date: Should false for $value', ({value}) => {
-        expect(is.date(value)).toBe(false);
+    it.each(dataForBadTesting)('is.Date: Should false for $value', ({value}) => {
+        expect(is.Date(value)).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.date: Should false for $value', ({value}) => {
-        expect(is.not.date(value)).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Date: Should false for $value', ({value}) => {
+        expect(is.not.Date(value)).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.date: Should true for $value', ({value}) => {
-        expect(is.not.date(value)).toBe(true);
+    it.each(dataForBadTesting)('is.not.Date: Should true for $value', ({value}) => {
+        expect(is.not.Date(value)).toBe(true);
     });
 
 });

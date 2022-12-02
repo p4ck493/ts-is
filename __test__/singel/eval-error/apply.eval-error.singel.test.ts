@@ -1,6 +1,6 @@
 import {is} from '../../../lib';
 
-describe('evalError singel: apply', () => {
+describe('EvalError singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -92,20 +92,20 @@ describe('evalError singel: apply', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.evalError: Should true for $value', ({value}) => {
-        expect(is.evalError.apply({}, [value])).toBe(true);
+    it.each(dataForGoodTesting)('is.EvalError: Should true for $value', ({value}) => {
+        expect(is.EvalError.apply({}, [value])).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.evalError: Should false for $value', ({value}) => {
-        expect(is.evalError.apply({}, [value])).toBe(false);
+    it.each(dataForBadTesting)('is.EvalError: Should false for $value', ({value}) => {
+        expect(is.EvalError.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.evalError: Should false for $value', ({value}) => {
-        expect(is.not.evalError.apply({}, [value])).toBe(false);
+    it.each(dataForGoodTesting)('is.not.EvalError: Should false for $value', ({value}) => {
+        expect(is.not.EvalError.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.evalError: Should true for $value', ({value}) => {
-        expect(is.not.evalError.apply({}, [value])).toBe(true);
+    it.each(dataForBadTesting)('is.not.EvalError: Should true for $value', ({value}) => {
+        expect(is.not.EvalError.apply({}, [value])).toBe(true);
     });
 
 });

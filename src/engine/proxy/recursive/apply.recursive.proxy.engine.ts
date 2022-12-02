@@ -1,53 +1,127 @@
-import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
-import { OrCaseEngine } from '../../cases/or.case.engine';
-import { WrapperOrCaseEngine } from '../../cases/wrapper-or.case.engine';
-import { CaseConst } from '../../../consts/case.const';
-import { AndCaseEngine } from '../../cases/and.case.engine';
-import { WrapperAndCaseEngine } from '../../cases/wrapper-and.case.engine';
-import ContextCaseInterface from '../../../interfaces/context-case.interface';
-import { BaseCaseEngine } from '../../cases/base.case.engine';
-import { FlagsToolInterface } from '../../../interfaces/tools/flags.tool.interface';
+import {
+  CommandMixType,
+  CommandType,
+  ParamsProxyEngineInterface,
+} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+import { InstanceofMethod } from '../../methods/instanceof.method';
+import { BooleanMethod } from '../../methods/boolean.method';
 
-type proxyRecursiveApplyType = (
-  targetApply: any,
-  thisArg: unknown,
-  argumentList: unknown[] & unknown[][],
-) => ReturnType<typeof targetApply>;
+export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
+  return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] & unknown[][]): boolean => {
+    try {
+      const lastCommand = params.commandList.pop() as CommandMixType;
 
-const recordOfCases: Record<string, BaseCaseEngine> = {
-  [JSON.stringify(CaseConst.AND)]: AndCaseEngine,
-  [JSON.stringify(CaseConst.OR)]: OrCaseEngine,
-  [JSON.stringify(CaseConst.WRAPPER_OR)]: WrapperOrCaseEngine,
-  [JSON.stringify(CaseConst.WRAPPER_AND)]: WrapperAndCaseEngine,
+      switch (lastCommand) {
+        case 'apply':
+          argumentList = argumentList[1] as any;
+          break;
+        case 'call':
+          argumentList.splice(0, 1);
+          break;
+        default:
+          params.commandList.push(lastCommand);
+      }
+
+      return decideResult(convertStringListToDecideList(params.commandList, argumentList));
+    } catch (e) {
+      return false;
+    }
+  };
+}
+
+function getResult(command: CommandType | string, argumentList: unknown[]): boolean {
+  if (typeof command === 'string') {
+    if (Reflect.has(globalThis ?? {}, command)) {
+      if (typeof (globalThis as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]]);
+      }
+    }
+
+    if (Reflect.has(self ?? {}, command)) {
+      if (typeof (self as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (self as any)[command]]);
+      }
+    }
+
+    if (Reflect.has(window ?? {}, command)) {
+      if (typeof (window as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]]);
+      }
+    }
+
+    if (Reflect.has(global ?? {}, command)) {
+      if (typeof (global as any)[command] === 'function') {
+        return InstanceofMethod.apply({}, [argumentList[0], (global as any)[command]]);
+      }
+    }
+
+    return false;
+  } else {
+    const result: any = command.apply({}, argumentList);
+    if (BooleanMethod(result)) {
+      return result;
+    } else {
+      return InstanceofMethod.apply({}, [argumentList[0], result.classRef]);
+    }
+  }
+}
+
+type convertResultType = {
+  list: (boolean | number | boolean[])[];
+  indexNot: number | undefined;
 };
 
-export function proxyRecursiveApply(lists: ListsProxyEngineInterface): proxyRecursiveApplyType {
-  return (targetApply, thisArg, argumentList): boolean => {
-    const flags: FlagsToolInterface = {
-      or: !!lists?.or?.length,
-      wrapper: !!lists?.all?.length || !!lists?.not?.length,
-    };
-
-    const foundCase = recordOfCases[JSON.stringify(flags)];
-
-    if (!foundCase) {
-      throw new Error(`No case found for this command. More information: https://github.com/p4ck493/ts-is`);
-    }
-
-    if (lists.lastCommandIsCall) {
-      argumentList.splice(0, 1);
-    }
-
-    if (lists.lastCommandIsApply) {
-      argumentList = argumentList[1] as any;
-    }
-
-    const context: ContextCaseInterface = {
-      targetApply,
-      argumentList,
-      lists,
-    };
-
-    return foundCase.runCase.call(context);
+function convertStringListToDecideList(
+  list: ParamsProxyEngineInterface['commandList'],
+  argumentList: any,
+): convertResultType {
+  const convertResult: convertResultType = {
+    list: [],
+    indexNot: undefined,
   };
+  for (let i = 0; i < list.length; i++) {
+    switch (list[i]) {
+      case 'not':
+        convertResult.indexNot = convertResult.list.push(0) - 1;
+        continue;
+      case 'or':
+        const lastItem: boolean | number | boolean[] | undefined = convertResult.list.at(-1);
+        const result: boolean = getResult(list[i + 1], argumentList);
+        if (Array.isArray(lastItem)) {
+          lastItem.push(result);
+        } else {
+          convertResult.list[convertResult.list.length - 1] = [lastItem as boolean, result];
+        }
+        i++;
+        continue;
+      default:
+        convertResult.list.push(getResult(list[i], argumentList));
+    }
+  }
+  return convertResult;
+}
+
+function decideResult({ list, indexNot }: convertResultType): boolean {
+  let index = 0;
+  let result = false;
+
+  for (let curr of list) {
+    if (indexNot !== index) {
+      if (Array.isArray(curr)) {
+        curr = curr.some((t) => t);
+      }
+      if (typeof indexNot === 'number' && index > indexNot && indexNot > -1) {
+        curr = !curr;
+      }
+      if (typeof curr === 'boolean') {
+        if (curr) {
+          result = curr;
+        } else {
+          return false;
+        }
+      }
+    }
+    index++;
+  }
+  return result;
 }

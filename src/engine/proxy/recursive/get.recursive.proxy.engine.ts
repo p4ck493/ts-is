@@ -1,10 +1,10 @@
 import { proxyRecursive } from './index';
-import { ListsProxyEngineInterface } from '../../../interfaces/engine/proxy/lists.proxy.engine.interface';
+import { ParamsProxyEngineInterface } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 
-export function proxyRecursiveGet(index: number, lists: ListsProxyEngineInterface): proxyRecursiveGetType {
-  return (targetGet, nameGet: string) => {
-    return proxyRecursive(index, targetGet[nameGet], nameGet, lists);
+export function proxyRecursiveGet(params: ParamsProxyEngineInterface): proxyRecursiveGetType {
+  return (targetGet, nameGet) => {
+    return proxyRecursive(targetGet[nameGet], nameGet, params);
   };
 }

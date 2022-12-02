@@ -1,10 +1,10 @@
 import {
-    CommandMixType,
-    CommandType,
-    ParamsProxyEngineInterface,
+  CommandMixType,
+  CommandType,
+  ParamsProxyEngineInterface,
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
-import {InstanceofMethod} from '../../methods/instanceof.method';
-import {BooleanMethod} from '../../methods/boolean.method';
+import { InstanceofMethod } from '../../methods/instanceof.method';
+import { BooleanMethod } from '../../methods/boolean.method';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] & unknown[][]): boolean => {

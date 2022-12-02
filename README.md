@@ -384,6 +384,8 @@ stream$.next('false'); // Bad
 | or   | ✅    |
 | all  | 🛑   | DELETED |
 
+&nbsp;
+<center>┉</center>
 
 ## What's new in 3.0.0?
 
@@ -402,6 +404,9 @@ Added support for global contexts, i.e. now if there is no check in the package,
 ### Why did the package start serving global contexts and which ones?
 1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because they have not yet been declared in the package interface.
 2. The package started serving (if any) the following global contexts: globalThis, global, self, window.
+
+&nbsp;
+<center>┉</center>
 
 ## 👤 Contributing
 

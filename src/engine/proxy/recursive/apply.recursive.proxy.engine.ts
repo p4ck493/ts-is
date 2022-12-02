@@ -1,19 +1,13 @@
 import {
-  CommandMixType,
-  CommandType,
-  ParamsProxyEngineInterface,
+    CommandMixType,
+    CommandType,
+    ParamsProxyEngineInterface,
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { InstanceofMethod } from '../../methods/instanceof.method';
-import { BooleanMethod } from '../../methods/boolean.method';
+import {InstanceofMethod} from '../../methods/instanceof.method';
+import {BooleanMethod} from '../../methods/boolean.method';
 
-type proxyRecursiveApplyType = (
-  notUsedTargetApply: any,
-  thisArg: unknown,
-  argumentList: unknown[] & unknown[][],
-) => ReturnType<typeof notUsedTargetApply>;
-
-export function proxyRecursiveApply(params: ParamsProxyEngineInterface): proxyRecursiveApplyType {
-  return (notUsedTargetApply, thisArg, argumentList): boolean => {
+export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
+  return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] & unknown[][]): boolean => {
     try {
       const lastCommand = params.commandList.pop() as CommandMixType;
 

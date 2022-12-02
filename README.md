@@ -52,15 +52,15 @@ if (is.object.not.empty(variable)) {
             - [Methods with your models](#methods-with-your-models)
             - [Custom method](#custom-method)
         - [Use Cases](#use-cases)
-          - [array:filter](#array--filter)
-          - [array:some](#array--some)
-          - [array:every](#array--every)
-          - [observable:pipe:filter](#observable--pipe--filter)
+            - [array:filter](#array--filter)
+            - [array:some](#array--some)
+            - [array:every](#array--every)
+            - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
     - [What's new in 3.0.0?](#whats-new-in-300)
-      - [In general](#in-general-)
-      - [In details](#in-details-)
-      - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
+        - [In general](#in-general-)
+        - [In details](#in-details-)
+        - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
     - [Contributing](#-contributing)
     - [Authors](#-authors)
     - [License](#-license)
@@ -72,6 +72,7 @@ npm install @p4ck493/ts-is
 ```
 
 ## 🙌 Usage
+
 ```sh
 import {is} from "@p4ck493/ts-is";
 ```
@@ -89,7 +90,7 @@ is[$cmd][$cmd]();
 is[$cmd].or[$cmd]();
 is[$cmd].not[$cmd]();
 
-$model = 'any model wich declare in pacakge by decorator';
+$model = 'any model wich declare in package by decorator';
 
 is[$model]();
 is[$model][$model]();
@@ -129,7 +130,8 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
-is.function((() => {})) // true
+is.function((() => {
+})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
@@ -271,6 +273,7 @@ is.PostModel('world') // Returns: Hello world
 ### Use Cases
 
 #### array:filter
+
 ```typescript
 
 const onlyNumbers: number[] = [0, 1, '', 'test'];
@@ -285,6 +288,7 @@ console.log(onlyNotEmptyStringList.filter(is.string.not.empty)); // ['test']
 ```
 
 #### array:some
+
 ```typescript
 
 const onlyNumbers: number[] = [0, 1, '', 'test'];
@@ -299,6 +303,7 @@ console.log(onlyNotEmptyStringList.some(is.string.empty)); // true
 ```
 
 #### array:every
+
 ```typescript
 
 const onlyNumbers: number[] = [0, 1, '', 'test'];
@@ -313,6 +318,7 @@ console.log(onlyNotEmptyStringList.every(is.not.object)); // true
 ```
 
 #### observable:pipe:filter
+
 ```typescript
 
 const stream$: Stream<boolean> = new Stream<boolean>();
@@ -339,42 +345,42 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Test | Status  | New name            | 
-|----------------|------|---------|---------------------|
-| array          | ✅    |
-| bigInt         | ✅    |     
-| boolean        | ✅    |     
-| compare        | ✅    |     
-| date           | ✅    | DELETED | is.Date()           |
-| empty          | ✅    |     
-| error          | ✅    | DELETED | is.Error()          |
-| evalError      | ✅    | DELETED | is.EvalError()      |
-| false          | ✅    |     
-| falsy          | ✅    |     
-| function       | ✅    |     
-| instanceof     | ✅    |
-| map            | ✅    | DELETED | is.Map()            |     
-| null           | ✅    |     
-| number         | ✅    |     
-| object         | ✅    |     
-| referenceError | ✅    | DELETED | is.ReferenceError() |
-| regExp         | ✅    | DELETED | is.RegExp()         |
-| set            | ✅    | DELETED | is.Set()            |
-| string         | ✅    |     
-| symbol         | ✅    |     
-| syntaxError    | ✅    | DELETED | is.SyntaxError()    |
-| true           | ✅    |     
-| truthy         | ✅    |     
-| typeError      | ✅    | DELETED | is.TypeError()      |
-| undefined      | ✅    |     
-| URIError       | ✅    | DELETED | is.URIError()       |
-| weakSet        | ✅    | DELETED | is.WeakSet()        |
-| weakMap        | ✅    | DELETED | is.WeakMap()        |
-| dataView       | ✅    | DELETED | is.DataView()       |
-| NaN            | 🛑   | DELETED | isNaN()             |
-| zero           | ✅    |
-| primitive      | ✅🆕  |
-| promise        | 🛑🆕 |
+| Name           | Testing | Status  | New name            | 
+|----------------|---------|---------|---------------------|
+| array          | ✅       |
+| bigInt         | ✅       |
+| boolean        | ✅       |
+| compare        | ✅       |
+| date           | ✅       | DELETED | is.Date()           |
+| empty          | ✅       |
+| error          | ✅       | DELETED | is.Error()          |
+| evalError      | ✅       | DELETED | is.EvalError()      |
+| false          | ✅       |
+| falsy          | ✅       |
+| function       | ✅       |
+| instanceof     | ✅       |
+| map            | ✅       | DELETED | is.Map()            |     
+| null           | ✅       |
+| number         | ✅       |
+| object         | ✅       |
+| referenceError | ✅       | DELETED | is.ReferenceError() |
+| regExp         | ✅       | DELETED | is.RegExp()         |
+| set            | ✅       | DELETED | is.Set()            |
+| string         | ✅       |
+| symbol         | ✅       |
+| syntaxError    | ✅       | DELETED | is.SyntaxError()    |
+| true           | ✅       |
+| truthy         | ✅       |
+| typeError      | ✅       | DELETED | is.TypeError()      |
+| undefined      | ✅       |
+| URIError       | ✅       | DELETED | is.URIError()       |
+| weakSet        | ✅       | DELETED | is.WeakSet()        |
+| weakMap        | ✅       | DELETED | is.WeakMap()        |
+| dataView       | ✅       | DELETED | is.DataView()       |
+| NaN            | 🛑      | DELETED | isNaN()             |
+| zero           | ✅       |
+| primitive      | ✅       |
+| promise        | 🛑      |
 
 ### List of wrappers and connections
 
@@ -390,6 +396,7 @@ stream$.next('false'); // Bad
 ## What's new in 3.0.0?
 
 ### In general:
+
 1. ✅ New engine.
 2. ✅ More teams.
 3. ✅ Better speed of execution of commands.
@@ -398,12 +405,129 @@ stream$.next('false'); // Bad
 6. ✅ Smaller package size from 60 kb to 38 kb.
 
 ### In details:
+
 Removed several commands, for example is.NaN, because there is a system one that works the same, namely isNaN.
-Added support for global contexts, i.e. now if there is no check in the package, you can try to call it universally, the package will try to find what you are looking for and check what is found with the one provided through the instanceof command. Previously, all commands after a dot started with a lowercase letter, only in the case when you call a registered external class (example: is.PersonModel), then in this case you already both named it and used it, now some declared commands also start with a capital letter, this is because that these classes are not taken from the package, but from the global context.
+Added support for global contexts, i.e. now if there is no check in the package, you can try to call it universally, the
+package will try to find what you are looking for and check what is found with the one provided through the instanceof
+command. Previously, all commands after a dot started with a lowercase letter, only in the case when you call a
+registered external class (example: is.PersonModel), then in this case you already both named it and used it, now some
+declared commands also start with a capital letter, this is because that these classes are not taken from the package,
+but from the global context.
 
 ### Why did the package start serving global contexts and which ones?
-1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because they have not yet been declared in the package interface.
+
+1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in
+   order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because
+   they have not yet been declared in the package interface.
 2. The package started serving (if any) the following global contexts: globalThis, global, self, window.
+
+### New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.
+
+#### Generale
+
+| Name              | Testing |
+|-------------------|---------|
+| Map               | ✅       |
+| String            | 🛑      |
+| Date              | ✅       |
+| Set               | ✅       |
+| URIError          | ✅       |
+| RegExp            | ✅       |
+| WeakSet           | ✅       |
+| WeakMap           | ✅       |
+| DataView          | ✅       |
+| Float32Array      | 🛑      |
+| Int32Array        | 🛑      |
+| Uint8ClampedArray | 🛑      |
+| Int8Array         | 🛑      |
+| Uint8Array        | 🛑      |
+| Int16Array        | 🛑      |
+| Uint16Array       | 🛑      |
+| Uint32Array       | 🛑      |
+| Float64Array      | 🛑      |
+| BigInt64Array     | 🛑      |
+| BigUint64Array    | 🛑      |
+| RangeError        | 🛑      |
+| Error             | ✅       |
+| EvalError         | ✅       |
+| ReferenceError    | ✅       |
+| SyntaxError       | ✅       |
+| TypeError         | ✅       |
+
+#### HTML
+
+| Name                       | Testing |
+|----------------------------|---------|
+| HTMLAllCollection          | 🛑      |
+| HTMLAnchorElement          | 🛑      |
+| HTMLAreaElement            | 🛑      |
+| HTMLAudioElement           | 🛑      |
+| HTMLBRElement              | 🛑      |
+| HTMLBaseElement            | 🛑      |
+| HTMLBodyElement            | 🛑      |
+| HTMLButtonElement          | 🛑      |
+| HTMLCanvasElement          | 🛑      |
+| HTMLCollection             | 🛑      |
+| HTMLDListElement           | 🛑      |
+| HTMLDataElement            | 🛑      |
+| HTMLDataListElement        | 🛑      |
+| HTMLDetailsElement         | 🛑      |
+| HTMLDialogElement          | 🛑      |
+| HTMLDivElement             | 🛑      |
+| HTMLElement                | 🛑      |
+| HTMLEmbedElement           | 🛑      |
+| HTMLFieldSetElement        | 🛑      |
+| HTMLFormControlsCollection | 🛑      |
+| HTMLFormElement            | 🛑      |
+| HTMLHRElement              | 🛑      |
+| HTMLHeadElement            | 🛑      |
+| HTMLHeadingElement         | 🛑      |
+| HTMLHtmlElement            | 🛑      |
+| HTMLIFrameElement          | 🛑      |
+| HTMLImageElement           | 🛑      |
+| HTMLInputElement           | 🛑      |
+| HTMLLIElement              | 🛑      |
+| HTMLLabelElement           | 🛑      |
+| HTMLLegendElement          | 🛑      |
+| HTMLLinkElement            | 🛑      |
+| HTMLMapElement             | 🛑      |
+| HTMLMediaElement           | 🛑      |
+| HTMLMenuElement            | 🛑      |
+| HTMLMetaElement            | 🛑      |
+| HTMLMeterElement           | 🛑      |
+| HTMLModElement             | 🛑      |
+| HTMLOListElement           | 🛑      |
+| HTMLObjectElement          | 🛑      |
+| HTMLOptGroupElement        | 🛑      |
+| HTMLOptionElement          | 🛑      |
+| HTMLOptionsCollection      | 🛑      |
+| HTMLOutputElement          | 🛑      |
+| HTMLParagraphElement       | 🛑      |
+| HTMLParamElement           | 🛑      |
+| HTMLPictureElement         | 🛑      |
+| HTMLPreElement             | 🛑      |
+| HTMLProgressElement        | 🛑      |
+| HTMLQuoteElement           | 🛑      |
+| HTMLScriptElement          | 🛑      |
+| HTMLSelectElement          | 🛑      |
+| HTMLSlotElement            | 🛑      |
+| HTMLSourceElement          | 🛑      |
+| HTMLSpanElement            | 🛑      |
+| HTMLStyleElement           | 🛑      |
+| HTMLTableCaptionElement    | 🛑      |
+| HTMLTableCellElement       | 🛑      |
+| HTMLTableColElement        | 🛑      |
+| HTMLTableElement           | 🛑      |
+| HTMLTableRowElement        | 🛑      |
+| HTMLTableSectionElement    | 🛑      |
+| HTMLTemplateElement        | 🛑      |
+| HTMLTextAreaElement        | 🛑      |
+| HTMLTimeElement            | 🛑      |
+| HTMLTitleElement           | 🛑      |
+| HTMLTrackElement           | 🛑      |
+| HTMLUListElement           | 🛑      |
+| HTMLUnknownElement         | 🛑      |
+| HTMLVideoElement           | 🛑      |
 
 &nbsp;
 <center>┉</center>

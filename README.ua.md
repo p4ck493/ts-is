@@ -412,6 +412,114 @@ stream$.next('false'); // Bad
 1. Тому, що в такому випадку коли вийде нова версія ECMAScript не потрібно буде оновлювати пакунок, щоб почати вже користуватись командами, правда вони не будуть доступні в попередньому перегляді (автозаповнюватись/підповідати), тому що їх ще не задекларовано в інтерфейсі пакунка.
 2. Пакунок почав обслуговувати (якщо існують) такі глобальні контексти: globalThis, global, self, window.
 
+### Нові методи які доступні через пакунок, але які лише задекларовані в пакунку, але насправді беруть дані поза пакунком.
+
+#### Загальні
+
+| Name              | Testing |
+|-------------------|---------|
+| Map               | ✅       |
+| String            | 🛑      |
+| Date              | ✅       |
+| Set               | ✅       |
+| URIError          | ✅       |
+| RegExp            | ✅       |
+| WeakSet           | ✅       |
+| WeakMap           | ✅       |
+| DataView          | ✅       |
+| Float32Array      | 🛑      |
+| Int32Array        | 🛑      |
+| Uint8ClampedArray | 🛑      |
+| Int8Array         | 🛑      |
+| Uint8Array        | 🛑      |
+| Int16Array        | 🛑      |
+| Uint16Array       | 🛑      |
+| Uint32Array       | 🛑      |
+| Float64Array      | 🛑      |
+| BigInt64Array     | 🛑      |
+| BigUint64Array    | 🛑      |
+| RangeError        | 🛑      |
+| Error             | ✅       |
+| EvalError         | ✅       |
+| ReferenceError    | ✅       |
+| SyntaxError       | ✅       |
+| TypeError         | ✅       |
+
+#### HTML
+
+| Name                       | Testing |
+|----------------------------|---------|
+| HTMLAllCollection          | 🛑      |
+| HTMLAnchorElement          | 🛑      |
+| HTMLAreaElement            | 🛑      |
+| HTMLAudioElement           | 🛑      |
+| HTMLBRElement              | 🛑      |
+| HTMLBaseElement            | 🛑      |
+| HTMLBodyElement            | 🛑      |
+| HTMLButtonElement          | 🛑      |
+| HTMLCanvasElement          | 🛑      |
+| HTMLCollection             | 🛑      |
+| HTMLDListElement           | 🛑      |
+| HTMLDataElement            | 🛑      |
+| HTMLDataListElement        | 🛑      |
+| HTMLDetailsElement         | 🛑      |
+| HTMLDialogElement          | 🛑      |
+| HTMLDivElement             | 🛑      |
+| HTMLElement                | 🛑      |
+| HTMLEmbedElement           | 🛑      |
+| HTMLFieldSetElement        | 🛑      |
+| HTMLFormControlsCollection | 🛑      |
+| HTMLFormElement            | 🛑      |
+| HTMLHRElement              | 🛑      |
+| HTMLHeadElement            | 🛑      |
+| HTMLHeadingElement         | 🛑      |
+| HTMLHtmlElement            | 🛑      |
+| HTMLIFrameElement          | 🛑      |
+| HTMLImageElement           | 🛑      |
+| HTMLInputElement           | 🛑      |
+| HTMLLIElement              | 🛑      |
+| HTMLLabelElement           | 🛑      |
+| HTMLLegendElement          | 🛑      |
+| HTMLLinkElement            | 🛑      |
+| HTMLMapElement             | 🛑      |
+| HTMLMediaElement           | 🛑      |
+| HTMLMenuElement            | 🛑      |
+| HTMLMetaElement            | 🛑      |
+| HTMLMeterElement           | 🛑      |
+| HTMLModElement             | 🛑      |
+| HTMLOListElement           | 🛑      |
+| HTMLObjectElement          | 🛑      |
+| HTMLOptGroupElement        | 🛑      |
+| HTMLOptionElement          | 🛑      |
+| HTMLOptionsCollection      | 🛑      |
+| HTMLOutputElement          | 🛑      |
+| HTMLParagraphElement       | 🛑      |
+| HTMLParamElement           | 🛑      |
+| HTMLPictureElement         | 🛑      |
+| HTMLPreElement             | 🛑      |
+| HTMLProgressElement        | 🛑      |
+| HTMLQuoteElement           | 🛑      |
+| HTMLScriptElement          | 🛑      |
+| HTMLSelectElement          | 🛑      |
+| HTMLSlotElement            | 🛑      |
+| HTMLSourceElement          | 🛑      |
+| HTMLSpanElement            | 🛑      |
+| HTMLStyleElement           | 🛑      |
+| HTMLTableCaptionElement    | 🛑      |
+| HTMLTableCellElement       | 🛑      |
+| HTMLTableColElement        | 🛑      |
+| HTMLTableElement           | 🛑      |
+| HTMLTableRowElement        | 🛑      |
+| HTMLTableSectionElement    | 🛑      |
+| HTMLTemplateElement        | 🛑      |
+| HTMLTextAreaElement        | 🛑      |
+| HTMLTimeElement            | 🛑      |
+| HTMLTitleElement           | 🛑      |
+| HTMLTrackElement           | 🛑      |
+| HTMLUListElement           | 🛑      |
+| HTMLUnknownElement         | 🛑      |
+| HTMLVideoElement           | 🛑      |
+
 &nbsp;
 <center>┉</center>
 

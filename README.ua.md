@@ -1,3 +1,4 @@
+# ts-is
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
@@ -8,10 +9,6 @@
 ![Forks](https://img.shields.io/github/forks/p4ck493/ts-is)
 ![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
-
-# ts-is
-
-[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
 
 ## 💡 Ідея
 
@@ -61,6 +58,7 @@ if (is.object.not.empty(variable)) {
       - [В деталях](#в-деталях-)
       - [Чому пакунок почав обслуговувати глобальні контексти та які?](#чому-пакунок-почав-обслуговувати-глобальні-контексти-та-які)
     - [Сприяння](#-сприяння)
+    - [Результат тестування](#результат-тестування)
     - [Автори](#-автори)
     - [Ліцензія](#-ліцензія)
 
@@ -522,6 +520,11 @@ stream$.next('false'); // Bad
 
 &nbsp;
 <center>┉</center>
+
+
+## Результат тестування
+[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
+
 
 ## 👤 Сприяння
 

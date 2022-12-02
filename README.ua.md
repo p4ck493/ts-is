@@ -13,13 +13,12 @@
 
 [<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
 
-## 💡 Idea
+## 💡 Ідея
 
-this package was created in order to simplify writing in typescript / javascript, it often happens that you need to have
-checks for different types of data, these checks can be "huge", but if you could simply describe in words what we want
-to check?
+Цей пакет був створений для того, щоб спростити написання в typescript / javascript код для перевірки даних, часто буває так що Вам необхідно мати
+перевірку для різних типів даних, ці перевірки можуть бути «величезними», але якби Ви могли просто описати словами що хочете перевірити?
 
-For example, why write:
+Наприклад, навіщо писати щось таке:
 
 ```typescript
 if (
@@ -31,52 +30,52 @@ if (
 }
 ```
 
-if you can write something like:
+Якщо Ви можете завдяки цьому пакунку написати щось таке:
 
 ```typescript
 if (is.object.not.empty(variable)) {
 }
 ```
 
-## 📝 Table of contents
+## 📝 Зміст
 
 - [ts-is](#ts-is)
-    - [Idea](#-idea)
-    - [Table of contents](#-table-of-contents)
-    - [Installation](#-installation)
-    - [Usage](#-usage)
-        - [Example](#examples)
-            - [Methods](#methods)
-            - [Methods with connection](#methods-with-connection)
-            - [Methods with wrappers](#methods-with-wrappers)
-            - [Methods with your models](#methods-with-your-models)
-            - [Custom method](#custom-method)
-        - [Use Cases](#use-cases)
+    - [Ідея](#-ідея)
+    - [Зміст](#-зміст)
+    - [Інсталювання](#-інсталювання)
+    - [Використання](#-використання)
+        - [Приклади](#-приклади)
+            - [Методи](#-методи)
+            - [Методи разом з конекторами](#методи-разом-з-конекторами)
+            - [Методи з обгортками](#методи-з-обгортками)
+            - [Методи разом з Вашими задекларованими через декоратор моделями](#методи-разом-з-вашими-задекларованими-через-декоратор-моделями)
+            - [Власні методи](#власні-методи)
+        - [Випадки користування](#випадки-користування)
           - [array:filter](#array--filter)
           - [array:some](#array--some)
           - [array:every](#array--every)
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [What's new in 3.0.0?](#whats-new-in-300)
-      - [In general](#in-general-)
-      - [In details](#in-details-)
-      - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
-    - [Contributing](#-contributing)
-    - [Authors](#-authors)
-    - [License](#-license)
+    - [Що нового в 3.0.0?](#що-нового-в-300)
+      - [В цілому](#в-цілому-)
+      - [В деталях](#в-деталях-)
+      - [Чому пакунок почав обслуговувати глобальні контексти та які?](#чому-пакунок-почав-обслуговувати-глобальні-контексти-та-які)
+    - [Сприяння](#-сприяння)
+    - [Автори](#-автори)
+    - [Ліцензія](#-ліцензія)
 
-## 💿 Installation
+## 💿 Інсталювання
 
 ```sh
 npm install @p4ck493/ts-is
 ```
 
-## 🙌 Usage
+## 🙌 Використання
 ```sh
 import {is} from "@p4ck493/ts-is";
 ```
 
-### Examples
+### Приклади
 
 #### Syntax
 
@@ -104,7 +103,7 @@ is[$cmd].not[$model]();
 
 ```
 
-#### Methods
+#### Методи
 
 ```typescript
 is.array([]) // true
@@ -169,7 +168,7 @@ is.WeakSet(new WeakSet()) // true
 
 ```
 
-#### Methods with connection
+#### Методи разом з конекторами
 
 ```typescript
 is.array.empty([]) // true
@@ -187,7 +186,7 @@ is.object.or.function({}) // true
 is.string.or.true.or.symbol(true) // true
 ```
 
-#### Methods with wrappers
+#### Методи з обгортками
 
 ```typescript
 is.object.not.empty({a: 1}) // true
@@ -198,9 +197,9 @@ is.not.number(1n) // true
 
 ```
 
-#### Methods with your models
+#### Методи разом з Вашими задекларованими через декоратор моделями
 
-> You have the option to add any class to the package yourself for further testing
+> У Вас є можливість реєструвати власні класи до пакунку щоб в подальшому їх використовувати.
 
 ```typescript
 @RegisterInIs({
@@ -252,7 +251,7 @@ is.not.man(man) // false
 
 ```
 
-#### Custom method
+#### Власні методи
 
 ```typescript
 @RegisterInIs({
@@ -268,7 +267,7 @@ is.PostModel('world') // Returns: Hello world
 
 ```
 
-### Use Cases
+### Випадки користування
 
 #### array:filter
 ```typescript
@@ -335,9 +334,9 @@ stream$.next('false'); // Bad
 
 ## 🗃️ API
 
-### All methods return a boolean type
+### Всі мотоди повертають логічну вартість, тобто: true, false;
 
-### List of methods
+### Список методів які представлені в пакунку.
 
 | Name           | Test | Status  | New name            | 
 |----------------|------|---------|---------------------|
@@ -376,7 +375,15 @@ stream$.next('false'); // Bad
 | primitive      | ✅🆕  |
 | promise        | 🛑🆕 |
 
-### List of wrappers and connections
+> Назва - назва методи яку можете використовувати для виклику, щоб перевірити певні види даних.
+
+>Тести - відмічаємо статус чи в проєкті були написати тести для перевірки цієї методи.
+
+> Статус - повідомляємо що методі видалена, але якщо тести помічені що ОК, то значить що цей метод доступний, але має іншу назву і тести теж написані.
+
+> Нова назва - інформує що тепер ця метода має нову назву.
+
+### Список доступних методів які мають іншу роль
 
 | Name | Test | Status  |
 |------|------|---------|
@@ -384,26 +391,25 @@ stream$.next('false'); // Bad
 | or   | ✅    |
 | all  | 🛑   | DELETED |
 
+## Що нового в 3.0.0?
 
-## What's new in 3.0.0?
+### В цілому:
+1. ✅ Новий двигун.
+2. ✅ Більше команд.
+3. ✅ Краща швидкість виконання команд.
+4. ✅ Більше тестів.
+5. ✅ Менше коду.
+6. ✅ Менший розмір пакунку з 60 кб до 38 кб.
 
-### In general:
-1. ✅ New engine.
-2. ✅ More teams.
-3. ✅ Better speed of execution of commands.
-4. ✅ More tests.
-5. ✅ Less code.
-6. ✅ Smaller package size from 60 kb to 38 kb.
+### В деталях:
+Видалено декілька команд, до прикладу is.NaN тому, що є системна, яка працює так само, а саме isNaN.
+Додана обслуга глобальних контекстів, тобто тепер якщо якоїсь перевірки немає в пакунку, то можеш спробувати всерівно викликати, пакунок спробує знайти те що ти шукаєш і перевірити знайдене з поданим через команду instanceof. Раніше всі команди після крапки починались з малої літери, лише увипадку коли викликаєш зареєстрований зовнішній клас (приклад: is.PersonModel) то в цьому випадку вже як назвав, так і користуєшся, то тепер деякі задекларовані команди теж починаються з великої літери, це через те що ці класи беруться не з пакунку, а з глобального контексту.
 
-### In details:
-Removed several commands, for example is.NaN, because there is a system one that works the same, namely isNaN.
-Added support for global contexts, i.e. now if there is no check in the package, you can try to call it universally, the package will try to find what you are looking for and check what is found with the one provided through the instanceof command. Previously, all commands after a dot started with a lowercase letter, only in the case when you call a registered external class (example: is.PersonModel), then in this case you already both named it and used it, now some declared commands also start with a capital letter, this is because that these classes are not taken from the package, but from the global context.
+### Чому пакунок почав обслуговувати глобальні контексти та які?
+1. Тому, що в такому випадку коли вийде нова версія ECMAScript не потрібно буде оновлювати пакунок, щоб почати вже користуватись командами, правда вони не будуть доступні в попередньому перегляді (автозаповнюватись/підповідати), тому що їх ще не задекларовано в інтерфейсі пакунка.
+2. Пакунок почав обслуговувати (якщо існують) такі глобальні контексти: globalThis, global, self, window.
 
-### Why did the package start serving global contexts and which ones?
-1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because they have not yet been declared in the package interface.
-2. The package started serving (if any) the following global contexts: globalThis, global, self, window.
-
-## 👤 Contributing
+## 👤 Сприяння
 
 [//]: # (Please read [CONTRIBUTING.md]&#40;CONTRIBUTING.md&#41; for details on our code of conduct, and the process for submitting pull requests to us.)
 
@@ -414,12 +420,12 @@ Added support for global contexts, i.e. now if there is no check in the package,
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request 😎
 
-## ✍️ Authors
+## ✍️ Автори
 
 * **Ivan Karbashevskyi** - *Initial work* - [Karbashevskyi](https://github.com/Karbashevskyi)
 
 See also the list of [contributors](https://github.com/p4ck493/ts-is/contributors) who participated in this project.
 
-## 📜 License
+## 📜 Ліцензія
 
 [MIT License](https://andreasonny.mit-license.org/2019) © p4ck493

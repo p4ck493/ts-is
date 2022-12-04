@@ -343,7 +343,7 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Testing | Status  | New name            | 
+| Name           | Tests | Status  | New name            | 
 |----------------|---------|---------|---------------------|
 | array          | ✅       |
 | bigInt         | ✅       |
@@ -379,10 +379,17 @@ stream$.next('false'); // Bad
 | zero           | ✅       |
 | primitive      | ✅       |
 | promise        | 🛑      |
+> Name - the name of a method that you can call to check certain types of data.
+
+> Tests - note the status of whether tests were written in the project to verify this method.
+
+> Status - we inform you that the method has been deleted, but if the tests are marked as OK, it means that this method is available, but has a different name and the tests are also written.
+
+> New name - informs that this method now has a new name.
 
 ### List of wrappers and connections
 
-| Name | Test | Status  |
+| Name | Tests | Status  |
 |------|------|---------|
 | not  | ✅    |
 | or   | ✅    |
@@ -423,38 +430,38 @@ but from the global context.
 
 #### Generale
 
-| Name              | Testing |
-|-------------------|---------|
-| Map               | ✅       |
-| String            | 🛑      |
-| Date              | ✅       |
-| Set               | ✅       |
-| URIError          | ✅       |
-| RegExp            | ✅       |
-| WeakSet           | ✅       |
-| WeakMap           | ✅       |
-| DataView          | ✅       |
-| Float32Array      | 🛑      |
-| Int32Array        | 🛑      |
-| Uint8ClampedArray | 🛑      |
-| Int8Array         | 🛑      |
-| Uint8Array        | 🛑      |
-| Int16Array        | 🛑      |
-| Uint16Array       | 🛑      |
-| Uint32Array       | 🛑      |
-| Float64Array      | 🛑      |
-| BigInt64Array     | 🛑      |
-| BigUint64Array    | 🛑      |
-| RangeError        | 🛑      |
-| Error             | ✅       |
-| EvalError         | ✅       |
-| ReferenceError    | ✅       |
-| SyntaxError       | ✅       |
-| TypeError         | ✅       |
+| Name              | Tests |
+|-------------------|-------|
+| Map               | ✅     |
+| String            | 🛑    |
+| Date              | ✅     |
+| Set               | ✅     |
+| URIError          | ✅     |
+| RegExp            | ✅     |
+| WeakSet           | ✅     |
+| WeakMap           | ✅     |
+| DataView          | ✅     |
+| Float32Array      | 🛑    |
+| Int32Array        | 🛑    |
+| Uint8ClampedArray | 🛑    |
+| Int8Array         | 🛑    |
+| Uint8Array        | 🛑    |
+| Int16Array        | 🛑    |
+| Uint16Array       | 🛑    |
+| Uint32Array       | 🛑    |
+| Float64Array      | 🛑    |
+| BigInt64Array     | 🛑    |
+| BigUint64Array    | 🛑    |
+| RangeError        | 🛑    |
+| Error             | ✅     |
+| EvalError         | ✅     |
+| ReferenceError    | ✅     |
+| SyntaxError       | ✅     |
+| TypeError         | ✅     |
 
 #### HTML
 
-| Name                       | Testing |
+| Name                       | Tests |
 |----------------------------|---------|
 | HTMLAllCollection          | 🛑      |
 | HTMLAnchorElement          | 🛑      |
@@ -501,7 +508,6 @@ but from the global context.
 | HTMLOptionsCollection      | 🛑      |
 | HTMLOutputElement          | 🛑      |
 | HTMLParagraphElement       | 🛑      |
-| HTMLParamElement           | 🛑      |
 | HTMLPictureElement         | 🛑      |
 | HTMLPreElement             | 🛑      |
 | HTMLProgressElement        | 🛑      |

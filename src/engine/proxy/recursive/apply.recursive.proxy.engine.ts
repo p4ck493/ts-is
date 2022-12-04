@@ -5,32 +5,23 @@ import {
 } from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
 import { InstanceofMethod } from '../../methods/instanceof.method';
 import { BooleanMethod } from '../../methods/boolean.method';
+import { StringMethod } from '../../methods/string.method';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
-  return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] & unknown[][]): boolean => {
+  return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
     try {
-      const lastCommand = params.commandList.pop() as CommandMixType;
-
-      switch (lastCommand) {
-        case 'apply':
-          argumentList = argumentList[1] as any;
-          break;
-        case 'call':
-          argumentList.splice(0, 1);
-          break;
-        default:
-          params.commandList.push(lastCommand);
-      }
-
       return decideResult(convertStringListToDecideList(params.commandList, argumentList));
     } catch (e) {
+      if (InstanceofMethod(e, SyntaxError)) {
+        throw e;
+      }
       return false;
     }
   };
 }
 
-function getResult(command: CommandType | string, argumentList: unknown[]): boolean {
-  if (typeof command === 'string') {
+function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
+  if (StringMethod(command)) {
     if (Reflect.has(globalThis ?? {}, command)) {
       if (typeof (globalThis as any)[command] === 'function') {
         return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]]);
@@ -57,7 +48,7 @@ function getResult(command: CommandType | string, argumentList: unknown[]): bool
 
     return false;
   } else {
-    const result: any = command.apply({}, argumentList);
+    const result: any = command.apply(context, argumentList);
     if (BooleanMethod(result)) {
       return result;
     } else {
@@ -68,17 +59,37 @@ function getResult(command: CommandType | string, argumentList: unknown[]): bool
 
 type convertResultType = {
   list: (boolean | number | boolean[])[];
-  indexNot: number | undefined;
+  indexNot: number;
 };
 
 function convertStringListToDecideList(
   list: ParamsProxyEngineInterface['commandList'],
-  argumentList: any,
+  argumentList: unknown[],
 ): convertResultType {
+  const lastCommand = list.pop() as CommandMixType;
+  let context: any = {};
+  switch (lastCommand) {
+    case 'apply':
+      context = argumentList[0];
+      argumentList = argumentList[1] as unknown[];
+      break;
+    case 'call':
+      context = argumentList.shift();
+      break;
+    case 'bind':
+      // TODO in this way need return Function with given context
+      throw new SyntaxError(
+        'Please don`t use bind with package, in future we will try to fix it, but not now. If you how to fix it, please create issue or fork flow.',
+      );
+    default:
+      list.push(lastCommand);
+  }
+
   const convertResult: convertResultType = {
     list: [],
-    indexNot: undefined,
+    indexNot: -1,
   };
+  let result: boolean;
   for (let i = 0; i < list.length; i++) {
     switch (list[i]) {
       case 'not':
@@ -86,7 +97,7 @@ function convertStringListToDecideList(
         continue;
       case 'or':
         const lastItem: boolean | number | boolean[] | undefined = convertResult.list.at(-1);
-        const result: boolean = getResult(list[i + 1], argumentList);
+        result = getResult(list[i + 1], argumentList, context);
         if (Array.isArray(lastItem)) {
           lastItem.push(result);
         } else {
@@ -95,7 +106,8 @@ function convertStringListToDecideList(
         i++;
         continue;
       default:
-        convertResult.list.push(getResult(list[i], argumentList));
+        result = getResult(list[i], argumentList, context);
+        convertResult.list.push(result);
     }
   }
   return convertResult;
@@ -110,7 +122,7 @@ function decideResult({ list, indexNot }: convertResultType): boolean {
       if (Array.isArray(curr)) {
         curr = curr.some((t) => t);
       }
-      if (typeof indexNot === 'number' && index > indexNot && indexNot > -1) {
+      if (index > indexNot && indexNot > -1) {
         curr = !curr;
       }
       if (typeof curr === 'boolean') {

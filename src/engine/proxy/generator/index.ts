@@ -1,5 +1,4 @@
 import { proxyGeneratorGet } from './get.generator.proxy.engine';
-import { proxyGeneratorApply } from './apply.generator.proxy.engine';
 
 /**
  *
@@ -8,6 +7,13 @@ import { proxyGeneratorApply } from './apply.generator.proxy.engine';
 export function proxyGenerator(defaultFunction: object): any {
   return new Proxy(defaultFunction, {
     get: proxyGeneratorGet(),
-    apply: proxyGeneratorApply(),
+    apply: (
+      target: (...arg: unknown[]) => boolean,
+      thisArg: unknown,
+      argumentList: unknown[],
+    ): ReturnType<typeof target> => {
+      console.log(this, globalThis, target, thisArg, argumentList);
+      return target(...argumentList);
+    },
   });
 }

@@ -119,7 +119,6 @@ export interface HTMLElementsMethodsInterface {
   HTMLOptionsCollection: typeof InstanceofMethod<HTMLOptionsCollection> & IsType;
   HTMLOutputElement: typeof InstanceofMethod<HTMLOutputElement> & IsType;
   HTMLParagraphElement: typeof InstanceofMethod<HTMLParagraphElement> & IsType;
-  HTMLParamElement: typeof InstanceofMethod<HTMLParamElement> & IsType;
   HTMLPictureElement: typeof InstanceofMethod<HTMLPictureElement> & IsType;
   HTMLPreElement: typeof InstanceofMethod<HTMLPreElement> & IsType;
   HTMLProgressElement: typeof InstanceofMethod<HTMLProgressElement> & IsType;

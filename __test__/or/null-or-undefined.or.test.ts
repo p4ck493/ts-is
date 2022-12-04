@@ -1,4 +1,4 @@
-import {is} from '../../lib';
+import {is} from '../../dist';
 
 
 describe('undefined.or.null or', () => {

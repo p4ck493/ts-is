@@ -1,6 +1,10 @@
 .DS_Store
 .idea
 dist
+lib
+lib.browser
 node_modules
 coverage
+umd
 /jest-html-reporters-attach/
+jest_html_reporters.html

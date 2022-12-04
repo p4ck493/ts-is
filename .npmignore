@@ -10,8 +10,12 @@
 config.gypi
 CVS
 npm-debug.log
-./dist
+dist
+lib
+lib.browser
 src
 tsconfig.json
 tslint.json
 .prettierrc
+/jest-html-reporters-attach/
+jest_html_reporters.html

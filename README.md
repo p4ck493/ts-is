@@ -1,4 +1,5 @@
 # ts-is
+
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
@@ -9,6 +10,10 @@
 ![Forks](https://img.shields.io/github/forks/p4ck493/ts-is)
 ![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
+
+## 🌍 Languages
+
+> 🇺🇦 [ukraine]() | 🇬🇧 [english]()
 
 ## 💡 Idea
 
@@ -41,6 +46,7 @@ if (is.object.not.empty(variable)) {
     - [Idea](#-idea)
     - [Table of contents](#-table-of-contents)
     - [Installation](#-installation)
+    - [CDN](#-cdn)
     - [Usage](#-usage)
         - [Example](#examples)
             - [Methods](#methods)
@@ -54,7 +60,7 @@ if (is.object.not.empty(variable)) {
             - [array:every](#array--every)
             - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [What's new in 3.0.0?](#whats-new-in-300)
+    - [What's new in 3.0.1?](#whats-new-in-301)
         - [In general](#in-general-)
         - [In details](#in-details-)
         - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
@@ -65,13 +71,25 @@ if (is.object.not.empty(variable)) {
 
 ## 💿 Installation
 
-```sh
+```bash
 npm install @p4ck493/ts-is
+```
+
+## 🔗 CDN
+
+```html
+
+<script>var exports = {};</script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
+<script>
+    const {is} = exports;
+    console.log(is.string('')); // true
+</script>
 ```
 
 ## 🙌 Usage
 
-```sh
+```bash
 import {is} from "@p4ck493/ts-is";
 ```
 
@@ -242,6 +260,10 @@ is.person(woman) // true
 
 is.person(address) // false
 
+is.man(person) // false
+
+is.woman(person) // false
+
 is.AddressModel(address) // true
 
 is.woman.or.man(woman) // true
@@ -249,6 +271,37 @@ is.woman.or.man(woman) // true
 is.not.woman(man) // true
 
 is.not.man(man) // false
+
+```
+
+##### CDN
+
+```javascript
+
+const {RegisterInIs} = exports;
+
+class PersonModel {
+    // Your code ...
+}
+RegisterInIs()(PersonModel);
+
+
+class WomanModel extends PersonModel {
+    // Your code ...
+}
+RegisterInIs({
+    className: 'woman'
+})(PersonModel);
+
+const person = new PersonModel();
+const woman = new WomanModel();
+
+is.PersonModel(person) // true
+is.PersonModel(woman) // true
+is.woman(woman) // true
+is.woman(person) // false
+
+
 
 ```
 
@@ -343,64 +396,73 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Testing | Status  | New name            | 
-|----------------|---------|---------|---------------------|
-| array          | ✅       |
-| bigInt         | ✅       |
-| boolean        | ✅       |
-| compare        | ✅       |
-| date           | ✅       | DELETED | is.Date()           |
-| empty          | ✅       |
-| error          | ✅       | DELETED | is.Error()          |
-| evalError      | ✅       | DELETED | is.EvalError()      |
-| false          | ✅       |
-| falsy          | ✅       |
-| function       | ✅       |
-| instanceof     | ✅       |
-| map            | ✅       | DELETED | is.Map()            |     
-| null           | ✅       |
-| number         | ✅       |
-| object         | ✅       |
-| referenceError | ✅       | DELETED | is.ReferenceError() |
-| regExp         | ✅       | DELETED | is.RegExp()         |
-| set            | ✅       | DELETED | is.Set()            |
-| string         | ✅       |
-| symbol         | ✅       |
-| syntaxError    | ✅       | DELETED | is.SyntaxError()    |
-| true           | ✅       |
-| truthy         | ✅       |
-| typeError      | ✅       | DELETED | is.TypeError()      |
-| undefined      | ✅       |
-| URIError       | ✅       | DELETED | is.URIError()       |
-| weakSet        | ✅       | DELETED | is.WeakSet()        |
-| weakMap        | ✅       | DELETED | is.WeakMap()        |
-| dataView       | ✅       | DELETED | is.DataView()       |
-| NaN            | 🛑      | DELETED | isNaN()             |
-| zero           | ✅       |
-| primitive      | ✅       |
-| promise        | 🛑      |
+| Name           | Tests | Status  | New name            | 
+|----------------|-------|---------|---------------------|
+| array          | ✅     |||
+| bigInt         | ✅     |||
+| boolean        | ✅     |||
+| compare        | ✅     |||
+| date           | ✅     | DELETED | is.Date()           |
+| empty          | ✅     |||
+| error          | ✅     | DELETED | is.Error()          |
+| evalError      | ✅     | DELETED | is.EvalError()      |
+| false          | ✅     |||
+| falsy          | ✅     |||
+| function       | ✅     |||
+| instanceof     | ✅     |||
+| map            | ✅     | DELETED | is.Map()            |     
+| null           | ✅     |||
+| number         | ✅     |||
+| object         | ✅     |||
+| referenceError | ✅     | DELETED | is.ReferenceError() |
+| regExp         | ✅     | DELETED | is.RegExp()         |
+| set            | ✅     | DELETED | is.Set()            |
+| string         | ✅     |||
+| symbol         | ✅     |||
+| syntaxError    | ✅     | DELETED | is.SyntaxError()    |
+| true           | ✅     |||
+| truthy         | ✅     |||
+| typeError      | ✅     | DELETED | is.TypeError()      |
+| undefined      | ✅     |||
+| URIError       | ✅     | DELETED | is.URIError()       |
+| weakSet        | ✅     | DELETED | is.WeakSet()        |
+| weakMap        | ✅     | DELETED | is.WeakMap()        |
+| dataView       | ✅     | DELETED | is.DataView()       |
+| NaN            | 🛑    | DELETED | isNaN()             |
+| zero           | ✅     |||
+| primitive      | ✅     |||
+| promise        | 🛑    |||
+
+> Name - the name of a method that you can call to check certain types of data.
+
+> Tests - note the status of whether tests were written in the project to verify this method.
+
+> Status - we inform you that the method has been deleted, but if the tests are marked as OK, it means that this method
+> is available, but has a different name and the tests are also written.
+
+> New name - informs that this method now has a new name.
 
 ### List of wrappers and connections
 
-| Name | Test | Status  |
-|------|------|---------|
-| not  | ✅    |
-| or   | ✅    |
-| all  | 🛑   | DELETED |
+| Name | Tests | Status  |
+|------|-------|---------|
+| not  | ✅     |
+| or   | ✅     |
+| all  | 🛑    | DELETED |
 
 &nbsp;
 <center>┉</center>
 
-## What's new in 3.0.0?
+## What's new in 3.0.1?
 
 ### In general:
 
 1. ✅ New engine.
-2. ✅ More teams.
+2. ✅ More commands.
 3. ✅ Better speed of execution of commands.
 4. ✅ More tests.
 5. ✅ Less code.
-6. ✅ Smaller package size from 60 kb to 38 kb.
+6. ✅ Support CDN
 
 ### In details:
 
@@ -423,114 +485,114 @@ but from the global context.
 
 #### Generale
 
-| Name              | Testing |
-|-------------------|---------|
-| Map               | ✅       |
-| String            | 🛑      |
-| Date              | ✅       |
-| Set               | ✅       |
-| URIError          | ✅       |
-| RegExp            | ✅       |
-| WeakSet           | ✅       |
-| WeakMap           | ✅       |
-| DataView          | ✅       |
-| Float32Array      | 🛑      |
-| Int32Array        | 🛑      |
-| Uint8ClampedArray | 🛑      |
-| Int8Array         | 🛑      |
-| Uint8Array        | 🛑      |
-| Int16Array        | 🛑      |
-| Uint16Array       | 🛑      |
-| Uint32Array       | 🛑      |
-| Float64Array      | 🛑      |
-| BigInt64Array     | 🛑      |
-| BigUint64Array    | 🛑      |
-| RangeError        | 🛑      |
-| Error             | ✅       |
-| EvalError         | ✅       |
-| ReferenceError    | ✅       |
-| SyntaxError       | ✅       |
-| TypeError         | ✅       |
+| Name              | Tests |
+|-------------------|-------|
+| Map               | ✅     |
+| String            | 🛑    |
+| Date              | ✅     |
+| Set               | ✅     |
+| URIError          | ✅     |
+| RegExp            | ✅     |
+| WeakSet           | ✅     |
+| WeakMap           | ✅     |
+| DataView          | ✅     |
+| Float32Array      | 🛑    |
+| Int32Array        | 🛑    |
+| Uint8ClampedArray | 🛑    |
+| Int8Array         | 🛑    |
+| Uint8Array        | 🛑    |
+| Int16Array        | 🛑    |
+| Uint16Array       | 🛑    |
+| Uint32Array       | 🛑    |
+| Float64Array      | 🛑    |
+| BigInt64Array     | 🛑    |
+| BigUint64Array    | 🛑    |
+| RangeError        | 🛑    |
+| Error             | ✅     |
+| EvalError         | ✅     |
+| ReferenceError    | ✅     |
+| SyntaxError       | ✅     |
+| TypeError         | ✅     |
 
 #### HTML
 
-| Name                       | Testing |
-|----------------------------|---------|
-| HTMLAllCollection          | 🛑      |
-| HTMLAnchorElement          | 🛑      |
-| HTMLAreaElement            | 🛑      |
-| HTMLAudioElement           | 🛑      |
-| HTMLBRElement              | 🛑      |
-| HTMLBaseElement            | 🛑      |
-| HTMLBodyElement            | 🛑      |
-| HTMLButtonElement          | 🛑      |
-| HTMLCanvasElement          | 🛑      |
-| HTMLCollection             | 🛑      |
-| HTMLDListElement           | 🛑      |
-| HTMLDataElement            | 🛑      |
-| HTMLDataListElement        | 🛑      |
-| HTMLDetailsElement         | 🛑      |
-| HTMLDialogElement          | 🛑      |
-| HTMLDivElement             | 🛑      |
-| HTMLElement                | 🛑      |
-| HTMLEmbedElement           | 🛑      |
-| HTMLFieldSetElement        | 🛑      |
-| HTMLFormControlsCollection | 🛑      |
-| HTMLFormElement            | 🛑      |
-| HTMLHRElement              | 🛑      |
-| HTMLHeadElement            | 🛑      |
-| HTMLHeadingElement         | 🛑      |
-| HTMLHtmlElement            | 🛑      |
-| HTMLIFrameElement          | 🛑      |
-| HTMLImageElement           | 🛑      |
-| HTMLInputElement           | 🛑      |
-| HTMLLIElement              | 🛑      |
-| HTMLLabelElement           | 🛑      |
-| HTMLLegendElement          | 🛑      |
-| HTMLLinkElement            | 🛑      |
-| HTMLMapElement             | 🛑      |
-| HTMLMediaElement           | 🛑      |
-| HTMLMenuElement            | 🛑      |
-| HTMLMetaElement            | 🛑      |
-| HTMLMeterElement           | 🛑      |
-| HTMLModElement             | 🛑      |
-| HTMLOListElement           | 🛑      |
-| HTMLObjectElement          | 🛑      |
-| HTMLOptGroupElement        | 🛑      |
-| HTMLOptionElement          | 🛑      |
-| HTMLOptionsCollection      | 🛑      |
-| HTMLOutputElement          | 🛑      |
-| HTMLParagraphElement       | 🛑      |
-| HTMLParamElement           | 🛑      |
-| HTMLPictureElement         | 🛑      |
-| HTMLPreElement             | 🛑      |
-| HTMLProgressElement        | 🛑      |
-| HTMLQuoteElement           | 🛑      |
-| HTMLScriptElement          | 🛑      |
-| HTMLSelectElement          | 🛑      |
-| HTMLSlotElement            | 🛑      |
-| HTMLSourceElement          | 🛑      |
-| HTMLSpanElement            | 🛑      |
-| HTMLStyleElement           | 🛑      |
-| HTMLTableCaptionElement    | 🛑      |
-| HTMLTableCellElement       | 🛑      |
-| HTMLTableColElement        | 🛑      |
-| HTMLTableElement           | 🛑      |
-| HTMLTableRowElement        | 🛑      |
-| HTMLTableSectionElement    | 🛑      |
-| HTMLTemplateElement        | 🛑      |
-| HTMLTextAreaElement        | 🛑      |
-| HTMLTimeElement            | 🛑      |
-| HTMLTitleElement           | 🛑      |
-| HTMLTrackElement           | 🛑      |
-| HTMLUListElement           | 🛑      |
-| HTMLUnknownElement         | 🛑      |
-| HTMLVideoElement           | 🛑      |
+| Name                       | Tests |
+|----------------------------|-------|
+| HTMLAllCollection          | 🛑    |
+| HTMLAnchorElement          | 🛑    |
+| HTMLAreaElement            | 🛑    |
+| HTMLAudioElement           | 🛑    |
+| HTMLBRElement              | 🛑    |
+| HTMLBaseElement            | 🛑    |
+| HTMLBodyElement            | 🛑    |
+| HTMLButtonElement          | 🛑    |
+| HTMLCanvasElement          | 🛑    |
+| HTMLCollection             | 🛑    |
+| HTMLDListElement           | 🛑    |
+| HTMLDataElement            | 🛑    |
+| HTMLDataListElement        | 🛑    |
+| HTMLDetailsElement         | 🛑    |
+| HTMLDialogElement          | 🛑    |
+| HTMLDivElement             | 🛑    |
+| HTMLElement                | 🛑    |
+| HTMLEmbedElement           | 🛑    |
+| HTMLFieldSetElement        | 🛑    |
+| HTMLFormControlsCollection | 🛑    |
+| HTMLFormElement            | 🛑    |
+| HTMLHRElement              | 🛑    |
+| HTMLHeadElement            | 🛑    |
+| HTMLHeadingElement         | 🛑    |
+| HTMLHtmlElement            | 🛑    |
+| HTMLIFrameElement          | 🛑    |
+| HTMLImageElement           | 🛑    |
+| HTMLInputElement           | 🛑    |
+| HTMLLIElement              | 🛑    |
+| HTMLLabelElement           | 🛑    |
+| HTMLLegendElement          | 🛑    |
+| HTMLLinkElement            | 🛑    |
+| HTMLMapElement             | 🛑    |
+| HTMLMediaElement           | 🛑    |
+| HTMLMenuElement            | 🛑    |
+| HTMLMetaElement            | 🛑    |
+| HTMLMeterElement           | 🛑    |
+| HTMLModElement             | 🛑    |
+| HTMLOListElement           | 🛑    |
+| HTMLObjectElement          | 🛑    |
+| HTMLOptGroupElement        | 🛑    |
+| HTMLOptionElement          | 🛑    |
+| HTMLOptionsCollection      | 🛑    |
+| HTMLOutputElement          | 🛑    |
+| HTMLParagraphElement       | 🛑    |
+| HTMLPictureElement         | 🛑    |
+| HTMLPreElement             | 🛑    |
+| HTMLProgressElement        | 🛑    |
+| HTMLQuoteElement           | 🛑    |
+| HTMLScriptElement          | 🛑    |
+| HTMLSelectElement          | 🛑    |
+| HTMLSlotElement            | 🛑    |
+| HTMLSourceElement          | 🛑    |
+| HTMLSpanElement            | 🛑    |
+| HTMLStyleElement           | 🛑    |
+| HTMLTableCaptionElement    | 🛑    |
+| HTMLTableCellElement       | 🛑    |
+| HTMLTableColElement        | 🛑    |
+| HTMLTableElement           | 🛑    |
+| HTMLTableRowElement        | 🛑    |
+| HTMLTableSectionElement    | 🛑    |
+| HTMLTemplateElement        | 🛑    |
+| HTMLTextAreaElement        | 🛑    |
+| HTMLTimeElement            | 🛑    |
+| HTMLTitleElement           | 🛑    |
+| HTMLTrackElement           | 🛑    |
+| HTMLUListElement           | 🛑    |
+| HTMLUnknownElement         | 🛑    |
+| HTMLVideoElement           | 🛑    |
 
 &nbsp;
 <center>┉</center>
 
 ## Result of testing
+
 [<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
 
 ## 👤 Contributing

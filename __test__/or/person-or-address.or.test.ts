@@ -1,5 +1,4 @@
-import {is} from '../../lib';
-import {RegisterInIs} from '../../lib/decorators';
+import {is, RegisterInIs} from '../../dist';
 
 @RegisterInIs({className: 'Person'})
 class PersonModel {

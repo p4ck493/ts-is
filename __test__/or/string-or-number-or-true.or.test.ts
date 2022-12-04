@@ -1,4 +1,4 @@
-import {is} from '../../lib';
+import {is} from '../../dist';
 
 
 describe('string.or.number.or.true or', () => {

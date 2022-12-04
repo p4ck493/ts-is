@@ -1,5 +1,5 @@
-import {proxyGenerator} from './engine/proxy/generator';
-import {IsType} from './types/is.type';
+import { proxyGenerator } from './engine/proxy/generator';
+import { IsType } from './types/is.type';
 
 export { registerInIsDecorator as RegisterInIs } from './decorators/register-in-is.decorator';
 

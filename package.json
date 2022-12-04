@@ -12,7 +12,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
     "test": "jest --config jestconfig.json",
-    "build": "tsc && webpack",
+    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
@@ -21,8 +21,7 @@
     "url": "git+https://github.com/p4ck493/ts-is.git"
   },
   "files": [
-    "lib/**/*",
-    "lib.browser/**/*"
+    "lib/**/*"
   ],
   "bugs": {
     "url": "https://github.com/p4ck493/ts-is/issues"

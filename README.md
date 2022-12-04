@@ -1,4 +1,5 @@
 # ts-is
+
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
@@ -11,8 +12,8 @@
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
 
 ## 🌍 Languages
-> 🇺🇦 [ukraine]() | 🇬🇧 [english]()
 
+> 🇺🇦 [ukraine]() | 🇬🇧 [english]()
 
 ## 💡 Idea
 
@@ -75,12 +76,14 @@ npm install @p4ck493/ts-is
 ```
 
 ## 🔗 CDN
+
 ```html
+
 <script>var exports = {};</script>
 <script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
 <script>
-  const {is} = exports;
-  console.log(is.string('')); // true
+    const {is} = exports;
+    console.log(is.string('')); // true
 </script>
 ```
 
@@ -257,6 +260,10 @@ is.person(woman) // true
 
 is.person(address) // false
 
+is.man(person) // false
+
+is.woman(person) // false
+
 is.AddressModel(address) // true
 
 is.woman.or.man(woman) // true
@@ -264,6 +271,37 @@ is.woman.or.man(woman) // true
 is.not.woman(man) // true
 
 is.not.man(man) // false
+
+```
+
+##### CDN
+
+```javascript
+
+const {RegisterInIs} = exports;
+
+class PersonModel {
+    // Your code ...
+}
+RegisterInIs()(PersonModel);
+
+
+class WomanModel extends PersonModel {
+    // Your code ...
+}
+RegisterInIs({
+    className: 'woman'
+})(PersonModel);
+
+const person = new PersonModel();
+const woman = new WomanModel();
+
+is.PersonModel(person) // true
+is.PersonModel(woman) // true
+is.woman(woman) // true
+is.woman(person) // false
+
+
 
 ```
 
@@ -360,55 +398,57 @@ stream$.next('false'); // Bad
 
 | Name           | Tests | Status  | New name            | 
 |----------------|-------|---------|---------------------|
-| array          | ✅     |
-| bigInt         | ✅     |
-| boolean        | ✅     |
-| compare        | ✅     |
+| array          | ✅     |||
+| bigInt         | ✅     |||
+| boolean        | ✅     |||
+| compare        | ✅     |||
 | date           | ✅     | DELETED | is.Date()           |
-| empty          | ✅     |
+| empty          | ✅     |||
 | error          | ✅     | DELETED | is.Error()          |
 | evalError      | ✅     | DELETED | is.EvalError()      |
-| false          | ✅     |
-| falsy          | ✅     |
-| function       | ✅     |
-| instanceof     | ✅     |
+| false          | ✅     |||
+| falsy          | ✅     |||
+| function       | ✅     |||
+| instanceof     | ✅     |||
 | map            | ✅     | DELETED | is.Map()            |     
-| null           | ✅     |
-| number         | ✅     |
-| object         | ✅     |
+| null           | ✅     |||
+| number         | ✅     |||
+| object         | ✅     |||
 | referenceError | ✅     | DELETED | is.ReferenceError() |
 | regExp         | ✅     | DELETED | is.RegExp()         |
 | set            | ✅     | DELETED | is.Set()            |
-| string         | ✅     |
-| symbol         | ✅     |
+| string         | ✅     |||
+| symbol         | ✅     |||
 | syntaxError    | ✅     | DELETED | is.SyntaxError()    |
-| true           | ✅     |
-| truthy         | ✅     |
+| true           | ✅     |||
+| truthy         | ✅     |||
 | typeError      | ✅     | DELETED | is.TypeError()      |
-| undefined      | ✅     |
+| undefined      | ✅     |||
 | URIError       | ✅     | DELETED | is.URIError()       |
 | weakSet        | ✅     | DELETED | is.WeakSet()        |
 | weakMap        | ✅     | DELETED | is.WeakMap()        |
 | dataView       | ✅     | DELETED | is.DataView()       |
 | NaN            | 🛑    | DELETED | isNaN()             |
-| zero           | ✅     |
-| primitive      | ✅     |
-| promise        | 🛑    |
+| zero           | ✅     |||
+| primitive      | ✅     |||
+| promise        | 🛑    |||
+
 > Name - the name of a method that you can call to check certain types of data.
 
 > Tests - note the status of whether tests were written in the project to verify this method.
 
-> Status - we inform you that the method has been deleted, but if the tests are marked as OK, it means that this method is available, but has a different name and the tests are also written.
+> Status - we inform you that the method has been deleted, but if the tests are marked as OK, it means that this method
+> is available, but has a different name and the tests are also written.
 
 > New name - informs that this method now has a new name.
 
 ### List of wrappers and connections
 
 | Name | Tests | Status  |
-|------|------|---------|
-| not  | ✅    |
-| or   | ✅    |
-| all  | 🛑   | DELETED |
+|------|-------|---------|
+| not  | ✅     |
+| or   | ✅     |
+| all  | 🛑    | DELETED |
 
 &nbsp;
 <center>┉</center>
@@ -552,6 +592,7 @@ but from the global context.
 <center>┉</center>
 
 ## Result of testing
+
 [<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
 
 ## 👤 Contributing

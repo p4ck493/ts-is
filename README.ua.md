@@ -264,6 +264,37 @@ is.not.man(man) // false
 
 ```
 
+##### CDN
+
+```javascript
+
+const {RegisterInIs} = exports;
+
+class PersonModel {
+    // Your code ...
+}
+RegisterInIs()(PersonModel);
+
+
+class WomanModel extends PersonModel {
+    // Your code ...
+}
+RegisterInIs({
+    className: 'woman'
+})(PersonModel);
+
+const person = new PersonModel();
+const woman = new WomanModel();
+
+is.PersonModel(person) // true
+is.PersonModel(woman) // true
+is.woman(woman) // true
+is.woman(person) // false
+
+
+
+```
+
 #### Власні методи
 
 ```typescript

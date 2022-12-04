@@ -11,7 +11,7 @@
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
 
 ## 🌍 Мови
-> 🇺🇦 [українська]() | 🇬🇧 [english]()
+> 🇺🇦 [українська](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) | 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
 
 ## 💡 Ідея
@@ -46,8 +46,8 @@ if (is.object.not.empty(variable)) {
     - [Інсталювання](#-інсталювання)
     - [CDN](#-cdn)
     - [Використання](#-використання)
-        - [Приклади](#-приклади)
-            - [Методи](#-методи)
+        - [Приклади](#приклади)
+            - [Методи](#методи)
             - [Методи разом з конекторами](#методи-разом-з-конекторами)
             - [Методи з обгортками](#методи-з-обгортками)
             - [Методи разом з Вашими задекларованими через декоратор моделями](#методи-разом-з-вашими-задекларованими-через-декоратор-моделями)
@@ -58,12 +58,12 @@ if (is.object.not.empty(variable)) {
           - [array:every](#array--every)
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [Що нового в 3.0.1?](#що-нового-в-301)
+    - [Що нового в 3.0.2?](#що-нового-в-302)
       - [В цілому](#в-цілому-)
       - [В деталях](#в-деталях-)
       - [Чому пакунок почав обслуговувати глобальні контексти та які?](#чому-пакунок-почав-обслуговувати-глобальні-контексти-та-які)
     - [Сприяння](#-сприяння)
-    - [Результат тестування](#результат-тестування)
+    - [Додаткове](#-додаткове)
     - [Автори](#-автори)
     - [Ліцензія](#-ліцензія)
 
@@ -76,7 +76,7 @@ npm install @p4ck493/ts-is
 ## 🔗 CDN
 ```html
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.2/dist/index.js"></script>
 <script>
   const {is} = exports;
   console.log(is.string('')); // true
@@ -130,6 +130,10 @@ is.compare({a: 1}, {a: 1}) // true
 is.Date(new Date()) // true
 
 is.empty('') // true
+is.empty(' ') // true
+is.empty(new Map()) // true
+is.empty({}) // true
+is.empty([]) // true
 
 is.Error(new Error()) // true
 
@@ -292,6 +296,31 @@ is.woman(woman) // true
 is.woman(person) // false
 
 
+// Good Example: Cart
+
+@RegisterInIs()
+class Cart {
+    public size: number = 0;
+}
+
+const cart: Cart = new Cart();
+is.Cart.empty(cart) // true
+cart.size = 1;
+is.Cart.empty(cart) // false
+
+
+
+// Bad Example: Cart
+
+@RegisterInIs()
+class CartTwo {
+    public total: number = 0;
+}
+
+const cartTwo: CartTwo = new CartTwo();
+is.CartTwo.empty(cartTwo) // false
+cartTwo.size = 1;
+is.CartTwo.empty(cartTwo) // false
 
 ```
 
@@ -438,7 +467,7 @@ stream$.next('false'); // Bad
 &nbsp;
 <center>┉</center>
 
-## Що нового в 3.0.0?
+## Що нового в 3.0.2?
 
 ### В цілому:
 1. ✅ Новий двигун.
@@ -446,7 +475,8 @@ stream$.next('false'); // Bad
 3. ✅ Краща швидкість виконання команд.
 4. ✅ Більше тестів.
 5. ✅ Менше коду.
-6. ✅ Підтримка CDN
+6. ✅ Підтримка CDN.
+7. ✅ Розширення методу empty. 
 
 ### В деталях:
 Видалено декілька команд, до прикладу is.NaN тому, що є системна, яка працює так само, а саме isNaN.
@@ -567,9 +597,50 @@ stream$.next('false'); // Bad
 <center>┉</center>
 
 
-## Результат тестування
-[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
+## ➕ Додаткове
 
+Якщо Вам потрібно перевіряти аргументи перед виконанням функції, Ви можете поєднати пакунок із [@p4ck493/ts-type-guard](https://www.npmjs.com/package/@p4ck493/ts-type-guard).
+
+### Приклад
+
+```typescript
+
+import {GuardType} from "@p4ck493/ts-type-guard";
+
+class Person {
+    #firstName: string;
+    #secondName: string;
+    #age: number;
+
+    @GuardType([is.string.not.empty])
+    public setFirstName(firstName: string): void {
+        this.#firstName = firstName;
+    }
+
+    @GuardType([is.string.not.empty])
+    public setSecondName(secondName: string): void {
+        this.#secondName = secondName;
+    }
+
+    // Якщо другій армент має мати такуж саму перевірку то краще не доблювати функції,
+    // в цьому випадку краще залишити одну, для наступного аргументу буде взяти,
+    // попередня перевірка, приклад нище.
+    // @GuardType([is.string.not.empty]) - є еквівалентним. 
+    @GuardType([is.string.not.empty, is.string.not.empty])
+    public setSomeData(firstName: string, secondName: string): void {
+        this.#firstName = firstName;
+        this.#secondName = secondName;
+    }
+    
+    // Для необов’язкового аргументу використовуйте значення NULL.
+    @GuardType([is.string.not.empty, null])
+    public setSomeData(firstName: string, age?: number): void {
+        this.#firstName = firstName;
+        this.#age = age;
+    }
+}
+
+```
 
 ## 👤 Сприяння
 

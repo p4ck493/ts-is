@@ -13,7 +13,7 @@
 
 ## 🌍 Languages
 
-> 🇺🇦 [ukraine]() | 🇬🇧 [english]()
+> 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) | 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
 ## 💡 Idea
 
@@ -60,12 +60,12 @@ if (is.object.not.empty(variable)) {
             - [array:every](#array--every)
             - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [What's new in 3.0.1?](#whats-new-in-301)
+    - [What's new in 3.0.2?](#whats-new-in-302)
         - [In general](#in-general-)
         - [In details](#in-details-)
         - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
     - [Contributing](#-contributing)
-    - [Result of testing](#result-of-testing)
+    - [Additional](#-additional)
     - [Authors](#-authors)
     - [License](#-license)
 
@@ -80,7 +80,7 @@ npm install @p4ck493/ts-is
 ```html
 
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.2/dist/index.js"></script>
 <script>
     const {is} = exports;
     console.log(is.string('')); // true
@@ -135,6 +135,10 @@ is.compare({a: 1}, {a: 1}) // true
 is.Date(new Date()) // true
 
 is.empty('') // true
+is.empty(' ') // true
+is.empty(new Map()) // true
+is.empty({}) // true
+is.empty([]) // true
 
 is.Error(new Error()) // true
 
@@ -271,6 +275,34 @@ is.woman.or.man(woman) // true
 is.not.woman(man) // true
 
 is.not.man(man) // false
+
+// Good Example: Cart
+
+@RegisterInIs()
+class Cart {
+    public size: number = 0;
+}
+
+const cart: Cart = new Cart();
+is.Cart.empty(cart) // true
+cart.size = 1;
+is.Cart.empty(cart) // false
+
+
+
+// Bad Example: Cart
+
+@RegisterInIs()
+class CartTwo {
+    public total: number = 0;
+}
+
+const cartTwo: CartTwo = new CartTwo();
+is.CartTwo.empty(cartTwo) // false
+cartTwo.size = 1;
+is.CartTwo.empty(cartTwo) // false
+
+
 
 ```
 
@@ -453,7 +485,7 @@ stream$.next('false'); // Bad
 &nbsp;
 <center>┉</center>
 
-## What's new in 3.0.1?
+## What's new in 3.0.2?
 
 ### In general:
 
@@ -463,6 +495,7 @@ stream$.next('false'); // Bad
 4. ✅ More tests.
 5. ✅ Less code.
 6. ✅ Support CDN
+7. ✅ An extension of the empty method.
 
 ### In details:
 
@@ -591,9 +624,50 @@ but from the global context.
 &nbsp;
 <center>┉</center>
 
-## Result of testing
+## ➕ Additional
 
-[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
+If you need to check arguments before executing a function, you can combine the package with @p4ck493/ts-type-guard.
+
+### Example
+
+```typescript
+
+import {GuardType} from "@p4ck493/ts-type-guard";
+
+class Person {
+    #firstName: string;
+    #secondName: string;
+    #age: number;
+
+    @GuardType([is.string.not.empty])
+    public setFirstName(firstName: string): void {
+        this.#firstName = firstName;
+    }
+
+    @GuardType([is.string.not.empty])
+    public setSecondName(secondName: string): void {
+        this.#secondName = secondName;
+    }
+
+    // But it is not necessary to duplicate the check, if it is also the same for 
+    // the next argument, then you can not supplement it with new checks, 
+    // during the check, the previous one will be taken for the next argument.
+    // @GuardType([is.string.not.empty]) - is equivalent 
+    @GuardType([is.string.not.empty, is.string.not.empty])
+    public setSomeData(firstName: string, secondName: string): void {
+        this.#firstName = firstName;
+        this.#secondName = secondName;
+    }
+    
+    // For optional argument use NULL value.
+    @GuardType([is.string.not.empty, null])
+    public setSomeData(firstName: string, age?: number): void {
+        this.#firstName = firstName;
+        this.#age = age;
+    }
+}
+
+```
 
 ## 👤 Contributing
 

@@ -13,6 +13,12 @@ class Person {
 class Address {
 }
 
+@RegisterInIs()
+// @ts-ignore
+class Cart {
+    public size: number = 0
+}
+
 
 describe('Model singel', () => {
 
@@ -96,6 +102,21 @@ describe('Model singel', () => {
 
     it.each(dataForBadTesting)('is.not.Person: Should true for $value', ({value}) => {
         expect(is.not.Person(value)).toBe(true);
+    });
+
+    it('is.Cart(new Cart())', () => {
+        expect(is.Cart(new Cart())).toBe(true);
+    });
+
+    it('is.Cart.empty(new Cart())', () => {
+        expect(is.Cart.empty(new Cart())).toBe(true);
+    });
+
+    it('is.Cart.not.empty(new Cart())', () => {
+        const cart = new Cart();
+        cart.size = 1;
+        // @ts-ignore
+        expect(is.Cart.not.empty(cart)).toBe(true);
     });
 
 });

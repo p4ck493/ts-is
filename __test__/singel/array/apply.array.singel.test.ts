@@ -1,4 +1,4 @@
-import {is} from '../../../src/index';
+import {is} from '../../../src';
 
 
 class Person {

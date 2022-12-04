@@ -1,5 +1,4 @@
-import {RegisterInIs} from '../../../src/decorators';
-import {is} from '../../../src';
+import {is, RegisterInIs} from '../../../src';
 
 @RegisterInIs()
 // @ts-ignore

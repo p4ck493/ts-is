@@ -1,5 +1,4 @@
-import {is} from '../../src';
-import {RegisterInIs} from '../../src/decorators';
+import {is, RegisterInIs} from '../../src';
 
 @RegisterInIs({className: 'Person'})
 class PersonModel {

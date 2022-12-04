@@ -3,7 +3,7 @@
   "version": "3.0.1-beta.4",
   "description": "The package for check some data in typescript and javascript.",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.js",
   "module": "dist/index.m.js",
   "umd:main": "dist/index.umd.js",
   "types": "dist/index.d.ts",

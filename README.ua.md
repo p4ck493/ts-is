@@ -58,7 +58,7 @@ if (is.object.not.empty(variable)) {
           - [array:every](#array--every)
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [Що нового в 3.0.1?](#що-нового-в-301)
+    - [Що нового в 3.0.2?](#що-нового-в-302)
       - [В цілому](#в-цілому-)
       - [В деталях](#в-деталях-)
       - [Чому пакунок почав обслуговувати глобальні контексти та які?](#чому-пакунок-почав-обслуговувати-глобальні-контексти-та-які)
@@ -130,6 +130,10 @@ is.compare({a: 1}, {a: 1}) // true
 is.Date(new Date()) // true
 
 is.empty('') // true
+is.empty(' ') // true
+is.empty(new Map()) // true
+is.empty({}) // true
+is.empty([]) // true
 
 is.Error(new Error()) // true
 
@@ -292,6 +296,31 @@ is.woman(woman) // true
 is.woman(person) // false
 
 
+// Good Example: Cart
+
+@RegisterInIs()
+class Cart {
+    public size: number = 0;
+}
+
+const cart: Cart = new Cart();
+is.Cart.empty(cart) // true
+cart.size = 1;
+is.Cart.empty(cart) // false
+
+
+
+// Bad Example: Cart
+
+@RegisterInIs()
+class CartTwo {
+    public total: number = 0;
+}
+
+const cartTwo: CartTwo = new CartTwo();
+is.CartTwo.empty(cartTwo) // false
+cartTwo.size = 1;
+is.CartTwo.empty(cartTwo) // false
 
 ```
 
@@ -438,7 +467,7 @@ stream$.next('false'); // Bad
 &nbsp;
 <center>┉</center>
 
-## Що нового в 3.0.0?
+## Що нового в 3.0.2?
 
 ### В цілому:
 1. ✅ Новий двигун.
@@ -446,7 +475,8 @@ stream$.next('false'); // Bad
 3. ✅ Краща швидкість виконання команд.
 4. ✅ Більше тестів.
 5. ✅ Менше коду.
-6. ✅ Підтримка CDN
+6. ✅ Підтримка CDN.
+7. ✅ Розширення методу empty. 
 
 ### В деталях:
 Видалено декілька команд, до прикладу is.NaN тому, що є системна, яка працює так само, а саме isNaN.

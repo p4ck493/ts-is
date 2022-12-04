@@ -60,7 +60,7 @@ if (is.object.not.empty(variable)) {
             - [array:every](#array--every)
             - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [What's new in 3.0.1?](#whats-new-in-301)
+    - [What's new in 3.0.2?](#whats-new-in-302)
         - [In general](#in-general-)
         - [In details](#in-details-)
         - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
@@ -135,6 +135,10 @@ is.compare({a: 1}, {a: 1}) // true
 is.Date(new Date()) // true
 
 is.empty('') // true
+is.empty(' ') // true
+is.empty(new Map()) // true
+is.empty({}) // true
+is.empty([]) // true
 
 is.Error(new Error()) // true
 
@@ -271,6 +275,34 @@ is.woman.or.man(woman) // true
 is.not.woman(man) // true
 
 is.not.man(man) // false
+
+// Good Example: Cart
+
+@RegisterInIs()
+class Cart {
+    public size: number = 0;
+}
+
+const cart: Cart = new Cart();
+is.Cart.empty(cart) // true
+cart.size = 1;
+is.Cart.empty(cart) // false
+
+
+
+// Bad Example: Cart
+
+@RegisterInIs()
+class CartTwo {
+    public total: number = 0;
+}
+
+const cartTwo: CartTwo = new CartTwo();
+is.CartTwo.empty(cartTwo) // false
+cartTwo.size = 1;
+is.CartTwo.empty(cartTwo) // false
+
+
 
 ```
 
@@ -453,7 +485,7 @@ stream$.next('false'); // Bad
 &nbsp;
 <center>┉</center>
 
-## What's new in 3.0.1?
+## What's new in 3.0.2?
 
 ### In general:
 
@@ -463,6 +495,7 @@ stream$.next('false'); // Bad
 4. ✅ More tests.
 5. ✅ Less code.
 6. ✅ Support CDN
+7. ✅ An extension of the empty method.
 
 ### In details:
 

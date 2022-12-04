@@ -21,7 +21,8 @@
     "url": "git+https://github.com/p4ck493/ts-is.git"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "lib.browser/**/*"
   ],
   "bugs": {
     "url": "https://github.com/p4ck493/ts-is/issues"

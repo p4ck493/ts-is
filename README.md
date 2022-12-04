@@ -13,7 +13,7 @@
 
 ## 🌍 Languages
 
-> 🇺🇦 [ukraine]() | 🇬🇧 [english]()
+> 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) | 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
 ## 💡 Idea
 
@@ -65,7 +65,7 @@ if (is.object.not.empty(variable)) {
         - [In details](#in-details-)
         - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
     - [Contributing](#-contributing)
-    - [Result of testing](#result-of-testing)
+    - [Additional](#-additional)
     - [Authors](#-authors)
     - [License](#-license)
 
@@ -80,7 +80,7 @@ npm install @p4ck493/ts-is
 ```html
 
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.2/dist/index.js"></script>
 <script>
     const {is} = exports;
     console.log(is.string('')); // true
@@ -624,9 +624,50 @@ but from the global context.
 &nbsp;
 <center>┉</center>
 
-## Result of testing
+## ➕ Additional
 
-[<img src="https://i.imgur.com/zGxvooq.png" width="750"/>](https://i.imgur.com/zGxvooq.png)
+If you need to check arguments before executing a function, you can combine the package with @p4ck493/ts-type-guard.
+
+### Example
+
+```typescript
+
+import {GuardType} from "@p4ck493/ts-type-guard";
+
+class Person {
+    #firstName: string;
+    #secondName: string;
+    #age: number;
+
+    @GuardType([is.string.not.empty])
+    public setFirstName(firstName: string): void {
+        this.#firstName = firstName;
+    }
+
+    @GuardType([is.string.not.empty])
+    public setSecondName(secondName: string): void {
+        this.#secondName = secondName;
+    }
+
+    // But it is not necessary to duplicate the check, if it is also the same for 
+    // the next argument, then you can not supplement it with new checks, 
+    // during the check, the previous one will be taken for the next argument.
+    // @GuardType([is.string.not.empty]) - is equivalent 
+    @GuardType([is.string.not.empty, is.string.not.empty])
+    public setSomeData(firstName: string, secondName: string): void {
+        this.#firstName = firstName;
+        this.#secondName = secondName;
+    }
+    
+    // For optional argument use NULL value.
+    @GuardType([is.string.not.empty, null])
+    public setSomeData(firstName: string, age?: number): void {
+        this.#firstName = firstName;
+        this.#age = age;
+    }
+}
+
+```
 
 ## 👤 Contributing
 

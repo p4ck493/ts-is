@@ -7,6 +7,12 @@ describe('Empty Object singel', () => {
         {
             value: {}
         },
+        {
+            value: {size: 0}
+        },
+        {
+            value: new Map()
+        },
     ];
 
     const dataForBadTesting: {value: any}[] = [

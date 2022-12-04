@@ -38,6 +38,12 @@ describe('string singel', () => {
         {
             value: `2`
         },
+        {
+            value: ` 2`
+        },
+        {
+            value: ` `
+        },
     ];
 
     const dataForBadTesting: {value: any}[] = [

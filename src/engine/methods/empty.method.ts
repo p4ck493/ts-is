@@ -1,14 +1,23 @@
 import { StringMethod } from './string.method';
 import { ObjectMethod } from './object.method';
 import { ArrayMethod } from './array.method';
-import { InstanceofMethod } from './instanceof.method';
 
-export function EmptyMethod(argument: unknown): boolean {
-  if (StringMethod(argument) || ObjectMethod(argument) || ArrayMethod(argument)) {
-    if (InstanceofMethod(argument, Map)) {
-      return argument.size === 0;
+export function EmptyMethod<T extends object>(argument: unknown): boolean {
+  if (StringMethod(argument)) {
+    return argument.trim()[0] === undefined;
+  }
+
+  if (ObjectMethod<T>(argument) || ArrayMethod<T>(argument)) {
+    if (Reflect.has(argument, 'size')) {
+      // @ts-ignore
+      return argument.size <= 0;
     }
-    return Object.keys(argument as object)?.length === 0;
+    for (const key in argument) {
+      if (argument.hasOwnProperty(key)) {
+        return false;
+      }
+    }
+    return true;
   }
   return false;
 }

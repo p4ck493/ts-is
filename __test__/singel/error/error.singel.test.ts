@@ -1,4 +1,4 @@
-import {is} from '../../../lib';
+import {is} from '../../../src';
 
 describe('Error singel', () => {
 

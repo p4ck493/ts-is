@@ -1,4 +1,4 @@
-import {is} from '../../../lib/index';
+import {is} from '../../../src/index';
 
 
 class Person {

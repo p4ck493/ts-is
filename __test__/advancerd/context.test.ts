@@ -1,5 +1,5 @@
-import {is} from '../../lib';
-import {RegisterInIs} from '../../lib/decorators';
+import {is} from '../../src';
+import {RegisterInIs} from '../../src/decorators';
 
 @RegisterInIs({
     customMethod: 'customNameOfMethod'

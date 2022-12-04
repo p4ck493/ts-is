@@ -10,6 +10,10 @@
 ![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
 
+## 🌍 Мови
+> 🇺🇦 [українська]() | 🇬🇧 [english]()
+
+
 ## 💡 Ідея
 
 Цей пакет був створений для того, щоб спростити написання в typescript / javascript код для перевірки даних, часто буває так що Вам необхідно мати
@@ -40,6 +44,7 @@ if (is.object.not.empty(variable)) {
     - [Ідея](#-ідея)
     - [Зміст](#-зміст)
     - [Інсталювання](#-інсталювання)
+    - [CDN](#-cdn)
     - [Використання](#-використання)
         - [Приклади](#-приклади)
             - [Методи](#-методи)
@@ -53,7 +58,7 @@ if (is.object.not.empty(variable)) {
           - [array:every](#array--every)
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [Що нового в 3.0.0?](#що-нового-в-300)
+    - [Що нового в 3.0.1?](#що-нового-в-301)
       - [В цілому](#в-цілому-)
       - [В деталях](#в-деталях-)
       - [Чому пакунок почав обслуговувати глобальні контексти та які?](#чому-пакунок-почав-обслуговувати-глобальні-контексти-та-які)
@@ -66,6 +71,16 @@ if (is.object.not.empty(variable)) {
 
 ```sh
 npm install @p4ck493/ts-is
+```
+
+## 🔗 CDN
+```html
+<script>var exports = {};</script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.1/dist/index.js"></script>
+<script>
+  const {is} = exports;
+  console.log(is.string('')); // true
+</script>
 ```
 
 ## 🙌 Використання
@@ -332,11 +347,11 @@ stream$.next('false'); // Bad
 
 ## 🗃️ API
 
-### Всі мотоди повертають логічну вартість, тобто: true, false;
+### Всі методи повертають логічну вартість, тобто: true, false;
 
 ### Список методів які представлені в пакунку.
 
-| Name           | Test | Status  | New name            | 
+| Name           | Tests | Status  | New name            | 
 |----------------|------|---------|---------------------|
 | array          | ✅    |
 | bigInt         | ✅    |     
@@ -383,7 +398,7 @@ stream$.next('false'); // Bad
 
 ### Список доступних методів які мають іншу роль
 
-| Name | Test | Status  |
+| Name | Tests | Status  |
 |------|------|---------|
 | not  | ✅    |
 | or   | ✅    |
@@ -400,7 +415,7 @@ stream$.next('false'); // Bad
 3. ✅ Краща швидкість виконання команд.
 4. ✅ Більше тестів.
 5. ✅ Менше коду.
-6. ✅ Менший розмір пакунку з 60 кб до 38 кб.
+6. ✅ Підтримка CDN
 
 ### В деталях:
 Видалено декілька команд, до прикладу is.NaN тому, що є системна, яка працює так само, а саме isNaN.
@@ -414,108 +429,108 @@ stream$.next('false'); // Bad
 
 #### Загальні
 
-| Name              | Testing |
-|-------------------|---------|
-| Map               | ✅       |
-| String            | 🛑      |
-| Date              | ✅       |
-| Set               | ✅       |
-| URIError          | ✅       |
-| RegExp            | ✅       |
-| WeakSet           | ✅       |
-| WeakMap           | ✅       |
-| DataView          | ✅       |
-| Float32Array      | 🛑      |
-| Int32Array        | 🛑      |
-| Uint8ClampedArray | 🛑      |
-| Int8Array         | 🛑      |
-| Uint8Array        | 🛑      |
-| Int16Array        | 🛑      |
-| Uint16Array       | 🛑      |
-| Uint32Array       | 🛑      |
-| Float64Array      | 🛑      |
-| BigInt64Array     | 🛑      |
-| BigUint64Array    | 🛑      |
-| RangeError        | 🛑      |
-| Error             | ✅       |
-| EvalError         | ✅       |
-| ReferenceError    | ✅       |
-| SyntaxError       | ✅       |
-| TypeError         | ✅       |
+| Name              | Tests |
+|-------------------|-------|
+| Map               | ✅     |
+| String            | 🛑    |
+| Date              | ✅     |
+| Set               | ✅     |
+| URIError          | ✅     |
+| RegExp            | ✅     |
+| WeakSet           | ✅     |
+| WeakMap           | ✅     |
+| DataView          | ✅     |
+| Float32Array      | 🛑    |
+| Int32Array        | 🛑    |
+| Uint8ClampedArray | 🛑    |
+| Int8Array         | 🛑    |
+| Uint8Array        | 🛑    |
+| Int16Array        | 🛑    |
+| Uint16Array       | 🛑    |
+| Uint32Array       | 🛑    |
+| Float64Array      | 🛑    |
+| BigInt64Array     | 🛑    |
+| BigUint64Array    | 🛑    |
+| RangeError        | 🛑    |
+| Error             | ✅     |
+| EvalError         | ✅     |
+| ReferenceError    | ✅     |
+| SyntaxError       | ✅     |
+| TypeError         | ✅     |
 
 #### HTML
 
-| Name                       | Testing |
-|----------------------------|---------|
-| HTMLAllCollection          | 🛑      |
-| HTMLAnchorElement          | 🛑      |
-| HTMLAreaElement            | 🛑      |
-| HTMLAudioElement           | 🛑      |
-| HTMLBRElement              | 🛑      |
-| HTMLBaseElement            | 🛑      |
-| HTMLBodyElement            | 🛑      |
-| HTMLButtonElement          | 🛑      |
-| HTMLCanvasElement          | 🛑      |
-| HTMLCollection             | 🛑      |
-| HTMLDListElement           | 🛑      |
-| HTMLDataElement            | 🛑      |
-| HTMLDataListElement        | 🛑      |
-| HTMLDetailsElement         | 🛑      |
-| HTMLDialogElement          | 🛑      |
-| HTMLDivElement             | 🛑      |
-| HTMLElement                | 🛑      |
-| HTMLEmbedElement           | 🛑      |
-| HTMLFieldSetElement        | 🛑      |
-| HTMLFormControlsCollection | 🛑      |
-| HTMLFormElement            | 🛑      |
-| HTMLHRElement              | 🛑      |
-| HTMLHeadElement            | 🛑      |
-| HTMLHeadingElement         | 🛑      |
-| HTMLHtmlElement            | 🛑      |
-| HTMLIFrameElement          | 🛑      |
-| HTMLImageElement           | 🛑      |
-| HTMLInputElement           | 🛑      |
-| HTMLLIElement              | 🛑      |
-| HTMLLabelElement           | 🛑      |
-| HTMLLegendElement          | 🛑      |
-| HTMLLinkElement            | 🛑      |
-| HTMLMapElement             | 🛑      |
-| HTMLMediaElement           | 🛑      |
-| HTMLMenuElement            | 🛑      |
-| HTMLMetaElement            | 🛑      |
-| HTMLMeterElement           | 🛑      |
-| HTMLModElement             | 🛑      |
-| HTMLOListElement           | 🛑      |
-| HTMLObjectElement          | 🛑      |
-| HTMLOptGroupElement        | 🛑      |
-| HTMLOptionElement          | 🛑      |
-| HTMLOptionsCollection      | 🛑      |
-| HTMLOutputElement          | 🛑      |
-| HTMLParagraphElement       | 🛑      |
-| HTMLPictureElement         | 🛑      |
-| HTMLPreElement             | 🛑      |
-| HTMLProgressElement        | 🛑      |
-| HTMLQuoteElement           | 🛑      |
-| HTMLScriptElement          | 🛑      |
-| HTMLSelectElement          | 🛑      |
-| HTMLSlotElement            | 🛑      |
-| HTMLSourceElement          | 🛑      |
-| HTMLSpanElement            | 🛑      |
-| HTMLStyleElement           | 🛑      |
-| HTMLTableCaptionElement    | 🛑      |
-| HTMLTableCellElement       | 🛑      |
-| HTMLTableColElement        | 🛑      |
-| HTMLTableElement           | 🛑      |
-| HTMLTableRowElement        | 🛑      |
-| HTMLTableSectionElement    | 🛑      |
-| HTMLTemplateElement        | 🛑      |
-| HTMLTextAreaElement        | 🛑      |
-| HTMLTimeElement            | 🛑      |
-| HTMLTitleElement           | 🛑      |
-| HTMLTrackElement           | 🛑      |
-| HTMLUListElement           | 🛑      |
-| HTMLUnknownElement         | 🛑      |
-| HTMLVideoElement           | 🛑      |
+| Name                       | Tests |
+|----------------------------|-------|
+| HTMLAllCollection          | 🛑    |
+| HTMLAnchorElement          | 🛑    |
+| HTMLAreaElement            | 🛑    |
+| HTMLAudioElement           | 🛑    |
+| HTMLBRElement              | 🛑    |
+| HTMLBaseElement            | 🛑    |
+| HTMLBodyElement            | 🛑    |
+| HTMLButtonElement          | 🛑    |
+| HTMLCanvasElement          | 🛑    |
+| HTMLCollection             | 🛑    |
+| HTMLDListElement           | 🛑    |
+| HTMLDataElement            | 🛑    |
+| HTMLDataListElement        | 🛑    |
+| HTMLDetailsElement         | 🛑    |
+| HTMLDialogElement          | 🛑    |
+| HTMLDivElement             | 🛑    |
+| HTMLElement                | 🛑    |
+| HTMLEmbedElement           | 🛑    |
+| HTMLFieldSetElement        | 🛑    |
+| HTMLFormControlsCollection | 🛑    |
+| HTMLFormElement            | 🛑    |
+| HTMLHRElement              | 🛑    |
+| HTMLHeadElement            | 🛑    |
+| HTMLHeadingElement         | 🛑    |
+| HTMLHtmlElement            | 🛑    |
+| HTMLIFrameElement          | 🛑    |
+| HTMLImageElement           | 🛑    |
+| HTMLInputElement           | 🛑    |
+| HTMLLIElement              | 🛑    |
+| HTMLLabelElement           | 🛑    |
+| HTMLLegendElement          | 🛑    |
+| HTMLLinkElement            | 🛑    |
+| HTMLMapElement             | 🛑    |
+| HTMLMediaElement           | 🛑    |
+| HTMLMenuElement            | 🛑    |
+| HTMLMetaElement            | 🛑    |
+| HTMLMeterElement           | 🛑    |
+| HTMLModElement             | 🛑    |
+| HTMLOListElement           | 🛑    |
+| HTMLObjectElement          | 🛑    |
+| HTMLOptGroupElement        | 🛑    |
+| HTMLOptionElement          | 🛑    |
+| HTMLOptionsCollection      | 🛑    |
+| HTMLOutputElement          | 🛑    |
+| HTMLParagraphElement       | 🛑    |
+| HTMLPictureElement         | 🛑    |
+| HTMLPreElement             | 🛑    |
+| HTMLProgressElement        | 🛑    |
+| HTMLQuoteElement           | 🛑    |
+| HTMLScriptElement          | 🛑    |
+| HTMLSelectElement          | 🛑    |
+| HTMLSlotElement            | 🛑    |
+| HTMLSourceElement          | 🛑    |
+| HTMLSpanElement            | 🛑    |
+| HTMLStyleElement           | 🛑    |
+| HTMLTableCaptionElement    | 🛑    |
+| HTMLTableCellElement       | 🛑    |
+| HTMLTableColElement        | 🛑    |
+| HTMLTableElement           | 🛑    |
+| HTMLTableRowElement        | 🛑    |
+| HTMLTableSectionElement    | 🛑    |
+| HTMLTemplateElement        | 🛑    |
+| HTMLTextAreaElement        | 🛑    |
+| HTMLTimeElement            | 🛑    |
+| HTMLTitleElement           | 🛑    |
+| HTMLTrackElement           | 🛑    |
+| HTMLUListElement           | 🛑    |
+| HTMLUnknownElement         | 🛑    |
+| HTMLVideoElement           | 🛑    |
 
 &nbsp;
 <center>┉</center>

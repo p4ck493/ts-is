@@ -1,4 +1,4 @@
-import {is} from '../../../src';
+import {is} from '../../../dist';
 
 describe('Set singel: call', () => {
 

@@ -1,4 +1,4 @@
-import {is, RegisterInIs} from '../../src';
+import {is, RegisterInIs} from '../../dist';
 
 @RegisterInIs({className: 'Person'})
 class PersonModel {

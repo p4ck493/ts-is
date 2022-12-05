@@ -1,4 +1,4 @@
-import {proxyGeneratorGet} from './get.generator.proxy.engine';
+import { proxyGeneratorGet } from './get.generator.proxy.engine';
 
 /**
  *

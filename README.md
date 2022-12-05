@@ -150,7 +150,7 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
-is.function((() => {
+is.Function((() => {
 })) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
@@ -204,7 +204,7 @@ is.false.or.falsy('') // true
 
 is.null.or.undefined(null) // true
 
-is.object.or.function({}) // true
+is.object.or.Function({}) // true
 
 is.string.or.true.or.symbol(true) // true
 ```
@@ -440,7 +440,7 @@ stream$.next('false'); // Bad
 | evalError      | ✅     | DELETED | is.EvalError()      |
 | false          | ✅     |||
 | falsy          | ✅     |||
-| function       | ✅     |||
+| function       | ✅     |DELETED| is.Function()       |
 | instanceof     | ✅     |||
 | map            | ✅     | DELETED | is.Map()            |     
 | null           | ✅     |||

@@ -6,11 +6,9 @@ import {is, RegisterInIs} from '../../dist';
 class Person {
     public name: string = 'default';
     methodOne() {
-        console.log(this);
         return this.name;
     }
     public static customNameOfMethod(argument: unknown): argument is Person {
-        console.log(this, Object.keys(this).length, argument); // empty object
         return this.name === 'Ivan'; // return true
         // return this.name === 'Ivan'; // return false and is sad
     }

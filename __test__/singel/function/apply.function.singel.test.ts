@@ -1,7 +1,7 @@
 import {is} from '../../../dist';
 
 
-describe('function singel: apply', () => {
+describe('Function singel: apply', () => {
 
     const dataForGoodTesting: {value: any}[] = [
         {
@@ -69,20 +69,20 @@ describe('function singel: apply', () => {
         },
     ];
 
-    it.each(dataForGoodTesting)('is.function: Should true for $value', ({value}) => {
-        expect(is.function.apply({}, [value])).toBe(true);
+    it.each(dataForGoodTesting)('is.Function: Should true for $value', ({value}) => {
+        expect(is.Function.apply({}, [value])).toBe(true);
     });
 
-    it.each(dataForBadTesting)('is.function: Should false for $value', ({value}) => {
-        expect(is.function.apply({}, [value])).toBe(false);
+    it.each(dataForBadTesting)('is.Function: Should false for $value', ({value}) => {
+        expect(is.Function.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForGoodTesting)('is.not.function: Should false for $value', ({value}) => {
-        expect(is.not.function.apply({}, [value])).toBe(false);
+    it.each(dataForGoodTesting)('is.not.Function: Should false for $value', ({value}) => {
+        expect(is.not.Function.apply({}, [value])).toBe(false);
     });
 
-    it.each(dataForBadTesting)('is.not.function: Should true for $value', ({value}) => {
-        expect(is.not.function.apply({}, [value])).toBe(true);
+    it.each(dataForBadTesting)('is.not.Function: Should true for $value', ({value}) => {
+        expect(is.not.Function.apply({}, [value])).toBe(true);
     });
 
 });

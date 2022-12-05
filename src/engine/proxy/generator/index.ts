@@ -12,7 +12,6 @@ export function proxyGenerator(defaultFunction: object): any {
       thisArg: unknown,
       argumentList: unknown[],
     ): ReturnType<typeof target> => {
-      console.log(this, globalThis, target, thisArg, argumentList);
       return target(...argumentList);
     },
   });

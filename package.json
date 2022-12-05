@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "The package for check some data in typescript and javascript.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -35,9 +35,11 @@
   "keywords": [
     "Check Data",
     "TypeScript",
-    "TS",
+    "JavaScript",
     "Proxy",
     "Checkers",
+    "Type",
+    "Guard",
     "Testing"
   ],
   "author": "p4ck493",

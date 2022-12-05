@@ -204,7 +204,7 @@ is.false.or.falsy('') // true
 
 is.null.or.undefined(null) // true
 
-is.object.or.function({}) // true
+is.object.or.Function({}) // true
 
 is.string.or.true.or.symbol(true) // true
 ```

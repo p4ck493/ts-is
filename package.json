@@ -35,9 +35,11 @@
   "keywords": [
     "Check Data",
     "TypeScript",
-    "TS",
+    "JavaScript",
     "Proxy",
     "Checkers",
+    "Type",
+    "Guard",
     "Testing"
   ],
   "author": "p4ck493",

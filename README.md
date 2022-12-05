@@ -626,7 +626,7 @@ but from the global context.
 
 ## ➕ Additional
 
-If you need to check arguments before executing a function, you can combine the package with @p4ck493/ts-type-guard.
+If you need to check arguments before executing a function, you can combine the package with [@p4ck493/ts-type-guard](https://www.npmjs.com/package/@p4ck493/ts-type-guard).
 
 ### Example
 

@@ -1,25 +1,24 @@
-import { ArrayMethod } from './array.method';
-import { BigIntMethod } from './bigInt.method';
-import { BooleanMethod } from './boolean.method';
-import { CompareMethod } from './compare.method';
-import { EmptyMethod } from './empty.method';
-import { FalseMethod } from './false.method';
-import { FalsyMethod } from './falsy.method';
-import { FunctionMethod } from './function.method';
-import { InstanceofMethod } from './instanceof.method';
-import { NullMethod } from './null.method';
-import { NumberMethod } from './number.method';
-import { ObjectMethod } from './object.method';
-import { StringMethod } from './string.method';
-import { SymbolMethod } from './symbol.method';
-import { TrueMethod } from './true.method';
-import { TruthyMethod } from './truthy.method';
-import { UndefinedMethod } from './undefined.method';
-import { ConnectionWrappersInterface } from '../../interfaces/wrappers.interface';
-import { IsType } from '../../types/is.type';
-import { ZeroMethod } from './zero.method';
-import { PrimitiveMethod } from './primitive.method';
-import { PromiseMethod } from './promise.method';
+import {ArrayMethod} from './array.method';
+import {BigIntMethod} from './bigInt.method';
+import {BooleanMethod} from './boolean.method';
+import {CompareMethod} from './compare.method';
+import {EmptyMethod} from './empty.method';
+import {FalseMethod} from './false.method';
+import {FalsyMethod} from './falsy.method';
+import {InstanceofMethod} from './instanceof.method';
+import {NullMethod} from './null.method';
+import {NumberMethod} from './number.method';
+import {ObjectMethod} from './object.method';
+import {StringMethod} from './string.method';
+import {SymbolMethod} from './symbol.method';
+import {TrueMethod} from './true.method';
+import {TruthyMethod} from './truthy.method';
+import {UndefinedMethod} from './undefined.method';
+import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
+import {IsType} from '../../types/is.type';
+import {ZeroMethod} from './zero.method';
+import {PrimitiveMethod} from './primitive.method';
+import {PromiseMethod} from './promise.method';
 
 export interface BaseMethodsInterface {
   array: typeof ArrayMethod & IsType;
@@ -28,7 +27,6 @@ export interface BaseMethodsInterface {
   compare: typeof CompareMethod & IsType;
   false: typeof FalseMethod & IsType;
   falsy: typeof FalsyMethod & IsType;
-  function: typeof FunctionMethod & IsType;
   instanceof: typeof InstanceofMethod & IsType;
   null: typeof NullMethod & IsType;
   number: typeof NumberMethod & IsType;
@@ -168,7 +166,6 @@ export const methods: AllMethodsInterface & MethodInterface = {
   empty: EmptyMethod as any,
   false: FalseMethod as any,
   falsy: FalsyMethod as any,
-  function: FunctionMethod as any,
   instanceof: InstanceofMethod as any,
   null: NullMethod as any,
   number: NumberMethod as any,

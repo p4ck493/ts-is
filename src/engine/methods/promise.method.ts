@@ -1,9 +1,9 @@
-import { ObjectMethod } from './object.method';
-import { FunctionMethod } from './function.method';
+import {ObjectMethod} from './object.method';
+import {InstanceofMethod} from './instanceof.method';
 
 export function PromiseMethod<T>(argument: unknown): argument is Promise<T> {
   if (ObjectMethod(argument) && Reflect.has(argument, 'then') && Reflect.has(argument, 'catch')) {
-    return FunctionMethod((argument as any)?.then) && FunctionMethod((argument as any)?.catch);
+    return InstanceofMethod((argument as any)?.then, Function) && InstanceofMethod((argument as any)?.catch, Function);
   }
   return false;
 }

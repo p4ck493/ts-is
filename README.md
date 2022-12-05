@@ -150,7 +150,7 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
-is.function((() => {
+is.Function((() => {
 })) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
@@ -440,7 +440,7 @@ stream$.next('false'); // Bad
 | evalError      | ✅     | DELETED | is.EvalError()      |
 | false          | ✅     |||
 | falsy          | ✅     |||
-| function       | ✅     |||
+| function       | ✅     |DELETED| is.Function()       |
 | instanceof     | ✅     |||
 | map            | ✅     | DELETED | is.Map()            |     
 | null           | ✅     |||

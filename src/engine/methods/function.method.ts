@@ -1,3 +1,8 @@
 export function FunctionMethod<T = () => void>(argument: unknown): argument is T {
-  return {}.toString.call(argument) === '[object Function]';
+    return [
+        '[object GeneratorFunction]',
+        '[object Function]',
+        '[object AsyncFunction]',
+        '[object Proxy]'
+    ].includes(Object.prototype.toString.call(argument));
 }

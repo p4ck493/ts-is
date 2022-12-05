@@ -1,4 +1,4 @@
-import {InstanceofMethod} from './instanceof.method';
+import { InstanceofMethod } from './instanceof.method';
 
 export function ArrayMethod<T>(argument: unknown, classRef?: new () => T): argument is Array<T> {
   if (argument instanceof Array) {

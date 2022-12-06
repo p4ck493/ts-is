@@ -6,5 +6,8 @@ describe('Call Test', function () {
         // console.log(is.instanceof(is.string, Function));
         // console.log(is.function(is.string));
         expect(is.Function(is.string)).toBeTruthy();
+    });
+    it('is - should be string', () => {
+        console.log(is.string(String(is)));
     })
 });

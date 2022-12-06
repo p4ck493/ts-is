@@ -3,7 +3,7 @@ import {IsType} from './types/is.type';
 
 import {registerInIsDecorator} from './decorators/register-in-is.decorator';
 
-export const packageName: string = '@p4ck493/ts-is';
+export const packageName = '@p4ck493/ts-is';
 
 export const RegisterInIs = registerInIsDecorator;
 

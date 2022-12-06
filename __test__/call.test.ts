@@ -34,6 +34,16 @@ describe('Call Test', function () {
     it('Call is.Function', () => {
         expect(is.Function(is.string)).toBeTruthy();
     });
+    it('Call is.function', () => {
+        const a = is.string;
+        // if (is.function(a)) {
+        //     expect(a('')).toBeTruthy();
+        // }
+
+        // const b = toString.call(a);
+        // console.log(a.toString());
+        expect(a('')).toBeTruthy();
+    });
     //
     // it('Call is.Function', () => {
     //     // console.log(is.Function(generator(1)));

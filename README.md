@@ -152,6 +152,8 @@ is.falsy('') // true
 
 is.Function((() => {
 })) // true
+is.function((() => {
+})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
@@ -205,6 +207,7 @@ is.false.or.falsy('') // true
 is.null.or.undefined(null) // true
 
 is.object.or.Function({}) // true
+is.object.or.function({}) // true
 
 is.string.or.true.or.symbol(true) // true
 ```
@@ -428,42 +431,31 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Tests | Status  | New name            | 
-|----------------|-------|---------|---------------------|
-| array          | ✅     |||
-| bigInt         | ✅     |||
-| boolean        | ✅     |||
-| compare        | ✅     |||
-| date           | ✅     | DELETED | is.Date()           |
-| empty          | ✅     |||
-| error          | ✅     | DELETED | is.Error()          |
-| evalError      | ✅     | DELETED | is.EvalError()      |
-| false          | ✅     |||
-| falsy          | ✅     |||
-| function       | ✅     |DELETED| is.Function()       |
-| instanceof     | ✅     |||
-| map            | ✅     | DELETED | is.Map()            |     
-| null           | ✅     |||
-| number         | ✅     |||
-| object         | ✅     |||
-| referenceError | ✅     | DELETED | is.ReferenceError() |
-| regExp         | ✅     | DELETED | is.RegExp()         |
-| set            | ✅     | DELETED | is.Set()            |
-| string         | ✅     |||
-| symbol         | ✅     |||
-| syntaxError    | ✅     | DELETED | is.SyntaxError()    |
-| true           | ✅     |||
-| truthy         | ✅     |||
-| typeError      | ✅     | DELETED | is.TypeError()      |
-| undefined      | ✅     |||
-| URIError       | ✅     | DELETED | is.URIError()       |
-| weakSet        | ✅     | DELETED | is.WeakSet()        |
-| weakMap        | ✅     | DELETED | is.WeakMap()        |
-| dataView       | ✅     | DELETED | is.DataView()       |
-| NaN            | 🛑    | DELETED | isNaN()             |
-| zero           | ✅     |||
-| primitive      | ✅     |||
-| promise        | 🛑    |||
+| Name              | Tests | Status   | New name            | 
+|-------------------|-------|----------|---------------------|
+| array             | ✅     |||
+| bigInt            | ✅     |||
+| boolean           | ✅     |||
+| compare           | ✅     |||
+| empty             | ✅     |||
+| false             | ✅     |||
+| falsy             | ✅     |||
+| function          | ✅     | RETURNED |                     |
+| asyncFunction     | 🛑    ||
+| generatorFunction | 🛑    ||
+| instanceof        | ✅     ||| 
+| null              | ✅     |||
+| number            | ✅     |||
+| object            | ✅     |||
+| string            | ✅     |||
+| symbol            | ✅     |||
+| true              | ✅     |||
+| truthy            | ✅     |||
+| undefined         | ✅     |||
+| NaN               | 🛑    | DELETED  | isNaN()             |
+| zero              | ✅     |||
+| primitive         | ✅     |||
+| promise           | 🛑    |||
 
 > Name - the name of a method that you can call to check certain types of data.
 

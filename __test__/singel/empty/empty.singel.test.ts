@@ -1,84 +1,8 @@
 import {is} from '../../../dist';
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 
 describe('empty singel', () => {
-
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: {}
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-        {
-            value: []
-        },
-        {
-            value: new Map()
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: {
-                property: 1
-            }
-        },
-        {
-            value: new Map([['a', 'b']])
-        },
-        {
-            value: null
-        },
-        {
-            value: Symbol()
-        },
-        {
-            value: NaN
-        },
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
-            value: true
-        },
-        {
-            value: BigInt(1)
-        },
-        {
-            value: false
-        },
-        {
-            value: 0
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.empty: Should true for $value', ({value}) => {
         expect(is.empty(value)).toBe(true);

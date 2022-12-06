@@ -1,72 +1,8 @@
 import {is} from '../../../dist';
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 describe('truthy singel: call', () => {
 
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: []
-        },
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
-            value: Symbol()
-        },
-        {
-            value: true
-        },
-        {
-            value: BigInt(1)
-        },
-        {
-            value: {}
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: false
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: 0
-        },
-        {
-            value: -0
-        },
-        {
-            value: NaN
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.truthy: Should true for $value', ({value}) => {
         expect(is.truthy.call({}, value)).toBe(true);

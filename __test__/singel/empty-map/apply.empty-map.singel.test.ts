@@ -1,19 +1,7 @@
 import {is} from '../../../dist';
-
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 describe('Empty Map singel: apply', () => {
-
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: new Map()
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: new Map([['key', 'value']])
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.Map.empty: Should true for $value', ({value}) => {
         expect(is.Map.empty.apply({}, [value])).toBe(true);

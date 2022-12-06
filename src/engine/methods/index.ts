@@ -1,24 +1,25 @@
-import { ArrayMethod } from './array.method';
-import { BigIntMethod } from './bigInt.method';
-import { BooleanMethod } from './boolean.method';
-import { CompareMethod } from './compare.method';
-import { EmptyMethod } from './empty.method';
-import { FalseMethod } from './false.method';
-import { FalsyMethod } from './falsy.method';
-import { InstanceofMethod } from './instanceof.method';
-import { NullMethod } from './null.method';
-import { NumberMethod } from './number.method';
-import { ObjectMethod } from './object.method';
-import { StringMethod } from './string.method';
-import { SymbolMethod } from './symbol.method';
-import { TrueMethod } from './true.method';
-import { TruthyMethod } from './truthy.method';
-import { UndefinedMethod } from './undefined.method';
-import { ConnectionWrappersInterface } from '../../interfaces/wrappers.interface';
-import { IsType } from '../../types/is.type';
-import { ZeroMethod } from './zero.method';
-import { PrimitiveMethod } from './primitive.method';
-import { PromiseMethod } from './promise.method';
+import {ArrayMethod} from './array.method';
+import {BigIntMethod} from './bigInt.method';
+import {BooleanMethod} from './boolean.method';
+import {CompareMethod} from './compare.method';
+import {EmptyMethod} from './empty.method';
+import {FalseMethod} from './false.method';
+import {FalsyMethod} from './falsy.method';
+import {InstanceofMethod} from './instanceof.method';
+import {NullMethod} from './null.method';
+import {NumberMethod} from './number.method';
+import {ObjectMethod} from './object.method';
+import {StringMethod} from './string.method';
+import {SymbolMethod} from './symbol.method';
+import {TrueMethod} from './true.method';
+import {TruthyMethod} from './truthy.method';
+import {UndefinedMethod} from './undefined.method';
+import {ConnectionWrappersInterface} from '../../interfaces/wrappers.interface';
+import {IsType} from '../../types/is.type';
+import {ZeroMethod} from './zero.method';
+import {PrimitiveMethod} from './primitive.method';
+import {PromiseMethod} from './promise.method';
+import {AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod} from './function.method';
 
 export interface BaseMethodsInterface {
   array: typeof ArrayMethod & IsType;
@@ -29,6 +30,9 @@ export interface BaseMethodsInterface {
   falsy: typeof FalsyMethod & IsType;
   instanceof: typeof InstanceofMethod & IsType;
   null: typeof NullMethod & IsType;
+  function: typeof FunctionMethod & IsType;
+  asyncFunction: typeof AsyncFunctionMethod & IsType;
+  generatorFunction: typeof GeneratorFunctionMethod & IsType;
   number: typeof NumberMethod & IsType;
   object: typeof ObjectMethod & IsType;
   string: typeof StringMethod & IsType;
@@ -64,6 +68,7 @@ export interface ExternalMethodsInterface {
   BigInt64Array: typeof InstanceofMethod<BigInt64Array> & IsType;
   BigUint64Array: typeof InstanceofMethod<BigUint64Array> & IsType;
   RangeError: typeof InstanceofMethod<RangeError> & IsType;
+  DOMException: typeof InstanceofMethod<DOMException> & IsType;
   Error: typeof InstanceofMethod<Error> & IsType;
   EvalError: typeof InstanceofMethod<EvalError> & IsType;
   ReferenceError: typeof InstanceofMethod<ReferenceError> & IsType;
@@ -167,6 +172,9 @@ export const methods: AllMethodsInterface & MethodInterface = {
   false: FalseMethod as any,
   falsy: FalsyMethod as any,
   instanceof: InstanceofMethod as any,
+  function: FunctionMethod as any,
+  asyncFunction: AsyncFunctionMethod as any,
+  generatorFunction: GeneratorFunctionMethod as any,
   null: NullMethod as any,
   number: NumberMethod as any,
   object: ObjectMethod as any,

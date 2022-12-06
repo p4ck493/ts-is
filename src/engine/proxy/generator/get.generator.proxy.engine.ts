@@ -1,6 +1,6 @@
-import {proxyRecursive} from '../recursive';
-import {SymbolMethod} from '../../methods/symbol.method';
-import {packageName} from '../../../index';
+import { proxyRecursive } from '../recursive';
+import { SymbolMethod } from '../../methods/symbol.method';
+import { packageName } from '../../../index';
 
 type proxyGeneratorGetType = (target: object, name: string, receiver: unknown) => ReturnType<typeof proxyRecursive>;
 

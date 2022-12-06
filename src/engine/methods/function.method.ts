@@ -1,6 +1,6 @@
 const toString: typeof Object.prototype.toString = Object.prototype.toString;
 
-export function FunctionMethod<T extends Function>(argument: unknown): argument is T {
+export function FunctionMethod<T extends typeof Function>(argument: unknown): argument is T {
     try {
         return toString.call(argument) === '[object Function]' || AsyncFunctionMethod(argument) || GeneratorFunctionMethod(argument);
     } catch (e) {

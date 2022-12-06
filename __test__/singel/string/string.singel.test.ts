@@ -1,5 +1,5 @@
 import {is} from '../../../dist';
-
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 describe('string singel', () => {
 
@@ -9,87 +9,6 @@ describe('string singel', () => {
     //     expect(is.string.not.null.or.undefined('is.string: Should true for $value')).toBe(true);
     //     // expect(is.array.not.empty.or.null.call({}, 'is.string: Should true for $value')).toBe(true);
     // });
-
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-        {
-            value: ``
-        },
-        {
-            value: `3`
-        },
-        {
-            value: `1`
-        },
-        {
-            value: `2`
-        },
-        {
-            value: ` 2`
-        },
-        {
-            value: ` `
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: Symbol()
-        },
-        {
-            value: {}
-        },
-        {
-            value: true
-        },
-        {
-            value: BigInt(1)
-        },
-        {
-            value: []
-        },
-        {
-            value: false
-        },
-        {
-            value: 0
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-        {
-            value: NaN
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.string: Should true for $value', ({value}) => {
         expect(is.string('value')).toBe(true);

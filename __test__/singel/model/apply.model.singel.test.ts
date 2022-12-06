@@ -1,86 +1,8 @@
-import {is, RegisterInIs} from '../../../dist';
-
-@RegisterInIs()
-// @ts-ignore
-class Person {
-    public testMethod(argument: unknown): boolean {
-        return true;
-    }
-}
-
-@RegisterInIs()
-// @ts-ignore
-class Address {
-}
-
+import {is} from '../../../dist';
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 describe('Model singel: apply', () => {
 
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: new Person()
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
-            value: []
-        },
-        {
-            value: Symbol()
-        },
-        {
-            value: true
-        },
-        {
-            value: false
-        },
-        {
-            value: BigInt(1)
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-        {
-            value: {}
-        },
-        {
-            value: 0
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-        {
-            value: NaN
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.Person: Should true for $value', ({value}) => {
         expect(is.Person.apply({}, [value])).toBe(true);

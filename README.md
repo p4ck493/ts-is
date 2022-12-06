@@ -13,7 +13,8 @@
 
 ## 🌍 Languages
 
-> 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) | 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
+> 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) |
+> 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
 ## 💡 Idea
 
@@ -152,6 +153,8 @@ is.falsy('') // true
 
 is.Function((() => {
 })) // true
+is.function((() => {
+})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
@@ -205,6 +208,7 @@ is.false.or.falsy('') // true
 is.null.or.undefined(null) // true
 
 is.object.or.Function({}) // true
+is.object.or.function({}) // true
 
 is.string.or.true.or.symbol(true) // true
 ```
@@ -289,7 +293,6 @@ cart.size = 1;
 is.Cart.empty(cart) // false
 
 
-
 // Bad Example: Cart
 
 @RegisterInIs()
@@ -315,12 +318,14 @@ const {RegisterInIs} = exports;
 class PersonModel {
     // Your code ...
 }
+
 RegisterInIs()(PersonModel);
 
 
 class WomanModel extends PersonModel {
     // Your code ...
 }
+
 RegisterInIs({
     className: 'woman'
 })(PersonModel);
@@ -428,42 +433,31 @@ stream$.next('false'); // Bad
 
 ### List of methods
 
-| Name           | Tests | Status  | New name            | 
-|----------------|-------|---------|---------------------|
-| array          | ✅     |||
-| bigInt         | ✅     |||
-| boolean        | ✅     |||
-| compare        | ✅     |||
-| date           | ✅     | DELETED | is.Date()           |
-| empty          | ✅     |||
-| error          | ✅     | DELETED | is.Error()          |
-| evalError      | ✅     | DELETED | is.EvalError()      |
-| false          | ✅     |||
-| falsy          | ✅     |||
-| function       | ✅     |DELETED| is.Function()       |
-| instanceof     | ✅     |||
-| map            | ✅     | DELETED | is.Map()            |     
-| null           | ✅     |||
-| number         | ✅     |||
-| object         | ✅     |||
-| referenceError | ✅     | DELETED | is.ReferenceError() |
-| regExp         | ✅     | DELETED | is.RegExp()         |
-| set            | ✅     | DELETED | is.Set()            |
-| string         | ✅     |||
-| symbol         | ✅     |||
-| syntaxError    | ✅     | DELETED | is.SyntaxError()    |
-| true           | ✅     |||
-| truthy         | ✅     |||
-| typeError      | ✅     | DELETED | is.TypeError()      |
-| undefined      | ✅     |||
-| URIError       | ✅     | DELETED | is.URIError()       |
-| weakSet        | ✅     | DELETED | is.WeakSet()        |
-| weakMap        | ✅     | DELETED | is.WeakMap()        |
-| dataView       | ✅     | DELETED | is.DataView()       |
-| NaN            | 🛑    | DELETED | isNaN()             |
-| zero           | ✅     |||
-| primitive      | ✅     |||
-| promise        | 🛑    |||
+| Name              | Tests | Status   | New name | Comment                                                                                                              | 
+|-------------------|-------|----------|----------|----------------------------------------------------------------------------------------------------------------------|
+| array             | ✅     |          |          |
+| bigInt            | ✅     |          |          |
+| boolean           | ✅     |          |          |
+| compare           | ✅     |          |          |
+| empty             | ✅     |          |          |
+| false             | ✅     |          |          |
+| falsy             | ✅     |          |          |
+| function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
+| asyncFunction     | 🛑    |          |
+| generatorFunction | 🛑    |          |
+| instanceof        | ✅     |          |          |
+| null              | ✅     |          |          |
+| number            | ✅     |          |          |
+| object            | ✅     |          |          |
+| string            | ✅     |          |          |
+| symbol            | ✅     |          |          |
+| true              | ✅     |          |          |
+| truthy            | ✅     |          |          |
+| undefined         | ✅     |          |          |
+| NaN               | 🛑    | DELETED  | isNaN()  |
+| zero              | ✅     |          |          |
+| primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                                        |
+| promise           | 🛑    |          |          |
 
 > Name - the name of a method that you can call to check certain types of data.
 
@@ -626,25 +620,27 @@ but from the global context.
 
 ## ➕ Additional
 
-If you need to check arguments before executing a function, you can combine the package with [@p4ck493/ts-type-guard](https://www.npmjs.com/package/@p4ck493/ts-type-guard).
+If you need to check arguments before executing a function, you can combine the package
+with [@p4ck493/ts-type-guard](https://www.npmjs.com/package/@p4ck493/ts-type-guard).
 
 ### Example
 
 ```typescript
 
-import {GuardType} from "@p4ck493/ts-type-guard";
+import {TypeGuard} from "@p4ck493/ts-type-guard";
 
 class Person {
     #firstName: string;
     #secondName: string;
     #age: number;
+    #somethink: any;
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setFirstName(firstName: string): void {
         this.#firstName = firstName;
     }
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setSecondName(secondName: string): void {
         this.#secondName = secondName;
     }
@@ -652,18 +648,38 @@ class Person {
     // But it is not necessary to duplicate the check, if it is also the same for 
     // the next argument, then you can not supplement it with new checks, 
     // during the check, the previous one will be taken for the next argument.
-    // @GuardType([is.string.not.empty]) - is equivalent 
-    @GuardType([is.string.not.empty, is.string.not.empty])
+    // @TypeGuard([is.string.not.empty]) - is equivalent 
+    @TypeGuard([is.string.not.empty, is.string.not.empty])
     public setSomeData(firstName: string, secondName: string): void {
         this.#firstName = firstName;
         this.#secondName = secondName;
     }
-    
+
     // For optional argument use NULL value.
-    @GuardType([is.string.not.empty, null])
+    @TypeGuard([is.string.not.empty, null])
     public setSomeData(firstName: string, age?: number): void {
         this.#firstName = firstName;
         this.#age = age;
+    }
+    
+    @TypeGuard({
+        result: [is.string]
+    })
+    public get firstName(): string {
+        return this.#firstName;
+    }
+    
+    @TypeGuard({
+        arguments: [is.string],
+        result: [is.boolean]
+    })
+    public setJSONToSomethink(argument: any): boolean {
+        try {
+            this.#somethink = JSON.parse(argument)
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 }
 

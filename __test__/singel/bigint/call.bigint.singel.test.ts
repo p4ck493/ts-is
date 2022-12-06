@@ -1,70 +1,8 @@
 import {is} from '../../../dist';
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 
 describe('bigInt singel: call', () => {
-
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: BigInt(1)
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: 'undefined'
-        },
-        {
-            value: 'null'
-        },
-        {
-            value: Symbol()
-        },
-        {
-            value: []
-        },
-        {
-            value: true
-        },
-        {
-            value: false
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-        {
-            value: {}
-        },
-        {
-            value: 0
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-        {
-            value: NaN
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.bigInt: Should true for $value', ({value}) => {
         expect(is.bigInt.call({}, value)).toBe(true);

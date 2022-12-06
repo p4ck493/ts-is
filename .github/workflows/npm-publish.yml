@@ -3,7 +3,10 @@
 
 name: Publish a new package version.
 
-'on': pull_request
+'on':
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:

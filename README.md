@@ -627,19 +627,20 @@ with [@p4ck493/ts-type-guard](https://www.npmjs.com/package/@p4ck493/ts-type-gua
 
 ```typescript
 
-import {GuardType} from "@p4ck493/ts-type-guard";
+import {TypeGuard} from "@p4ck493/ts-type-guard";
 
 class Person {
     #firstName: string;
     #secondName: string;
     #age: number;
+    #somethink: any;
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setFirstName(firstName: string): void {
         this.#firstName = firstName;
     }
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setSecondName(secondName: string): void {
         this.#secondName = secondName;
     }
@@ -647,18 +648,38 @@ class Person {
     // But it is not necessary to duplicate the check, if it is also the same for 
     // the next argument, then you can not supplement it with new checks, 
     // during the check, the previous one will be taken for the next argument.
-    // @GuardType([is.string.not.empty]) - is equivalent 
-    @GuardType([is.string.not.empty, is.string.not.empty])
+    // @TypeGuard([is.string.not.empty]) - is equivalent 
+    @TypeGuard([is.string.not.empty, is.string.not.empty])
     public setSomeData(firstName: string, secondName: string): void {
         this.#firstName = firstName;
         this.#secondName = secondName;
     }
 
     // For optional argument use NULL value.
-    @GuardType([is.string.not.empty, null])
+    @TypeGuard([is.string.not.empty, null])
     public setSomeData(firstName: string, age?: number): void {
         this.#firstName = firstName;
         this.#age = age;
+    }
+    
+    @TypeGuard({
+        result: [is.string]
+    })
+    public get firstName(): string {
+        return this.#firstName;
+    }
+    
+    @TypeGuard({
+        arguments: [is.string],
+        result: [is.boolean]
+    })
+    public setJSONToSomethink(argument: any): boolean {
+        try {
+            this.#somethink = JSON.parse(argument)
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 }
 

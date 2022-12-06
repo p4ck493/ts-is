@@ -596,19 +596,19 @@ stream$.next('false'); // Bad
 
 ```typescript
 
-import {GuardType} from "@p4ck493/ts-type-guard";
+import {TypeGuard} from "@p4ck493/ts-type-guard";
 
 class Person {
     #firstName: string;
     #secondName: string;
     #age: number;
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setFirstName(firstName: string): void {
         this.#firstName = firstName;
     }
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setSecondName(secondName: string): void {
         this.#secondName = secondName;
     }
@@ -616,19 +616,40 @@ class Person {
     // Якщо другій армент має мати такуж саму перевірку то краще не доблювати функції,
     // в цьому випадку краще залишити одну, для наступного аргументу буде взяти,
     // попередня перевірка, приклад нище.
-    // @GuardType([is.string.not.empty]) - є еквівалентним. 
-    @GuardType([is.string.not.empty, is.string.not.empty])
+    // @GuardType([is.string.not.empty]) - є еквівалентним.
+    @TypeGuard([is.string.not.empty, is.string.not.empty])
     public setSomeData(firstName: string, secondName: string): void {
         this.#firstName = firstName;
         this.#secondName = secondName;
     }
-    
+
     // Для необов’язкового аргументу використовуйте значення NULL.
-    @GuardType([is.string.not.empty, null])
+    @TypeGuard([is.string.not.empty, null])
     public setSomeData(firstName: string, age?: number): void {
         this.#firstName = firstName;
         this.#age = age;
     }
+
+    @TypeGuard({
+        result: [is.string]
+    })
+    public get firstName(): string {
+        return this.#firstName;
+    }
+
+    @TypeGuard({
+        arguments: [is.string],
+        result: [is.boolean]
+    })
+    public setJSONToSomethink(argument: any): boolean {
+        try {
+            this.#somethink = JSON.parse(argument)
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+    
 }
 
 ```

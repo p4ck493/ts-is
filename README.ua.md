@@ -146,6 +146,7 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 is.falsy('') // true 
 
 is.Function((() => {})) // true
+is.function((() => {})) // true
 
 is.instanceof((new Boolean(false)), Boolean) // true
 
@@ -199,6 +200,7 @@ is.false.or.falsy('') // true
 is.null.or.undefined(null) // true
 
 is.object.or.Function({}) // true
+is.object.or.function({}) // true
 
 is.string.or.true.or.symbol(true) // true
 ```
@@ -411,42 +413,31 @@ stream$.next('false'); // Bad
 
 ### Список методів які представлені в пакунку.
 
-| Name           | Tests | Status  | New name            | 
-|----------------|------|---------|---------------------|
-| array          | ✅    |
-| bigInt         | ✅    |     
-| boolean        | ✅    |     
-| compare        | ✅    |     
-| date           | ✅    | DELETED | is.Date()           |
-| empty          | ✅    |     
-| error          | ✅    | DELETED | is.Error()          |
-| evalError      | ✅    | DELETED | is.EvalError()      |
-| false          | ✅    |     
-| falsy          | ✅    |     
-| function       | ✅    | DELETED | is.Function() |    
-| instanceof     | ✅    |
-| map            | ✅    | DELETED | is.Map()            |     
-| null           | ✅    |     
-| number         | ✅    |     
-| object         | ✅    |     
-| referenceError | ✅    | DELETED | is.ReferenceError() |
-| regExp         | ✅    | DELETED | is.RegExp()         |
-| set            | ✅    | DELETED | is.Set()            |
-| string         | ✅    |     
-| symbol         | ✅    |     
-| syntaxError    | ✅    | DELETED | is.SyntaxError()    |
-| true           | ✅    |     
-| truthy         | ✅    |     
-| typeError      | ✅    | DELETED | is.TypeError()      |
-| undefined      | ✅    |     
-| URIError       | ✅    | DELETED | is.URIError()       |
-| weakSet        | ✅    | DELETED | is.WeakSet()        |
-| weakMap        | ✅    | DELETED | is.WeakMap()        |
-| dataView       | ✅    | DELETED | is.DataView()       |
-| NaN            | 🛑   | DELETED | isNaN()             |
-| zero           | ✅    |
-| primitive      | ✅🆕  |
-| promise        | 🛑🆕 |
+| Name              | Tests | Status   | New name | Comment                                                                                                |
+|-------------------|-------|----------|----------|--------------------------------------------------------------------------------------------------------|
+| array             | ✅     |||
+| bigInt            | ✅     |||
+| boolean           | ✅     |||
+| compare           | ✅     |||
+| empty             | ✅     |||
+| false             | ✅     |||
+| falsy             | ✅     |||
+| function          | ✅     | RETURNED |          | якщо потрібно перевірити, чи є щось із пакета функцією, використовуйте is.Function замість is.function |
+| asyncFunction     | 🛑    ||
+| generatorFunction | 🛑    ||
+| instanceof        | ✅     ||| 
+| null              | ✅     |||
+| number            | ✅     |||
+| object            | ✅     |||
+| string            | ✅     |||
+| symbol            | ✅     |||
+| true              | ✅     |||
+| truthy            | ✅     |||
+| undefined         | ✅     |||
+| NaN               | 🛑    | DELETED  | isNaN()  |
+| zero              | ✅     |||
+| primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                          |
+| promise           | 🛑    |||
 
 > Назва - назва методи яку можете використовувати для виклику, щоб перевірити певні види даних.
 
@@ -605,19 +596,19 @@ stream$.next('false'); // Bad
 
 ```typescript
 
-import {GuardType} from "@p4ck493/ts-type-guard";
+import {TypeGuard} from "@p4ck493/ts-type-guard";
 
 class Person {
     #firstName: string;
     #secondName: string;
     #age: number;
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setFirstName(firstName: string): void {
         this.#firstName = firstName;
     }
 
-    @GuardType([is.string.not.empty])
+    @TypeGuard([is.string.not.empty])
     public setSecondName(secondName: string): void {
         this.#secondName = secondName;
     }
@@ -625,19 +616,40 @@ class Person {
     // Якщо другій армент має мати такуж саму перевірку то краще не доблювати функції,
     // в цьому випадку краще залишити одну, для наступного аргументу буде взяти,
     // попередня перевірка, приклад нище.
-    // @GuardType([is.string.not.empty]) - є еквівалентним. 
-    @GuardType([is.string.not.empty, is.string.not.empty])
+    // @GuardType([is.string.not.empty]) - є еквівалентним.
+    @TypeGuard([is.string.not.empty, is.string.not.empty])
     public setSomeData(firstName: string, secondName: string): void {
         this.#firstName = firstName;
         this.#secondName = secondName;
     }
-    
+
     // Для необов’язкового аргументу використовуйте значення NULL.
-    @GuardType([is.string.not.empty, null])
+    @TypeGuard([is.string.not.empty, null])
     public setSomeData(firstName: string, age?: number): void {
         this.#firstName = firstName;
         this.#age = age;
     }
+
+    @TypeGuard({
+        result: [is.string]
+    })
+    public get firstName(): string {
+        return this.#firstName;
+    }
+
+    @TypeGuard({
+        arguments: [is.string],
+        result: [is.boolean]
+    })
+    public setJSONToSomethink(argument: any): boolean {
+        try {
+            this.#somethink = JSON.parse(argument)
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+    
 }
 
 ```

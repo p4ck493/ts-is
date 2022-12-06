@@ -1,70 +1,9 @@
 import {is} from '../../../dist';
 
+import {dataForBadTesting, dataForGoodTesting} from './fixtures';
 
 describe('symbol singel: call', () => {
 
-    const dataForGoodTesting: {value: any}[] = [
-        {
-            value: Symbol()
-        },
-    ];
-
-    const dataForBadTesting: {value: any}[] = [
-        {
-            value: 'null'
-        },
-        {
-            value: 'undefined'
-        },
-        {
-            value: []
-        },
-        {
-            value: true
-        },
-        {
-            value: false
-        },
-        {
-            value: BigInt(1)
-        },
-        {
-            value: ""
-        },
-        {
-            value: ''
-        },
-        {
-            value: ``
-        },
-        {
-            value: {}
-        },
-        {
-            value: 0
-        },
-        {
-            value: null
-        },
-        {
-            value: undefined
-        },
-        {
-            value: Function
-        },
-        {
-            value: () => {}
-        },
-        {
-            value: BigInt
-        },
-        {
-            value: Symbol
-        },
-        {
-            value: NaN
-        },
-    ];
 
     it.each(dataForGoodTesting)('is.symbol: Should true for $value', ({value}) => {
         expect(is.symbol.call({}, value)).toBe(true);

@@ -39,6 +39,20 @@ describe('Object singel', () => {
                 a: 1
             }
         },
+        {
+            first: {
+            },
+            second: {
+                a: 1
+            }
+        },
+        {
+            first: {
+                a: 2
+            },
+            second: {
+            }
+        },
     ];
 
     it.each(dataForGoodTesting)('is.compare: Should true for $first === $second', ({first, second}) => {

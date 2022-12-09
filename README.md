@@ -479,7 +479,7 @@ stream$.next('false'); // Bad
 &nbsp;
 <center>┉</center>
 
-## What's new in 3.0.2?
+## What's new in 3.0.5?
 
 ### In general:
 
@@ -490,6 +490,7 @@ stream$.next('false'); // Bad
 5. ✅ Less code.
 6. ✅ Support CDN
 7. ✅ An extension of the empty method.
+8. ✅ Compatibility with the oldest TypeScript. 
 
 ### In details:
 

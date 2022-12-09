@@ -77,7 +77,7 @@ export interface ExternalMethodsInterface {
   ReferenceError: instanceofTypeMix<ReferenceError>;
   SyntaxError: instanceofTypeMix<SyntaxError>;
   TypeError: instanceofTypeMix<TypeError>;
-  Function: instanceofTypeMix<Function>;
+  Function: instanceofTypeMix<() => void>;
 }
 
 export interface HTMLElementsMethodsInterface {

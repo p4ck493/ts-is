@@ -1,4 +1,4 @@
-import {ArrayMethod} from './array.method';
+import { ArrayMethod } from './array.method';
 
 export enum TypeOfValueEnum {
   object = 'object',

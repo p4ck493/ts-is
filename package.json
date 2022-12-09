@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.4",
+  "version": "3.0.5-beta.0",
   "description": "The package for check some data in typescript and javascript.",
   "type": "commonjs",
   "main": "dist/index.js",
@@ -57,7 +57,6 @@
     "tslint-config-prettier": "1.18.0",
     "typescript": "4.9.3"
   },
-
   "contributors": [
     {
       "name": "Ivan Karbashevskyi",

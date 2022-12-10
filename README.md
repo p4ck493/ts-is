@@ -16,6 +16,16 @@
 > 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) |
 > 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
+## Introduction
+
+### Why you should use and support the package:
+1. ✅ Typification.
+2. ✅ Reducing the code in the project.
+3. ✅ Easier to read and understand the code.
+4. ✅ CDN support.
+5. ✅ Compatibility with older TypeScript versions (~3.1.1).
+6. ✅ Maintenance of global contexts: globalThis, window, self, global.
+
 ## 💡 Idea
 
 this package was created in order to simplify writing in typescript / javascript, it often happens that you need to have
@@ -45,6 +55,7 @@ if (is.object.not.empty(variable)) {
 
 - [ts-is](#ts-is)
     - [Idea](#-idea)
+    - [Introduction](#introduction)
     - [Table of contents](#-table-of-contents)
     - [Installation](#-installation)
     - [CDN](#-cdn)
@@ -61,10 +72,9 @@ if (is.object.not.empty(variable)) {
             - [array:every](#array--every)
             - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
-    - [What's new in 3.0.2?](#whats-new-in-302)
-        - [In general](#in-general-)
-        - [In details](#in-details-)
-        - [Why did the package start serving global contexts and which ones?](#why-did-the-package-start-serving-global-contexts-and-which-ones)
+    - [New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.](#new-methods-that-are-available-through-the-package-but-which-are-only-declared-in-the-package-but-actually-take-data-from-outside-the-package)
+        - [General](#generale)
+        - [HTML](#html)
     - [Contributing](#-contributing)
     - [Additional](#-additional)
     - [Authors](#-authors)
@@ -81,12 +91,14 @@ npm install @p4ck493/ts-is
 ```html
 
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.2/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.5/dist/index.js"></script>
 <script>
     const {is} = exports;
     console.log(is.string('')); // true
 </script>
 ```
+
+[Back to table of contents](#-table-of-contents)
 
 ## 🙌 Usage
 
@@ -132,6 +144,9 @@ is.bigInt(1n) // true
 is.boolean(false) // true
 
 is.compare({a: 1}, {a: 1}) // true
+is.compare({a: 1}, {}) // false
+is.compare({}, {a: 1}) // false
+is.compare({}, {}) // true
 
 is.Date(new Date()) // true
 
@@ -151,8 +166,11 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)) // true
 
 is.falsy('') // true 
 
+// This method will check if the argument is equal to the base type: Function
 is.Function((() => {
 })) // true
+
+// This method checks not only if the argument is a function, but also if the argument is an asynchronous function or a generative
 is.function((() => {
 })) // true
 
@@ -223,6 +241,8 @@ is.not.object({}) // false
 is.not.number(1n) // true
 
 ```
+
+[Back to table of contents](#-table-of-contents)
 
 #### Methods with your models
 
@@ -358,6 +378,8 @@ is.PostModel('world') // Returns: Hello world
 
 ```
 
+[Back to table of contents](#-table-of-contents)
+
 ### Use Cases
 
 #### array:filter
@@ -427,6 +449,8 @@ stream$.next('false'); // Bad
 
 ```
 
+[Back to table of contents](#-table-of-contents)
+
 ## 🗃️ API
 
 ### All methods return a boolean type
@@ -475,38 +499,6 @@ stream$.next('false'); // Bad
 | not  | ✅     |
 | or   | ✅     |
 | all  | 🛑    | DELETED |
-
-&nbsp;
-<center>┉</center>
-
-## What's new in 3.0.2?
-
-### In general:
-
-1. ✅ New engine.
-2. ✅ More commands.
-3. ✅ Better speed of execution of commands.
-4. ✅ More tests.
-5. ✅ Less code.
-6. ✅ Support CDN
-7. ✅ An extension of the empty method.
-
-### In details:
-
-Removed several commands, for example is.NaN, because there is a system one that works the same, namely isNaN.
-Added support for global contexts, i.e. now if there is no check in the package, you can try to call it universally, the
-package will try to find what you are looking for and check what is found with the one provided through the instanceof
-command. Previously, all commands after a dot started with a lowercase letter, only in the case when you call a
-registered external class (example: is.PersonModel), then in this case you already both named it and used it, now some
-declared commands also start with a capital letter, this is because that these classes are not taken from the package,
-but from the global context.
-
-### Why did the package start serving global contexts and which ones?
-
-1. Because in this case, when a new version of ECMAScript is released, it will not be necessary to update the package in
-   order to start using the commands, although they will not be available in the preview (autocomplete/prompt), because
-   they have not yet been declared in the package interface.
-2. The package started serving (if any) the following global contexts: globalThis, global, self, window.
 
 ### New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.
 
@@ -615,8 +607,7 @@ but from the global context.
 | HTMLUnknownElement         | 🛑    |
 | HTMLVideoElement           | 🛑    |
 
-&nbsp;
-<center>┉</center>
+[Back to table of contents](#-table-of-contents)
 
 ## ➕ Additional
 
@@ -684,6 +675,8 @@ class Person {
 }
 
 ```
+
+[Back to table of contents](#-table-of-contents)
 
 ## 👤 Contributing
 

@@ -1,8 +1,9 @@
 import { proxyRecursive } from '../recursive';
 import { SymbolMethod } from '../../methods/symbol.method';
-import { packageName } from '../../../index';
 
 type proxyGeneratorGetType = (target: object, name: string, receiver: unknown) => ReturnType<typeof proxyRecursive>;
+
+export const packageName = '@p4ck493/ts-is';
 
 export function proxyGeneratorGet(): proxyGeneratorGetType {
   return (target, name, receiver) => {

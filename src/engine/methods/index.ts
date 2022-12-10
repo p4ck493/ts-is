@@ -14,156 +14,159 @@ import { SymbolMethod } from './symbol.method';
 import { TrueMethod } from './true.method';
 import { TruthyMethod } from './truthy.method';
 import { UndefinedMethod } from './undefined.method';
-import { ConnectionWrappersInterface } from '../../interfaces/wrappers.interface';
-import { IsType } from '../../types/is.type';
 import { ZeroMethod } from './zero.method';
 import { PrimitiveMethod } from './primitive.method';
 import { PromiseMethod } from './promise.method';
 import { AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod } from './function.method';
 
+type mixTypes<T> = T & AllMethodsInterface;
+
 export interface BaseMethodsInterface {
-  array: typeof ArrayMethod & IsType;
-  bigInt: typeof BigIntMethod & IsType;
-  boolean: typeof BooleanMethod & IsType;
-  compare: typeof CompareMethod & IsType;
-  false: typeof FalseMethod & IsType;
-  falsy: typeof FalsyMethod & IsType;
-  instanceof: typeof InstanceofMethod & IsType;
-  null: typeof NullMethod & IsType;
-  function: typeof FunctionMethod & IsType;
-  asyncFunction: typeof AsyncFunctionMethod & IsType;
-  generatorFunction: typeof GeneratorFunctionMethod & IsType;
-  number: typeof NumberMethod & IsType;
-  object: typeof ObjectMethod & IsType;
-  string: typeof StringMethod & IsType;
-  symbol: typeof SymbolMethod & IsType;
-  true: typeof TrueMethod & IsType;
-  truthy: typeof TruthyMethod & IsType;
-  undefined: typeof UndefinedMethod & IsType;
-  empty: typeof EmptyMethod & IsType;
-  zero: typeof ZeroMethod & IsType;
-  primitive: typeof PrimitiveMethod & IsType;
-  promise: typeof PromiseMethod & IsType;
+  array: mixTypes<typeof ArrayMethod>;
+  bigInt: mixTypes<typeof BigIntMethod>;
+  boolean: mixTypes<typeof BooleanMethod>;
+  compare: mixTypes<typeof CompareMethod>;
+  false: mixTypes<typeof FalseMethod>;
+  falsy: mixTypes<typeof FalsyMethod>;
+  instanceof: mixTypes<typeof InstanceofMethod>;
+  null: mixTypes<typeof NullMethod>;
+  function: mixTypes<typeof FunctionMethod>;
+  asyncFunction: mixTypes<typeof AsyncFunctionMethod>;
+  generatorFunction: mixTypes<typeof GeneratorFunctionMethod>;
+  number: mixTypes<typeof NumberMethod>;
+  object: mixTypes<typeof ObjectMethod>;
+  string: mixTypes<typeof StringMethod>;
+  symbol: mixTypes<typeof SymbolMethod>;
+  true: mixTypes<typeof TrueMethod>;
+  truthy: mixTypes<typeof TruthyMethod>;
+  undefined: mixTypes<typeof UndefinedMethod>;
+  empty: mixTypes<typeof EmptyMethod>;
+  zero: mixTypes<typeof ZeroMethod>;
+  primitive: mixTypes<typeof PrimitiveMethod>;
+  promise: mixTypes<typeof PromiseMethod>;
 }
 
+type instanceofType<T> = (argument: unknown) => argument is T;
+type instanceofTypeMix<T> = mixTypes<instanceofType<T>>;
+
 export interface ExternalMethodsInterface {
-  Map: typeof InstanceofMethod<typeof Map> & IsType;
-  String: typeof InstanceofMethod<string> & IsType;
-  Date: typeof InstanceofMethod<Date> & IsType;
-  Set: typeof InstanceofMethod<typeof Set> & IsType;
-  URIError: typeof InstanceofMethod<URIError> & IsType;
-  RegExp: typeof InstanceofMethod<RegExp> & IsType;
-  WeakSet: typeof InstanceofMethod<typeof WeakSet> & IsType;
-  WeakMap: typeof InstanceofMethod<typeof WeakMap> & IsType;
-  DataView: typeof InstanceofMethod<DataView> & IsType;
-  Float32Array: typeof InstanceofMethod<Float32Array> & IsType;
-  Int32Array: typeof InstanceofMethod<Int32Array> & IsType;
-  Uint8ClampedArray: typeof InstanceofMethod<Uint8ClampedArray> & IsType;
-  Int8Array: typeof InstanceofMethod<Int8Array> & IsType;
-  Uint8Array: typeof InstanceofMethod<Uint8Array> & IsType;
-  Int16Array: typeof InstanceofMethod<Int16Array> & IsType;
-  Uint16Array: typeof InstanceofMethod<Uint16Array> & IsType;
-  Uint32Array: typeof InstanceofMethod<Uint32Array> & IsType;
-  Float64Array: typeof InstanceofMethod<Float64Array> & IsType;
-  BigInt64Array: typeof InstanceofMethod<BigInt64Array> & IsType;
-  BigUint64Array: typeof InstanceofMethod<BigUint64Array> & IsType;
-  RangeError: typeof InstanceofMethod<RangeError> & IsType;
-  DOMException: typeof InstanceofMethod<DOMException> & IsType;
-  Error: typeof InstanceofMethod<Error> & IsType;
-  EvalError: typeof InstanceofMethod<EvalError> & IsType;
-  ReferenceError: typeof InstanceofMethod<ReferenceError> & IsType;
-  SyntaxError: typeof InstanceofMethod<SyntaxError> & IsType;
-  TypeError: typeof InstanceofMethod<TypeError> & IsType;
+  Map: instanceofTypeMix<typeof Map>;
+  String: instanceofTypeMix<string>;
+  Date: instanceofTypeMix<Date>;
+  Set: instanceofTypeMix<typeof Set>;
+  URIError: instanceofTypeMix<URIError>;
+  RegExp: instanceofTypeMix<RegExp>;
+  WeakSet: instanceofTypeMix<typeof WeakSet>;
+  WeakMap: instanceofTypeMix<typeof WeakMap>;
+  DataView: instanceofTypeMix<DataView>;
+  Float32Array: instanceofTypeMix<Float32Array>;
+  Int32Array: instanceofTypeMix<Int32Array>;
+  Uint8ClampedArray: instanceofTypeMix<Uint8ClampedArray>;
+  Int8Array: instanceofTypeMix<Int8Array>;
+  Uint8Array: instanceofTypeMix<Uint8Array>;
+  Int16Array: instanceofTypeMix<Int16Array>;
+  Uint16Array: instanceofTypeMix<Uint16Array>;
+  Uint32Array: instanceofTypeMix<Uint32Array>;
+  Float64Array: instanceofTypeMix<Float64Array>;
+  BigInt64Array: instanceofTypeMix<BigInt64Array>;
+  BigUint64Array: instanceofTypeMix<BigUint64Array>;
+  RangeError: instanceofTypeMix<RangeError>;
+  DOMException: instanceofTypeMix<DOMException>;
+  Error: instanceofTypeMix<Error>;
+  EvalError: instanceofTypeMix<EvalError>;
+  ReferenceError: instanceofTypeMix<ReferenceError>;
+  SyntaxError: instanceofTypeMix<SyntaxError>;
+  TypeError: instanceofTypeMix<TypeError>;
+  Function: instanceofTypeMix<() => void>;
 }
 
 export interface HTMLElementsMethodsInterface {
-  HTMLAllCollection: typeof InstanceofMethod<HTMLAllCollection> & IsType;
-  HTMLAnchorElement: typeof InstanceofMethod<HTMLAnchorElement> & IsType;
-  HTMLAreaElement: typeof InstanceofMethod<HTMLAreaElement> & IsType;
-  HTMLAudioElement: typeof InstanceofMethod<HTMLAudioElement> & IsType;
-  HTMLBRElement: typeof InstanceofMethod<HTMLBRElement> & IsType;
-  HTMLBaseElement: typeof InstanceofMethod<HTMLBaseElement> & IsType;
-  HTMLBodyElement: typeof InstanceofMethod<HTMLBodyElement> & IsType;
-  HTMLButtonElement: typeof InstanceofMethod<HTMLButtonElement> & IsType;
-  HTMLCanvasElement: typeof InstanceofMethod<HTMLCanvasElement> & IsType;
-  HTMLCollection: typeof InstanceofMethod<HTMLCollection> & IsType;
-  HTMLDListElement: typeof InstanceofMethod<HTMLDListElement> & IsType;
-  HTMLDataElement: typeof InstanceofMethod<HTMLDataElement> & IsType;
-  HTMLDataListElement: typeof InstanceofMethod<HTMLDataListElement> & IsType;
-  HTMLDetailsElement: typeof InstanceofMethod<HTMLDetailsElement> & IsType;
-  HTMLDialogElement: typeof InstanceofMethod<HTMLDialogElement> & IsType;
-  HTMLDivElement: typeof InstanceofMethod<HTMLDivElement> & IsType;
-  HTMLElement: typeof InstanceofMethod<HTMLElement> & IsType;
-  HTMLEmbedElement: typeof InstanceofMethod<HTMLEmbedElement> & IsType;
-  HTMLFieldSetElement: typeof InstanceofMethod<HTMLFieldSetElement> & IsType;
-  HTMLFormControlsCollection: typeof InstanceofMethod<HTMLFormControlsCollection> & IsType;
-  HTMLFormElement: typeof InstanceofMethod<HTMLFormElement> & IsType;
-  HTMLHRElement: typeof InstanceofMethod<HTMLHRElement> & IsType;
-  HTMLHeadElement: typeof InstanceofMethod<HTMLHeadElement> & IsType;
-  HTMLHeadingElement: typeof InstanceofMethod<HTMLHeadingElement> & IsType;
-  HTMLHtmlElement: typeof InstanceofMethod<HTMLHtmlElement> & IsType;
-  HTMLIFrameElement: typeof InstanceofMethod<HTMLIFrameElement> & IsType;
-  HTMLImageElement: typeof InstanceofMethod<HTMLImageElement> & IsType;
-  HTMLInputElement: typeof InstanceofMethod<HTMLInputElement> & IsType;
-  HTMLLIElement: typeof InstanceofMethod<HTMLLIElement> & IsType;
-  HTMLLabelElement: typeof InstanceofMethod<HTMLLabelElement> & IsType;
-  HTMLLegendElement: typeof InstanceofMethod<HTMLLegendElement> & IsType;
-  HTMLLinkElement: typeof InstanceofMethod<HTMLLinkElement> & IsType;
-  HTMLMapElement: typeof InstanceofMethod<HTMLMapElement> & IsType;
-  HTMLMediaElement: typeof InstanceofMethod<HTMLMediaElement> & IsType;
-  HTMLMenuElement: typeof InstanceofMethod<HTMLMenuElement> & IsType;
-  HTMLMetaElement: typeof InstanceofMethod<HTMLMetaElement> & IsType;
-  HTMLMeterElement: typeof InstanceofMethod<HTMLMeterElement> & IsType;
-  HTMLModElement: typeof InstanceofMethod<HTMLModElement> & IsType;
-  HTMLOListElement: typeof InstanceofMethod<HTMLOListElement> & IsType;
-  HTMLObjectElement: typeof InstanceofMethod<HTMLObjectElement> & IsType;
-  HTMLOptGroupElement: typeof InstanceofMethod<HTMLOptGroupElement> & IsType;
-  HTMLOptionElement: typeof InstanceofMethod<HTMLOptionElement> & IsType;
-  HTMLOptionsCollection: typeof InstanceofMethod<HTMLOptionsCollection> & IsType;
-  HTMLOutputElement: typeof InstanceofMethod<HTMLOutputElement> & IsType;
-  HTMLParagraphElement: typeof InstanceofMethod<HTMLParagraphElement> & IsType;
-  HTMLPictureElement: typeof InstanceofMethod<HTMLPictureElement> & IsType;
-  HTMLPreElement: typeof InstanceofMethod<HTMLPreElement> & IsType;
-  HTMLProgressElement: typeof InstanceofMethod<HTMLProgressElement> & IsType;
-  HTMLQuoteElement: typeof InstanceofMethod<HTMLQuoteElement> & IsType;
-  HTMLScriptElement: typeof InstanceofMethod<HTMLScriptElement> & IsType;
-  HTMLSelectElement: typeof InstanceofMethod<HTMLSelectElement> & IsType;
-  HTMLSlotElement: typeof InstanceofMethod<HTMLSlotElement> & IsType;
-  HTMLSourceElement: typeof InstanceofMethod<HTMLSourceElement> & IsType;
-  HTMLSpanElement: typeof InstanceofMethod<HTMLSpanElement> & IsType;
-  HTMLStyleElement: typeof InstanceofMethod<HTMLStyleElement> & IsType;
-  HTMLTableCaptionElement: typeof InstanceofMethod<HTMLTableCaptionElement> & IsType;
-  HTMLTableCellElement: typeof InstanceofMethod<HTMLTableCellElement> & IsType;
-  HTMLTableColElement: typeof InstanceofMethod<HTMLTableColElement> & IsType;
-  HTMLTableElement: typeof InstanceofMethod<HTMLTableElement> & IsType;
-  HTMLTableRowElement: typeof InstanceofMethod<HTMLTableRowElement> & IsType;
-  HTMLTableSectionElement: typeof InstanceofMethod<HTMLTableSectionElement> & IsType;
-  HTMLTemplateElement: typeof InstanceofMethod<HTMLTemplateElement> & IsType;
-  HTMLTextAreaElement: typeof InstanceofMethod<HTMLTextAreaElement> & IsType;
-  HTMLTimeElement: typeof InstanceofMethod<HTMLTimeElement> & IsType;
-  HTMLTitleElement: typeof InstanceofMethod<HTMLTitleElement> & IsType;
-  HTMLTrackElement: typeof InstanceofMethod<HTMLTrackElement> & IsType;
-  HTMLUListElement: typeof InstanceofMethod<HTMLUListElement> & IsType;
-  HTMLUnknownElement: typeof InstanceofMethod<HTMLUnknownElement> & IsType;
-  HTMLVideoElement: typeof InstanceofMethod<HTMLVideoElement> & IsType;
+  HTMLAllCollection: instanceofTypeMix<HTMLAllCollection>;
+  HTMLAnchorElement: instanceofTypeMix<HTMLAnchorElement>;
+  HTMLAreaElement: instanceofTypeMix<HTMLAreaElement>;
+  HTMLAudioElement: instanceofTypeMix<HTMLAudioElement>;
+  HTMLBRElement: instanceofTypeMix<HTMLBRElement>;
+  HTMLBaseElement: instanceofTypeMix<HTMLBaseElement>;
+  HTMLBodyElement: instanceofTypeMix<HTMLBodyElement>;
+  HTMLButtonElement: instanceofTypeMix<HTMLButtonElement>;
+  HTMLCanvasElement: instanceofTypeMix<HTMLCanvasElement>;
+  HTMLCollection: instanceofTypeMix<HTMLCollection>;
+  HTMLDListElement: instanceofTypeMix<HTMLDListElement>;
+  HTMLDataElement: instanceofTypeMix<HTMLDataElement>;
+  HTMLDataListElement: instanceofTypeMix<HTMLDataListElement>;
+  HTMLDetailsElement: instanceofTypeMix<HTMLDetailsElement>;
+  HTMLDialogElement: instanceofTypeMix<HTMLDialogElement>;
+  HTMLDivElement: instanceofTypeMix<HTMLDivElement>;
+  HTMLElement: instanceofTypeMix<HTMLElement>;
+  HTMLEmbedElement: instanceofTypeMix<HTMLEmbedElement>;
+  HTMLFieldSetElement: instanceofTypeMix<HTMLFieldSetElement>;
+  HTMLFormControlsCollection: instanceofTypeMix<HTMLFormControlsCollection>;
+  HTMLFormElement: instanceofTypeMix<HTMLFormElement>;
+  HTMLHRElement: instanceofTypeMix<HTMLHRElement>;
+  HTMLHeadElement: instanceofTypeMix<HTMLHeadElement>;
+  HTMLHeadingElement: instanceofTypeMix<HTMLHeadingElement>;
+  HTMLHtmlElement: instanceofTypeMix<HTMLHtmlElement>;
+  HTMLIFrameElement: instanceofTypeMix<HTMLIFrameElement>;
+  HTMLImageElement: instanceofTypeMix<HTMLImageElement>;
+  HTMLInputElement: instanceofTypeMix<HTMLInputElement>;
+  HTMLLIElement: instanceofTypeMix<HTMLLIElement>;
+  HTMLLabelElement: instanceofTypeMix<HTMLLabelElement>;
+  HTMLLegendElement: instanceofTypeMix<HTMLLegendElement>;
+  HTMLLinkElement: instanceofTypeMix<HTMLLinkElement>;
+  HTMLMapElement: instanceofTypeMix<HTMLMapElement>;
+  HTMLMediaElement: instanceofTypeMix<HTMLMediaElement>;
+  HTMLMenuElement: instanceofTypeMix<HTMLMenuElement>;
+  HTMLMetaElement: instanceofTypeMix<HTMLMetaElement>;
+  HTMLMeterElement: instanceofTypeMix<HTMLMeterElement>;
+  HTMLModElement: instanceofTypeMix<HTMLModElement>;
+  HTMLOListElement: instanceofTypeMix<HTMLOListElement>;
+  HTMLObjectElement: instanceofTypeMix<HTMLObjectElement>;
+  HTMLOptGroupElement: instanceofTypeMix<HTMLOptGroupElement>;
+  HTMLOptionElement: instanceofTypeMix<HTMLOptionElement>;
+  HTMLOptionsCollection: instanceofTypeMix<HTMLOptionsCollection>;
+  HTMLOutputElement: instanceofTypeMix<HTMLOutputElement>;
+  HTMLParagraphElement: instanceofTypeMix<HTMLParagraphElement>;
+  HTMLPictureElement: instanceofTypeMix<HTMLPictureElement>;
+  HTMLPreElement: instanceofTypeMix<HTMLPreElement>;
+  HTMLProgressElement: instanceofTypeMix<HTMLProgressElement>;
+  HTMLQuoteElement: instanceofTypeMix<HTMLQuoteElement>;
+  HTMLScriptElement: instanceofTypeMix<HTMLScriptElement>;
+  HTMLSelectElement: instanceofTypeMix<HTMLSelectElement>;
+  HTMLSlotElement: instanceofTypeMix<HTMLSlotElement>;
+  HTMLSourceElement: instanceofTypeMix<HTMLSourceElement>;
+  HTMLSpanElement: instanceofTypeMix<HTMLSpanElement>;
+  HTMLStyleElement: instanceofTypeMix<HTMLStyleElement>;
+  HTMLTableCaptionElement: instanceofTypeMix<HTMLTableCaptionElement>;
+  HTMLTableCellElement: instanceofTypeMix<HTMLTableCellElement>;
+  HTMLTableColElement: instanceofTypeMix<HTMLTableColElement>;
+  HTMLTableElement: instanceofTypeMix<HTMLTableElement>;
+  HTMLTableRowElement: instanceofTypeMix<HTMLTableRowElement>;
+  HTMLTableSectionElement: instanceofTypeMix<HTMLTableSectionElement>;
+  HTMLTemplateElement: instanceofTypeMix<HTMLTemplateElement>;
+  HTMLTextAreaElement: instanceofTypeMix<HTMLTextAreaElement>;
+  HTMLTimeElement: instanceofTypeMix<HTMLTimeElement>;
+  HTMLTitleElement: instanceofTypeMix<HTMLTitleElement>;
+  HTMLTrackElement: instanceofTypeMix<HTMLTrackElement>;
+  HTMLUListElement: instanceofTypeMix<HTMLUListElement>;
+  HTMLUnknownElement: instanceofTypeMix<HTMLUnknownElement>;
+  HTMLVideoElement: instanceofTypeMix<HTMLVideoElement>;
 }
 
 export interface AllMethodsInterface
   extends BaseMethodsInterface,
     ExternalMethodsInterface,
-    HTMLElementsMethodsInterface {}
+    HTMLElementsMethodsInterface {
+  // @ts-ignore
+  or: AllMethodsInterface;
+  // @ts-ignore
+  not: AllMethodsInterface;
 
-export interface MethodInterface {
-  [key: string]: {
-    useCustomMethod: boolean;
-    method: any;
-  } & ConnectionWrappersInterface &
-    AllMethodsInterface &
-    ((argument: unknown) => boolean);
+  // @ts-ignore
+  [key: string]: ((argument: unknown) => unknown) & AllMethodsInterface;
 }
 
 // @ts-ignore
-export const methods: AllMethodsInterface & MethodInterface = {
+export const methods: AllMethodsInterface = {
   array: ArrayMethod as any,
   bigInt: BigIntMethod as any,
   boolean: BooleanMethod as any,

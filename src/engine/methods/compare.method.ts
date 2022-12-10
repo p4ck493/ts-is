@@ -13,7 +13,7 @@ export function CompareMethod<T>(objectOne: T, objectTwo: T): boolean {
       return false;
     }
 
-    if (keysOfObjectOne.length !== keysOfObjectOne.length) {
+    if (keysOfObjectOne.length !== keysOfObjectTwo.length) {
       return false;
     }
 

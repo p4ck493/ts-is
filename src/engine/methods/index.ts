@@ -155,14 +155,11 @@ export interface HTMLElementsMethodsInterface {
 export interface AllMethodsInterface
   extends BaseMethodsInterface,
     ExternalMethodsInterface,
-    HTMLElementsMethodsInterface {
-  // @ts-ignore
+    HTMLElementsMethodsInterface,
+    CallableFunction {
   or: AllMethodsInterface;
-  // @ts-ignore
   not: AllMethodsInterface;
-
-  // @ts-ignore
-  [key: string]: ((argument: unknown) => unknown) & AllMethodsInterface;
+  [key: string]: (<T>(argument: unknown) => argument is T) | AllMethodsInterface | any;
 }
 
 // @ts-ignore

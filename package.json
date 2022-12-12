@@ -1,8 +1,7 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "The package for check some data in typescript and javascript.",
-  "type": "commonjs",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
   "umd:main": "dist/index.umd.js",

@@ -1,23 +1,23 @@
-import {ArrayMethod} from './array.method';
-import {BigIntMethod} from './bigInt.method';
-import {BooleanMethod} from './boolean.method';
-import {CompareMethod} from './compare.method';
-import {EmptyMethod} from './empty.method';
-import {FalseMethod} from './false.method';
-import {FalsyMethod} from './falsy.method';
-import {InstanceofMethod} from './instanceof.method';
-import {NullMethod} from './null.method';
-import {NumberMethod} from './number.method';
-import {ObjectMethod} from './object.method';
-import {StringMethod} from './string.method';
-import {SymbolMethod} from './symbol.method';
-import {TrueMethod} from './true.method';
-import {TruthyMethod} from './truthy.method';
-import {UndefinedMethod} from './undefined.method';
-import {ZeroMethod} from './zero.method';
-import {PrimitiveMethod} from './primitive.method';
-import {PromiseMethod} from './promise.method';
-import {AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod} from './function.method';
+import { ArrayMethod } from './array.method';
+import { BigIntMethod } from './bigInt.method';
+import { BooleanMethod } from './boolean.method';
+import { CompareMethod } from './compare.method';
+import { EmptyMethod } from './empty.method';
+import { FalseMethod } from './false.method';
+import { FalsyMethod } from './falsy.method';
+import { InstanceofMethod } from './instanceof.method';
+import { NullMethod } from './null.method';
+import { NumberMethod } from './number.method';
+import { ObjectMethod } from './object.method';
+import { StringMethod } from './string.method';
+import { SymbolMethod } from './symbol.method';
+import { TrueMethod } from './true.method';
+import { TruthyMethod } from './truthy.method';
+import { UndefinedMethod } from './undefined.method';
+import { ZeroMethod } from './zero.method';
+import { PrimitiveMethod } from './primitive.method';
+import { PromiseMethod } from './promise.method';
+import { AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod } from './function.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -155,7 +155,8 @@ export interface HTMLElementsMethodsInterface {
 export interface AllMethodsInterface
   extends BaseMethodsInterface,
     ExternalMethodsInterface,
-    HTMLElementsMethodsInterface, CallableFunction {
+    HTMLElementsMethodsInterface,
+    CallableFunction {
   or: AllMethodsInterface;
   not: AllMethodsInterface;
   [key: string]: (<T>(argument: unknown) => argument is T) | AllMethodsInterface | any;

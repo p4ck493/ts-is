@@ -1,0 +1,30 @@
+{
+  "transform": {
+    "^.+\\.(t|j)sx?$": [
+      "ts-jest",
+      {
+        "tsconfig": "<rootDir>/tsconfig.test.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    ]
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "reporters": [
+    "default",
+    "jest-html-reporters"
+  ],
+  "verbose": false,
+  "preset": "ts-jest",
+  "testPathIgnorePatterns": [
+    "<rootDir>/.git/",
+    "<rootDir>/.DS_Store/",
+    "<rootDir>/.vs/",
+    "<rootDir>/.vscode/",
+    "<rootDir>/dist/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/src/"
+  ]
+}
+
+

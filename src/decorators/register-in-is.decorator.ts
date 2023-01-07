@@ -3,7 +3,7 @@ import {
   registerInIsConstructorDecoratorType,
 } from '../types/decorators/register-in-is.decorator.type';
 import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/register-in-is.decorator.interface';
-import { methods } from '../engine/methods';
+import { methods } from '../methods';
 
 export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): any {
   return (constructor: registerInIsConstructorDecoratorType): void => {

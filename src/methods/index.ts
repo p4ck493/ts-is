@@ -47,7 +47,6 @@ export interface BaseMethodsInterface {
 type instanceofType<T> = (argument: unknown) => argument is T;
 type instanceofTypeMix<T> = mixTypes<instanceofType<T>>;
 
-
 export interface ExternalMethodsInterface {
   Map: typeof Map;
   String: string;
@@ -688,13 +687,13 @@ export interface HTMLElementsMethodsInterface {
 
 export type ConvertTypeToGenericInstanceOf<T> = {
   [key in keyof T]: instanceofTypeMix<T[key]>;
-}
+};
 
 type mixTypes<T> = T & AllMethodsInterface;
 
 export type ConvertTypeToGenericMixTypes<T> = {
   [key in keyof T]: mixTypes<T[key]>;
-}
+};
 
 export interface AllMethodsInterface
   extends ConvertTypeToGenericMixTypes<BaseMethodsInterface>,

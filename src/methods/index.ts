@@ -1,23 +1,25 @@
-import { ArrayMethod } from './array.method';
-import { BigIntMethod } from './bigInt.method';
-import { BooleanMethod } from './boolean.method';
-import { CompareMethod } from './compare.method';
-import { EmptyMethod } from './empty.method';
-import { FalseMethod } from './false.method';
-import { FalsyMethod } from './falsy.method';
-import { InstanceofMethod } from './instanceof.method';
-import { NullMethod } from './null.method';
-import { NumberMethod } from './number.method';
-import { ObjectMethod } from './object.method';
-import { StringMethod } from './string.method';
-import { SymbolMethod } from './symbol.method';
-import { TrueMethod } from './true.method';
-import { TruthyMethod } from './truthy.method';
-import { UndefinedMethod } from './undefined.method';
-import { ZeroMethod } from './zero.method';
-import { PrimitiveMethod } from './primitive.method';
-import { PromiseMethod } from './promise.method';
-import { AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod } from './function.method';
+import {ArrayMethod} from './array.method';
+import {BigIntMethod} from './bigInt.method';
+import {BooleanMethod} from './boolean.method';
+import {CompareMethod} from './compare.method';
+import {EmptyMethod} from './empty.method';
+import {FalseMethod} from './false.method';
+import {FalsyMethod} from './falsy.method';
+import {InstanceofMethod} from './instanceof.method';
+import {NullMethod} from './null.method';
+import {NumberMethod} from './number.method';
+import {ObjectMethod} from './object.method';
+import {StringMethod} from './string.method';
+import {SymbolMethod} from './symbol.method';
+import {TrueMethod} from './true.method';
+import {TruthyMethod} from './truthy.method';
+import {UndefinedMethod} from './undefined.method';
+import {ZeroMethod} from './zero.method';
+import {PrimitiveMethod} from './primitive.method';
+import {PromiseMethod} from './promise.method';
+import {AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod} from './function.method';
+import {PositiveMethod} from './positive.method';
+import {NegativeMethod} from './negative.method';
 
 export interface BaseMethodsInterface {
   array: typeof ArrayMethod;
@@ -28,6 +30,8 @@ export interface BaseMethodsInterface {
   falsy: typeof FalsyMethod;
   instanceof: typeof InstanceofMethod;
   null: typeof NullMethod;
+  positive: typeof PositiveMethod;
+  negative: typeof NegativeMethod;
   function: typeof FunctionMethod;
   asyncFunction: typeof AsyncFunctionMethod;
   generatorFunction: typeof GeneratorFunctionMethod;
@@ -1011,6 +1015,8 @@ export const methods: AllMethodsInterface = {
   asyncFunction: AsyncFunctionMethod as any,
   generatorFunction: GeneratorFunctionMethod as any,
   null: NullMethod as any,
+  positive: PositiveMethod as any,
+  negative: NegativeMethod as any,
   number: NumberMethod as any,
   object: ObjectMethod as any,
   string: StringMethod as any,

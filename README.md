@@ -423,30 +423,32 @@ stream$.next('false'); // Bad
 ### List of methods
 
 | Name              | Tests | Status   | New name | Comment                                                                                                              |
-| ----------------- | ----- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
-| array             | ✅    |          |          |
-| bigInt            | ✅    |          |          |
-| boolean           | ✅    |          |          |
-| compare           | ✅    |          |          |
-| empty             | ✅    |          |          |
-| false             | ✅    |          |          |
-| falsy             | ✅    |          |          |
-| function          | ✅    | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
-| asyncFunction     | ➖    |          |
-| generatorFunction | ➖    |          |
-| instanceof        | ✅    |          |          |
-| null              | ✅    |          |          |
-| number            | ✅    |          |          |
-| object            | ✅    |          |          |
-| string            | ✅    |          |          |
-| symbol            | ✅    |          |          |
-| true              | ✅    |          |          |
-| truthy            | ✅    |          |          |
-| undefined         | ✅    |          |          |
-| NaN               | ➖    | DELETED  | isNaN()  |
-| zero              | ✅    |          |          |
-| primitive         | ✅    |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                                        |
-| promise           | ➖    |          |          |
+|-------------------|-------|----------|----------|----------------------------------------------------------------------------------------------------------------------|
+| array             | ✅     |          |          |
+| bigInt            | ✅     |          |          |
+| boolean           | ✅     |          |          |
+| compare           | ✅     |          |          |
+| empty             | ✅     |          |          |
+| false             | ✅     |          |          |
+| falsy             | ✅     |          |          |
+| function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
+| asyncFunction     | ➖     |          |
+| generatorFunction | ➖     |          |
+| instanceof        | ✅     |          |          |
+| null              | ✅     |          |          |
+| number            | ✅     |          |          |
+| object            | ✅     |          |          |
+| string            | ✅     |          |          |
+| symbol            | ✅     |          |          |
+| true              | ✅     |          |          |
+| truthy            | ✅     |          |          |
+| undefined         | ✅     |          |          |
+| NaN               | ➖     | DELETED  | isNaN()  |
+| zero              | ✅     |          |          |
+| positive          | ✅     |          |          | Validate if number is more than 0                                                                                    |
+| negative          | ✅     |          |          | Validate if number is less than 0                                                                                    |
+| primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                                        |
+| promise           | ➖     |          |          |
 
 > Name - the name of a method that you can call to check certain types of data.
 

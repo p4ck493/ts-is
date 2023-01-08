@@ -449,8 +449,8 @@ stream$.next('false'); // Bad
 | false             | ✅     |||
 | falsy             | ✅     |||
 | function          | ✅     | RETURNED |          | якщо потрібно перевірити, чи є щось із пакета функцією, використовуйте is.Function замість is.function |
-| asyncFunction     | ➖    ||
-| generatorFunction | ➖    ||
+| asyncFunction     | ➖     ||
+| generatorFunction | ➖     ||
 | instanceof        | ✅     ||| 
 | null              | ✅     |||
 | number            | ✅     |||
@@ -460,10 +460,12 @@ stream$.next('false'); // Bad
 | true              | ✅     |||
 | truthy            | ✅     |||
 | undefined         | ✅     |||
-| NaN               | ➖    | DELETED  | isNaN()  |
+| NaN               | ➖     | DELETED  | isNaN()  |
 | zero              | ✅     |||
+| positive          | ✅     |          |          | Перевірте, якщо число більше 0                                                                         |
+| negative          | ✅     |          |          | Перевірте, якщо число менше 0                                                                          |
 | primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                          |
-| promise           | ➖    |||
+| promise           | ➖     |||
 
 > Назва - назва методи яку можете використовувати для виклику, щоб перевірити певні види даних.
 
@@ -486,34 +488,34 @@ stream$.next('false'); // Bad
 
 #### Загальні (841)
 
-| Name              | Tests |
-|-------------------|-------|
-| Map               | ✅     |
-| String            | ➖    |
-| Date              | ✅     |
-| Set               | ✅     |
-| URIError          | ✅     |
-| RegExp            | ✅     |
-| WeakSet           | ✅     |
-| WeakMap           | ✅     |
-| DataView          | ✅     |
-| Float32Array      | ➖    |
-| Int32Array        | ➖    |
-| Uint8ClampedArray | ➖    |
-| Int8Array         | ➖    |
-| Uint8Array        | ➖    |
-| Int16Array        | ➖    |
-| Uint16Array       | ➖    |
-| Uint32Array       | ➖    |
-| Float64Array      | ➖    |
-| BigInt64Array     | ➖    |
-| BigUint64Array    | ➖    |
-| RangeError        | ➖    |
-| Error             | ✅     |
-| EvalError         | ✅     |
-| ReferenceError    | ✅     |
-| SyntaxError       | ✅     |
-| TypeError         | ✅     |
+| Name                                  | Tests |
+|---------------------------------------|-------|
+| Map                                   | ✅     |
+| String                                | ➖     |
+| Date                                  | ✅     |
+| Set                                   | ✅     |
+| URIError                              | ✅     |
+| RegExp                                | ✅     |
+| WeakSet                               | ✅     |
+| WeakMap                               | ✅     |
+| DataView                              | ✅     |
+| Float32Array                          | ➖     |
+| Int32Array                            | ➖     |
+| Uint8ClampedArray                     | ➖     |
+| Int8Array                             | ➖     |
+| Uint8Array                            | ➖     |
+| Int16Array                            | ➖     |
+| Uint16Array                           | ➖     |
+| Uint32Array                           | ➖     |
+| Float64Array                          | ➖     |
+| BigInt64Array                         | ➖     |
+| BigUint64Array                        | ➖     |
+| RangeError                            | ➖     |
+| Error                                 | ✅     |
+| EvalError                             | ✅     |
+| ReferenceError                        | ✅     |
+| SyntaxError                           | ✅     |
+| TypeError                             | ✅     |
 | Algorithm                             | ➖     |
 | AssignedNodesOptions                  | ➖     |
 | AudioBufferOptions                    | ➖     |

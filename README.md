@@ -3,7 +3,6 @@
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
-![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
 ![Issues](https://img.shields.io/github/issues/p4ck493/ts-is)
@@ -69,8 +68,8 @@ if (is.object.not.empty(variable)) {
       - [observable:pipe:filter](#observable--pipe--filter)
   - [API](#-api)
   - [New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.](#new-methods-that-are-available-through-the-package-but-which-are-only-declared-in-the-package-but-actually-take-data-from-outside-the-package)
-    - [General](#generale)
-    - [HTML](#html)
+    - [General (841 methods)](#generale--841-)
+    - [HTML (80 methods)](#html--80-)
   - [Contributing](#-contributing)
   - [Additional](#-additional)
   - [Authors](#-authors)
@@ -88,7 +87,7 @@ npm install @p4ck493/ts-is
 <script>
   var exports = {};
 </script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.5/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.8/dist/index.js"></script>
 <script>
   const { is } = exports;
   console.log(is.string('')); // true
@@ -108,14 +107,14 @@ import {is} from "@p4ck493/ts-is";
 #### Syntax
 
 ```typescript
-$cmd = 'any command';
+$method = 'ANY_METHOD_NAME';
 
-is[$cmd]();
-is[$cmd][$cmd]();
-is[$cmd].or[$cmd]();
-is[$cmd].not[$cmd]();
+is[$method]();
+is[$method][$method]();
+is[$method].or[$method]();
+is[$method].not[$method]();
 
-$model = 'any model wich declare in package by decorator';
+$model = 'ANY_MODEL_WICH_DECLARE_IN_PACKAGE_BY_DECORATOR'; // Decorator: @RegisterInIs()
 
 is[$model]();
 is[$model][$model]();
@@ -469,7 +468,7 @@ stream$.next('false'); // Bad
 
 ### New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.
 
-#### Generale (841)
+#### Generale (841 methods)
 
 | Name                                  | Tests |
 |---------------------------------------|-------|
@@ -1315,7 +1314,7 @@ stream$.next('false'); // Bad
 | XMLHttpRequestUpload                  | ➖     |
 | XPathEvaluator                        | ➖     |
 
-#### HTML (80)
+#### HTML (80 methods)
 
 | Name                       | Tests |
 |----------------------------|-------|

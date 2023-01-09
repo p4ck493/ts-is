@@ -2,7 +2,6 @@
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
-![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
 ![Issues](https://img.shields.io/github/issues/p4ck493/ts-is)
@@ -70,8 +69,8 @@ if (is.object.not.empty(variable)) {
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
     - [Методи які доступні через пакунок, але які лише задекларовані в пакунку, але насправді беруть дані поза пакунком.](#методи-які-доступні-через-пакунок-але-які-лише-задекларовані-в-пакунку-але-насправді-беруть-дані-поза-пакунком)
-      - [Загальні](#загальні)
-      - [HTML](#html)
+      - [Загальні (841 метод)](#загальні--841-)
+      - [HTML (80 методів)](#html--80-)
     - [Сприяння](#-сприяння)
     - [Додаткове](#-додаткове)
     - [Автори](#-автори)
@@ -86,7 +85,7 @@ npm install @p4ck493/ts-is
 ## 🔗 CDN
 ```html
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.5/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.8/dist/index.js"></script>
 <script>
   const {is} = exports;
   console.log(is.string('')); // true
@@ -106,14 +105,14 @@ import {is} from "@p4ck493/ts-is";
 
 ```typescript
 
-$cmd = 'any command';
+$method = 'ANY_METHOD_NAME';
 
-is[$cmd]();
-is[$cmd][$cmd]();
-is[$cmd].or[$cmd]();
-is[$cmd].not[$cmd]();
+is[$method]();
+is[$method][$method]();
+is[$method].or[$method]();
+is[$method].not[$method]();
 
-$model = 'any model wich declare in pacakge by decorator';
+$model = 'ANY_MODEL_WICH_DECLARE_IN_PACKAGE_BY_DECORATOR'; // Decorator: @RegisterInIs()
 
 is[$model]();
 is[$model][$model]();

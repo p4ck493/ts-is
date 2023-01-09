@@ -297,22 +297,25 @@ is.not.man(man) // false
 
 const {RegisterInIs} = exports;
 
+// Person
 class PersonModel {
     // Your code ...
 }
 RegisterInIs()(PersonModel);
 
-
+// Woman
 class WomanModel extends PersonModel {
     // Your code ...
 }
 RegisterInIs({
     className: 'woman'
-})(PersonModel);
+})(WomanModel);
 
+// Declare
 const person = new PersonModel();
 const woman = new WomanModel();
 
+// Check
 is.PersonModel(person) // true
 is.PersonModel(woman) // true
 is.woman(woman) // true

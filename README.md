@@ -312,23 +312,27 @@ is.CartTwo.empty(cartTwo); // false
 ```javascript
 const { RegisterInIs } = exports;
 
+// Person
 class PersonModel {
   // Your code ...
 }
 
 RegisterInIs()(PersonModel);
 
+// Woman
 class WomanModel extends PersonModel {
   // Your code ...
 }
 
 RegisterInIs({
   className: 'woman',
-})(PersonModel);
+})(WomanModel);
 
+// Check
 const person = new PersonModel();
 const woman = new WomanModel();
 
+// Check
 is.PersonModel(person); // true
 is.PersonModel(woman); // true
 is.woman(woman); // true

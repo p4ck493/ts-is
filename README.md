@@ -19,12 +19,16 @@
 
 ### Why you should use and support the package:
 
-1. ✅ Typification.
-2. ✅ Reducing the code in the project.
-3. ✅ Easier to read and understand the code.
-4. ✅ CDN support.
-5. ✅ Compatibility with older TypeScript versions (~3.1.1).
-6. ✅ Maintenance of global contexts: globalThis, window, self, global.
+1. ✅ **946** declared functions.
+2. ✅ Typification.
+3. ✅ Reducing the code in the project.
+4. ✅ Easier to read and understand the code.
+5. ✅ CDN support.
+6. ✅ Compatible with the oldest version of TypeScript.
+   1. The package even works with the first published version of typeScript: **0.8.0**.
+7. ✅ Maintenance of global contexts: globalThis, window, self, global.
+8. ✅ Small size: ~3KB.
+   1. The size of the package for building the production version is about **3KB**, and if you use a **CDN** in this case, it is about **5KB**
 
 ## 💡 Idea
 

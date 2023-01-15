@@ -79,8 +79,6 @@ export interface ExternalMethodsInterface {
   ReferenceError: ReferenceError;
   SyntaxError: SyntaxError;
   TypeError: TypeError;
-
-  // New
   Algorithm: Algorithm;
   AssignedNodesOptions: AssignedNodesOptions;
   AudioBufferOptions: AudioBufferOptions;

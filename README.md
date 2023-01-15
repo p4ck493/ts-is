@@ -19,7 +19,7 @@
 
 ### Why you should use and support the package:
 
-1. ✅ **946** declared functions.
+1. ✅ **947** declared functions.
 2. ✅ Typification.
 3. ✅ Reducing the code in the project.
 4. ✅ Easier to read and understand the code.
@@ -72,8 +72,8 @@ if (is.object.not.empty(variable)) {
       - [observable:pipe:filter](#observable--pipe--filter)
   - [API](#-api)
   - [New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.](#new-methods-that-are-available-through-the-package-but-which-are-only-declared-in-the-package-but-actually-take-data-from-outside-the-package)
-    - [General (841 methods)](#generale--841-)
-    - [HTML (80 methods)](#html--80-)
+    - [General (841 methods)](#generale--841-methods-)
+    - [HTML (80 methods)](#html--80-methods-)
   - [Contributing](#-contributing)
   - [Additional](#-additional)
   - [Authors](#-authors)
@@ -449,6 +449,7 @@ stream$.next('false'); // Bad
 | symbol            | ✅     |          |          |
 | true              | ✅     |          |          |
 | truthy            | ✅     |          |          |
+| infinity          | ✅     |          |          |
 | undefined         | ✅     |          |          |
 | NaN               | ➖     | DELETED  | isNaN()  |
 | zero              | ✅     |          |          |
@@ -469,10 +470,10 @@ stream$.next('false'); // Bad
 ### List of wrappers and connections
 
 | Name | Tests | Status  |
-| ---- | ----- | ------- |
-| not  | ✅    |
-| or   | ✅    |
-| all  | ➖    | DELETED |
+|------|-------|---------|
+| not  | ✅     |
+| or   | ✅     |
+| all  | ➖     | DELETED |
 
 ### New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.
 

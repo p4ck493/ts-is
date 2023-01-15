@@ -20,6 +20,7 @@ import {PromiseMethod} from './promise.method';
 import {AsyncFunctionMethod, FunctionMethod, GeneratorFunctionMethod} from './function.method';
 import {PositiveMethod} from './positive.method';
 import {NegativeMethod} from './negative.method';
+import {InfinityMethod} from './infinity.method';
 
 export interface BaseMethodsInterface {
   array: typeof ArrayMethod;
@@ -46,6 +47,7 @@ export interface BaseMethodsInterface {
   zero: typeof ZeroMethod;
   primitive: typeof PrimitiveMethod;
   promise: typeof PromiseMethod;
+  infinity: typeof InfinityMethod;
 }
 
 type instanceofType<T> = (argument: unknown) => argument is T;
@@ -1025,4 +1027,5 @@ export const methods: AllMethodsInterface = {
   zero: ZeroMethod as any,
   primitive: PrimitiveMethod as any,
   promise: PromiseMethod as any,
+  infinity: InfinityMethod as any,
 } as any;

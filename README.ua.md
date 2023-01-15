@@ -463,6 +463,7 @@ stream$.next('false'); // Bad
 | object            | ✅     |||
 | string            | ✅     |||
 | symbol            | ✅     |||
+| infinity          | ✅     |||
 | true              | ✅     |||
 | truthy            | ✅     |||
 | undefined         | ✅     |||

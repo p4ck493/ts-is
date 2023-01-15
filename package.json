@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.8-beta.1",
+  "version": "3.0.8",
   "description": "The package for check some data in typescript and javascript.",
   "main": "dist/index.js",
   "module": "dist/index.m.js",

@@ -2,7 +2,6 @@
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
-![Test Status](https://img.shields.io/travis/p4ck493/ts-is/main.svg)
 ![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
 ![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
 ![Issues](https://img.shields.io/github/issues/p4ck493/ts-is)
@@ -41,12 +40,16 @@ if (is.object.not.empty(variable)) {
 ## Вступ
 
 ### Чому варто використовувати та підтримувати пакунок:
-1. ✅ Типізація.
-2. ✅ Зменшення коду в проєкті.
-3. ✅ Легше читати та розуміти код. 
-4. ✅ Підтримка CDN.
-5. ✅ Сумісність з старшими TypeScript версіями (~3.1.1).
-6. ✅ Обслуговування глобальних контекстів: globalThis, window, self, global.
+1. ✅ **946** задекларованих метод.
+2. ✅ Типізація.
+3. ✅ Зменшення коду в проєкті.
+4. ✅ Легше читати та розуміти код.
+5. ✅ Підтримка CDN.
+6. ✅ Сумісний із найстарішою версією TypeScript.
+    1. Пакунок навіть працює з першою опублікованою версією typeScript: **0.8.0**.
+7. ✅ Обслуговування глобальних контекстів: globalThis, window, self, global.
+8. ✅ Малий розмір: ~3 КБ.
+    1. Розмір пакунка для створення робочої версії становить приблизно **3 КБ**, а якщо ви використовуєте **CDN** у цьому випадку, він становить приблизно **5 КБ**
 
 ## 📝 Зміст
 
@@ -70,8 +73,8 @@ if (is.object.not.empty(variable)) {
           - [observable:pipe:filter](#observable--pipe--filter)
     - [API](#-api)
     - [Методи які доступні через пакунок, але які лише задекларовані в пакунку, але насправді беруть дані поза пакунком.](#методи-які-доступні-через-пакунок-але-які-лише-задекларовані-в-пакунку-але-насправді-беруть-дані-поза-пакунком)
-      - [Загальні](#загальні)
-      - [HTML](#html)
+      - [Загальні (841 метод)](#загальні--841-)
+      - [HTML (80 методів)](#html--80-)
     - [Сприяння](#-сприяння)
     - [Додаткове](#-додаткове)
     - [Автори](#-автори)
@@ -86,7 +89,7 @@ npm install @p4ck493/ts-is
 ## 🔗 CDN
 ```html
 <script>var exports = {};</script>
-<script src="//unpkg.com/@p4ck493/ts-is@3.0.5/dist/index.js"></script>
+<script src="//unpkg.com/@p4ck493/ts-is@3.0.8/dist/index.js"></script>
 <script>
   const {is} = exports;
   console.log(is.string('')); // true
@@ -106,14 +109,14 @@ import {is} from "@p4ck493/ts-is";
 
 ```typescript
 
-$cmd = 'any command';
+$method = 'ANY_METHOD_NAME';
 
-is[$cmd]();
-is[$cmd][$cmd]();
-is[$cmd].or[$cmd]();
-is[$cmd].not[$cmd]();
+is[$method]();
+is[$method][$method]();
+is[$method].or[$method]();
+is[$method].not[$method]();
 
-$model = 'any model wich declare in pacakge by decorator';
+$model = 'ANY_MODEL_WICH_DECLARE_IN_PACKAGE_BY_DECORATOR'; // Decorator: @RegisterInIs()
 
 is[$model]();
 is[$model][$model]();
@@ -298,22 +301,25 @@ is.not.man(man) // false
 
 const {RegisterInIs} = exports;
 
+// Person
 class PersonModel {
     // Your code ...
 }
 RegisterInIs()(PersonModel);
 
-
+// Woman
 class WomanModel extends PersonModel {
     // Your code ...
 }
 RegisterInIs({
     className: 'woman'
-})(PersonModel);
+})(WomanModel);
 
+// Declare
 const person = new PersonModel();
 const woman = new WomanModel();
 
+// Check
 is.PersonModel(person) // true
 is.PersonModel(woman) // true
 is.woman(woman) // true
@@ -449,21 +455,24 @@ stream$.next('false'); // Bad
 | false             | ✅     |||
 | falsy             | ✅     |||
 | function          | ✅     | RETURNED |          | якщо потрібно перевірити, чи є щось із пакета функцією, використовуйте is.Function замість is.function |
-| asyncFunction     | 🛑    ||
-| generatorFunction | 🛑    ||
+| asyncFunction     | ➖     ||
+| generatorFunction | ➖     ||
 | instanceof        | ✅     ||| 
 | null              | ✅     |||
 | number            | ✅     |||
 | object            | ✅     |||
 | string            | ✅     |||
 | symbol            | ✅     |||
+| infinity          | ✅     |||
 | true              | ✅     |||
 | truthy            | ✅     |||
 | undefined         | ✅     |||
-| NaN               | 🛑    | DELETED  | isNaN()  |
+| NaN               | ➖     | DELETED  | isNaN()  |
 | zero              | ✅     |||
+| positive          | ✅     |          |          | Перевірте, якщо число більше 0                                                                         |
+| negative          | ✅     |          |          | Перевірте, якщо число менше 0                                                                          |
 | primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                          |
-| promise           | 🛑    |||
+| promise           | ➖     |||
 
 > Назва - назва методи яку можете використовувати для виклику, щоб перевірити певні види даних.
 
@@ -479,115 +488,941 @@ stream$.next('false'); // Bad
 |------|------|---------|
 | not  | ✅    |
 | or   | ✅    |
-| all  | 🛑   | DELETED |
+| all  | ➖   | DELETED |
 
 
 ### Методи які доступні через пакунок, але які лише задекларовані в пакунку, але насправді беруть дані поза пакунком.
 
-#### Загальні
+#### Загальні (841)
 
-| Name              | Tests |
-|-------------------|-------|
-| Map               | ✅     |
-| String            | 🛑    |
-| Date              | ✅     |
-| Set               | ✅     |
-| URIError          | ✅     |
-| RegExp            | ✅     |
-| WeakSet           | ✅     |
-| WeakMap           | ✅     |
-| DataView          | ✅     |
-| Float32Array      | 🛑    |
-| Int32Array        | 🛑    |
-| Uint8ClampedArray | 🛑    |
-| Int8Array         | 🛑    |
-| Uint8Array        | 🛑    |
-| Int16Array        | 🛑    |
-| Uint16Array       | 🛑    |
-| Uint32Array       | 🛑    |
-| Float64Array      | 🛑    |
-| BigInt64Array     | 🛑    |
-| BigUint64Array    | 🛑    |
-| RangeError        | 🛑    |
-| Error             | ✅     |
-| EvalError         | ✅     |
-| ReferenceError    | ✅     |
-| SyntaxError       | ✅     |
-| TypeError         | ✅     |
+| Name                                  | Tests |
+|---------------------------------------|-------|
+| Map                                   | ✅     |
+| String                                | ➖     |
+| Date                                  | ✅     |
+| Set                                   | ✅     |
+| URIError                              | ✅     |
+| RegExp                                | ✅     |
+| WeakSet                               | ✅     |
+| WeakMap                               | ✅     |
+| DataView                              | ✅     |
+| Float32Array                          | ➖     |
+| Int32Array                            | ➖     |
+| Uint8ClampedArray                     | ➖     |
+| Int8Array                             | ➖     |
+| Uint8Array                            | ➖     |
+| Int16Array                            | ➖     |
+| Uint16Array                           | ➖     |
+| Uint32Array                           | ➖     |
+| Float64Array                          | ➖     |
+| BigInt64Array                         | ➖     |
+| BigUint64Array                        | ➖     |
+| RangeError                            | ➖     |
+| Error                                 | ✅     |
+| EvalError                             | ✅     |
+| ReferenceError                        | ✅     |
+| SyntaxError                           | ✅     |
+| TypeError                             | ✅     |
+| Algorithm                             | ➖     |
+| AssignedNodesOptions                  | ➖     |
+| AudioBufferOptions                    | ➖     |
+| AudioBufferSourceOptions              | ➖     |
+| AudioConfiguration                    | ➖     |
+| AudioContextOptions                   | ➖     |
+| AudioNodeOptions                      | ➖     |
+| AudioTimestamp                        | ➖     |
+| AuthenticationExtensionsClientInputs  | ➖     |
+| AuthenticationExtensionsClientOutputs | ➖     |
+| AuthenticatorSelectionCriteria        | ➖     |
+| BlobEventInit                         | ➖     |
+| BlobPropertyBag                       | ➖     |
+| CSSStyleSheetInit                     | ➖     |
+| CacheQueryOptions                     | ➖     |
+| CanvasRenderingContext2DSettings      | ➖     |
+| ClientQueryOptions                    | ➖     |
+| ClipboardItemOptions                  | ➖     |
+| ComputedKeyframe                      | ➖     |
+| ConstantSourceOptions                 | ➖     |
+| ConstrainBooleanParameters            | ➖     |
+| ConstrainDOMStringParameters          | ➖     |
+| CredentialCreationOptions             | ➖     |
+| CredentialPropertiesOutput            | ➖     |
+| CredentialRequestOptions              | ➖     |
+| CryptoKeyPair                         | ➖     |
+| DOMMatrix2DInit                       | ➖     |
+| DOMPointInit                          | ➖     |
+| DOMQuadInit                           | ➖     |
+| DOMRectInit                           | ➖     |
+| DeviceMotionEventAccelerationInit     | ➖     |
+| DeviceMotionEventRotationRateInit     | ➖     |
+| DisplayMediaStreamOptions             | ➖     |
+| DocumentTimelineOptions               | ➖     |
+| DoubleRange                           | ➖     |
+| EffectTiming                          | ➖     |
+| ElementCreationOptions                | ➖     |
+| ElementDefinitionOptions              | ➖     |
+| EventInit                             | ➖     |
+| EventListenerOptions                  | ➖     |
+| EventSourceInit                       | ➖     |
+| FileSystemFlags                       | ➖     |
+| FileSystemGetDirectoryOptions         | ➖     |
+| FileSystemGetFileOptions              | ➖     |
+| FileSystemRemoveOptions               | ➖     |
+| FocusOptions                          | ➖     |
+| FontFaceDescriptors                   | ➖     |
+| FullscreenOptions                     | ➖     |
+| GetAnimationsOptions                  | ➖     |
+| GetNotificationOptions                | ➖     |
+| GetRootNodeOptions                    | ➖     |
+| IDBDatabaseInfo                       | ➖     |
+| IDBIndexParameters                    | ➖     |
+| IDBObjectStoreParameters              | ➖     |
+| IDBTransactionOptions                 | ➖     |
+| IdleRequestOptions                    | ➖     |
+| ImageBitmapOptions                    | ➖     |
+| ImageBitmapRenderingContextSettings   | ➖     |
+| ImageDataSettings                     | ➖     |
+| ImportMeta                            | ➖     |
+| IntersectionObserverEntryInit         | ➖     |
+| IntersectionObserverInit              | ➖     |
+| JsonWebKey                            | ➖     |
+| KeyAlgorithm                          | ➖     |
+| Keyframe                              | ➖     |
+| LockInfo                              | ➖     |
+| LockManagerSnapshot                   | ➖     |
+| LockOptions                           | ➖     |
+| MediaCapabilitiesInfo                 | ➖     |
+| MediaConfiguration                    | ➖     |
+| MediaElementAudioSourceOptions        | ➖     |
+| MediaImage                            | ➖     |
+| MediaKeySystemConfiguration           | ➖     |
+| MediaKeySystemMediaCapability         | ➖     |
+| MediaMetadataInit                     | ➖     |
+| MediaPositionState                    | ➖     |
+| MediaRecorderOptions                  | ➖     |
+| MediaSessionActionDetails             | ➖     |
+| MediaStreamAudioSourceOptions         | ➖     |
+| MediaStreamConstraints                | ➖     |
+| MediaTrackCapabilities                | ➖     |
+| MediaTrackConstraintSet               | ➖     |
+| MediaTrackSettings                    | ➖     |
+| MediaTrackSupportedConstraints        | ➖     |
+| MutationObserverInit                  | ➖     |
+| NavigationPreloadState                | ➖     |
+| NotificationAction                    | ➖     |
+| NotificationOptions                   | ➖     |
+| OfflineAudioContextOptions            | ➖     |
+| OptionalEffectTiming                  | ➖     |
+| PaymentCurrencyAmount                 | ➖     |
+| PaymentDetailsBase                    | ➖     |
+| PaymentDetailsModifier                | ➖     |
+| PaymentItem                           | ➖     |
+| PaymentMethodData                     | ➖     |
+| PaymentValidationErrors               | ➖     |
+| PerformanceMarkOptions                | ➖     |
+| PerformanceMeasureOptions             | ➖     |
+| PerformanceObserverInit               | ➖     |
+| PeriodicWaveConstraints               | ➖     |
+| PermissionDescriptor                  | ➖     |
+| PositionOptions                       | ➖     |
+| PropertyIndexedKeyframes              | ➖     |
+| PublicKeyCredentialCreationOptions    | ➖     |
+| PublicKeyCredentialDescriptor         | ➖     |
+| PublicKeyCredentialEntity             | ➖     |
+| PublicKeyCredentialParameters         | ➖     |
+| PublicKeyCredentialRequestOptions     | ➖     |
+| PushSubscriptionJSON                  | ➖     |
+| PushSubscriptionOptionsInit           | ➖     |
+| QueuingStrategyInit                   | ➖     |
+| RTCCertificateExpiration              | ➖     |
+| RTCConfiguration                      | ➖     |
+| RTCDataChannelInit                    | ➖     |
+| RTCDtlsFingerprint                    | ➖     |
+| RTCEncodedAudioFrameMetadata          | ➖     |
+| RTCEncodedVideoFrameMetadata          | ➖     |
+| RTCErrorInit                          | ➖     |
+| RTCIceCandidateInit                   | ➖     |
+| RTCIceServer                          | ➖     |
+| RTCLocalSessionDescriptionInit        | ➖     |
+| RTCOfferAnswerOptions                 | ➖     |
+| RTCRtcpParameters                     | ➖     |
+| RTCRtpCapabilities                    | ➖     |
+| RTCRtpCodecCapability                 | ➖     |
+| RTCRtpCodecParameters                 | ➖     |
+| RTCRtpCodingParameters                | ➖     |
+| RTCRtpContributingSource              | ➖     |
+| RTCRtpHeaderExtensionCapability       | ➖     |
+| RTCRtpHeaderExtensionParameters       | ➖     |
+| RTCRtpParameters                      | ➖     |
+| RTCRtpTransceiverInit                 | ➖     |
+| RTCSessionDescriptionInit             | ➖     |
+| RTCStats                              | ➖     |
+| ReadableStreamGetReaderOptions        | ➖     |
+| RegistrationOptions                   | ➖     |
+| RequestInit                           | ➖     |
+| ResizeObserverOptions                 | ➖     |
+| ResponseInit                          | ➖     |
+| RsaOtherPrimesInfo                    | ➖     |
+| SVGBoundingBoxOptions                 | ➖     |
+| ScrollOptions                         | ➖     |
+| ShadowRootInit                        | ➖     |
+| ShareData                             | ➖     |
+| StaticRangeInit                       | ➖     |
+| StorageEstimate                       | ➖     |
+| StreamPipeOptions                     | ➖     |
+| StructuredSerializeOptions            | ➖     |
+| TextDecodeOptions                     | ➖     |
+| TextDecoderOptions                    | ➖     |
+| TextEncoderEncodeIntoResult           | ➖     |
+| TouchInit                             | ➖     |
+| ULongRange                            | ➖     |
+| UnderlyingByteSource                  | ➖     |
+| ValidityStateFlags                    | ➖     |
+| VideoColorSpaceInit                   | ➖     |
+| VideoConfiguration                    | ➖     |
+| VideoFrameCallbackMetadata            | ➖     |
+| WebGLContextAttributes                | ➖     |
+| WorkerOptions                         | ➖     |
+| WorkletOptions                        | ➖     |
+| ANGLE_instanced_arrays                | ➖     |
+| ARIAMixin                             | ➖     |
+| AbortController                       | ➖     |
+| AbstractRange                         | ➖     |
+| AbstractWorker                        | ➖     |
+| Animatable                            | ➖     |
+| AnimationEffect                       | ➖     |
+| AnimationFrameProvider                | ➖     |
+| AnimationTimeline                     | ➖     |
+| AudioBuffer                           | ➖     |
+| AudioListener                         | ➖     |
+| AudioParam                            | ➖     |
+| AuthenticatorResponse                 | ➖     |
+| BarProp                               | ➖     |
+| Blob                                  | ➖     |
+| Body                                  | ➖     |
+| CSSRule                               | ➖     |
+| CSSRuleList                           | ➖     |
+| CSSStyleDeclaration                   | ➖     |
+| Cache                                 | ➖     |
+| CacheStorage                          | ➖     |
+| CanvasCompositing                     | ➖     |
+| CanvasDrawImage                       | ➖     |
+| CanvasDrawPath                        | ➖     |
+| CanvasFillStrokeStyles                | ➖     |
+| CanvasFilters                         | ➖     |
+| CanvasGradient                        | ➖     |
+| CanvasImageData                       | ➖     |
+| CanvasImageSmoothing                  | ➖     |
+| CanvasPath                            | ➖     |
+| CanvasPathDrawingStyles               | ➖     |
+| CanvasPattern                         | ➖     |
+| CanvasRect                            | ➖     |
+| CanvasShadowStyles                    | ➖     |
+| CanvasState                           | ➖     |
+| CanvasText                            | ➖     |
+| CanvasTextDrawingStyles               | ➖     |
+| CanvasTransform                       | ➖     |
+| CanvasUserInterface                   | ➖     |
+| ClipboardItem                         | ➖     |
+| Credential                            | ➖     |
+| CredentialsContainer                  | ➖     |
+| Crypto                                | ➖     |
+| CryptoKey                             | ➖     |
+| CustomElementRegistry                 | ➖     |
+| DOMImplementation                     | ➖     |
+| DOMMatrixReadOnly                     | ➖     |
+| DOMParser                             | ➖     |
+| DOMPointReadOnly                      | ➖     |
+| DOMQuad                               | ➖     |
+| DOMRectList                           | ➖     |
+| DOMRectReadOnly                       | ➖     |
+| DOMStringList                         | ➖     |
+| DOMTokenList                          | ➖     |
+| DataTransfer                          | ➖     |
+| DataTransferItem                      | ➖     |
+| DataTransferItemList                  | ➖     |
+| DeviceMotionEventAcceleration         | ➖     |
+| DeviceMotionEventRotationRate         | ➖     |
+| DocumentAndElementEventHandlers       | ➖     |
+| DocumentOrShadowRoot                  | ➖     |
+| EXT_blend_minmax                      | ➖     |
+| EXT_color_buffer_float                | ➖     |
+| EXT_color_buffer_half_float           | ➖     |
+| EXT_float_blend                       | ➖     |
+| EXT_frag_depth                        | ➖     |
+| EXT_sRGB                              | ➖     |
+| EXT_shader_texture_lod                | ➖     |
+| EXT_texture_compression_bptc          | ➖     |
+| EXT_texture_compression_rgtc          | ➖     |
+| EXT_texture_filter_anisotropic        | ➖     |
+| EXT_texture_norm16                    | ➖     |
+| ElementCSSInlineStyle                 | ➖     |
+| ElementContentEditable                | ➖     |
+| Event                                 | ➖     |
+| EventCounts                           | ➖     |
+| EventListener                         | ➖     |
+| EventListenerObject                   | ➖     |
+| EventTarget                           | ➖     |
+| External                              | ➖     |
+| FileList                              | ➖     |
+| FileSystem                            | ➖     |
+| FileSystemDirectoryReader             | ➖     |
+| FileSystemEntry                       | ➖     |
+| FileSystemHandle                      | ➖     |
+| FontFace                              | ➖     |
+| FontFaceSource                        | ➖     |
+| FormData                              | ➖     |
+| Gamepad                               | ➖     |
+| GamepadButton                         | ➖     |
+| GamepadHapticActuator                 | ➖     |
+| GenericTransformStream                | ➖     |
+| Geolocation                           | ➖     |
+| GeolocationCoordinates                | ➖     |
+| GeolocationPosition                   | ➖     |
+| GeolocationPositionError              | ➖     |
+| GlobalEventHandlers                   | ➖     |
+| Headers                               | ➖     |
+| History                               | ➖     |
+| IDBCursor                             | ➖     |
+| IDBFactory                            | ➖     |
+| IDBIndex                              | ➖     |
+| IDBKeyRange                           | ➖     |
+| IDBObjectStore                        | ➖     |
+| IdleDeadline                          | ➖     |
+| ImageBitmap                           | ➖     |
+| ImageBitmapRenderingContext           | ➖     |
+| ImageData                             | ➖     |
+| InnerHTML                             | ➖     |
+| IntersectionObserver                  | ➖     |
+| IntersectionObserverEntry             | ➖     |
+| KHR_parallel_shader_compile           | ➖     |
+| LinkStyle                             | ➖     |
+| Location                              | ➖     |
+| Lock                                  | ➖     |
+| LockManager                           | ➖     |
+| MediaCapabilities                     | ➖     |
+| MediaDeviceInfo                       | ➖     |
+| MediaError                            | ➖     |
+| MediaKeySystemAccess                  | ➖     |
+| MediaKeys                             | ➖     |
+| MediaList                             | ➖     |
+| MediaMetadata                         | ➖     |
+| MediaSession                          | ➖     |
+| MessageChannel                        | ➖     |
+| MimeType                              | ➖     |
+| MimeTypeArray                         | ➖     |
+| MutationObserver                      | ➖     |
+| MutationRecord                        | ➖     |
+| NavigationPreloadManager              | ➖     |
+| NavigatorAutomationInformation        | ➖     |
+| NavigatorConcurrentHardware           | ➖     |
+| NavigatorContentUtils                 | ➖     |
+| NavigatorCookies                      | ➖     |
+| NavigatorID                           | ➖     |
+| NavigatorLanguage                     | ➖     |
+| NavigatorLocks                        | ➖     |
+| NavigatorOnLine                       | ➖     |
+| NavigatorPlugins                      | ➖     |
+| NavigatorStorage                      | ➖     |
+| NodeIterator                          | ➖     |
+| NodeList                              | ➖     |
+| NonDocumentTypeChildNode              | ➖     |
+| NonElementParentNode                  | ➖     |
+| OES_draw_buffers_indexed              | ➖     |
+| OES_element_index_uint                | ➖     |
+| OES_standard_derivatives              | ➖     |
+| OES_texture_float                     | ➖     |
+| OES_texture_float_linear              | ➖     |
+| OES_texture_half_float                | ➖     |
+| OES_texture_half_float_linear         | ➖     |
+| OES_vertex_array_object               | ➖     |
+| OVR_multiview2                        | ➖     |
+| PerformanceEntry                      | ➖     |
+| PerformanceNavigation                 | ➖     |
+| PerformanceObserver                   | ➖     |
+| PerformanceObserverEntryList          | ➖     |
+| PerformanceServerTiming               | ➖     |
+| PerformanceTiming                     | ➖     |
+| PeriodicWave                          | ➖     |
+| Permissions                           | ➖     |
+| Plugin                                | ➖     |
+| PluginArray                           | ➖     |
+| PushManager                           | ➖     |
+| PushSubscription                      | ➖     |
+| PushSubscriptionOptions               | ➖     |
+| RTCCertificate                        | ➖     |
+| RTCEncodedAudioFrame                  | ➖     |
+| RTCEncodedVideoFrame                  | ➖     |
+| RTCIceCandidate                       | ➖     |
+| RTCRtpReceiver                        | ➖     |
+| RTCRtpSender                          | ➖     |
+| RTCRtpTransceiver                     | ➖     |
+| RTCSessionDescription                 | ➖     |
+| RTCStatsReport                        | ➖     |
+| ReadableByteStreamController          | ➖     |
+| ReadableStreamBYOBRequest             | ➖     |
+| ReadableStreamGenericReader           | ➖     |
+| ResizeObserver                        | ➖     |
+| ResizeObserverEntry                   | ➖     |
+| ResizeObserverSize                    | ➖     |
+| SVGAngle                              | ➖     |
+| SVGAnimatedAngle                      | ➖     |
+| SVGAnimatedBoolean                    | ➖     |
+| SVGAnimatedEnumeration                | ➖     |
+| SVGAnimatedInteger                    | ➖     |
+| SVGAnimatedLength                     | ➖     |
+| SVGAnimatedLengthList                 | ➖     |
+| SVGAnimatedNumber                     | ➖     |
+| SVGAnimatedNumberList                 | ➖     |
+| SVGAnimatedPoints                     | ➖     |
+| SVGAnimatedPreserveAspectRatio        | ➖     |
+| SVGAnimatedRect                       | ➖     |
+| SVGAnimatedString                     | ➖     |
+| SVGAnimatedTransformList              | ➖     |
+| SVGFilterPrimitiveStandardAttributes  | ➖     |
+| SVGFitToViewBox                       | ➖     |
+| SVGLength                             | ➖     |
+| SVGLengthList                         | ➖     |
+| SVGNumber                             | ➖     |
+| SVGNumberList                         | ➖     |
+| SVGPointList                          | ➖     |
+| SVGPreserveAspectRatio                | ➖     |
+| SVGStringList                         | ➖     |
+| SVGTests                              | ➖     |
+| SVGTransform                          | ➖     |
+| SVGTransformList                      | ➖     |
+| SVGURIReference                       | ➖     |
+| SVGUnitTypes                          | ➖     |
+| Screen                                | ➖     |
+| Selection                             | ➖     |
+| Slottable                             | ➖     |
+| SpeechRecognitionAlternative          | ➖     |
+| SpeechRecognitionResult               | ➖     |
+| SpeechRecognitionResultList           | ➖     |
+| SpeechSynthesisVoice                  | ➖     |
+| Storage                               | ➖     |
+| StorageManager                        | ➖     |
+| StyleMedia                            | ➖     |
+| StyleSheet                            | ➖     |
+| StyleSheetList                        | ➖     |
+| SubtleCrypto                          | ➖     |
+| TextDecoderCommon                     | ➖     |
+| TextEncoderCommon                     | ➖     |
+| TextMetrics                           | ➖     |
+| TextTrackCueList                      | ➖     |
+| TimeRanges                            | ➖     |
+| Touch                                 | ➖     |
+| TouchList                             | ➖     |
+| TreeWalker                            | ➖     |
+| URL                                   | ➖     |
+| URLSearchParams                       | ➖     |
+| VTTRegion                             | ➖     |
+| ValidityState                         | ➖     |
+| VideoColorSpace                       | ➖     |
+| VideoPlaybackQuality                  | ➖     |
+| WEBGL_color_buffer_float              | ➖     |
+| WEBGL_compressed_texture_astc         | ➖     |
+| WEBGL_compressed_texture_etc          | ➖     |
+| WEBGL_compressed_texture_etc1         | ➖     |
+| WEBGL_compressed_texture_s3tc         | ➖     |
+| WEBGL_compressed_texture_s3tc_srgb    | ➖     |
+| WEBGL_debug_renderer_info             | ➖     |
+| WEBGL_debug_shaders                   | ➖     |
+| WEBGL_depth_texture                   | ➖     |
+| WEBGL_draw_buffers                    | ➖     |
+| WEBGL_lose_context                    | ➖     |
+| WEBGL_multi_draw                      | ➖     |
+| WebGL2RenderingContextBase            | ➖     |
+| WebGL2RenderingContextOverloads       | ➖     |
+| WebGLActiveInfo                       | ➖     |
+| WebGLBuffer                           | ➖     |
+| WebGLFramebuffer                      | ➖     |
+| WebGLProgram                          | ➖     |
+| WebGLQuery                            | ➖     |
+| WebGLRenderbuffer                     | ➖     |
+| WebGLRenderingContextBase             | ➖     |
+| WebGLRenderingContextOverloads        | ➖     |
+| WebGLSampler                          | ➖     |
+| WebGLShader                           | ➖     |
+| WebGLShaderPrecisionFormat            | ➖     |
+| WebGLSync                             | ➖     |
+| WebGLTexture                          | ➖     |
+| WebGLTransformFeedback                | ➖     |
+| WebGLUniformLocation                  | ➖     |
+| WebGLVertexArrayObject                | ➖     |
+| WebGLVertexArrayObjectOES             | ➖     |
+| WindowEventHandlers                   | ➖     |
+| WindowLocalStorage                    | ➖     |
+| WindowOrWorkerGlobalScope             | ➖     |
+| WindowSessionStorage                  | ➖     |
+| Worklet                               | ➖     |
+| WritableStreamDefaultController       | ➖     |
+| XMLSerializer                         | ➖     |
+| XPathEvaluatorBase                    | ➖     |
+| XPathExpression                       | ➖     |
+| XPathResult                           | ➖     |
+| XSLTProcessor                         | ➖     |
+| BlobCallback                          | ➖     |
+| CustomElementConstructor              | ➖     |
+| DecodeErrorCallback                   | ➖     |
+| DecodeSuccessCallback                 | ➖     |
+| ErrorCallback                         | ➖     |
+| FileCallback                          | ➖     |
+| FileSystemEntriesCallback             | ➖     |
+| FileSystemEntryCallback               | ➖     |
+| FrameRequestCallback                  | ➖     |
+| FunctionStringCallback                | ➖     |
+| IdleRequestCallback                   | ➖     |
+| IntersectionObserverCallback          | ➖     |
+| LockGrantedCallback                   | ➖     |
+| MediaSessionActionHandler             | ➖     |
+| MutationCallback                      | ➖     |
+| NotificationPermissionCallback        | ➖     |
+| OnBeforeUnloadEventHandlerNonNull     | ➖     |
+| OnErrorEventHandlerNonNull            | ➖     |
+| PerformanceObserverCallback           | ➖     |
+| PositionCallback                      | ➖     |
+| PositionErrorCallback                 | ➖     |
+| RTCPeerConnectionErrorCallback        | ➖     |
+| RTCSessionDescriptionCallback         | ➖     |
+| RemotePlaybackAvailabilityCallback    | ➖     |
+| ResizeObserverCallback                | ➖     |
+| UnderlyingSinkAbortCallback           | ➖     |
+| UnderlyingSinkCloseCallback           | ➖     |
+| UnderlyingSinkStartCallback           | ➖     |
+| UnderlyingSourceCancelCallback        | ➖     |
+| VideoFrameRequestCallback             | ➖     |
+| VoidFunction                          | ➖     |
+| AddEventListenerOptions               | ➖     |
+| AesCbcParams                          | ➖     |
+| AesCtrParams                          | ➖     |
+| AesDerivedKeyParams                   | ➖     |
+| AesGcmParams                          | ➖     |
+| AesKeyAlgorithm                       | ➖     |
+| AesKeyGenParams                       | ➖     |
+| AnalyserOptions                       | ➖     |
+| AnimationEventInit                    | ➖     |
+| AnimationPlaybackEventInit            | ➖     |
+| AudioProcessingEventInit              | ➖     |
+| AudioWorkletNodeOptions               | ➖     |
+| BiquadFilterOptions                   | ➖     |
+| ChannelMergerOptions                  | ➖     |
+| ChannelSplitterOptions                | ➖     |
+| ClipboardEventInit                    | ➖     |
+| CloseEventInit                        | ➖     |
+| CompositionEventInit                  | ➖     |
+| ComputedEffectTiming                  | ➖     |
+| ConstrainDoubleRange                  | ➖     |
+| ConstrainULongRange                   | ➖     |
+| ConvolverOptions                      | ➖     |
+| DOMMatrixInit                         | ➖     |
+| DelayOptions                          | ➖     |
+| DeviceMotionEventInit                 | ➖     |
+| DeviceOrientationEventInit            | ➖     |
+| DragEventInit                         | ➖     |
+| DynamicsCompressorOptions             | ➖     |
+| EcKeyAlgorithm                        | ➖     |
+| EcKeyGenParams                        | ➖     |
+| EcKeyImportParams                     | ➖     |
+| EcdhKeyDeriveParams                   | ➖     |
+| EcdsaParams                           | ➖     |
+| ErrorEventInit                        | ➖     |
+| EventModifierInit                     | ➖     |
+| FilePropertyBag                       | ➖     |
+| FocusEventInit                        | ➖     |
+| FontFaceSetLoadEventInit              | ➖     |
+| FormDataEventInit                     | ➖     |
+| GainOptions                           | ➖     |
+| GamepadEventInit                      | ➖     |
+| HashChangeEventInit                   | ➖     |
+| HkdfParams                            | ➖     |
+| HmacImportParams                      | ➖     |
+| HmacKeyAlgorithm                      | ➖     |
+| HmacKeyGenParams                      | ➖     |
+| IDBVersionChangeEventInit             | ➖     |
+| IIRFilterOptions                      | ➖     |
+| InputEventInit                        | ➖     |
+| KeyboardEventInit                     | ➖     |
+| KeyframeAnimationOptions              | ➖     |
+| KeyframeEffectOptions                 | ➖     |
+| MediaCapabilitiesDecodingInfo         | ➖     |
+| MediaCapabilitiesEncodingInfo         | ➖     |
+| MediaDecodingConfiguration            | ➖     |
+| MediaEncodingConfiguration            | ➖     |
+| MediaEncryptedEventInit               | ➖     |
+| MediaKeyMessageEventInit              | ➖     |
+| MediaQueryListEventInit               | ➖     |
+| MediaStreamTrackEventInit             | ➖     |
+| MediaTrackConstraints                 | ➖     |
+| MouseEventInit                        | ➖     |
+| MultiCacheQueryOptions                | ➖     |
+| OfflineAudioCompletionEventInit       | ➖     |
+| OscillatorOptions                     | ➖     |
+| PageTransitionEventInit               | ➖     |
+| PannerOptions                         | ➖     |
+| PaymentDetailsInit                    | ➖     |
+| PaymentDetailsUpdate                  | ➖     |
+| PaymentMethodChangeEventInit          | ➖     |
+| PaymentRequestUpdateEventInit         | ➖     |
+| Pbkdf2Params                          | ➖     |
+| PeriodicWaveOptions                   | ➖     |
+| PictureInPictureEventInit             | ➖     |
+| PointerEventInit                      | ➖     |
+| PopStateEventInit                     | ➖     |
+| ProgressEventInit                     | ➖     |
+| PromiseRejectionEventInit             | ➖     |
+| PublicKeyCredentialRpEntity           | ➖     |
+| PublicKeyCredentialUserEntity         | ➖     |
+| RTCAnswerOptions                      | ➖     |
+| RTCDTMFToneChangeEventInit            | ➖     |
+| RTCDataChannelEventInit               | ➖     |
+| RTCErrorEventInit                     | ➖     |
+| RTCIceCandidatePairStats              | ➖     |
+| RTCInboundRtpStreamStats              | ➖     |
+| RTCOfferOptions                       | ➖     |
+| RTCOutboundRtpStreamStats             | ➖     |
+| RTCPeerConnectionIceErrorEventInit    | ➖     |
+| RTCPeerConnectionIceEventInit         | ➖     |
+| RTCReceivedRtpStreamStats             | ➖     |
+| RTCRtpEncodingParameters              | ➖     |
+| RTCRtpReceiveParameters               | ➖     |
+| RTCRtpSendParameters                  | ➖     |
+| RTCRtpStreamStats                     | ➖     |
+| RTCRtpSynchronizationSource           | ➖     |
+| RTCSentRtpStreamStats                 | ➖     |
+| RTCTrackEventInit                     | ➖     |
+| RTCTransportStats                     | ➖     |
+| RsaHashedImportParams                 | ➖     |
+| RsaHashedKeyAlgorithm                 | ➖     |
+| RsaHashedKeyGenParams                 | ➖     |
+| RsaKeyAlgorithm                       | ➖     |
+| RsaKeyGenParams                       | ➖     |
+| RsaOaepParams                         | ➖     |
+| RsaPssParams                          | ➖     |
+| ScrollIntoViewOptions                 | ➖     |
+| ScrollToOptions                       | ➖     |
+| SecurityPolicyViolationEventInit      | ➖     |
+| SpeechSynthesisErrorEventInit         | ➖     |
+| SpeechSynthesisEventInit              | ➖     |
+| StereoPannerOptions                   | ➖     |
+| StorageEventInit                      | ➖     |
+| SubmitEventInit                       | ➖     |
+| TouchEventInit                        | ➖     |
+| TrackEventInit                        | ➖     |
+| TransitionEventInit                   | ➖     |
+| UIEventInit                           | ➖     |
+| WaveShaperOptions                     | ➖     |
+| WebGLContextEventInit                 | ➖     |
+| WheelEventInit                        | ➖     |
+| WindowPostMessageOptions              | ➖     |
+| AbortSignal                           | ➖     |
+| AnalyserNode                          | ➖     |
+| Animation                             | ➖     |
+| AnimationEvent                        | ➖     |
+| AnimationPlaybackEvent                | ➖     |
+| Attr                                  | ➖     |
+| AudioBufferSourceNode                 | ➖     |
+| AudioContext                          | ➖     |
+| AudioDestinationNode                  | ➖     |
+| AudioNode                             | ➖     |
+| AudioProcessingEvent                  | ➖     |
+| AudioScheduledSourceNode              | ➖     |
+| AudioWorklet                          | ➖     |
+| AudioWorkletNode                      | ➖     |
+| AuthenticatorAssertionResponse        | ➖     |
+| AuthenticatorAttestationResponse      | ➖     |
+| BaseAudioContext                      | ➖     |
+| BeforeUnloadEvent                     | ➖     |
+| BiquadFilterNode                      | ➖     |
+| BlobEvent                             | ➖     |
+| BroadcastChannel                      | ➖     |
+| CDATASection                          | ➖     |
+| CSSAnimation                          | ➖     |
+| CSSConditionRule                      | ➖     |
+| CSSContainerRule                      | ➖     |
+| CSSCounterStyleRule                   | ➖     |
+| CSSFontFaceRule                       | ➖     |
+| CSSFontPaletteValuesRule              | ➖     |
+| CSSGroupingRule                       | ➖     |
+| CSSImportRule                         | ➖     |
+| CSSKeyframeRule                       | ➖     |
+| CSSKeyframesRule                      | ➖     |
+| CSSLayerBlockRule                     | ➖     |
+| CSSLayerStatementRule                 | ➖     |
+| CSSMediaRule                          | ➖     |
+| CSSNamespaceRule                      | ➖     |
+| CSSPageRule                           | ➖     |
+| CSSStyleRule                          | ➖     |
+| CSSStyleSheet                         | ➖     |
+| CSSSupportsRule                       | ➖     |
+| CSSTransition                         | ➖     |
+| CanvasCaptureMediaStreamTrack         | ➖     |
+| ChannelMergerNode                     | ➖     |
+| ChannelSplitterNode                   | ➖     |
+| ChildNode                             | ➖     |
+| ClientRect                            | ➖     |
+| Clipboard                             | ➖     |
+| ClipboardEvent                        | ➖     |
+| CloseEvent                            | ➖     |
+| Comment                               | ➖     |
+| CompositionEvent                      | ➖     |
+| ConstantSourceNode                    | ➖     |
+| ConvolverNode                         | ➖     |
+| CountQueuingStrategy                  | ➖     |
+| DOMMatrix                             | ➖     |
+| DOMPoint                              | ➖     |
+| DOMRect                               | ➖     |
+| DelayNode                             | ➖     |
+| DeviceMotionEvent                     | ➖     |
+| DeviceOrientationEvent                | ➖     |
+| DocumentTimeline                      | ➖     |
+| DragEvent                             | ➖     |
+| DynamicsCompressorNode                | ➖     |
+| ElementInternals                      | ➖     |
+| ErrorEvent                            | ➖     |
+| EventSource                           | ➖     |
+| File                                  | ➖     |
+| FileReader                            | ➖     |
+| FileSystemDirectoryEntry              | ➖     |
+| FileSystemDirectoryHandle             | ➖     |
+| FileSystemFileEntry                   | ➖     |
+| FileSystemFileHandle                  | ➖     |
+| FocusEvent                            | ➖     |
+| FontFaceSet                           | ➖     |
+| FontFaceSetLoadEvent                  | ➖     |
+| FormDataEvent                         | ➖     |
+| GainNode                              | ➖     |
+| GamepadEvent                          | ➖     |
+| HashChangeEvent                       | ➖     |
+| IDBCursorWithValue                    | ➖     |
+| IDBDatabase                           | ➖     |
+| IDBTransaction                        | ➖     |
+| IDBVersionChangeEvent                 | ➖     |
+| IIRFilterNode                         | ➖     |
+| InputDeviceInfo                       | ➖     |
+| InputEvent                            | ➖     |
+| KeyboardEvent                         | ➖     |
+| KeyframeEffect                        | ➖     |
+| MediaDevices                          | ➖     |
+| MediaElementAudioSourceNode           | ➖     |
+| MediaEncryptedEvent                   | ➖     |
+| MediaKeyMessageEvent                  | ➖     |
+| MediaKeySession                       | ➖     |
+| MediaQueryList                        | ➖     |
+| MediaQueryListEvent                   | ➖     |
+| MediaRecorder                         | ➖     |
+| MediaSource                           | ➖     |
+| MediaStream                           | ➖     |
+| MediaStreamAudioDestinationNode       | ➖     |
+| MediaStreamAudioSourceNode            | ➖     |
+| MediaStreamTrack                      | ➖     |
+| MediaStreamTrackEvent                 | ➖     |
+| MessagePort                           | ➖     |
+| MouseEvent                            | ➖     |
+| MutationEvent                         | ➖     |
+| Node                                  | ➖     |
+| Notification                          | ➖     |
+| OfflineAudioCompletionEvent           | ➖     |
+| OfflineAudioContext                   | ➖     |
+| OffscreenCanvas                       | ➖     |
+| OscillatorNode                        | ➖     |
+| OverconstrainedError                  | ➖     |
+| PageTransitionEvent                   | ➖     |
+| PannerNode                            | ➖     |
+| ParentNode                            | ➖     |
+| Path2D                                | ➖     |
+| PaymentMethodChangeEvent              | ➖     |
+| PaymentRequest                        | ➖     |
+| PaymentRequestUpdateEvent             | ➖     |
+| PaymentResponse                       | ➖     |
+| Performance                           | ➖     |
+| PerformanceEventTiming                | ➖     |
+| PerformanceMark                       | ➖     |
+| PerformanceMeasure                    | ➖     |
+| PerformanceNavigationTiming           | ➖     |
+| PerformancePaintTiming                | ➖     |
+| PerformanceResourceTiming             | ➖     |
+| PermissionStatus                      | ➖     |
+| PictureInPictureEvent                 | ➖     |
+| PictureInPictureWindow                | ➖     |
+| PointerEvent                          | ➖     |
+| PopStateEvent                         | ➖     |
+| PromiseRejectionEvent                 | ➖     |
+| PublicKeyCredential                   | ➖     |
+| RTCDTMFSender                         | ➖     |
+| RTCDTMFToneChangeEvent                | ➖     |
+| RTCDataChannel                        | ➖     |
+| RTCDataChannelEvent                   | ➖     |
+| RTCDtlsTransport                      | ➖     |
+| RTCError                              | ➖     |
+| RTCErrorEvent                         | ➖     |
+| RTCIceTransport                       | ➖     |
+| RTCPeerConnection                     | ➖     |
+| RTCPeerConnectionIceErrorEvent        | ➖     |
+| RTCPeerConnectionIceEvent             | ➖     |
+| RTCSctpTransport                      | ➖     |
+| RTCTrackEvent                         | ➖     |
+| RadioNodeList                         | ➖     |
+| Range                                 | ➖     |
+| ReadableStreamBYOBReader              | ➖     |
+| RemotePlayback                        | ➖     |
+| Request                               | ➖     |
+| Response                              | ➖     |
+| SVGAnimateElement                     | ➖     |
+| SVGAnimateMotionElement               | ➖     |
+| SVGAnimateTransformElement            | ➖     |
+| SVGCircleElement                      | ➖     |
+| SVGClipPathElement                    | ➖     |
+| SVGComponentTransferFunctionElement   | ➖     |
+| SVGDefsElement                        | ➖     |
+| SVGDescElement                        | ➖     |
+| SVGEllipseElement                     | ➖     |
+| SVGFEDistantLightElement              | ➖     |
+| SVGFEFuncAElement                     | ➖     |
+| SVGFEFuncBElement                     | ➖     |
+| SVGFEFuncGElement                     | ➖     |
+| SVGFEFuncRElement                     | ➖     |
+| SVGFEMergeNodeElement                 | ➖     |
+| SVGFEPointLightElement                | ➖     |
+| SVGFESpotLightElement                 | ➖     |
+| SVGForeignObjectElement               | ➖     |
+| SVGGElement                           | ➖     |
+| SVGGeometryElement                    | ➖     |
+| SVGLineElement                        | ➖     |
+| SVGLinearGradientElement              | ➖     |
+| SVGMaskElement                        | ➖     |
+| SVGMetadataElement                    | ➖     |
+| SVGPathElement                        | ➖     |
+| SVGRadialGradientElement              | ➖     |
+| SVGRectElement                        | ➖     |
+| SVGSetElement                         | ➖     |
+| SVGStopElement                        | ➖     |
+| SVGSwitchElement                      | ➖     |
+| SVGTSpanElement                       | ➖     |
+| SVGTextContentElement                 | ➖     |
+| SVGTextElement                        | ➖     |
+| SVGTextPositioningElement             | ➖     |
+| SVGTitleElement                       | ➖     |
+| ScreenOrientation                     | ➖     |
+| ScriptProcessorNode                   | ➖     |
+| SecurityPolicyViolationEvent          | ➖     |
+| ServiceWorkerContainer                | ➖     |
+| ServiceWorkerRegistration             | ➖     |
+| SourceBuffer                          | ➖     |
+| SourceBufferList                      | ➖     |
+| SpeechSynthesis                       | ➖     |
+| SpeechSynthesisErrorEvent             | ➖     |
+| SpeechSynthesisEvent                  | ➖     |
+| SpeechSynthesisUtterance              | ➖     |
+| StaticRange                           | ➖     |
+| StereoPannerNode                      | ➖     |
+| StorageEvent                          | ➖     |
+| SubmitEvent                           | ➖     |
+| TextDecoder                           | ➖     |
+| TextEncoder                           | ➖     |
+| TextTrack                             | ➖     |
+| TextTrackCue                          | ➖     |
+| TextTrackList                         | ➖     |
+| TouchEvent                            | ➖     |
+| TrackEvent                            | ➖     |
+| TransitionEvent                       | ➖     |
+| UIEvent                               | ➖     |
+| VTTCue                                | ➖     |
+| VisualViewport                        | ➖     |
+| WaveShaperNode                        | ➖     |
+| WebGLContextEvent                     | ➖     |
+| WebSocket                             | ➖     |
+| WheelEvent                            | ➖     |
+| XMLDocument                           | ➖     |
+| XMLHttpRequest                        | ➖     |
+| XMLHttpRequestEventTarget             | ➖     |
+| XMLHttpRequestUpload                  | ➖     |
+| XPathEvaluator                        | ➖     |
 
-#### HTML
+#### HTML (80)
 
 | Name                       | Tests |
 |----------------------------|-------|
-| HTMLAllCollection          | 🛑    |
-| HTMLAnchorElement          | 🛑    |
-| HTMLAreaElement            | 🛑    |
-| HTMLAudioElement           | 🛑    |
-| HTMLBRElement              | 🛑    |
-| HTMLBaseElement            | 🛑    |
-| HTMLBodyElement            | 🛑    |
-| HTMLButtonElement          | 🛑    |
-| HTMLCanvasElement          | 🛑    |
-| HTMLCollection             | 🛑    |
-| HTMLDListElement           | 🛑    |
-| HTMLDataElement            | 🛑    |
-| HTMLDataListElement        | 🛑    |
-| HTMLDetailsElement         | 🛑    |
-| HTMLDialogElement          | 🛑    |
-| HTMLDivElement             | 🛑    |
-| HTMLElement                | 🛑    |
-| HTMLEmbedElement           | 🛑    |
-| HTMLFieldSetElement        | 🛑    |
-| HTMLFormControlsCollection | 🛑    |
-| HTMLFormElement            | 🛑    |
-| HTMLHRElement              | 🛑    |
-| HTMLHeadElement            | 🛑    |
-| HTMLHeadingElement         | 🛑    |
-| HTMLHtmlElement            | 🛑    |
-| HTMLIFrameElement          | 🛑    |
-| HTMLImageElement           | 🛑    |
-| HTMLInputElement           | 🛑    |
-| HTMLLIElement              | 🛑    |
-| HTMLLabelElement           | 🛑    |
-| HTMLLegendElement          | 🛑    |
-| HTMLLinkElement            | 🛑    |
-| HTMLMapElement             | 🛑    |
-| HTMLMediaElement           | 🛑    |
-| HTMLMenuElement            | 🛑    |
-| HTMLMetaElement            | 🛑    |
-| HTMLMeterElement           | 🛑    |
-| HTMLModElement             | 🛑    |
-| HTMLOListElement           | 🛑    |
-| HTMLObjectElement          | 🛑    |
-| HTMLOptGroupElement        | 🛑    |
-| HTMLOptionElement          | 🛑    |
-| HTMLOptionsCollection      | 🛑    |
-| HTMLOutputElement          | 🛑    |
-| HTMLParagraphElement       | 🛑    |
-| HTMLPictureElement         | 🛑    |
-| HTMLPreElement             | 🛑    |
-| HTMLProgressElement        | 🛑    |
-| HTMLQuoteElement           | 🛑    |
-| HTMLScriptElement          | 🛑    |
-| HTMLSelectElement          | 🛑    |
-| HTMLSlotElement            | 🛑    |
-| HTMLSourceElement          | 🛑    |
-| HTMLSpanElement            | 🛑    |
-| HTMLStyleElement           | 🛑    |
-| HTMLTableCaptionElement    | 🛑    |
-| HTMLTableCellElement       | 🛑    |
-| HTMLTableColElement        | 🛑    |
-| HTMLTableElement           | 🛑    |
-| HTMLTableRowElement        | 🛑    |
-| HTMLTableSectionElement    | 🛑    |
-| HTMLTemplateElement        | 🛑    |
-| HTMLTextAreaElement        | 🛑    |
-| HTMLTimeElement            | 🛑    |
-| HTMLTitleElement           | 🛑    |
-| HTMLTrackElement           | 🛑    |
-| HTMLUListElement           | 🛑    |
-| HTMLUnknownElement         | 🛑    |
-| HTMLVideoElement           | 🛑    |
+| HTMLDirectoryElement       | ➖     | 
+| HTMLDocument               | ➖     | 
+| HTMLFontElement            | ➖     | 
+| HTMLFrameElement           | ➖     | 
+| HTMLMarqueeElement         | ➖     | 
+| HTMLParamElement           | ➖     | 
+| HTMLTableDataCellElement   | ➖     | 
+| HTMLTableHeaderCellElement | ➖     | 
+| HTMLAllCollection          | ➖     | 
+| HTMLCollectionBase         | ➖     | 
+| HTMLHyperlinkElementUtils  | ➖     | 
+| HTMLOrSVGElement           | ➖     | 
+| HTMLAnchorElement          | ➖     | 
+| HTMLAreaElement            | ➖     | 
+| HTMLAudioElement           | ➖     | 
+| HTMLBRElement              | ➖     | 
+| HTMLBaseElement            | ➖     | 
+| HTMLBodyElement            | ➖     | 
+| HTMLButtonElement          | ➖     | 
+| HTMLCanvasElement          | ➖     | 
+| HTMLCollection             | ➖     | 
+| HTMLDListElement           | ➖     | 
+| HTMLDataElement            | ➖     | 
+| HTMLDataListElement        | ➖     | 
+| HTMLDetailsElement         | ➖     | 
+| HTMLDialogElement          | ➖     | 
+| HTMLDivElement             | ➖     | 
+| HTMLElement                | ➖     | 
+| HTMLEmbedElement           | ➖     | 
+| HTMLFieldSetElement        | ➖     | 
+| HTMLFormControlsCollection | ➖     | 
+| HTMLFormElement            | ➖     | 
+| HTMLHRElement              | ➖     | 
+| HTMLHeadElement            | ➖     | 
+| HTMLHeadingElement         | ➖     | 
+| HTMLHtmlElement            | ➖     | 
+| HTMLIFrameElement          | ➖     | 
+| HTMLImageElement           | ➖     | 
+| HTMLInputElement           | ➖     | 
+| HTMLLIElement              | ➖     | 
+| HTMLLabelElement           | ➖     | 
+| HTMLLegendElement          | ➖     | 
+| HTMLLinkElement            | ➖     | 
+| HTMLMapElement             | ➖     | 
+| HTMLMediaElement           | ➖     | 
+| HTMLMenuElement            | ➖     | 
+| HTMLMetaElement            | ➖     | 
+| HTMLMeterElement           | ➖     | 
+| HTMLModElement             | ➖     | 
+| HTMLOListElement           | ➖     | 
+| HTMLObjectElement          | ➖     | 
+| HTMLOptGroupElement        | ➖     | 
+| HTMLOptionElement          | ➖     | 
+| HTMLOptionsCollection      | ➖     | 
+| HTMLOutputElement          | ➖     | 
+| HTMLParagraphElement       | ➖     | 
+| HTMLPictureElement         | ➖     | 
+| HTMLPreElement             | ➖     | 
+| HTMLProgressElement        | ➖     | 
+| HTMLQuoteElement           | ➖     | 
+| HTMLScriptElement          | ➖     | 
+| HTMLSelectElement          | ➖     | 
+| HTMLSlotElement            | ➖     | 
+| HTMLSourceElement          | ➖     | 
+| HTMLSpanElement            | ➖     | 
+| HTMLStyleElement           | ➖     | 
+| HTMLTableCaptionElement    | ➖     | 
+| HTMLTableCellElement       | ➖     | 
+| HTMLTableColElement        | ➖     | 
+| HTMLTableElement           | ➖     | 
+| HTMLTableRowElement        | ➖     | 
+| HTMLTableSectionElement    | ➖     | 
+| HTMLTemplateElement        | ➖     | 
+| HTMLTextAreaElement        | ➖     | 
+| HTMLTimeElement            | ➖     | 
+| HTMLTitleElement           | ➖     | 
+| HTMLTrackElement           | ➖     | 
+| HTMLUListElement           | ➖     | 
+| HTMLUnknownElement         | ➖     | 
+| HTMLVideoElement           | ➖     | 
 
 
 [Повернутись до змісту](#-зміст)

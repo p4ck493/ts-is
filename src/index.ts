@@ -1,6 +1,6 @@
-import { proxyGenerator } from './engine/proxy/generator';
+import { proxyGenerator } from './proxy/generator';
 import { registerInIsDecorator } from './decorators/register-in-is.decorator';
-import { AllMethodsInterface } from './engine/methods';
+import { AllMethodsInterface } from './methods';
 
 export const RegisterInIs = registerInIsDecorator;
 

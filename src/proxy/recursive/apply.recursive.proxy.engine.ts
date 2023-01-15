@@ -2,7 +2,7 @@ import {
   CommandMixType,
   CommandType,
   ParamsProxyEngineInterface,
-} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
 import { InstanceofMethod } from '../../methods/instanceof.method';
 import { BooleanMethod } from '../../methods/boolean.method';
 import { StringMethod } from '../../methods/string.method';

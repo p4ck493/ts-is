@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "The package for check some data in typescript and javascript.",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -14,7 +14,7 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jest.config.json",
     "dev": "microbundle watch",
     "build": "microbundle",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -44,17 +44,17 @@
   "author": "p4ck493",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "29.2.4",
+    "@types/jest": "^29.2.5",
     "codelyzer": "6.0.2",
-    "jest": "29.3.1",
+    "jest": "^29.3.1",
     "jest-html-reporters": "3.0.11",
     "microbundle": "0.15.1",
     "prettier": "2.8.0",
-    "ts-jest": "29.0.3",
+    "ts-jest": "^29.0.3",
     "ts-loader": "9.4.2",
     "tslint": "6.1.3",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "4.9.3"
+    "typescript": "^4.9.3"
   },
   "contributors": [
     {
@@ -62,24 +62,5 @@
       "url": "https://github.com/karbashevskyi",
       "githubUsername": "karbashevskyi"
     }
-  ],
-  "jest": {
-    "verbose": false,
-    "preset": "ts-jest",
-    "testPathIgnorePatterns": [
-      "<rootDir>/.git/",
-      "<rootDir>/.DS_Store/",
-      "<rootDir>/.vs/",
-      "<rootDir>/.vscode/",
-      "<rootDir>/dist/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/src/"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "<rootDir>/tsconfig.test.json",
-        "stringifyContentPathRegex": "\\.html$"
-      }
-    }
-  }
+  ]
 }

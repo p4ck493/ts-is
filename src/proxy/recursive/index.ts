@@ -3,7 +3,7 @@ import { proxyRecursiveApply } from './apply.recursive.proxy.engine';
 import {
   CommandMixType,
   ParamsProxyEngineInterface,
-} from '../../../interfaces/engine/proxy/params.proxy.engine.interface';
+} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 

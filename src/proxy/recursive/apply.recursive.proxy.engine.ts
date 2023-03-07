@@ -120,7 +120,7 @@ function convertStringListToDecideList(
           // If we don't have "not" before "or" then we need to have only one positive
           if (indexNot < 0) { // Not found "not"
             indexNot = list.indexOf('not', index + 3);
-            if (result === true) {
+            if (result) {
               if (indexNot < 0) { // Not found "not"
                 return true;
               } else { // Found "not"
@@ -133,7 +133,7 @@ function convertStringListToDecideList(
               index = index + 1;
             }
           } else { // Found "not"
-            if (result === true) {
+            if (result) {
               return false;
             } else {
               // Example #5
@@ -143,14 +143,14 @@ function convertStringListToDecideList(
         } else {
           // If "not" not found and result is false
           if (indexNot < 0) {
-            if (result === false) {
-              return false;
-            } else {
+            if (result) {
               indexNot = list.indexOf('not', index + 1);
               if (indexNot >= 0) {
                 // Example #6
                 index = indexNot;
               }
+            } else {
+              return false;
             }
           }
         }

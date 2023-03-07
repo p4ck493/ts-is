@@ -1,5 +1,5 @@
-export type CommandType = (...rest: any) => boolean;
-export type CommandMixType = CommandType | 'not' | 'or' | 'apply' | 'call';
+import {CommandMixType} from '../../../types/commands.type';
+
 export interface ParamsProxyEngineInterface {
   commandList: CommandMixType[];
 }

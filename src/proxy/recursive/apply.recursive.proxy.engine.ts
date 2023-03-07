@@ -1,9 +1,6 @@
-import {
-  CommandMixType,
-  CommandType,
-  ParamsProxyEngineInterface,
-} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { InstanceofMethod } from '../../methods/instanceof.method';
+import {ParamsProxyEngineInterface,} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {InstanceofMethod} from '../../methods/instanceof.method';
+import {CommandMixType, CommandType} from '../../types/commands.type';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
@@ -117,6 +114,11 @@ function convertStringListToDecideList(
   return convertResult;
 }
 
+/**
+ *
+ * @param list [boolean, 0, [boolean, boolean]]
+ * @param indexNot number
+ */
 function decideResult({ list, indexNot }: convertResultType): boolean {
   let index = 0;
   let result = false;

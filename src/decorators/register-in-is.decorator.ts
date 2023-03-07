@@ -2,8 +2,8 @@ import {
   registerInIsArgumentDecoratorType,
   registerInIsConstructorDecoratorType,
 } from '../types/decorators/register-in-is.decorator.type';
-import {RegisterInIsDecoratorInterface} from '../interfaces/decorators/register-in-is.decorator.interface';
-import {predefinedMethods} from '../methods';
+import { RegisterInIsDecoratorInterface } from '../interfaces/decorators/register-in-is.decorator.interface';
+import { predefinedMethods } from '../methods';
 
 export function registerInIsDecorator(configuration?: RegisterInIsDecoratorInterface): any {
   return (constructor: registerInIsConstructorDecoratorType): void => {

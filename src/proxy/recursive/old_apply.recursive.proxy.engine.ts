@@ -5,7 +5,7 @@ import {CommandMixType, CommandType} from '../../types/commands.type';
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
     try {
-      return convertStringListToDecideList(params.commandList, argumentList);
+      return decideResult(convertStringListToDecideList(params.commandList, argumentList));
     } catch (e) {
       if (InstanceofMethod(e, SyntaxError)) {
         throw e;
@@ -58,10 +58,15 @@ function getResult(command: CommandType | string, argumentList: unknown[], conte
   }
 }
 
+type convertResultType = {
+  list: (boolean | number | boolean[])[];
+  indexNot: number;
+};
+
 function convertStringListToDecideList(
   list: ParamsProxyEngineInterface['commandList'],
   argumentList: unknown[],
-): boolean {
+): convertResultType {
   const lastCommand = list.pop() as CommandMixType;
   let context: any = {};
 
@@ -83,80 +88,62 @@ function convertStringListToDecideList(
       list.push(lastCommand);
   }
 
-  let indexNot: number = -1;
+  const convertResult: convertResultType = {
+    list: [],
+    indexNot: -1,
+  };
   let result: boolean;
 
-  for (let index = 0; index < list.length; index++) {
-    // Find "not" in array
-    if (list[index] === 'not') {
-      if (indexNot < 0) { // Check if indexNot was found
-        indexNot = index;
-      } else { // Found more than one "not"
-        throw new Error('Please, use only one "not"');
-      }
-    } else {
-      /**
-       * Examples:
-       * 1. [v] is.object()
-       * 2. [v] is.not.object()
-       * 3. [v] is.object.empty()
-       * 4. [v] is.object.or.string()
-       * 5. [v] is.not.object.or.string()
-       * 6. [v] is.object.not.empty.or.null({a: 1})
-       * 7. [v] is.null.or.undefined.or.empty()
-       * 8. [v] is.object.or.string.not.empty()
-       */
-
-      result = getResult(list[index], argumentList, context);
-      if (list.length - 1 === index) { // Is last interaction
-        // Negative cases for examples #1 and #2.
-        // And
-        // Success cases for examples: #1, #2, #3.
-        return indexNot < 0 ? result : !result;
-      } else {
-        // Negative case for example #3.
-        if (list[index + 1] === 'or') {
-          // If we have "not" before "or" then we need to have only one negative result
-          // If we don't have "not" before "or" then we need to have only one positive
-          if (indexNot < 0) { // Not found "not"
-            indexNot = list.indexOf('not', index + 3);
-            if (result === true) {
-              if (indexNot < 0) { // Not found "not"
-                return true;
-              } else { // Found "not"
-                // Continue but now the index is next to indexNot.
-                index = indexNot;
-              }
-            } else {
-              // Continue but now the index is +2, for example #7 is now on the "undefined" method, on the next step is
-              // "empty" command (if value is: 1 or {a: 1})
-              index = index + 1;
-            }
-          } else { // Found "not"
-            if (result === true) {
-              return false;
-            } else {
-              // Example #5
-              index = index + 1;
-            }
-          }
+  // Build list of boolean and number of "not"
+  for (let i = 0; i < list.length; i++) {
+    switch (list[i]) {
+      case 'not':
+        convertResult.indexNot = convertResult.list.push(0) - 1;
+        continue;
+      case 'or':
+        const lastItem: boolean | number | boolean[] | undefined = convertResult.list.at(-1);
+        result = getResult(list[i + 1], argumentList, context);
+        if (Array.isArray(lastItem)) {
+          lastItem.push(result);
         } else {
-          // If "not" not found and result is false
-          if (indexNot < 0) {
-            if (result === false) {
-              return false;
-            } else {
-              indexNot = list.indexOf('not', index + 1);
-              if (indexNot >= 0) {
-                // Example #6
-                index = indexNot;
-              }
-            }
-          }
+          convertResult.list[convertResult.list.length - 1] = [lastItem as boolean, result];
+        }
+        i++;
+        continue;
+      default:
+        result = getResult(list[i], argumentList, context);
+        convertResult.list.push(result);
+    }
+  }
+  return convertResult;
+}
+
+/**
+ *
+ * @param list [boolean, 0, [boolean, boolean]]
+ * @param indexNot number
+ */
+function decideResult({ list, indexNot }: convertResultType): boolean {
+  let index = 0;
+  let result = false;
+
+  for (let curr of list) {
+    if (indexNot !== index) {
+      if (Array.isArray(curr)) {
+        curr = curr.some((t) => t);
+      }
+      if (index > indexNot && indexNot > -1) {
+        curr = !curr;
+      }
+      if (typeof curr === 'boolean') {
+        if (curr) {
+          result = curr;
+        } else {
+          return false;
         }
       }
     }
+    index++;
   }
-  return true;
+  return result;
 }
-

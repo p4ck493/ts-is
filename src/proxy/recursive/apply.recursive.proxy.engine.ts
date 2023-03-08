@@ -1,11 +1,11 @@
-import {ParamsProxyEngineInterface,} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
 import {InstanceofMethod} from '../../methods/instanceof.method';
 import {CommandMixType, CommandType} from '../../types/commands.type';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
     return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
         try {
-            return convertStringListToDecideList(params.commandList, argumentList);
+            return getDecide(params.commandList, argumentList);
         } catch (e) {
             if (InstanceofMethod(e, SyntaxError)) {
                 throw e;
@@ -17,26 +17,23 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
 
 function findInGlobalContext(command: string): string | CommandType {
     if (Reflect.has(globalThis ?? {}, command)) {
-        if (typeof (globalThis as any)[command] === 'function') {
-            return (globalThis as any)[command];
+        if (typeof globalThis[command] === 'function') {
+            return globalThis[command];
         }
     }
-
     if (Reflect.has(self ?? {}, command)) {
-        if (typeof (self as any)[command] === 'function') {
-            return (self as any)[command];
+        if (typeof self[command] === 'function') {
+            return self[command];
         }
     }
-
     if (Reflect.has(window ?? {}, command)) {
-        if (typeof (window as any)[command] === 'function') {
-            return (window as any)[command];
+        if (typeof window[command] === 'function') {
+            return window[command];
         }
     }
-
     if (Reflect.has(global ?? {}, command)) {
-        if (typeof (global as any)[command] === 'function') {
-            return (global as any)[command];
+        if (typeof global[command] === 'function') {
+            return global[command];
         }
     }
     return command;
@@ -45,23 +42,21 @@ function findInGlobalContext(command: string): string | CommandType {
 function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
     if (typeof command === 'string') {
         command = findInGlobalContext(command);
-        return typeof command === 'string'
-            ? false
-            : InstanceofMethod.apply({}, [argumentList[0], command as unknown as any]);
+        if (typeof command === 'string') {
+            return false;
+        }
     } else {
         const result: any = command.apply(context, argumentList);
         if (typeof result === 'boolean') {
             return result;
         } else {
-            return InstanceofMethod.apply({}, [argumentList[0], result.classRef]);
+            command = result.classRef;
         }
     }
+    return InstanceofMethod.apply({}, [argumentList[0], command as unknown as any]);
 }
 
-function convertStringListToDecideList(
-    list: ParamsProxyEngineInterface['commandList'],
-    argumentList: unknown[],
-): boolean {
+function getDecide(list: ParamsProxyEngineInterface['commandList'], argumentList: unknown[]): boolean {
     const lastCommand = list.pop() as CommandMixType;
     let context: any = {};
 
@@ -103,11 +98,12 @@ function convertStringListToDecideList(
          * 8. [v] is.object.or.string.not.empty()
          */
         result = getResult(list[index], argumentList, context);
-        if (list.length - 1 === index) { // Is last interaction
+        if (list.length - 1 === index) {
+            // Is last interaction
             // Negative cases for examples #1 and #2.
             // And
             // Success cases for examples: #1, #2, #3.
-            return (foundIndexNot && index > indexNot) ? !result : result;
+            return foundIndexNot && index > indexNot ? !result : result;
         } else {
             // Negative case for example #3.
             if (list[index + 1] === 'or') {
@@ -140,4 +136,3 @@ function convertStringListToDecideList(
     }
     return true;
 }
-

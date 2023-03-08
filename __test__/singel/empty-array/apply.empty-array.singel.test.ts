@@ -1,4 +1,4 @@
-import {is} from '../../../src';
+import {is} from '../../../dist';
 import {dataForBadTesting, dataForGoodCaseTesting, dataForGoodTesting} from './fixtures';
 
 

@@ -11,7 +11,7 @@ export function proxyGeneratorGet(): proxyGeneratorGetType {
       return undefined as any;
     }
     if (['valueOf', 'toString'].includes(name)) {
-      return (packageName[name as any] as any).bind(packageName);
+      return packageName[name].bind(packageName);
     }
     return proxyRecursive(target, name, {
       commandList: [],

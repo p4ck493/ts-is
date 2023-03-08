@@ -1,16 +1,11 @@
-import {
-  CommandMixType,
-  CommandType,
-  ParamsProxyEngineInterface,
-} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import { ParamsProxyEngineInterface } from '../../interfaces/engine/proxy/params.proxy.engine.interface';
 import { InstanceofMethod } from '../../methods/instanceof.method';
-import { BooleanMethod } from '../../methods/boolean.method';
-import { StringMethod } from '../../methods/string.method';
+import { CommandMixType, CommandType } from '../../types/commands.type';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
     try {
-      return decideResult(convertStringListToDecideList(params.commandList, argumentList));
+      return getDecide(params.commandList, argumentList);
     } catch (e) {
       if (InstanceofMethod(e, SyntaxError)) {
         throw e;
@@ -20,54 +15,48 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
   };
 }
 
-function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
-  if (StringMethod(command)) {
-    if (Reflect.has(globalThis ?? {}, command)) {
-      if (typeof (globalThis as any)[command] === 'function') {
-        return InstanceofMethod.apply({}, [argumentList[0], (globalThis as any)[command]]);
-      }
-    }
-
-    if (Reflect.has(self ?? {}, command)) {
-      if (typeof (self as any)[command] === 'function') {
-        return InstanceofMethod.apply({}, [argumentList[0], (self as any)[command]]);
-      }
-    }
-
-    if (Reflect.has(window ?? {}, command)) {
-      if (typeof (window as any)[command] === 'function') {
-        return InstanceofMethod.apply({}, [argumentList[0], (window as any)[command]]);
-      }
-    }
-
-    if (Reflect.has(global ?? {}, command)) {
-      if (typeof (global as any)[command] === 'function') {
-        return InstanceofMethod.apply({}, [argumentList[0], (global as any)[command]]);
-      }
-    }
-
-    return false;
-  } else {
-    const result: any = command.apply(context, argumentList);
-    if (BooleanMethod(result)) {
-      return result;
-    } else {
-      return InstanceofMethod.apply({}, [argumentList[0], result.classRef]);
-    }
+function findInGlobalContext(command: string): string | CommandType {
+  if (typeof (globalThis ?? {})[command] === 'function') {
+    return globalThis[command];
   }
+  if (typeof (self ?? {})[command] === 'function') {
+    return self[command];
+  }
+  if (typeof (window ?? {})[command] === 'function') {
+    return window[command];
+  }
+  if (typeof (global ?? {})[command] === 'function') {
+    return global[command];
+  }
+  return command;
 }
 
-type convertResultType = {
-  list: (boolean | number | boolean[])[];
-  indexNot: number;
-};
+function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
+  if (typeof command === 'string') {
+    command = findInGlobalContext(command);
+    if (typeof command === 'string') {
+      return false;
+    }
+  } else {
+    const result: any = command.apply(context, argumentList);
+    if (typeof result === 'boolean') {
+      return result;
+    } else {
+      command = result.classRef;
+    }
+  }
+  return InstanceofMethod.apply({}, [argumentList[0], command as unknown as any]);
+}
 
-function convertStringListToDecideList(
-  list: ParamsProxyEngineInterface['commandList'],
-  argumentList: unknown[],
-): convertResultType {
+function getDecide(list: ParamsProxyEngineInterface['commandList'], argumentList: unknown[]): boolean {
   const lastCommand = list.pop() as CommandMixType;
   let context: any = {};
+
+  const indexNot: number = list.indexOf('not');
+  const foundIndexNot: boolean = indexNot > -1;
+  let result: boolean;
+
+  // Config variables of initialize data
   switch (lastCommand) {
     case 'apply':
       context = argumentList[0];
@@ -85,55 +74,57 @@ function convertStringListToDecideList(
       list.push(lastCommand);
   }
 
-  const convertResult: convertResultType = {
-    list: [],
-    indexNot: -1,
-  };
-  let result: boolean;
-  for (let i = 0; i < list.length; i++) {
-    switch (list[i]) {
-      case 'not':
-        convertResult.indexNot = convertResult.list.push(0) - 1;
-        continue;
-      case 'or':
-        const lastItem: boolean | number | boolean[] | undefined = convertResult.list.at(-1);
-        result = getResult(list[i + 1], argumentList, context);
-        if (Array.isArray(lastItem)) {
-          lastItem.push(result);
-        } else {
-          convertResult.list[convertResult.list.length - 1] = [lastItem as boolean, result];
-        }
-        i++;
-        continue;
-      default:
-        result = getResult(list[i], argumentList, context);
-        convertResult.list.push(result);
+  for (let index = 0; index < list.length; index++) {
+    if (indexNot === index) {
+      continue;
     }
-  }
-  return convertResult;
-}
-
-function decideResult({ list, indexNot }: convertResultType): boolean {
-  let index = 0;
-  let result = false;
-
-  for (let curr of list) {
-    if (indexNot !== index) {
-      if (Array.isArray(curr)) {
-        curr = curr.some((t) => t);
-      }
-      if (index > indexNot && indexNot > -1) {
-        curr = !curr;
-      }
-      if (typeof curr === 'boolean') {
-        if (curr) {
-          result = curr;
+    /**
+     * Examples:
+     * 1. [v] is.object()
+     * 2. [v] is.not.object()
+     * 3. [v] is.object.empty()
+     * 4. [v] is.object.or.string()
+     * 5. [v] is.not.object.or.string()
+     * 6. [v] is.object.not.empty.or.null({a: 1})
+     * 7. [v] is.null.or.undefined.or.empty()
+     * 8. [v] is.object.or.string.not.empty()
+     */
+    result = getResult(list[index], argumentList, context);
+    if (list.length - 1 === index) {
+      // Is last interaction
+      // Negative cases for examples #1 and #2.
+      // And
+      // Success cases for examples: #1, #2, #3.
+      return foundIndexNot && index > indexNot ? !result : result;
+    } else {
+      // Negative case for example #3.
+      if (list[index + 1] === 'or') {
+        // If we have "not" before "or" then we need to have only one negative result
+        // If we don't have "not" before "or" then we need to have only one positive
+        if (result) {
+          if (foundIndexNot) {
+            if (index > indexNot) {
+              return false;
+            } else {
+              index = indexNot;
+            }
+          } else {
+            return true;
+          }
+        } else {
+          index = index + 1;
+        }
+      } else {
+        if (result) {
+          if (foundIndexNot) {
+            // Example #6
+            index = indexNot;
+          }
         } else {
           return false;
         }
       }
     }
-    index++;
   }
-  return result;
+  return true;
 }

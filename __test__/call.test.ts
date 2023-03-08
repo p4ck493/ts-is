@@ -1,4 +1,4 @@
-import {is} from '../src';
+import {is} from '../dist';
 // function* generator(i: number) {
 //     yield i;
 //     yield i + 10;

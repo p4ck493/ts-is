@@ -1,14 +1,8 @@
 # ts-is
-
 ![NPM Latest Version](https://img.shields.io/npm/v/@p4ck493/ts-is)
 ![Downloads Count](https://img.shields.io/npm/dm/@p4ck493/ts-is.svg)
 ![Bundle Size](https://packagephobia.now.sh/badge?p=@p4ck493/ts-is)
-![Last Update Date](https://img.shields.io/github/last-commit/p4ck493/ts-is)
-![Project License](https://img.shields.io/github/license/p4ck493/ts-is)
-![Issues](https://img.shields.io/github/issues/p4ck493/ts-is)
-![Forks](https://img.shields.io/github/forks/p4ck493/ts-is)
 ![Stars](https://img.shields.io/github/stars/p4ck493/ts-is)
-![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fp4ck493%2Fts-is)
 
 ## 🌍 Languages
 

@@ -16,25 +16,17 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
 }
 
 function findInGlobalContext(command: string): string | CommandType {
-    if (Reflect.has(globalThis ?? {}, command)) {
-        if (typeof globalThis[command] === 'function') {
-            return globalThis[command];
-        }
+    if (typeof (globalThis ?? {})[command] === 'function') {
+        return globalThis[command];
     }
-    if (Reflect.has(self ?? {}, command)) {
-        if (typeof self[command] === 'function') {
-            return self[command];
-        }
+    if (typeof (self ?? {})[command] === 'function') {
+        return self[command];
     }
-    if (Reflect.has(window ?? {}, command)) {
-        if (typeof window[command] === 'function') {
-            return window[command];
-        }
+    if (typeof (window ?? {})[command] === 'function') {
+        return window[command];
     }
-    if (Reflect.has(global ?? {}, command)) {
-        if (typeof global[command] === 'function') {
-            return global[command];
-        }
+    if (typeof (global ?? {})[command] === 'function') {
+        return global[command];
     }
     return command;
 }

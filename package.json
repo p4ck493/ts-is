@@ -35,6 +35,8 @@
   "homepage": "https://github.com/p4ck493/ts-is#readme",
   "keywords": [
     "Check Data",
+    "Validate data",
+    "is",
     "TypeScript",
     "JavaScript",
     "Proxy",

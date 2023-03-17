@@ -1,12 +1,10 @@
-
-
-export const dataForGoodTesting: {value: any}[] = [
+export const dataForGoodTesting: { value: any }[] = [
     {
         value: 0
     },
 ];
 
-export const dataForBadTesting: {value: any}[] = [
+export const dataForBadTesting: { value: any }[] = [
     {
         value: 'undefined'
     },
@@ -50,7 +48,8 @@ export const dataForBadTesting: {value: any}[] = [
         value: Function
     },
     {
-        value: () => {}
+        value: () => {
+        }
     },
     {
         value: BigInt
@@ -60,5 +59,11 @@ export const dataForBadTesting: {value: any}[] = [
     },
     {
         value: NaN
+    },
+    {
+        value: Infinity
+    },
+    {
+        value: -Infinity
     },
 ];

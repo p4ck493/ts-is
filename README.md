@@ -56,6 +56,7 @@ if (is.object.not.empty(variable)) {
   - [CDN](#-cdn)
   - [Usage](#-usage)
     - [Example](#examples)
+      - [Syntax](#syntax)
       - [Methods](#methods)
       - [Methods with connection](#methods-with-connection)
       - [Methods with wrappers](#methods-with-wrappers)
@@ -70,8 +71,8 @@ if (is.object.not.empty(variable)) {
   - [New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.](#new-methods-that-are-available-through-the-package-but-which-are-only-declared-in-the-package-but-actually-take-data-from-outside-the-package)
     - [General (841 methods)](#generale--841-methods-)
     - [HTML (80 methods)](#html--80-methods-)
-  - [Contributing](#-contributing)
   - [Additional](#-additional)
+  - [Contributing](#-contributing)
   - [Authors](#-authors)
   - [License](#-license)
 

@@ -41,36 +41,38 @@ export type ConvertTypeToGenericInstanceOf<T> = {
   [key in keyof T]: instanceofTypeMix<T[key]>;
 };
 
+// A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z.
+
 export const predefinedMethods = {
   array: ArrayMethod,
+  asyncFunction: AsyncFunctionMethod,
   bigInt: BigIntMethod,
   boolean: BooleanMethod,
   compare: CompareMethod,
   empty: EmptyMethod,
   false: FalseMethod,
   falsy: FalsyMethod,
-  instanceof: InstanceofMethod,
   function: FunctionMethod,
-  asyncFunction: AsyncFunctionMethod,
   generatorFunction: GeneratorFunctionMethod,
-  null: NullMethod,
-  positive: PositiveMethod,
+  infinity: InfinityMethod,
+  instanceof: InstanceofMethod,
+  ipv4: Ipv4Method,
+  ipv6: Ipv6Method,
+  macAddress: MacAddressMethod,
   negative: NegativeMethod,
+  null: NullMethod,
   number: NumberMethod,
   object: ObjectMethod,
+  positive: PositiveMethod,
+  primitive: PrimitiveMethod,
+  promise: PromiseMethod,
   string: StringMethod,
   symbol: SymbolMethod,
   true: TrueMethod,
   truthy: TruthyMethod,
   undefined: UndefinedMethod,
-  zero: ZeroMethod,
-  primitive: PrimitiveMethod,
-  promise: PromiseMethod,
-  infinity: InfinityMethod,
-  ipv6: Ipv6Method,
-  ipv4: Ipv4Method,
-  macAddress: MacAddressMethod,
   word: WordMethod,
+  zero: ZeroMethod,
 };
 
 export interface AllMethodsInterface

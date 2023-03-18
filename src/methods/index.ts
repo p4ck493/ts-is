@@ -27,6 +27,8 @@ import {Ipv6Method} from './ipv6.method';
 import {Ipv4Method} from './ipv4.method';
 import {MacAddressMethod} from './mac-address.method';
 import {WordMethod} from './word.method';
+import {OddMethod} from './odd.method';
+import {EvenMethod} from './even.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -50,6 +52,7 @@ export const predefinedMethods = {
   boolean: BooleanMethod,
   compare: CompareMethod,
   empty: EmptyMethod,
+  even: EvenMethod,
   false: FalseMethod,
   falsy: FalsyMethod,
   function: FunctionMethod,
@@ -63,6 +66,7 @@ export const predefinedMethods = {
   null: NullMethod,
   number: NumberMethod,
   object: ObjectMethod,
+  odd: OddMethod,
   positive: PositiveMethod,
   primitive: PrimitiveMethod,
   promise: PromiseMethod,

@@ -433,6 +433,7 @@ stream$.next('false'); // Bad
 | boolean           | ✅     |          |          |
 | compare           | ✅     |          |          |
 | empty             | ✅     |          |          |
+| even              | ✅     |          |          |
 | false             | ✅     |          |          |
 | falsy             | ✅     |          |          |
 | function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
@@ -445,6 +446,7 @@ stream$.next('false'); // Bad
 | null              | ✅     |          |          |
 | number            | ✅     |          |          |
 | object            | ✅     |          |          |
+| odd               | ✅     |          |          |
 | string            | ✅     |          |          |
 | symbol            | ✅     |          |          |
 | true              | ✅     |          |          |

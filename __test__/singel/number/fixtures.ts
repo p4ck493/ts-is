@@ -66,4 +66,10 @@ export const dataForBadTesting: { value: any }[] = [
     {
         value: -Infinity
     },
+    {
+        value: Number.POSITIVE_INFINITY,
+    },
+    {
+        value: Number.NEGATIVE_INFINITY,
+    },
 ];

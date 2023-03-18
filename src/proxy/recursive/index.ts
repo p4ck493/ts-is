@@ -1,7 +1,7 @@
-import { predefinedMethods } from '../../methods';
-import { proxyRecursiveApply } from './apply.recursive.proxy.engine';
-import { ParamsProxyEngineInterface } from '../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { CommandMixType } from '../../types/commands.type';
+import {predefinedMethods} from '../../methods';
+import {proxyRecursiveApply} from './apply.recursive.proxy.engine';
+import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {CommandMixType} from '../../types/commands.type';
 
 type proxyRecursiveGetType = (targetGet: any, nameGet: string) => ReturnType<typeof proxyRecursive>;
 
@@ -18,7 +18,7 @@ export function proxyRecursiveGet(params: ParamsProxyEngineInterface): proxyRecu
  * @param params ParamsProxyEngineInterface
  */
 export function proxyRecursive(target: object | string, name: string, params: ParamsProxyEngineInterface): object {
-  target = getMethod(name);
+  target = predefinedMethods[name] ?? name;
   params.commandList.push(target as CommandMixType);
 
   if (typeof target === 'string') {
@@ -33,8 +33,4 @@ export function proxyRecursive(target: object | string, name: string, params: Pa
     get: proxyRecursiveGet(params),
     apply: proxyRecursiveApply(params),
   });
-}
-
-function getMethod(name: string): CommandMixType | string {
-  return predefinedMethods[name] ?? name;
 }

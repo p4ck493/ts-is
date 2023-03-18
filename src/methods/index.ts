@@ -26,6 +26,7 @@ import {ExternalMethodsInterface} from '../interfaces/methods/external.methods.i
 import {Ipv6Method} from './ipv6.method';
 import {Ipv4Method} from './ipv4.method';
 import {MacAddressMethod} from './mac-address.method';
+import {WordMethod} from './word.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -69,6 +70,7 @@ export const predefinedMethods = {
   ipv6: Ipv6Method,
   ipv4: Ipv4Method,
   macAddress: MacAddressMethod,
+  word: WordMethod,
 };
 
 export interface AllMethodsInterface

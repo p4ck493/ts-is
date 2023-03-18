@@ -451,6 +451,7 @@ stream$.next('false'); // Bad
 | infinity          | ✅     |          |          |
 | undefined         | ✅     |          |          |
 | NaN               | ➖     | DELETED  | isNaN()  |
+| word              | ✅     |          |          |
 | zero              | ✅     |          |          |
 | positive          | ✅     |          |          | Validate if number is more than 0                                                                                    |
 | negative          | ✅     |          |          | Validate if number is less than 0                                                                                    |

@@ -24,6 +24,7 @@ import {InfinityMethod} from './infinity.method';
 import {HTMLElementsMethodsInterface} from '../interfaces/methods/HTML-elements.methods.interface';
 import {ExternalMethodsInterface} from '../interfaces/methods/external.methods.interface';
 import {Ipv6Method} from './ipv6.method';
+import {Ipv4Method} from './ipv4.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -65,6 +66,7 @@ export const predefinedMethods = {
   promise: PromiseMethod,
   infinity: InfinityMethod,
   ipv6: Ipv6Method,
+  ipv4: Ipv4Method,
 };
 
 export interface AllMethodsInterface

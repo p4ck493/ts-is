@@ -25,6 +25,7 @@ import {HTMLElementsMethodsInterface} from '../interfaces/methods/HTML-elements.
 import {ExternalMethodsInterface} from '../interfaces/methods/external.methods.interface';
 import {Ipv6Method} from './ipv6.method';
 import {Ipv4Method} from './ipv4.method';
+import {MacAddressMethod} from './mac-address.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -67,6 +68,7 @@ export const predefinedMethods = {
   infinity: InfinityMethod,
   ipv6: Ipv6Method,
   ipv4: Ipv4Method,
+  macAddress: MacAddressMethod,
 };
 
 export interface AllMethodsInterface

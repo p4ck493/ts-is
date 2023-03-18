@@ -455,8 +455,9 @@ stream$.next('false'); // Bad
 | asyncFunction     | ➖     ||
 | generatorFunction | ➖     ||
 | instanceof        | ✅     |||
-| ipv6              | ✅     |          |          |
 | ipv4              | ✅     |          |          |
+| ipv6              | ✅     |          |          |
+| macAddress        | ✅     |          |          |
 | null              | ✅     |||
 | number            | ✅     |||
 | object            | ✅     |||

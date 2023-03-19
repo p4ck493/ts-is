@@ -40,7 +40,7 @@ if (is.object.not.empty(variable)) {
 3. ✅ Зменшення коду в проєкті.
 4. ✅ Легше читати та розуміти код.
 5. ✅ Підтримка CDN.
-6. ✅ Сумісний із найстарішою версією JavaScript (es3 - EcmaScript 1999).
+6. ✅ Сумісний із найстарішою версією JavaScript (ES6 - ECMAScript 2015).
 7. ✅ Сумісний із найстарішою версією TypeScript (0.8.0).
 8. ✅ Обслуговування глобальних контекстів: globalThis, window, self, global.
 9. ✅ No dependencies

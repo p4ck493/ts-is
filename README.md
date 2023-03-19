@@ -20,12 +20,12 @@
 3. ✅ Reducing the code in the project.
 4. ✅ Easier to read and understand the code.
 5. ✅ CDN support.
-6. ✅ Compatible with the oldest version of TypeScript.
-   1. The package even works with the first published version of typeScript: **0.8.0**.
-7. ✅ Maintenance of global contexts: globalThis, window, self, global.
-8. ✅ No dependencies 
-9. ✅ AMD, Node & browser ready
-10. ✅ Small size: ~3KB.
+6. ✅ Compatible with the oldest version of JavaScript (es3 - EcmaScript 1999).
+7. ✅ Compatible with the oldest version of TypeScript (0.8.0).
+8. ✅ Maintenance of global contexts: globalThis, window, self, global.
+9. ✅ No dependencies 
+10. ✅ AMD, Node & browser ready
+11. ✅ Small size: ~3KB.
     1. The size of the package for building the production version is about **3KB**, and if you use a **CDN** in this case, it is about **5KB**
 
 ## 💡 Idea

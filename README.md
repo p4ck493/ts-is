@@ -6,6 +6,8 @@
 
 ## 🌍 Languages
 
+// TODO update ukraine version and chck odd and even on BitInt
+
 > 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) |
 > 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
@@ -405,7 +407,7 @@ const stream$: Stream<boolean> = new Stream<boolean>();
 
 stream$.pipe(filter(is.boolean)).subscribe(console.log); // true, false
 
-stream$.next([false]); // Bad
+stream$.next([false]); // Bad[README.ua.md](README.ua.md)
 stream$.next(0); // Bad
 
 stream$.next(true); // Good
@@ -433,20 +435,20 @@ stream$.next('false'); // Bad
 | boolean           | ✅     |          |          |
 | compare           | ✅     |          |          |
 | empty             | ✅     |          |          |
-| even              | ✅     |          |          |
+| even              | ✅🆕   |          |          |
 | false             | ✅     |          |          |
 | falsy             | ✅     |          |          |
 | function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
 | asyncFunction     | ➖     |          |
 | generatorFunction | ➖     |          |
 | instanceof        | ✅     |          |          |
-| ipv4              | ✅     |          |          |
-| ipv6              | ✅     |          |          |
-| macAddress        | ✅     |          |          |
+| ipv4              | ✅🆕   |          |          |
+| ipv6              | ✅🆕   |          |          |
+| macAddress        | ✅🆕   |          |          |
 | null              | ✅     |          |          |
 | number            | ✅     |          |          |
 | object            | ✅     |          |          |
-| odd               | ✅     |          |          |
+| odd               | ✅🆕   |          |          |
 | string            | ✅     |          |          |
 | symbol            | ✅     |          |          |
 | true              | ✅     |          |          |

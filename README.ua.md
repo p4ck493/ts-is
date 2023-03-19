@@ -450,18 +450,20 @@ stream$.next('false'); // Bad
 | boolean           | ✅     |||
 | compare           | ✅     |||
 | empty             | ✅     |||
+| even              | ✅🆕   |          |          |
 | false             | ✅     |||
 | falsy             | ✅     |||
 | function          | ✅     | RETURNED |          | якщо потрібно перевірити, чи є щось із пакета функцією, використовуйте is.Function замість is.function |
 | asyncFunction     | ➖     ||
 | generatorFunction | ➖     ||
 | instanceof        | ✅     |||
-| ipv4              | ✅     |          |          |
-| ipv6              | ✅     |          |          |
-| macAddress        | ✅     |          |          |
+| ipv4              | ✅🆕   |          |          |
+| ipv6              | ✅🆕   |          |          |
+| macAddress        | ✅🆕   |          |          |
 | null              | ✅     |||
 | number            | ✅     |||
 | object            | ✅     |||
+| odd               | ✅🆕   |          |          |
 | string            | ✅     |||
 | symbol            | ✅     |||
 | infinity          | ✅     |||

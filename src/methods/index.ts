@@ -43,7 +43,12 @@ export type ConvertTypeToGenericInstanceOf<T> = {
   [key in keyof T]: instanceofTypeMix<T[key]>;
 };
 
+const _config = {
+  useGlobalContext: true
+};
+
 export const predefinedMethods = {
+  _config,
   array: ArrayMethod,
   asyncFunction: AsyncFunctionMethod,
   bigInt: BigIntMethod,

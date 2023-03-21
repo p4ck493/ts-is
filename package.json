@@ -19,8 +19,7 @@
     "build": "microbundle",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "publish:beta": "npm publish --tag beta",
-    "publish": "npm publish"
+    "publish:beta": "npm publish --tag beta"
   },
   "repository": {
     "type": "git",

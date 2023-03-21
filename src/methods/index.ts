@@ -31,6 +31,7 @@ import {OddMethod} from './odd.method';
 import {EvenMethod} from './even.method';
 import {LengthMethod} from './length.method';
 import {NumericMethod} from './numeric.method';
+import {IntMethod} from './int.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -62,6 +63,7 @@ export const predefinedMethods = {
     generatorFunction: GeneratorFunctionMethod,
     infinity: InfinityMethod,
     instanceof: InstanceofMethod,
+    int: IntMethod,
     ipv4: Ipv4Method,
     ipv6: Ipv6Method,
     macAddress: MacAddressMethod,

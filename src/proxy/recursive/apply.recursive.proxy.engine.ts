@@ -1,8 +1,8 @@
-import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
-import {InstanceofMethod} from '../../methods/instanceof.method';
-import {CommandMixType, CommandType} from '../../types/commands.type';
-import {predefinedMethods} from '../../methods';
-import {isConfig} from '../../config';
+import { ParamsProxyEngineInterface } from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import { InstanceofMethod } from '../../methods/instanceof.method';
+import { CommandMixType, CommandType } from '../../types/commands.type';
+import { predefinedMethods } from '../../methods';
+import { isConfig } from '../../config';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {

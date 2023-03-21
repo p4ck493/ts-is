@@ -1,8 +1,8 @@
-import { ParamsProxyEngineInterface } from '../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { InstanceofMethod } from '../../methods/instanceof.method';
-import { CommandMixType, CommandType } from '../../types/commands.type';
-import { predefinedMethods } from '../../methods';
-import { isConfig } from '../../config';
+import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {InstanceofMethod} from '../../methods/instanceof.method';
+import {CommandMixType, CommandType} from '../../types/commands.type';
+import {predefinedMethods} from '../../methods';
+import {isConfig} from '../../config';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
@@ -76,7 +76,7 @@ function getDecide(list: ParamsProxyEngineInterface['commandList'], argumentList
   } else if (lastCommand === 'bind') {
     // TODO in this way need return Function with given context
     throw new SyntaxError(
-      "Please do not use 'bind' with the package, we will try to fix this in the future. If you know how to fix this, please create an 'issue'",
+      `Please do not use 'bind' with the package, we will try to fix this in the future. If you know how to fix this, please create an 'issue'`,
     );
   } else {
     list.push(lastCommand);

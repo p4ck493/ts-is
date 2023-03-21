@@ -91,7 +91,7 @@ export interface AllMethodsInterface
     extends ConvertTypeToGenericMixTypes<typeof predefinedMethods>,
         ConvertTypeToGenericInstanceOf<ExternalMethodsInterface>,
         ConvertTypeToGenericInstanceOf<HTMLElementsMethodsInterface>,
-        Omit<CallableFunction, "length"> {
+        Omit<CallableFunction, 'length'> {
     Function: instanceofType;
     or: AllMethodsInterface;
     not: AllMethodsInterface;

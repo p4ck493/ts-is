@@ -5,7 +5,18 @@ import {NumericMethod} from './numeric.method';
 function toNumber(argument: any): number {
     argument = +argument;
     if (!NumberMethod(argument) && isConfig.error.enabled) {
-        console?.error?.('Wrong data in name of function, good examples: is.len_10, is.len_lt_10, is.len_gt_10, is.len_10_12, is.len_range_10_12');
+        console?.error?.(`
+            Bad data in the method name, good examples: 
+            is.len_10
+            is.len_gt_10
+            is.len_lt_10
+            is.len_gt_8_lt_10
+            is.len_gte_10
+            is.len_gte_8_lt_10
+            is.len_gte_8_lte_10
+            is.len_lte_10
+            is.len_gt_8_lte_10
+        `);
     }
     return argument;
 }
@@ -25,7 +36,8 @@ function operation(command: string, target: number, value: number): boolean {
 
 /**
  * Why N:
- * - Note that the symbol "N" is also sometimes used to represent the set of positive integers, but this can be ambiguous, as some definitions of "N" include zero, while others do not.
+ * - Note that the symbol "N" is also sometimes used to represent the set of positive integers, but this can be
+ *   ambiguous, as some definitions of "N" include zero, while others do not.
  *
  * is.len_N
  * is.len_gt_N
@@ -37,9 +49,8 @@ function operation(command: string, target: number, value: number): boolean {
  * is.len_lte_N
  * is.len_gt_N_lte_N
  *
- * @param argument
- * @param configList
- * @constructor
+ * @param argument - string
+ * @param configList - ['10'] || ['gt', '10']
  */
 export function LenMethod(argument: string, ...configList: string[]): boolean {
     const length: number = argument?.length ?? 0;
@@ -47,7 +58,7 @@ export function LenMethod(argument: string, ...configList: string[]): boolean {
         return length === toNumber(configList[0])
     } else {
         for (let index = 0; index < configList.length; index++) {
-            if (operation(configList[index], length, toNumber(configList[index+1]))) {
+            if (operation(configList[index], length, toNumber(configList[index + 1]))) {
                 if (index + 2 === configList.length) {
                     return true;
                 } else {

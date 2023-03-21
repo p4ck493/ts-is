@@ -9,7 +9,6 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
         try {
             return getDecide(params.commandList, argumentList);
         } catch (e) {
-            console.log(e);
             if (InstanceofMethod(e, SyntaxError)) {
                 throw e;
             }

@@ -223,6 +223,7 @@ IsConfig.regex.macAddress = /[Your regex]/;
 
 // If you don't want the package to fight in the global context, then do it like this:
 IsConfig.useGlobalContext = false;
+
 ```
 
 #### Methods with connection

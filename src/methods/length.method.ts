@@ -1,54 +1,78 @@
 import {NumberMethod} from './number.method';
+import {isConfig} from '../config';
+
+function toNumber(argument: any): number {
+    argument = +argument;
+    if (!NumberMethod(argument) && isConfig.error.enabled) {
+        console?.error?.('Wrong data in name of function, good examples: is.length_10, is.length_less_10, is.length_more_10, is.length_10_12, is.length_range_10_12');
+    }
+    return argument;
+}
 
 /**
  * Why N:
  * - Note that the symbol "N" is also sometimes used to represent the set of positive integers, but this can be ambiguous, as some definitions of "N" include zero, while others do not.
  *
  * is.length_N
+ * is.length_less_N
+ * is.length_more_N
+ * is.length_N_N
+ * is.length_range_N_N
  *
- * TODO is.length_15 Means equal
- * TODO is.length_less_15
- * TODO is.length_more_15
- * TODO is.length_10_15
- * TODO is.length_range_10_15
  * @param argument
  * @param configList
  * @constructor
  */
 export function LengthMethod(argument: string, ...configList: string[]): boolean {
-    const config: {
-        case: 0 | 1 // 0 - only min (equal); 1 - min and max (range)
-        min: number | undefined,
-        max: number | undefined,
-        // within: boolean | undefined,
-        // more: boolean | undefined,
-        // less: boolean | undefined
-    } = {
-        case: 0,
-        min: undefined,
-        max: undefined,
-        // within: undefined,
-        // more: undefined,
-        // less: undefined
-    };
-    configList?.forEach((itemOfConfig: unknown) => {
-        if (NumberMethod(Number(itemOfConfig))) {
-            if (config.min === undefined) {
-                config.min = Number(itemOfConfig);
-            } else {
-                config.case = 1;
-                config.max = Number(itemOfConfig);
-                if (config.min > Number(itemOfConfig)) {
-                    config.max = config.min;
-                    config.min = Number(itemOfConfig);
+
+    const firstConfigItem: string | undefined = configList.shift();
+
+    if (firstConfigItem) {
+
+        const length: number = argument?.length ?? 0;
+
+        if (length) {
+
+            const secondConfigItem: string | undefined = configList.shift();
+
+            if (secondConfigItem) {
+
+                if (firstConfigItem === 'less') {
+
+                    return length < toNumber(secondConfigItem);
+
+                } else if (firstConfigItem === 'more') {
+
+                    return length > toNumber(secondConfigItem);
+
+                } else if (firstConfigItem === 'range') {
+
+                    const thirdConfigItem: string | undefined = configList.shift();
+
+                    if (thirdConfigItem) {
+
+                        return length >= toNumber(secondConfigItem) && length <= toNumber(thirdConfigItem);
+
+                    }
+
+                } else {
+
+                    // is.length_10_15
+                    return length > +firstConfigItem && length < +secondConfigItem;
+
                 }
+
+            } else {
+
+                // is.length_10
+                return length === toNumber(firstConfigItem)
+
             }
+
         }
-    });
-    if (config.case === 0) {
-        return argument.length === config.min
-    } else if (config.case === 1) {
-        return argument.length > (config.min as number) && argument.length < (config.max as number);
+
     }
+
     return false;
+
 }

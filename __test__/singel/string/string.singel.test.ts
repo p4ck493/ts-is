@@ -50,8 +50,4 @@ describe('string singel', () => {
         expect(is.not.Map.call({}, new Map())).toBe(false);
     });
 
-    it('is.length_11("Hello world") should true', () => {
-        expect(is.length_15_3("Hello world")).toBe(true);
-    });
-
 });

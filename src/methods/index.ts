@@ -34,72 +34,67 @@ import {LengthMethod} from './length.method';
 type mixTypes<T> = T & AllMethodsInterface;
 
 export type ConvertTypeToGenericMixTypes<T> = {
-  [key in keyof T]: mixTypes<T[key]>;
+    [key in keyof T]: mixTypes<T[key]>;
 };
 
 type instanceofType<T = () => void> = (argument: unknown) => argument is T;
 type instanceofTypeMix<T = () => void> = mixTypes<instanceofType<T>>;
 
 export type ConvertTypeToGenericInstanceOf<T> = {
-  [key in keyof T]: instanceofTypeMix<T[key]>;
-};
-
-const _config = {
-  useGlobalContext: true
+    [key in keyof T]: instanceofTypeMix<T[key]>;
 };
 
 type LengthMethodType = typeof LengthMethod;
 
 export const predefinedMethods = {
-  _config,
-  length: LengthMethod,
-  array: ArrayMethod,
-  asyncFunction: AsyncFunctionMethod,
-  bigInt: BigIntMethod,
-  boolean: BooleanMethod,
-  compare: CompareMethod,
-  empty: EmptyMethod,
-  even: EvenMethod,
-  false: FalseMethod,
-  falsy: FalsyMethod,
-  function: FunctionMethod,
-  generatorFunction: GeneratorFunctionMethod,
-  infinity: InfinityMethod,
-  instanceof: InstanceofMethod,
-  ipv4: Ipv4Method,
-  ipv6: Ipv6Method,
-  macAddress: MacAddressMethod,
-  negative: NegativeMethod,
-  null: NullMethod,
-  number: NumberMethod,
-  object: ObjectMethod,
-  odd: OddMethod,
-  positive: PositiveMethod,
-  primitive: PrimitiveMethod,
-  promise: PromiseMethod,
-  string: StringMethod,
-  symbol: SymbolMethod,
-  true: TrueMethod,
-  truthy: TruthyMethod,
-  undefined: UndefinedMethod,
-  word: WordMethod,
-  zero: ZeroMethod,
+    length: LengthMethod,
+    array: ArrayMethod,
+    asyncFunction: AsyncFunctionMethod,
+    bigInt: BigIntMethod,
+    boolean: BooleanMethod,
+    compare: CompareMethod,
+    empty: EmptyMethod,
+    even: EvenMethod,
+    false: FalseMethod,
+    falsy: FalsyMethod,
+    function: FunctionMethod,
+    generatorFunction: GeneratorFunctionMethod,
+    infinity: InfinityMethod,
+    instanceof: InstanceofMethod,
+    ipv4: Ipv4Method,
+    ipv6: Ipv6Method,
+    macAddress: MacAddressMethod,
+    negative: NegativeMethod,
+    null: NullMethod,
+    number: NumberMethod,
+    object: ObjectMethod,
+    odd: OddMethod,
+    positive: PositiveMethod,
+    primitive: PrimitiveMethod,
+    promise: PromiseMethod,
+    string: StringMethod,
+    symbol: SymbolMethod,
+    true: TrueMethod,
+    truthy: TruthyMethod,
+    undefined: UndefinedMethod,
+    word: WordMethod,
+    zero: ZeroMethod,
 };
 
 export interface AllMethodsInterface
-  extends ConvertTypeToGenericMixTypes<typeof predefinedMethods>,
-    ConvertTypeToGenericInstanceOf<ExternalMethodsInterface>,
-    ConvertTypeToGenericInstanceOf<HTMLElementsMethodsInterface>,
-    Omit<CallableFunction, "length"> {
-  Function: instanceofType;
-  or: AllMethodsInterface;
-  not: AllMethodsInterface;
+    extends ConvertTypeToGenericMixTypes<typeof predefinedMethods>,
+        ConvertTypeToGenericInstanceOf<ExternalMethodsInterface>,
+        ConvertTypeToGenericInstanceOf<HTMLElementsMethodsInterface>,
+        Omit<CallableFunction, "length"> {
+    Function: instanceofType;
+    or: AllMethodsInterface;
+    not: AllMethodsInterface;
 
-  // Predefined interfaces of methods which has some options
-  length_more_N: LengthMethodType,
-  length_less_N: LengthMethodType,
-  length_range_N: LengthMethodType,
-  length_N_N: LengthMethodType,
+    // Predefined interfaces of methods which has some options
+    length_more_N: LengthMethodType,
+    length_less_N: LengthMethodType,
+    length_range_N_N: LengthMethodType,
+    length_N_N: LengthMethodType,
 
-  [key: string]: instanceofType | AllMethodsInterface | any;
+    [key: string]: instanceofType | AllMethodsInterface | any;
 }

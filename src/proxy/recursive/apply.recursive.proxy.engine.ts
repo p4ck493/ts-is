@@ -2,6 +2,7 @@ import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.p
 import {InstanceofMethod} from '../../methods/instanceof.method';
 import {CommandMixType, CommandType} from '../../types/commands.type';
 import {predefinedMethods} from '../../methods';
+import {isConfig} from '../../config';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
     return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
@@ -19,7 +20,7 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
 
 function findInGlobalContext(command: string): string | CommandType {
     try {
-        if (predefinedMethods._config.useGlobalContext) {
+        if (isConfig.useGlobalContext) {
             return globalThis?.[command] ?? self?.[command] ?? window?.[command] ?? global?.[command] ?? command;
         }
     } catch (e) {
@@ -34,7 +35,7 @@ function tryTodoWithTheCommand(commandName: string = '', argumentList: unknown[]
     }
     const pieces: string[] = commandName.split('_');
     if (pieces.length > 1) {
-        const command: CommandType | undefined = predefinedMethods[pieces.shift() + '_'];
+        const command: CommandType | undefined = predefinedMethods[pieces.shift() as string];
         if (command) {
             return command.apply(context, [argumentList[0], ...pieces])
         }

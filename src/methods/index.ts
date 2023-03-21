@@ -30,6 +30,7 @@ import {WordMethod} from './word.method';
 import {OddMethod} from './odd.method';
 import {EvenMethod} from './even.method';
 import {LengthMethod} from './length.method';
+import {NumericMethod} from './numeric.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -67,6 +68,7 @@ export const predefinedMethods = {
     negative: NegativeMethod,
     null: NullMethod,
     number: NumberMethod,
+    numeric: NumericMethod,
     object: ObjectMethod,
     odd: OddMethod,
     positive: PositiveMethod,

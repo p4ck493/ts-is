@@ -8,6 +8,7 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
         try {
             return getDecide(params.commandList, argumentList);
         } catch (e) {
+            console.log(e);
             if (InstanceofMethod(e, SyntaxError)) {
                 throw e;
             }
@@ -17,28 +18,35 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
 }
 
 function findInGlobalContext(command: string): string | CommandType {
-    if (predefinedMethods._config.useGlobalContext) {
-        if (typeof (globalThis ?? {})[command] === 'function') {
-            return globalThis[command];
+    try {
+        if (predefinedMethods._config.useGlobalContext) {
+            return globalThis?.[command] ?? self?.[command] ?? window?.[command] ?? global?.[command] ?? command;
         }
-        if (typeof (self ?? {})[command] === 'function') {
-            return self[command];
-        }
-        if (typeof (window ?? {})[command] === 'function') {
-            return window[command];
-        }
-        if (typeof (global ?? {})[command] === 'function') {
-            return global[command];
-        }
+    } catch (e) {
+        return command;
     }
     return command;
+}
+
+function tryTodoWithTheCommand(commandName: string = '', argumentList: unknown[] = [], context: any = {}): boolean {
+    if (!commandName.length || !argumentList.length) {
+        return false;
+    }
+    const pieces: string[] = commandName.split('_');
+    if (pieces.length > 1) {
+        const command: CommandType | undefined = predefinedMethods[pieces.shift() + '_'];
+        if (command) {
+            return command.apply(context, [argumentList[0], ...pieces])
+        }
+    }
+    return false;
 }
 
 function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
     if (typeof command === 'string') {
         command = findInGlobalContext(command);
         if (typeof command === 'string') {
-            return false;
+            return tryTodoWithTheCommand(command, argumentList, context);
         }
     } else {
         const result: any = command.apply(context, argumentList);

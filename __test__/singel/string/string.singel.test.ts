@@ -50,4 +50,13 @@ describe('string singel', () => {
         expect(is.not.Map.call({}, new Map())).toBe(false);
     });
 
+    it('is.length_11("Hello world") should true', () => {
+        // TODO is.length_15 // Means equal
+        // TODO is.length_less_15
+        // TODO is.length_more_15
+        // TODO is.length_10_15
+        // TODO is.length_within_10_15
+        expect(is.length_15_3("Hello world")).toBe(true);
+    });
+
 });

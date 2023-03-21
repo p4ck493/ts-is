@@ -29,6 +29,7 @@ import {MacAddressMethod} from './mac-address.method';
 import {WordMethod} from './word.method';
 import {OddMethod} from './odd.method';
 import {EvenMethod} from './even.method';
+import {LengthMethod} from './length.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -49,6 +50,7 @@ const _config = {
 
 export const predefinedMethods = {
   _config,
+  length_: LengthMethod,
   array: ArrayMethod,
   asyncFunction: AsyncFunctionMethod,
   bigInt: BigIntMethod,

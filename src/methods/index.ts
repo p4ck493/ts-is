@@ -32,6 +32,7 @@ import {EvenMethod} from './even.method';
 import {LengthMethod} from './length.method';
 import {NumericMethod} from './numeric.method';
 import {IntMethod} from './int.method';
+import {CharMethod} from './char.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -54,6 +55,7 @@ export const predefinedMethods = {
     asyncFunction: AsyncFunctionMethod,
     bigInt: BigIntMethod,
     boolean: BooleanMethod,
+    char: CharMethod,
     compare: CompareMethod,
     empty: EmptyMethod,
     even: EvenMethod,

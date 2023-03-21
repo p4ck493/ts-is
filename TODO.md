@@ -10,4 +10,4 @@
 - [x] Add new method is.len_gt_N to README.md and README.ua.md
 - [x] Add new method is.len_lt_N to README.md and README.ua.md
 - [x] Add new method is.len_lte_N to README.md and README.ua.md
-- [ ] Add new information adn examples about IsConfig to README.md and README.ua.md
+- [x] Add new information adn examples about IsConfig to README.md and README.ua.md

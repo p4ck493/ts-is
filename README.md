@@ -13,19 +13,16 @@
 ## Introduction
 
 ### Why you should use and support the package:
-
-1. ✅ **947** declared functions.
-2. ✅ Typification.
-3. ✅ Reducing the code in the project.
-4. ✅ Easier to read and understand the code.
-5. ✅ CDN support.
-6. ✅ Compatible with the oldest version of JavaScript (ES6 - ECMAScript 2015).
-7. ✅ Compatible with the oldest version of TypeScript (0.8.0).
-8. ✅ Maintenance of global contexts: globalThis, window, self, global.
-9. ✅ No dependencies 
-10. ✅ AMD, Node & browser ready
-11. ✅ Small size: ~3KB.
-    1. The size of the package for building the production version is about **3KB**, and if you use a **CDN** in this case, it is about **5KB**
+1. ✅ Typification.
+2. ✅ Reducing the code in the project.
+3. ✅ Easier to read and understand the code.
+4. ✅ CDN support.
+5. ✅ Compatible with the oldest version of JavaScript (ES6 - ECMAScript 2015).
+6. ✅ Compatible with the oldest version of TypeScript (0.8.0).
+7. ✅ Maintenance of global contexts: globalThis, window, self, global.
+8. ✅ No dependencies 
+9. ✅ AMD, Node & browser ready
+10. ✅ Small size: ~8KB.
 
 ## 💡 Idea
 
@@ -133,15 +130,17 @@ is[$cmd].not[$model]();
 #### Methods
 
 ```typescript
+import {IsConfig} from './index';
+
 is.array([]); // true
 
 is.bigInt(1n); // true
 
 is.boolean(false); // true
 
-is.compare({ a: 1 }, { a: 1 }); // true
-is.compare({ a: 1 }, {}); // false
-is.compare({}, { a: 1 }); // false
+is.compare({a: 1}, {a: 1}); // true
+is.compare({a: 1}, {}); // false
+is.compare({}, {a: 1}); // false
 is.compare({}, {}); // true
 
 is.Date(new Date()); // true
@@ -163,10 +162,12 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)); // true
 is.falsy(''); // true
 
 // This method will check if the argument is equal to the base type: Function
-is.Function(() => {}); // true
+is.Function(() => {
+}); // true
 
 // This method checks not only if the argument is a function, but also if the argument is an asynchronous function or a generative
-is.function(() => {}); // true
+is.function(() => {
+}); // true
 
 is.instanceof(new Boolean(false), Boolean); // true
 
@@ -203,6 +204,25 @@ is.URIError(new URIError()); // true
 is.WeakMap(new WeakMap()); // true
 
 is.WeakSet(new WeakSet()); // true
+
+is.len_5('words') // true
+is.len_4('words') // false
+is.len_gt_4('words') // true
+is.len_lt_5('words') // false
+is.len_lte_5('words') // true
+is.len_gte_5('words') // true
+is.len_gt_4_lt_6('words') // true
+is.len_gte_5_lt_6('words') // true
+is.len_gt_4_lte_5('words') // true
+
+// You can also configure global package settings
+IsConfig.error.enabled = false; // In this case, all console.error will be disabled, they are enabled by default.
+
+// If you need to change the regex say for macAddress, here is an example:
+IsConfig.regex.macAddress = /[Your regex]/;
+
+// If you don't want the package to fight in the global context, then do it like this:
+IsConfig.useGlobalContext = false;
 ```
 
 #### Methods with connection

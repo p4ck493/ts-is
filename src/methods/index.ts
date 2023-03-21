@@ -29,7 +29,7 @@ import {MacAddressMethod} from './mac-address.method';
 import {WordMethod} from './word.method';
 import {OddMethod} from './odd.method';
 import {EvenMethod} from './even.method';
-import {LengthMethod} from './length.method';
+import {LenMethod} from './len.method';
 import {NumericMethod} from './numeric.method';
 import {IntMethod} from './int.method';
 import {CharMethod} from './char.method';
@@ -47,10 +47,10 @@ export type ConvertTypeToGenericInstanceOf<T> = {
     [key in keyof T]: instanceofTypeMix<T[key]>;
 };
 
-type LengthMethodType = typeof LengthMethod;
+type LengthMethodType = typeof LenMethod;
 
 export const predefinedMethods = {
-    length: LengthMethod,
+    len: LenMethod,
     array: ArrayMethod,
     asyncFunction: AsyncFunctionMethod,
     bigInt: BigIntMethod,
@@ -97,10 +97,15 @@ export interface AllMethodsInterface
     not: AllMethodsInterface;
 
     // Predefined interfaces of methods which has some options
-    length_more_N: LengthMethodType,
-    length_less_N: LengthMethodType,
-    length_range_N_N: LengthMethodType,
-    length_N_N: LengthMethodType,
+    len_N: LengthMethodType,
+    len_gt_N_lt_N: LengthMethodType,
+    len_lt_N: LengthMethodType,
+    len_gt_N: LengthMethodType,
+    len_gte_N_lt_N: LengthMethodType,
+    len_gte_N_lte_N: LengthMethodType,
+    len_lte_N: LengthMethodType,
+    len_gte_N: LengthMethodType,
+    len_gt_N_lte_N: LengthMethodType,
 
     [key: string]: instanceofType | AllMethodsInterface | any;
 }

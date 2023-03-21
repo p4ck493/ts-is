@@ -1,0 +1,9 @@
+- [ ] Add new method is.char to README.md and README.ua.md
+- [ ] Add new method is.numeric to README.md and README.ua.md
+- [ ] Add new method is.int to README.md and README.ua.md
+- [ ] Add new method is.len_N to README.md and README.ua.md
+- [ ] Add new method is.len_N_N to README.md and README.ua.md
+- [ ] Add new method is.len_range_N_N to README.md and README.ua.md
+- [ ] Add new method is.len_gt_N to README.md and README.ua.md
+- [ ] Add new method is.len_lt_N to README.md and README.ua.md
+- [ ] Add new information adn examples about IsConfig to README.md and README.ua.md

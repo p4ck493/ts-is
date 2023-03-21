@@ -6,7 +6,6 @@
 
 ## 🌍 Languages
 
-// TODO update ukraine version and chck odd and even on BitInt
 
 > 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) |
 > 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)

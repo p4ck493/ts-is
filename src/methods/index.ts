@@ -48,9 +48,11 @@ const _config = {
   useGlobalContext: true
 };
 
+type LengthMethodType = typeof LengthMethod;
+
 export const predefinedMethods = {
   _config,
-  length_: LengthMethod,
+  length: LengthMethod,
   array: ArrayMethod,
   asyncFunction: AsyncFunctionMethod,
   bigInt: BigIntMethod,
@@ -88,10 +90,16 @@ export interface AllMethodsInterface
   extends ConvertTypeToGenericMixTypes<typeof predefinedMethods>,
     ConvertTypeToGenericInstanceOf<ExternalMethodsInterface>,
     ConvertTypeToGenericInstanceOf<HTMLElementsMethodsInterface>,
-    CallableFunction {
+    Omit<CallableFunction, "length"> {
   Function: instanceofType;
   or: AllMethodsInterface;
   not: AllMethodsInterface;
+
+  // Predefined interfaces of methods which has some options
+  length_more_N: LengthMethodType,
+  length_less_N: LengthMethodType,
+  length_range_N: LengthMethodType,
+  length_N_N: LengthMethodType,
 
   [key: string]: instanceofType | AllMethodsInterface | any;
 }

@@ -1,5 +1,20 @@
 import {NumberMethod} from './number.method';
 
+/**
+ * Why N:
+ * - Note that the symbol "N" is also sometimes used to represent the set of positive integers, but this can be ambiguous, as some definitions of "N" include zero, while others do not.
+ *
+ * is.length_N
+ *
+ * TODO is.length_15 Means equal
+ * TODO is.length_less_15
+ * TODO is.length_more_15
+ * TODO is.length_10_15
+ * TODO is.length_range_10_15
+ * @param argument
+ * @param configList
+ * @constructor
+ */
 export function LengthMethod(argument: string, ...configList: string[]): boolean {
     const config: {
         case: 0 | 1 // 0 - only min (equal); 1 - min and max (range)

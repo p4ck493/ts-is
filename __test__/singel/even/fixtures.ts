@@ -2,9 +2,33 @@ export const dataForGoodTesting: { value: any }[] = [
     {
         value: 0
     },
+    {
+        value: 2
+    },
+    {
+        value: -2
+    },
+    {
+        value: BigInt(2)
+    },
+    {
+        value: 2n
+    },
+    {
+        value: -32n
+    },
 ];
 
 export const dataForBadTesting: { value: any }[] = [
+    {
+        value: 1
+    },
+    {
+        value: 1n
+    },
+    {
+        value: -1n
+    },
     {
         value: 'undefined'
     },

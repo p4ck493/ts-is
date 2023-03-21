@@ -18,7 +18,7 @@ export function proxyRecursiveGet(params: ParamsProxyEngineInterface): proxyRecu
  * @param params ParamsProxyEngineInterface
  */
 export function proxyRecursive(target: object | string, name: string, params: ParamsProxyEngineInterface): object {
-  target = getMethod(name);
+  target = predefinedMethods[name] ?? name;
   params.commandList.push(target as CommandMixType);
 
   if (typeof target === 'string') {
@@ -33,8 +33,4 @@ export function proxyRecursive(target: object | string, name: string, params: Pa
     get: proxyRecursiveGet(params),
     apply: proxyRecursiveApply(params),
   });
-}
-
-function getMethod(name: string): CommandMixType | string {
-  return predefinedMethods[name] ?? name;
 }

@@ -48,7 +48,25 @@
     ],
     "no-consecutive-blank-lines": false,
     "no-console": [
-      true
+      true,
+      "log",
+      "clear",
+      "count",
+      "countReset",
+      "debug",
+      "dir",
+      "dirxml",
+      "group",
+      "groupCollapsed",
+      "groupEnd",
+      "table",
+      "time",
+      "timeEnd",
+      "timeLog",
+      "trace",
+      "profile",
+      "profileEnd",
+      "timeStamp"
     ],
     "no-empty": false,
     "no-inferrable-types": [

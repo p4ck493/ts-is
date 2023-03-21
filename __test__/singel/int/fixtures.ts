@@ -6,6 +6,39 @@ export const dataForGoodTesting: { value: any }[] = [
 
 export const dataForBadTesting: { value: any }[] = [
     {
+        value: '0'
+    },
+    {
+        value: '-0'
+    },
+    {
+        value: '+0'
+    },
+    {
+        value: '-2'
+    },
+    {
+        value: '+2'
+    },
+    {
+        value: '2'
+    },
+    {
+        value: 4n
+    },
+    {
+        value: -3n
+    },
+    {
+        value: '2n'
+    },
+    {
+        value: '-5n'
+    },
+    {
+        value: BigInt(1)
+    },
+    {
         value: 'undefined'
     },
     {
@@ -19,9 +52,6 @@ export const dataForBadTesting: { value: any }[] = [
     },
     {
         value: true
-    },
-    {
-        value: BigInt(1)
     },
     {
         value: []

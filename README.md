@@ -6,23 +6,23 @@
 
 ## 🌍 Languages
 
+
 > 🇺🇦 [ukraine](https://github.com/p4ck493/ts-is/blob/main/README.ua.md) |
 > 🇬🇧 [english](https://github.com/p4ck493/ts-is/blob/main/README.md)
 
 ## Introduction
 
 ### Why you should use and support the package:
-
-1. ✅ **947** declared functions.
-2. ✅ Typification.
-3. ✅ Reducing the code in the project.
-4. ✅ Easier to read and understand the code.
-5. ✅ CDN support.
-6. ✅ Compatible with the oldest version of TypeScript.
-   1. The package even works with the first published version of typeScript: **0.8.0**.
+1. ✅ Typification.
+2. ✅ Reducing the code in the project.
+3. ✅ Easier to read and understand the code.
+4. ✅ CDN support.
+5. ✅ Compatible with the oldest version of JavaScript (ES6 - ECMAScript 2015).
+6. ✅ Compatible with the oldest version of TypeScript (0.8.0).
 7. ✅ Maintenance of global contexts: globalThis, window, self, global.
-8. ✅ Small size: ~3KB.
-   1. The size of the package for building the production version is about **3KB**, and if you use a **CDN** in this case, it is about **5KB**
+8. ✅ No dependencies 
+9. ✅ AMD, Node & browser ready
+10. ✅ Small size: ~8KB.
 
 ## 💡 Idea
 
@@ -54,6 +54,7 @@ if (is.object.not.empty(variable)) {
   - [CDN](#-cdn)
   - [Usage](#-usage)
     - [Example](#examples)
+      - [Syntax](#syntax)
       - [Methods](#methods)
       - [Methods with connection](#methods-with-connection)
       - [Methods with wrappers](#methods-with-wrappers)
@@ -68,8 +69,8 @@ if (is.object.not.empty(variable)) {
   - [New methods that are available through the package, but which are only declared in the package, but actually take data from outside the package.](#new-methods-that-are-available-through-the-package-but-which-are-only-declared-in-the-package-but-actually-take-data-from-outside-the-package)
     - [General (841 methods)](#generale--841-methods-)
     - [HTML (80 methods)](#html--80-methods-)
-  - [Contributing](#-contributing)
   - [Additional](#-additional)
+  - [Contributing](#-contributing)
   - [Authors](#-authors)
   - [License](#-license)
 
@@ -129,15 +130,17 @@ is[$cmd].not[$model]();
 #### Methods
 
 ```typescript
+import {IsConfig} from './index';
+
 is.array([]); // true
 
 is.bigInt(1n); // true
 
 is.boolean(false); // true
 
-is.compare({ a: 1 }, { a: 1 }); // true
-is.compare({ a: 1 }, {}); // false
-is.compare({}, { a: 1 }); // false
+is.compare({a: 1}, {a: 1}); // true
+is.compare({a: 1}, {}); // false
+is.compare({}, {a: 1}); // false
 is.compare({}, {}); // true
 
 is.Date(new Date()); // true
@@ -159,10 +162,12 @@ is.DataView(new DataView(new ArrayBuffer(16), 0)); // true
 is.falsy(''); // true
 
 // This method will check if the argument is equal to the base type: Function
-is.Function(() => {}); // true
+is.Function(() => {
+}); // true
 
 // This method checks not only if the argument is a function, but also if the argument is an asynchronous function or a generative
-is.function(() => {}); // true
+is.function(() => {
+}); // true
 
 is.instanceof(new Boolean(false), Boolean); // true
 
@@ -199,6 +204,26 @@ is.URIError(new URIError()); // true
 is.WeakMap(new WeakMap()); // true
 
 is.WeakSet(new WeakSet()); // true
+
+is.len_5('words') // true
+is.len_4('words') // false
+is.len_gt_4('words') // true
+is.len_lt_5('words') // false
+is.len_lte_5('words') // true
+is.len_gte_5('words') // true
+is.len_gt_4_lt_6('words') // true
+is.len_gte_5_lt_6('words') // true
+is.len_gt_4_lte_5('words') // true
+
+// You can also configure global package settings
+IsConfig.error.enabled = false; // In this case, all console.error will be disabled, they are enabled by default.
+
+// If you need to change the regex say for macAddress, here is an example:
+IsConfig.regex.macAddress = /[Your regex]/;
+
+// If you don't want the package to fight in the global context, then do it like this:
+IsConfig.useGlobalContext = false;
+
 ```
 
 #### Methods with connection
@@ -402,7 +427,7 @@ const stream$: Stream<boolean> = new Stream<boolean>();
 
 stream$.pipe(filter(is.boolean)).subscribe(console.log); // true, false
 
-stream$.next([false]); // Bad
+stream$.next([false]); // Bad[README.ua.md](README.ua.md)
 stream$.next(0); // Bad
 
 stream$.next(true); // Good
@@ -425,32 +450,50 @@ stream$.next('false'); // Bad
 
 | Name              | Tests | Status   | New name | Comment                                                                                                              |
 |-------------------|-------|----------|----------|----------------------------------------------------------------------------------------------------------------------|
-| array             | ✅     |          |          |
-| bigInt            | ✅     |          |          |
-| boolean           | ✅     |          |          |
-| compare           | ✅     |          |          |
-| empty             | ✅     |          |          |
-| false             | ✅     |          |          |
-| falsy             | ✅     |          |          |
+| array             | ✅     |          |          |                                                                                                                      |
+| bigInt            | ✅     |          |          |                                                                                                                      |
+| boolean           | ✅     |          |          |                                                                                                                      |
+| char              | ✅🆕   |          |          |                                                                                                                      |
+| compare           | ✅     |          |          |                                                                                                                      |
+| empty             | ✅     |          |          |                                                                                                                      |
+| even              | ✅🆕   |          |          |                                                                                                                      |
+| false             | ✅     |          |          |                                                                                                                      |
+| falsy             | ✅     |          |          |                                                                                                                      |
 | function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
-| asyncFunction     | ➖     |          |
-| generatorFunction | ➖     |          |
-| instanceof        | ✅     |          |          |
-| null              | ✅     |          |          |
-| number            | ✅     |          |          |
-| object            | ✅     |          |          |
-| string            | ✅     |          |          |
-| symbol            | ✅     |          |          |
-| true              | ✅     |          |          |
-| truthy            | ✅     |          |          |
-| infinity          | ✅     |          |          |
-| undefined         | ✅     |          |          |
-| NaN               | ➖     | DELETED  | isNaN()  |
-| zero              | ✅     |          |          |
+| asyncFunction     | ➖     |          |          |                                                                                                                      |
+| generatorFunction | ➖     |          |          |                                                                                                                      |
+| instanceof        | ✅     |          |          |                                                                                                                      |
+| int               | ✅🆕   |          |          |                                                                                                                      |
+| ipv4              | ✅🆕   |          |          |                                                                                                                      |
+| ipv6              | ✅🆕   |          |          |                                                                                                                      |
+| len_N             | ✅🆕   |          |          | N - Any positive integer                                                                                             |
+| len_gt_N          | ✅🆕   |          |          | gt - greater than                                                                                                    |
+| len_lt_N          | ✅🆕   |          |          | lt - less than                                                                                                       |
+| len_lte_N         | ✅🆕   |          |          | lte - less then or equal                                                                                             |
+| len_gte_N         | ✅🆕   |          |          | gte - greater then or equal                                                                                          |
+| len_gt_N_lt_N     | ✅🆕   |          |          |                                                                                                                      |
+| len_gte_N_lt_N    | ✅🆕   |          |          |                                                                                                                      |
+| len_gte_N_lte_N   | ✅🆕   |          |          |                                                                                                                      |
+| len_gt_N_lte_N    | ✅🆕   |          |          |                                                                                                                      |
+| macAddress        | ✅🆕   |          |          |                                                                                                                      |
+| null              | ✅     |          |          |                                                                                                                      |
+| number            | ✅     |          |          |                                                                                                                      |
+| numeric           | ✅🆕   |          |          |                                                                                                                      |
+| object            | ✅     |          |          |                                                                                                                      |
+| odd               | ✅🆕   |          |          |                                                                                                                      |
+| string            | ✅     |          |          |                                                                                                                      |
+| symbol            | ✅     |          |          |                                                                                                                      |
+| true              | ✅     |          |          |                                                                                                                      |
+| truthy            | ✅     |          |          |                                                                                                                      |
+| infinity          | ✅     |          |          |                                                                                                                      |
+| undefined         | ✅     |          |          |                                                                                                                      |
+| NaN               | ➖     | DELETED  | isNaN()  |                                                                                                                      |
+| word              | ✅     |          |          |                                                                                                                      |
+| zero              | ✅     |          |          |                                                                                                                      |
 | positive          | ✅     |          |          | Validate if number is more than 0                                                                                    |
 | negative          | ✅     |          |          | Validate if number is less than 0                                                                                    |
 | primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                                        |
-| promise           | ➖     |          |          |
+| promise           | ➖     |          |          |                                                                                                                      |
 
 > Name - the name of a method that you can call to check certain types of data.
 

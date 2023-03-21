@@ -1,6 +1,24 @@
 export const dataForGoodTesting: { value: any }[] = [
     {
-        value: 0
+        value: '2001:0db8:85a3:0000:0000:8a2e:0370:7334'
+    },
+    {
+        value: '2001:db8:0:0:0:0:2:1'
+    },
+    {
+        value: '2001:db8::2:1'
+    },
+    {
+        value: '::'
+    },
+    {
+        value: '::1'
+    },
+    {
+        value: '::ffff:192.0.2.128'
+    },
+    {
+        value: '2001:db8::567:1'
     },
 ];
 
@@ -71,5 +89,23 @@ export const dataForBadTesting: { value: any }[] = [
     },
     {
         value: Number.NEGATIVE_INFINITY,
+    },
+    {
+        value: 0
+    },
+    {
+        value: '2001:db8:::2:1'
+    },
+    {
+        value: '2001:::1'
+    },
+    {
+        value: '2001:db8::1::'
+    },
+    {
+        value: '2001:db8::g:1'
+    },
+    {
+        value: '::ffff:192.0.2.256'
     },
 ];

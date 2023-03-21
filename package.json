@@ -1,6 +1,6 @@
 {
   "name": "@p4ck493/ts-is",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "description": "The package for check some data in typescript and javascript.",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -15,6 +15,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
     "test": "jest --config jest.config.json",
+    "test:coverage": "jest --config jest.config.json --coverage",
     "dev": "microbundle watch",
     "build": "microbundle",
     "format": "prettier --write \"src/**/*.ts\"",

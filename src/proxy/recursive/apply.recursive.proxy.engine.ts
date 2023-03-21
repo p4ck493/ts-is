@@ -1,6 +1,8 @@
-import { ParamsProxyEngineInterface } from '../../interfaces/engine/proxy/params.proxy.engine.interface';
-import { InstanceofMethod } from '../../methods/instanceof.method';
-import { CommandMixType, CommandType } from '../../types/commands.type';
+import {ParamsProxyEngineInterface} from '../../interfaces/engine/proxy/params.proxy.engine.interface';
+import {InstanceofMethod} from '../../methods/instanceof.method';
+import {CommandMixType, CommandType} from '../../types/commands.type';
+import {predefinedMethods} from '../../methods';
+import {isConfig} from '../../config';
 
 export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnType<any> {
   return (notUsedTargetApply: any, thisArg: unknown, argumentList: unknown[] | unknown[][]): boolean => {
@@ -16,26 +18,35 @@ export function proxyRecursiveApply(params: ParamsProxyEngineInterface): ReturnT
 }
 
 function findInGlobalContext(command: string): string | CommandType {
-  if (typeof (globalThis ?? {})[command] === 'function') {
-    return globalThis[command];
-  }
-  if (typeof (self ?? {})[command] === 'function') {
-    return self[command];
-  }
-  if (typeof (window ?? {})[command] === 'function') {
-    return window[command];
-  }
-  if (typeof (global ?? {})[command] === 'function') {
-    return global[command];
+  try {
+    if (isConfig.useGlobalContext) {
+      return globalThis?.[command] ?? self?.[command] ?? window?.[command] ?? global?.[command] ?? command;
+    }
+  } catch (e) {
+    return command;
   }
   return command;
+}
+
+function tryTodoWithTheCommand(commandName: string = '', argumentList: unknown[] = [], context: any = {}): boolean {
+  if (!commandName.length || !argumentList.length) {
+    return false;
+  }
+  const pieces: string[] = commandName.split('_');
+  if (pieces.length > 1) {
+    const command: CommandType | undefined = predefinedMethods[pieces.shift() as string];
+    if (command) {
+      return command.apply(context, [argumentList[0], ...pieces]);
+    }
+  }
+  return false;
 }
 
 function getResult(command: CommandType | string, argumentList: unknown[], context: any = {}): boolean {
   if (typeof command === 'string') {
     command = findInGlobalContext(command);
     if (typeof command === 'string') {
-      return false;
+      return tryTodoWithTheCommand(command, argumentList, context);
     }
   } else {
     const result: any = command.apply(context, argumentList);
@@ -57,21 +68,18 @@ function getDecide(list: ParamsProxyEngineInterface['commandList'], argumentList
   let result: boolean;
 
   // Config variables of initialize data
-  switch (lastCommand) {
-    case 'apply':
-      context = argumentList[0];
-      argumentList = argumentList[1] as unknown[];
-      break;
-    case 'call':
-      context = argumentList.shift();
-      break;
-    case 'bind':
-      // TODO in this way need return Function with given context
-      throw new SyntaxError(
-        'Please don`t use bind with package, in future we will try to fix it, but not now. If you how to fix it, please create issue or fork flow.',
-      );
-    default:
-      list.push(lastCommand);
+  if (lastCommand === 'apply') {
+    context = argumentList[0];
+    argumentList = argumentList[1] as unknown[];
+  } else if (lastCommand === 'call') {
+    context = argumentList.shift();
+  } else if (lastCommand === 'bind') {
+    // TODO in this way need return Function with given context
+    throw new SyntaxError(
+      `Please do not use 'bind' with the package, we will try to fix this in the future. If you know how to fix this, please create an 'issue'`,
+    );
+  } else {
+    list.push(lastCommand);
   }
 
   for (let index = 0; index < list.length; index++) {

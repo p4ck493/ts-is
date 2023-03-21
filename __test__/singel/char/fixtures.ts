@@ -1,10 +1,36 @@
-export const dataForGoodTesting: { value: any }[] = [
+
+
+export const dataForGoodTesting: {value: any}[] = [
     {
-        value: 0
+        value: `a`
+    },
+    {
+        value: "r"
+    },
+    {
+        value: 't'
+    },
+    {
+        value: `3`
+    },
+    {
+        value: `1`
+    },
+    {
+        value: `2`
     },
 ];
 
-export const dataForBadTesting: { value: any }[] = [
+export const dataForBadTesting: {value: any}[] = [
+    {
+        value: ""
+    },
+    {
+        value: ''
+    },
+    {
+        value: ``
+    },
     {
         value: 'undefined'
     },
@@ -15,7 +41,7 @@ export const dataForBadTesting: { value: any }[] = [
         value: Symbol()
     },
     {
-        value: null
+        value: {}
     },
     {
         value: true
@@ -30,16 +56,10 @@ export const dataForBadTesting: { value: any }[] = [
         value: false
     },
     {
-        value: ""
+        value: 0
     },
     {
-        value: ''
-    },
-    {
-        value: ``
-    },
-    {
-        value: {}
+        value: null
     },
     {
         value: undefined
@@ -48,8 +68,7 @@ export const dataForBadTesting: { value: any }[] = [
         value: Function
     },
     {
-        value: () => {
-        }
+        value: () => {}
     },
     {
         value: BigInt
@@ -59,17 +78,5 @@ export const dataForBadTesting: { value: any }[] = [
     },
     {
         value: NaN
-    },
-    {
-        value: Infinity
-    },
-    {
-        value: -Infinity
-    },
-    {
-        value: Number.POSITIVE_INFINITY,
-    },
-    {
-        value: Number.NEGATIVE_INFINITY,
     },
 ];

@@ -429,38 +429,50 @@ stream$.next('false'); // Bad
 
 | Name              | Tests | Status   | New name | Comment                                                                                                              |
 |-------------------|-------|----------|----------|----------------------------------------------------------------------------------------------------------------------|
-| array             | ✅     |          |          |
-| bigInt            | ✅     |          |          |
-| boolean           | ✅     |          |          |
-| compare           | ✅     |          |          |
-| empty             | ✅     |          |          |
-| even              | ✅🆕   |          |          |
-| false             | ✅     |          |          |
-| falsy             | ✅     |          |          |
+| array             | ✅     |          |          |                                                                                                                      |
+| bigInt            | ✅     |          |          |                                                                                                                      |
+| boolean           | ✅     |          |          |                                                                                                                      |
+| char              | ✅🆕   |          |          |                                                                                                                      |
+| compare           | ✅     |          |          |                                                                                                                      |
+| empty             | ✅     |          |          |                                                                                                                      |
+| even              | ✅🆕   |          |          |                                                                                                                      |
+| false             | ✅     |          |          |                                                                                                                      |
+| falsy             | ✅     |          |          |                                                                                                                      |
 | function          | ✅     | RETURNED |          | if there is a need to check whether something from the package is a function, use is.Function instead of is.function |
-| asyncFunction     | ➖     |          |
-| generatorFunction | ➖     |          |
-| instanceof        | ✅     |          |          |
-| ipv4              | ✅🆕   |          |          |
-| ipv6              | ✅🆕   |          |          |
-| macAddress        | ✅🆕   |          |          |
-| null              | ✅     |          |          |
-| number            | ✅     |          |          |
-| object            | ✅     |          |          |
-| odd               | ✅🆕   |          |          |
-| string            | ✅     |          |          |
-| symbol            | ✅     |          |          |
-| true              | ✅     |          |          |
-| truthy            | ✅     |          |          |
-| infinity          | ✅     |          |          |
-| undefined         | ✅     |          |          |
-| NaN               | ➖     | DELETED  | isNaN()  |
-| word              | ✅     |          |          |
-| zero              | ✅     |          |          |
+| asyncFunction     | ➖     |          |          |                                                                                                                      |
+| generatorFunction | ➖     |          |          |                                                                                                                      |
+| instanceof        | ✅     |          |          |                                                                                                                      |
+| int               | ✅🆕   |          |          |                                                                                                                      |
+| ipv4              | ✅🆕   |          |          |                                                                                                                      |
+| ipv6              | ✅🆕   |          |          |                                                                                                                      |
+| len_N             | ✅🆕   |          |          | N - Any positive integer                                                                                             |
+| len_gt_N          | ✅🆕   |          |          | gt - greater than                                                                                                    |
+| len_lt_N          | ✅🆕   |          |          | lt - less than                                                                                                       |
+| len_lte_N         | ✅🆕   |          |          | lte - less then or equal                                                                                             |
+| len_gte_N         | ✅🆕   |          |          | gte - greater then or equal                                                                                          |
+| len_gt_N_lt_N     | ✅🆕   |          |          |                                                                                                                      |
+| len_gte_N_lt_N    | ✅🆕   |          |          |                                                                                                                      |
+| len_gte_N_lte_N   | ✅🆕   |          |          |                                                                                                                      |
+| len_gt_N_lte_N    | ✅🆕   |          |          |                                                                                                                      |
+| macAddress        | ✅🆕   |          |          |                                                                                                                      |
+| null              | ✅     |          |          |                                                                                                                      |
+| number            | ✅     |          |          |                                                                                                                      |
+| numeric           | ✅🆕   |          |          |                                                                                                                      |
+| object            | ✅     |          |          |                                                                                                                      |
+| odd               | ✅🆕   |          |          |                                                                                                                      |
+| string            | ✅     |          |          |                                                                                                                      |
+| symbol            | ✅     |          |          |                                                                                                                      |
+| true              | ✅     |          |          |                                                                                                                      |
+| truthy            | ✅     |          |          |                                                                                                                      |
+| infinity          | ✅     |          |          |                                                                                                                      |
+| undefined         | ✅     |          |          |                                                                                                                      |
+| NaN               | ➖     | DELETED  | isNaN()  |                                                                                                                      |
+| word              | ✅     |          |          |                                                                                                                      |
+| zero              | ✅     |          |          |                                                                                                                      |
 | positive          | ✅     |          |          | Validate if number is more than 0                                                                                    |
 | negative          | ✅     |          |          | Validate if number is less than 0                                                                                    |
 | primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                                        |
-| promise           | ➖     |          |          |
+| promise           | ➖     |          |          |                                                                                                                      |
 
 > Name - the name of a method that you can call to check certain types of data.
 

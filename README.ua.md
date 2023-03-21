@@ -448,7 +448,8 @@ stream$.next('false'); // Bad
 | array             | ✅     |||
 | bigInt            | ✅     |||
 | boolean           | ✅     |||
-| compare           | ✅     |||
+| compare           | ✅     |||          |
+| char              | ✅🆕   |          |          |
 | empty             | ✅     |||
 | even              | ✅🆕   |          |          |
 | false             | ✅     |||
@@ -456,12 +457,23 @@ stream$.next('false'); // Bad
 | function          | ✅     | RETURNED |          | якщо потрібно перевірити, чи є щось із пакета функцією, використовуйте is.Function замість is.function |
 | asyncFunction     | ➖     ||
 | generatorFunction | ➖     ||
-| instanceof        | ✅     |||
+| instanceof        | ✅     |||          |
+| int               | ✅🆕   |          |          |
 | ipv4              | ✅🆕   |          |          |
 | ipv6              | ✅🆕   |          |          |
+| len_N             | ✅🆕   |          |          | N - Any positive integer                                                                               |
+| len_gt_N          | ✅🆕   |          |          | gt - greater than                                                                                      |
+| len_lt_N          | ✅🆕   |          |          | lt - less than                                                                                         |
+| len_lte_N         | ✅🆕   |          |          | lte - less then or equal                                                                               |
+| len_gte_N         | ✅🆕   |          |          | gte - greater then or equal                                                                            |
+| len_gt_N_lt_N     | ✅🆕   |          |          |                                                                                                        |
+| len_gte_N_lt_N    | ✅🆕   |          |          |                                                                                                        |
+| len_gte_N_lte_N   | ✅🆕   |          |          |                                                                                                        |
+| len_gt_N_lte_N    | ✅🆕   |          |          |                                                                                                        |
 | macAddress        | ✅🆕   |          |          |
 | null              | ✅     |||
-| number            | ✅     |||
+| number            | ✅     |||          |
+| numeric           | ✅🆕   |          |          |
 | object            | ✅     |||
 | odd               | ✅🆕   |          |          |
 | string            | ✅     |||

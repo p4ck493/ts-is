@@ -17,7 +17,7 @@
 2. ✅ Reducing the code in the project.
 3. ✅ Easier to read and understand the code.
 4. ✅ CDN support.
-5. ✅ Compatible with the oldest version of JavaScript (ES6 - ECMAScript 2015).
+5. ✅ Compatible with ECMAScript 2015.
 6. ✅ Compatible with the oldest version of TypeScript (0.8.0).
 7. ✅ Maintenance of global contexts: globalThis, window, self, global.
 8. ✅ No dependencies 

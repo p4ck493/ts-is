@@ -35,6 +35,7 @@ import {IntMethod} from './int.method';
 import {CharMethod} from './char.method';
 import {PascalCaseMethod} from './pascal-case.method';
 import {KebabCaseMethod} from './kebab-case.method';
+import {CamelCaseMethod} from './camel-case.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -57,6 +58,7 @@ export const predefinedMethods = {
   asyncFunction: AsyncFunctionMethod,
   bigInt: BigIntMethod,
   boolean: BooleanMethod,
+  camelCase: CamelCaseMethod,
   char: CharMethod,
   compare: CompareMethod,
   empty: EmptyMethod,

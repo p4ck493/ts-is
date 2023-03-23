@@ -477,7 +477,8 @@ stream$.next('false'); // Bad
 | instanceof        | ✅     |||          |
 | int               | ✅🆕   |          |          |
 | ipv4              | ✅🆕   |          |          |
-| ipv6              | ✅🆕   |          |          |
+| ipv6              | ✅🆕   |          |          |                                                                                                                 |
+| kebabCase         | ✅🆕   |          |          |
 | len_N             | ✅🆕   |          |          | N - Any positive integer                                                                               |
 | len_gt_N          | ✅🆕   |          |          | gt - greater than                                                                                      |
 | len_lt_N          | ✅🆕   |          |          | lt - less than                                                                                         |

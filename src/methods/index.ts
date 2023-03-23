@@ -34,6 +34,7 @@ import {NumericMethod} from './numeric.method';
 import {IntMethod} from './int.method';
 import {CharMethod} from './char.method';
 import {PascalCaseMethod} from './pascal-case.method';
+import {KebabCaseMethod} from './kebab-case.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -69,6 +70,7 @@ export const predefinedMethods = {
   int: IntMethod,
   ipv4: Ipv4Method,
   ipv6: Ipv6Method,
+  kebabCase: KebabCaseMethod,
   macAddress: MacAddressMethod,
   negative: NegativeMethod,
   null: NullMethod,

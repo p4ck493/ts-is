@@ -11,6 +11,7 @@ export const isConfig = {
     macAddress: /^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$/,
     pascalCase: /^[A-Z][a-z0-9]*([A-Z][a-z0-9]*)*$/,
     kebabCase: /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/,
-    camelCase: /^[a-z][a-zA-Z0-9]*([A-Z][a-zA-Z0-9]*)*$/
+    camelCase: /^[a-z][a-zA-Z0-9]*([A-Z][a-zA-Z0-9]*)*$/,
+    snakeCase: /^[a-z0-9]+(_[a-z0-9]+)*$/
   },
 };

@@ -36,6 +36,7 @@ import {CharMethod} from './char.method';
 import {PascalCaseMethod} from './pascal-case.method';
 import {KebabCaseMethod} from './kebab-case.method';
 import {CamelCaseMethod} from './camel-case.method';
+import {SnakeCaseMethod} from './snake-case.method';
 
 type mixTypes<T> = T & AllMethodsInterface;
 
@@ -82,6 +83,7 @@ export const predefinedMethods = {
   odd: OddMethod,
   pascalCase: PascalCaseMethod,
   positive: PositiveMethod,
+  snakeCase: SnakeCaseMethod,
   primitive: PrimitiveMethod,
   promise: PromiseMethod,
   string: StringMethod,

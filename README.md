@@ -480,6 +480,7 @@ stream$.next('false'); // Bad
 | numeric           | ✅🆕   |          |          |                                                                                                                      |
 | object            | ✅     |          |          |                                                                                                                      |
 | odd               | ✅🆕   |          |          |                                                                                                                      |
+| pascalMethod      | ✅🆕   |          |          |                                                                                                                      |
 | string            | ✅     |          |          |                                                                                                                      |
 | symbol            | ✅     |          |          |                                                                                                                      |
 | true              | ✅     |          |          |                                                                                                                      |

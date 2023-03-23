@@ -506,6 +506,7 @@ stream$.next('false'); // Bad
 | NaN               | ➖     | DELETED  | isNaN()  |
 | zero              | ✅     |||
 | word              | ✅     |          |          |
+| upperCase         | ✅🆕   |          |          |                                                                                                        |
 | positive          | ✅     |          |          | Перевірте, якщо число більше 0                                                                         |
 | negative          | ✅     |          |          | Перевірте, якщо число менше 0                                                                          |
 | primitive         | ✅     |          |          | string, number, NaN, bigint, boolean, undefined, symbol, null                                          |

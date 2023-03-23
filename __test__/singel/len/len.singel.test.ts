@@ -1,4 +1,4 @@
-import {is} from '../../../dist';
+import {is, IsConfig} from '../../../dist';
 
 describe('len singel', () => {
 
@@ -35,6 +35,7 @@ describe('len singel', () => {
     // LENGTH WRONG
 
     it('is.len_("Hello world") should false', () => {
+        IsConfig.error.enabled = false;
         expect(is.len_("Hello world")).toBe(false);
     });
 

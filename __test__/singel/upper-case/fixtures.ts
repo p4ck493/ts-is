@@ -99,21 +99,12 @@ export const dataForGoodTesting: {value: any}[] = [
 ];
 
 export const dataForBadTesting: {value: any}[] = [
-    {
-        value: 'a1B2c3d4e5f6g'
-    },
-    {
-        value: 'a1B2c3d4e5f6'
-    },
-    {
-        value: 'inCamelCase'
-    },
-    {
-        value: 'undefined'
-    },
-    {
-        value: 'null'
-    },
+    { value: 'a1B2c3d4e5f6g' },
+    { value: 'a1B2c3d4e5f6g' },
+    { value: 'Hello world, the "text" is only for: testing!' },
+    { value: 'inCamelCase' },
+    { value: 'undefined' },
+    { value: 'null' },
     {
         value: 'hello'
     },
